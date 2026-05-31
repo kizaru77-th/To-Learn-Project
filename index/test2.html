@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Settings Button</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 1. ตั้งค่าพื้นหลังหลัก (จำลองพื้นหลังหน้าหลักที่เป็น Gradient) */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%); /* พื้นหลังเข้มโชว์ปุ่มกระจก */
+            gap: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        /* ===================================================
+           แบบที่ A: ปุ่มกระจกโปร่งแสง ขอบ Gradient (แนะนำ)
+           =================================================== */
+        .btn-setting-glass {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px; /* เว้นระยะระหว่างไอคอนกับตัวหนังสือ */
+            padding: 14px 32px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05); /* ตัวปุ่มใส */
+            backdrop-filter: blur(10px); /* ทำฉากหลังเบลอแบบกระจก */
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            /* ซ่อนขอบจริงเพื่อใช้ขอบจำลองจากซ้อนทับข้างล่าง */
+            border: none; 
+            outline: none;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* เทคนิคใช้ Pseudo-element ทำเส้นขอบไล่สี (Gradient Border) */
+        .btn-setting-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            padding: 2px; /* ความหนาของเส้นขอบ */
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); /* สีขอบ Gradient */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* เอฟเฟกต์เมื่อเมาส์ชี้ (Hover) */
+        .btn-setting-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5); /* แสงนีออนเรืองแสง */
+            transform: translateY(-3px); /* ปุ่มลอยขึ้นเล็กน้อย */
+        }
+
+        /* ทำให้ไอคอนฟันเฟืองหมุนตอนชี้ */
+        .btn-setting-glass:hover i {
+            transform: rotate(90deg);
+        }
+
+        .btn-setting-glass i {
+            transition: transform 0.4s ease;
+        }
+
+
+        /* ===================================================
+           แบบที่ B: ปุ่ม Solid Gradient (สีสันสดใส เต็มผืน)
+           =================================================== */
+        .btn-setting-solid {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            /* ไล่สีตัวปุ่มแบบสดใส */
+            background: linear-gradient(135deg, #ff007f 0%, #7f00ff 100%);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* เอฟเฟกต์เมื่อเมาส์ชี้ (Hover) */
+        .btn-setting-solid:hover {
+            box-shadow: 0 6px 25px rgba(255, 0, 127, 0.6);
+            transform: translateY(-3px);
+            filter: brightness(1.1); /* เพิ่มความสว่างให้สีดูป็อปขึ้น */
+        }
+
+        .btn-setting-solid:hover i {
+            transform: rotate(90deg);
+        }
+
+        .btn-setting-solid i {
+            transition: transform 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>ตัวอย่างปุ่ม Setting แบบ Gradient</h2>
+
+    <button class="btn-setting-glass">
+        <i class="fa-solid fa-gear"></i> Settings (แบบกระจก)
+    </button>
+
+    <button class="btn-setting-solid">
+        <i class="fa-solid fa-gear"></i> Settings (แบบสีทึบ)
+    </button>
+
+</body>
+</html>
