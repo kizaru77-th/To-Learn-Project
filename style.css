@@ -1,0 +1,23 @@
+/***************** คีย์ลัดคอมเม้น = ctrl + / ***********************/
+/* Element selector */
+p {
+    color : red;
+    text-align: center;
+}
+
+/* Class selector */
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin:10px;
+}
+
+/* ID selector */
+#myBox {
+    width: 300px;
+    height: 100px;
+    background-color: brown;
+    margin:10px;
+}
+

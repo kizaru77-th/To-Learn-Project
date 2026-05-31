@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;             
+            padding: 0;
+            background-color: gray;
+        }
+        /* Hide the menu by default */
+        .dropdown-content {
+          text-align: center;
+          display: none;
+          position: absolute;
+          background-color: cyan;
+          min-width: 250px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          border-radius: 10px;
+          height: 300px;
+        }
+
+        /* Style the links inside the menu */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color on hover */
+        .dropdown-content a:hover { 
+          text-align: center;
+         color: rgb(0, 0, 0);    
+         background: linear-gradient(
+          to right, 
+         rgb(0, 0, 0),white,black,white,black,white,black,white,black,white,black,white,black,white,black,white,black);
+          
+          /* 2. Stretch the background so it has room to "slide" */
+          background-size: 200% auto;
+  
+          /* 3. Clip the background to the text and make text clear */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+                  
+             
+            
+                  
+           /* 5. Trigger the animation */
+           animation: rainbow-flow 3s linear infinite;
+            background-color: #000000;
+          }
+
+            /* 6. Define the "sliding" motion */
+          @keyframes rainbow-flow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+                  }
+
+          /* This class will be added/removed by JavaScript */
+          .show {
+          display: block;
+          }
+          .dropbtn {
+          width: 250px;
+          height: 100px;
+          max-width: 100%;
+          background-color: whitesmoke;
+          border-radius: 10px;
+          }
+          .inputbox {
+            background-color: whitesmoke;
+            text-align: left;
+            border-radius: 20px;
+            width: 400px;
+            height: 30px;
+            margin-left: 550px;
+            margin-right: auto;
+          }
+          .box {
+            margin-top: 0px;
+          }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button onclick="toggleMenu()" class="dropbtn">Open Menu</button>
+  
+        <div id="myDropdown" class="dropdown-content">
+            <a href="page1.html">Go to Page 1</a>
+            <a href="page2.html">Go to Page 2</a>
+            <a href="page3.html">Go to Page 3</a>
+        </div>
+    </div>
+    
+    <div class = "box">
+      <input type="text" class = "inputbox" placeholder="Search..." ><br><br>
+    </div>
+    <script>
+        function toggleMenu() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Optional: Close the menu if the user clicks anywhere outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+
+    </script>
+
+</body>
+</html>

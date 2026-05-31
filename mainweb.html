@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToLearn Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;            
+            padding: 0;
+            background-image: linear-gradient(135deg, #ecf7ce 0%, #1e2a8f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ☰ ปุ่มเปิดเมนู */
+        .menu-trigger-btn {
+            background: none; 
+            border: none; 
+            padding: 0; 
+            cursor: pointer; 
+            position: fixed; 
+            top: 15px; 
+            left: 15px;
+            z-index: 999; 
+        }
+
+        /* 📱 ตัวแถบเมนูข้าง */
+        .sidebar {
+            background-color: rgb(255, 255, 255);
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+            padding:30px;
+            text-align: center;
+            width: 250px;       
+            height: 100vh;      
+            position: fixed;    
+            top: 0;
+            left: 0;
+            transform: translateX(-100%); 
+            transition: transform 0.4s ease; 
+            z-index: 1000;      
+            box-sizing: border-box; 
+            overflow-y: auto; 
+        }
+
+        .sidebar.active {
+            transform: translateX(0); 
+        }
+
+        /* ❌ ปุ่มปิดเมนู */
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            /* margin-left: 200px; */
+        }
+
+        .center-block-img {
+            display: block;        
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;           
+            max-width: 180px;      
+            height: auto;          
+            margin-top: 0px;      
+        }
+
+        .menu-item {
+            background-color: #78bbe8;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 0px; 
+            margin: 0;       
+            width: 100%;     
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif; 
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            transition: background-size 0.5s ease-in-out, color 0.3s;
+        }
+        .menu-item:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            width: 100%;
+            margin: 10px 0; 
+        }
+
+        .login-divider {
+            border: none;
+            border-top: 1px solid #e0e0e0; 
+            width: 100%;
+            margin-top: 20px;    
+            margin-bottom: 10px;  
+        }
+
+        .menu {
+            background-color: #66a6d1;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 20px; 
+            margin: 0;       
+            width: 100%;     
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            transition: background-size 0.5s ease-in-out, color 0.3s;
+        }
+        .menu:hover {
+            background-size: 100% 100%;
+            color: black;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* แผ่นสีดำโปร่งแสงเบลอๆ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px); 
+            opacity: 0;
+            pointer-events: none; 
+            transition: opacity 0.4s ease;
+            z-index: 998;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto; 
+        }
+
+        /* 🔽 ใช้ Class ร่วมกันเพื่อให้ทั้งปุ่มคอร์สเรียนและติดต่อเราสวยเท่ากัน 🔽 */
+        .dropdown-btn-container {
+            background-color: #78bbe8;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 20px; 
+            width: 100%;     
+            display: flex;     
+            justify-content: space-between; 
+            align-items: center;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            transition: background-size 0.5s ease-in-out;
+        }
+        .dropdown-btn-container:hover {
+            background-size: 100% 100%;
+            color: black ;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* สไตล์ของตัวลูกศร */
+        .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease; 
+            display: inline-block;
+        }
+
+        /* เมื่อปุ่มถูกเปิด ให้ลูกศรหมุนชี้ขึ้น */
+        .dropdown-btn-container.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* กล่องข้อมูลสไลด์ (ใช้คลาสร่วมกัน) */
+        .dropdown-content {
+            max-height: 0;            
+            overflow: hidden;         
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; 
+            background-color: #f2f7fa; 
+            border-radius: 15px;
+            text-align: left;         
+            padding: 0 25px;          
+            font-size: 14px;
+            color: #444;
+            box-sizing: border-box;
+            word-break: break-word; /* ช่วยจัดบรรทัดตัวอักษรไม่ให้ล้น */
+        }
+
+        /* เมื่อกางกล่องออก */
+        .dropdown-content.open {
+            max-height: 250px;        
+            padding: 10px 25px;       
+            margin-top: 8px;
+            
+           
+        }
+        
+        .dropdown-content p {
+            margin: 8px 0;    
+            transform: scale(1.05);        
+        }
+        /* เพิ่มการตั้งค่าสำหรับลิงก์ใน Dropdown */
+        .dropdown-content a {
+            all: unset; /* ล้างสไตล์เดิมที่เป็นปุ่มออก */
+            color: #66a6d1;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            color: #4a8db7;
+            background: none; /* ป้องกันพื้นหลังสีเหลือง/เขียวโผล่มา */
+            filter: brightness(1.1);
+        }
+        .in-btn {
+            max-width:500px ;
+             max-height: 50px;
+             background-color: rgb(255, 255, 255);
+             border-radius: 100px;
+             margin-left: -200px;
+             margin-top: 16px;
+        }
+        a{
+            background-image: linear-gradient(to bottom right, #9BF8F4, #6F7BF7);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            color: black;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            transition: background-size 0.5s ease-in-out;
+        }
+        a:hover {
+            background-size: 100% 100%;
+            color: black ;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
+        .login-btn-custom {
+            background-color: #7c86e1;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, background-size 0.5s ease-in-out;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+
+        .login-btn-custom:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+        }
+        .popup {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .popup.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        }
+        /* สไตล์สำหรับรูปโปรไฟล์ */
+        .user-profile-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #78bbe8;
+            margin: 20px auto 10px;
+            object-fit: cover;
+            display: block;
+        }
+        .summarize {
+            background-color: black;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 70%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        
+        }
+        .summarize button {
+            font-family: 'Prompt', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="menu-trigger-btn" id="openMenuBtn">
+        <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;">
+    </button>
+
+    <div class="overlay" id="menuOverlay">
+            </button>
+                <button class="close-btn" id="closeMenuBtn">
+                 <img src="img/menu_icon.png" alt="Close Icon" style="width: 50px;background-size: 100px;background-color: white; height: 50px;margin-left: 235px;border-radius: 100px;">
+            </button>
+        <div class="in-btn"style="display: width: 500px; height: 50px;">
+    </div>        
+    </div>
+
+    <div class="sidebar" id="sidebarMenu">
+        <!-- <button class="close-btn" id="closeMenuBtn"> -->
+            <!-- <img src="img/menu_icon.png" alt="Close Icon" style="width: 50px; height: 50px;"> -->
+        <!-- </button> -->
+
+        <img src="img/ToLearn_icon.png" alt="ToLearn logo" class="center-block-img">
+        
+        <div id="auth-section">
+            <a href="login.html" class="login-btn-custom" style="display: inline-block; margin-top: 25px; padding: 10px 0; border-radius: 100px; font-size: 18px; width: 100%;">ลงชื่อเข้าใช้</a>
+            <a href="register.html" style="color: gray; font-size: 12px; display: inline-block; margin-top: 5px; text-decoration: underline; border: none !important; background: none !important; box-shadow: none !important;">ลงทะเบียน</a>
+        </div>
+
+        <hr class="login-divider">
+        
+        <a href="mainweb.html" class="menu">หน้าหลัก</a>
+        <hr>
+        <a href="timer.html" class="menu-item">จับเวลาอ่านหนังสือ</a>
+        <hr>
+        <a href="#" class="menu-item">หมวดหมู่</a>
+        <hr>
+        
+        <button class="dropdown-btn-container" id="courseBtn">
+            <span>สรุปเนื้อหาวิชา</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="dropdown-content" id="courseContent">
+            <p>📚 <a href="#">ภาษาไทย</a></p>
+            <p>📖 <a href="#">คณิตศาสตร์</a></p>
+            <p>📘 <a href="#">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="#">ภาษาอังกฤษ</a></p>
+            <p>🌎 <a href="#">สังคม</a></p>
+            <p>💻 <a href="#">การเขียนโปรแกรม</a></p>
+        </div>
+        
+        <hr>
+        <a href="#" class="menu-item">กิจกรรม</a>
+        <hr>
+        
+        <button class="dropdown-btn-container" id="contactBtn">
+            <span>ติดต่อเรา</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="dropdown-content" id="contactContent">
+            <p>📧 Email: tolearnworkingonly@gmail.com</p>
+            <p>📘 FB: ToLearn Official</p>
+            <p>💬 DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
+        </div>
+    </div>
+    <div class="popup" style="margin-top: 0px;">
+        <img src="img/ToLearn_icon.png" alt="ToLearn logo" style="width: 300px; height: auto; margin-bottom: 20px;">
+        <h1>ยินดีต้อนรับสู่ ToLearn!</h1>
+        <p>แพลตฟอร์มการเรียนรู้ที่ออกแบบมาเพื่อช่วยให้คุณประสบความสำเร็จในการศึกษา ด้วยเครื่องมือและทรัพยากรที่ครบครัน เราพร้อมสนับสนุนคุณในทุกขั้นตอนของการเรียนรู้</p>
+    </div>
+    <div class="popup" style="margin-top: 140px;">
+        <h1>▼   มีอะไรบ้าง?   ▼</h1>
+        <p style="font-size: 20px; color: #333; margin-top: 0px !important;">📚 สรุปเนื้อหาวิชาต่างๆ ที่เข้าใจง่ายและสั้นกระชับ</p>
+            <div class="summarize">
+                <p style="font-size: 20px; color: white;">พบกับการเรียนรู้ที่ครบครัน สั้น ได้ใจความ</p>
+                <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; background-color: #7c86e1; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='#.html'">ไป     →</button>
+            </div>
+    </div>
+    <script>
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        // ประกาศตัวแปรสำหรับ คอร์สเรียน
+        const courseBtn = document.getElementById('courseBtn');
+        const courseContent = document.getElementById('courseContent');
+
+        // ประกาศตัวแปรสำหรับ ติดต่อเรา
+        const contactBtn = document.getElementById('contactBtn');
+        const contactContent = document.getElementById('contactContent');
+
+        // ฟังก์ชันสั่งเปิดเมนูข้าง
+        openMenuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+
+        // ฟังก์ชันสั่งปิดเมนูข้าง
+        closeMenuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // ฟังก์ชันสั่งปิดเมนูข้างเมื่อกดพื้นที่ว่าง
+        menuOverlay.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // ── 🛠️ ฟังก์ชันคลิกปุ่มคอร์สเรียน ──
+        courseBtn.addEventListener('click', () => {
+            courseContent.classList.toggle('open');
+            courseBtn.classList.toggle('active');
+        });
+
+        // ── ฟังก์ชันคลิกปุ่มติดต่อเรา ──
+        contactBtn.addEventListener('click', () => { 
+            contactContent.classList.toggle('open');
+            contactBtn.classList.toggle('active');
+        });
+
+         const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, {
+        threshold: 0.15 
+        });
+
+        const popupElements = document.querySelectorAll('.popup');
+        popupElements.forEach((element) => observer.observe(element));
+
+        // --- ระบบตรวจสอบการล็อกอิน ---
+        function checkLoginStatus() {
+            console.log("ชื่อที่ดึงมาได้คือ:", localStorage.getItem('username'));
+            console.log("ลิงก์รูปที่ดึงมาได้คือ:", localStorage.getItem('profilePicture'));
+            const authSection = document.getElementById('auth-section');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username') || 'ผู้ใช้งาน';
+            const profilePicture = localStorage.getItem('profilePicture');
+            
+            // ตรวจสอบว่ามีรูปโปรไฟล์ใน localStorage หรือไม่ ถ้าไม่มีให้ใช้รูปเริ่มต้น
+            const displayImage = profilePicture ? profilePicture : 'img/Sample_User_Icon.png';
+
+    if (isLoggedIn === 'true') {
+        authSection.innerHTML = `
+            <a href="profile_upload.php" style="display: block; text-decoration: none; border: none !important; background: none !important; box-shadow: none !important; cursor: pointer;">
+                <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
+            </a>
+            <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
+            <button onclick="logout()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
+        `;
+
+        // ค้นหาทุกลิงก์ที่เคยไปหน้า login.html และเปลี่ยนให้ไปหน้า mainweb.html แทน
+        const loginLinks = document.querySelectorAll('a[href="login.html"]');
+        loginLinks.forEach(link => {
+            link.href = 'mainweb.html';
+            if (link.innerText.trim() === 'ลงชื่อเข้าใช้') {
+                link.innerText = 'เข้าสู่หน้าหลัก';
+            }
+        });
+    }
+}
+
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
+    localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
+    window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
+}
+
+// เรียกใช้งานเมื่อโหลดหน้าเว็บ
+window.onload = checkLoginStatus;
+    </script>
+    
+</body>    
+</html>

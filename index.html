@@ -1,0 +1,198 @@
+<!-- คีย์ลัดcomment: ctrl + / -->
+<!-- ก่อนจะเข้าไปลองเว็บต้องกดเซฟก่อน -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ชื่อหน้าเว็บ -->
+    <title>eduflow</title>
+
+    <style>
+        /* <!--อยู่ในบทhtml class--> */
+        /* <!--กำหนดให้classชื่อcontainerมีลักษณะดังนี้--> */
+        .container {   
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        /* <!--กำหนดให้classชื่อboxมีลักษณะดังนี้--> */
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+
+        /* อยู่ในบทhtml id */
+        /* <!--กำหนดให้idชื่อmain-contentมีลักษณะดังนี้--> */
+        #main-content {
+            background-color: lightblue; /* <!-- สีพื้นหลัง --> */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ขนาดตัวอักษร -->
+    <h1>eduflow</h1>
+    <h2>eduflow</h2>
+    <h3>eduflow</h3>
+    <h4>eduflow</h4>
+    <h5>eduflow</h5>
+    <h6>eduflow</h6>
+
+    <!-- ย่อหน้า -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsam dolore quos ad quam totam veritatis hic consectetur incidunt excepturi. Blanditiis eos atque facere ad soluta neque accusantium consequatur corrupti.</p>
+    <!-- ลิ้งเชื่อม -->
+    <a href="https://www.eduflow.com" target="_blank">eduflow</a>
+    <!-- ลิ้งเชื่อมไปยังหน้า About -->
+    <a href="about.html">About eduflow</a>
+
+    <!-- ลิ้งรูปภาพ -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwVbKXL1OOR9ScHYnMF5c6GRM2WOzEEASBPA&s" alt="eduflow logo" width="1000" height="400"> -->
+    <!-- รูปภาพในโฟลเดอร์ img -->
+    <img src="img/pic1.jpg" alt="eduflow logo" width="1000" height="400">
+    
+    <!-- ตาราง -->
+    <table>
+        <tr>
+            <!-- หัวตาราง -->
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+        <tr>
+            <!-- ข้อมูลในตาราง -->
+            <td>Data 1</td>
+            <td>Data 2</td>
+        </tr>
+    </table>
+
+    <!-- รายการที่เป็นจุดไข่ปลา ปล.ถ้าอยากเปลี่ยนเป็นเรียงตัวเลขให้ใช้ <ol> -->
+    <ul>
+        <!-- รายการในลิสส์ -->
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <b>bold text</b> <!-- ตัวหนา -->
+    <i>italic text</i> <!-- ตัวเอียง -->
+    <u>underlined text</u> <!-- ขีดเส้นใต้ -->
+    <strong>strong text</strong> <!-- ตัวหนาเป็นข้อความสำคัญ -->
+    <em>emphasized text</em> <!-- ตัวเอียงเป็นข้อความเน้น -->
+    <mark>marked text</mark> <!-- ข้อความที่ถูกเน้นด้วยสีพื้นหลัง -->
+    <small>small text</small> <!-- ตัวอักษรขนาดเล็ก -->
+    <del>deleted text</del> <!-- ข้อความที่ถูกลบ -->
+    <ins>inserted text</ins> <!-- ข้อความที่ถูกเพิ่ม -->
+    <sub>subscript text</sub> <!-- ข้อความตัวห้อย -->
+    <sup>superscript text</sup> <!-- ข้อความตัวยก -->
+
+    <!-- ฟอร์มข้อมูล -->
+    <form action="/submit" method="post">
+        <fieldset> <!-- กล่องกรอบ -->
+            <legend>Personal Information</legend> <!-- ชื่อกล่องกรอบ -->
+            <label for="name">Name:</label> <!-- ข้อความก่อนกล่องใส่ชื่อ -->
+            <input type="text" id="name" name="name" placeholder="enter your name"><br><br> <!-- กล่องใส่ชื่อ -->
+            <label for="email">Email:</label> <!-- ข้อความก่อนกล่องใส่อีเมล -->
+            <input type="email" id="email" name="email" placeholder="enter your email"><br><br> <!-- กล่องใส่อีเมล -->
+        </fieldset>
+
+        <select name="options" id="options"> <!-- กล่องเลือกตัวเลือก -->
+            <option value="option1">Option 1</option> <!-- ตัวเลือกที่ 1 -->
+            <option value="option2">Option 2</option> <!-- ตัวเลือกที่ 2 -->
+            <option value="option3">Option 3</option> <!-- ตัวเลือกที่ 3 -->
+        </select>
+
+        <input list="options-list" name="options-input" placeholder="choose an option"> <!-- กล่องใส่ตัวเลือกที่สามารถพิมพ์ได้ -->
+        <datalist id="options-list">
+            <option value="Option 1"> <!-- ตัวเลือกที่ 1 -->
+            <option value="Option 2"> <!-- ตัวเลือกที่ 2 -->
+            <option value="Option 3"> <!-- ตัวเลือกที่ 3 -->
+        </datalist>
+
+       <!-- กล่องข้อความสำหรับใส่ข้อความยาวๆ -->
+        <textarea name="message" id="message" placeholder="enter your message"></textarea><br><br>
+
+        <input type="button" value="Enter"> <!-- ปุ่มenter -->
+        <input type="reset" value="Reset"> <!-- ปุ่มreset -->
+        <input type="checkbox" value="checkbox"> <!-- กล่องติ๊กถูก -->
+        <input type="color"> <!-- กล่องเลือกสี -->
+        <input type="date"> <!-- กล่องเลือกวันที่ -->
+        <input type="file"> <!-- กล่องเลือกไฟล์ -->
+        <input type="hidden" value="hidden"> <!-- กล่องที่ซ่อนอยู่ -->
+        <input type="number"> <!-- กล่องใส่ตัวเลข -->
+        <input type="password"> <!-- กล่องใส่รหัสผ่าน -->
+        <input type="datetime-local" name="datetime"> <!-- กล่องเลือกวันที่และเวลา -->
+        <input type="month"> <!-- กล่องเลือกเดือน -->
+        <input type="range"> <!-- กล่องเลือกช่วงค่า -->
+        <input type="search"> <!-- กล่องค้นหา -->
+        <input type="tel"> <!-- กล่องใส่เบอร์โทร -->
+        <input type="time"> <!-- กล่องเลือกเวลา -->
+        <input type="radio"> <!-- จุดวงกลมลากได้ -->
+        <input type="url"> <!-- กล่องใส่ลิ้ง -->
+        <input type="week"> <!-- กล่องเลือกสัปดาห์ -->
+
+    </form>
+
+    <!-- html block element -->
+    <div> 
+        <!-- ตัดบรรทัดใหม่ -->
+        <p>This is a div element.</p>
+        <p>This is a div element.</p>
+        <p>This is a div element.</p>
+        <p>This is a div element.</p>
+    </div>
+
+    <!-- inline element -->
+    <hr> <!--เส้นคั่นแบบไม่ตัดบรรทัด-->
+
+    <a href="#">Home</a> <!-- ข้อความลิ้งที่1 -->
+    <a href="#">About</a> <!-- ข้อความลิ้งที่2 -->
+    <a href="#">Contact</a> <!-- ข้อความลิ้งที่3 -->
+
+    <!-- ข้อความที่อยู่ในบรรทัดเดียวกัน -->
+    <span>Text 1</span> 
+    <span>Text 2</span>
+    <span>Text 3</span>
+    
+
+    <!-- Parent element --> <!-- จัดองค์ประกอบของเว็บไซต์ -->
+    <div>
+        <!-- Child element -->
+        <h1>Hello world</h1>
+        <p>eduflow</p>
+
+        <div>
+            <p>Nested div</p>
+        </div>
+    </div>
+
+    <!-- html class -->
+     <div class="container">
+        <h1>eduflow</h1>
+        <p>Welcome to eduflow!</p>
+        
+        <div 
+        class="box">
+        </div>
+    </div>
+
+    <!-- html id -->
+    <div id="mainContent">
+        <h1>Main Content</h1>
+        <p>This is the main content area.</p>
+    </div>
+
+    <!-- Java script -->
+    <!-- <script>
+        let mainContent = document.getElementById('mainContent');
+
+        mainContainent.addEventListener('click', function() {
+            alert('Hello world');
+        });
+    </script> -->
+
+        
+
+</body>
+</html>

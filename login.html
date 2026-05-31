@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToLearn | Signin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    body {
+        font-family: 'Prompt', sans-serif;
+    }
+    </style>
+</head>
+<body 
+   
+    class="bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaeS6jcqcOSRaGev54eQIkrQAkmHk8NIBw8w&s')] bg-cover bg-center bg-no-repeat h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md relative">
+
+        <!-- หัวข้อ -->
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">ลงชื่อเข้าใช้</h1>
+            <p class="text-gray-600 mt-1">เข้าถึงฟีเจอร์การเรียนรู้เพิ่มเติม</p>
+            <p class="text-sm mt-2">ไม่มีบัญชี? <a href="register.html" class="text-emerald-500 font-medium hover:underline">ลงทะเบียน</a></p>
+        </div>
+
+        <!-- ส่วนปุ่ม Social Login ที่ปรับใหม่ -->
+    
+        <div class="flex flex-col gap-3 mb-6">
+     <a href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=217191213791-2bnl25b2l6r5d10bi0k8jkqbdmu70gl7.apps.googleusercontent.com&redirect_uri=http://localhost/To-Learn/google-callback.php&scope=email%20profile" 
+        class="flex items-center justify-center w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition no-underline">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5 mr-3" alt="Google">
+        <span class="text-gray-700 font-medium">ล็อกอินด้วย Google</span>
+    </a>
+
+    <a href="https://www.facebook.com/v19.0/dialog/oauth?client_id=992584539930554&redirect_uri=http%3A%2F%2Flocalhost%2FTo-Learn%2Ffacebook-callback.php&scope=public_profile" 
+        class="flex items-center justify-center w-full py-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition no-underline">
+        <i class="fa-brands fa-facebook text-xl text-blue-600 mr-3"></i>
+        <span class="text-gray-700 font-medium">ล็อกอินด้วย Facebook</span>
+    </a>
+</div>
+
+        <!-- เส้นคั่น "or" -->
+        <div class="relative flex py-4 items-center">
+            <div class="flex-grow border-t border-gray-200"></div>
+            <span class="flex-shrink mx-4 text-gray-400 text-sm">หรือ</span>
+            <div class="flex-grow border-t border-gray-200"></div>
+        </div>
+
+        <!-- ฟอร์มกรอกข้อมูล -->
+        <form action="login-check.php" method="POST" class="space-y-4">
+            <div>
+                <input type="email" name="email" placeholder="อีเมล" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" required>
+            </div>
+            <div class="relative">
+                <input type="password" name="password" id="password" placeholder="รหัสผ่าน" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 transition" required>
+                <button type="button" onclick="togglePassword()" class="absolute right-4 top-3.5 text-gray-400 hover:text-gray-600">
+                    <i id="eyeIcon" class="fa-solid fa-eye text-sm"></i>
+                </button>
+            </div>
+
+            <div class="text-left">
+                <a href="#" class="text-sm text-gray-700 hover:underline">ลืมรหัสผ่าน?</a>
+            </div>
+
+            <!-- ปุ่ม Sign In -->
+            <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition shadow-sm">
+                ลงชื่อเข้าใช้
+            </button>
+        </form>
+    </div>
+
+    <!-- JavaScript สำหรับเปิด/ปิดการดูรหัสผ่าน -->
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const eyeIcon = document.getElementById("eyeIcon");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+    </script>
+</body>
+</html>
