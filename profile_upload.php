@@ -91,8 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_img'])) {
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
-        // หากอัปโหลดสำเร็จ ให้ทำการอัปเดต localStorage และแจ้งเตือน
         <?php if ($success): ?>
             localStorage.setItem('profilePicture', '<?php echo $new_image_path; ?>');
             alert('อัปเดตรูปโปรไฟล์สำเร็จแล้ว!');
