@@ -355,7 +355,7 @@
         
         <a href="mainweb.html" class="menu">🏠หน้าหลัก</a>      
         <hr>
-        <a href="timer.html" class="menu-item">จับเวลาอ่านหนังสือ</a>
+        <a href="#" class="menu-item" onclick="checkAccess('timer.html')">จับเวลาอ่านหนังสือ</a>
         <hr>
         <a href="#" class="menu-item">หมวดหมู่</a>
         <hr>
@@ -364,11 +364,12 @@
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="#">ภาษาไทย</a></p>
-            <p>📘 <a href="#">วิทยาศาสตร์</a></p>
-            <p>📙 <a href="#">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="#">สังคม</a></p>
-            <p>💻 <a href="#">การเขียนโปรแกรม</a></p>
+            <p>📚 <a href="#" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
+            <p>📖 <a href="#" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
+            <p>📘 <a href="#" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="#" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>
+            <p>🌎 <a href="#" onclick="checkAccess('subject_social.html')">สังคม</a></p>
+            <p>💻 <a href="#" onclick="checkAccess('subject_programming.html')">การเขียนโปรแกรม</a></p>
         </div>
         
         <hr>
@@ -487,6 +488,15 @@
         // สั่งจับตาดูทุกกล่องที่มีคลาส popup
         const popupElements = document.querySelectorAll('.popup');
         popupElements.forEach((element) => observer.observe(element));
+
+        // Function to check login status before accessing certain pages
+        function checkAccess(targetPage) {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                window.location.href = targetPage;
+            } else {
+                window.location.href = 'access_denied_popup.html';
+            }
+        }
 
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {

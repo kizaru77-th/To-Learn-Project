@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าถึงสิทธิ์ประโยชน์ - ToLearn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(135deg, #ecf7ce 0%, #1e2a8f 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        .popup-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: fadeInScale 0.5s ease-out forwards;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .btn-group a {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+        }
+        .btn-group a.login-btn {
+            background-color: #7c86e1;
+            color: white;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+        .btn-group a.login-btn:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+        .btn-group a.back-btn {
+            background-color: #f0f0f0;
+            color: #333;
+            background-image: linear-gradient(to bottom right, #9BF8F4, #6F7BF7);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+        .btn-group a.back-btn:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-container">
+        <h1>กรุณาลงทะเบียนเพื่อเข้าถึงสิทธิ์ประโยชน์ของ ToLearn</h1>
+        <p>คุณต้องลงชื่อเข้าใช้เพื่อใช้งานฟังก์ชันนี้</p>
+        <div class="btn-group">
+            <a href="login.html" class="login-btn">ลงชื่อเข้าใช้</a>
+            <a href="mainweb.html" class="back-btn">กลับหน้าหลัก</a>
+        </div>
+    </div>
+</body>
+</html>
