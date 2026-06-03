@@ -53,15 +53,19 @@ if (isset($_GET['code'])) {
         $picture = isset($user_data['picture']) ? $user_data['picture'] : 'img/Sample_User_Icon.png'; 
 
         // 4. นำข้อมูลไปเช็กและบันทึกลงฐานข้อมูล
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = :email");
+        $stmt = $conn->prepare("SELECT id, profile_picture FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
 
         if ($user) {
-            // ถ้าเคยล็อกอินแล้ว ให้ทำบังคับอัปเดตลิงก์รูปภาพล่าสุดเข้าไปใหม่ด้วยครับ
+            // ถ้าเคยล็อกอินแล้ว ให้เซ็ต session แต่จะไม่เขียนทับรูปถ้าเป็นรูปที่อัพโดยผู้ใช้ (อยู่ใน uploads/)
             $_SESSION['user_id'] = $user['id'];
-            $update_stmt = $conn->prepare("UPDATE users SET profile_picture = :pic WHERE id = :id");
-            $update_stmt->execute(['pic' => $picture, 'id' => $user['id']]);
+            $current_pic = isset($user['profile_picture']) ? $user['profile_picture'] : '';
+            // ถ้ารูปปัจจุบันเริ่มต้นด้วย 'uploads/' แสดงว่าเป็นรูปที่ผู้ใช้อัพไว้เอง -> ข้ามการอัปเดต
+            if (!(strpos($current_pic, 'uploads/') === 0)) {
+                $update_stmt = $conn->prepare("UPDATE users SET profile_picture = :pic WHERE id = :id");
+                $update_stmt->execute(['pic' => $picture, 'id' => $user['id']]);
+            }
         } else {
             // ถ้าเป็นผู้ใช้งานใหม่ บันทึกข้อมูลพร้อมลิงก์รูปภาพตรงๆ
             $stmt = $conn->prepare("INSERT INTO users (email, username, password, profile_picture) VALUES (:email, :username, 'GOOGLE_LOGIN', :pic)");

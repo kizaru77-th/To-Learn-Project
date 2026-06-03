@@ -36,16 +36,19 @@ if (isset($_GET['code'])) {
         $email = $fb_id . '@facebook.com'; 
         $picture = isset($user_data['picture']['data']['url']) ? $user_data['picture']['data']['url'] : '';
         // 3. นำข้อมูลไปตรวจสอบในฐานข้อมูล
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = :email");
+        $stmt = $conn->prepare("SELECT id, profile_picture FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
 
         if ($user) {
             $_SESSION['user_id'] = $user['id'];
-            // อัปเดตรูปภาพโปรไฟล์ให้ล่าสุด
+            // ถ้ามีรูปจาก Facebook ให้อัปเดต แต่ข้ามการอัปเดตถ้าผู้ใช้เคยอัพรูปเอง (อยู่ใน uploads/)
             if (!empty($picture)) {
-                $update_stmt = $conn->prepare("UPDATE users SET profile_picture = :pic WHERE id = :id");
-                $update_stmt->execute(['pic' => $picture, 'id' => $user['id']]);
+                $current_pic = isset($user['profile_picture']) ? $user['profile_picture'] : '';
+                if (!(strpos($current_pic, 'uploads/') === 0)) {
+                    $update_stmt = $conn->prepare("UPDATE users SET profile_picture = :pic WHERE id = :id");
+                    $update_stmt->execute(['pic' => $picture, 'id' => $user['id']]);
+                }
             }
         } else {
             // สมัครสมาชิกใหม่อัตโนมัติ

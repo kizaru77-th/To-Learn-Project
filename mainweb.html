@@ -319,9 +319,9 @@
         .summarize {
             background-color: black;
             border-radius: 15px;
-            padding: 20px;
+            padding: 40px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            width: 70%;
+            width: 90%;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -329,6 +329,14 @@
         }
         .summarize button {
             font-family: 'Prompt', sans-serif;
+            background-color: #7c86e1;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .summarize button:hover{
+            background-size: 100% 100%;
+            color: black !important;
+            background-color: #ecf7ce;
+            transform: translateY(-10px);
         }
     </style>
 </head>
@@ -361,7 +369,9 @@
 
         <hr class="login-divider">
         
-        <a href="mainweb.html" class="menu">หน้าหลัก</a>
+        <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
+            <img src="Home-button.png" alt="Home" style="width: 20%;margin-left: 10%;"> หน้าหลัก
+        </a>
         <hr>
         <a href="timer.html" class="menu-item">จับเวลาอ่านหนังสือ</a>
         <hr>
@@ -402,10 +412,24 @@
     </div>
     <div class="popup" style="margin-top: 140px;">
         <h1>▼   มีอะไรบ้าง?   ▼</h1>
-        <p style="font-size: 20px; color: #333; margin-top: 0px !important;">📚 สรุปเนื้อหาวิชาต่างๆ ที่เข้าใจง่ายและสั้นกระชับ</p>
+        <h1 style="font-size: 20px; color: #333; margin-top: 0px !important;margin-left: 75;text-align: left !important;margin-left: 0px;">📚 สรุปเนื้อหาวิชาต่างๆ ที่เข้าใจง่ายและสั้นกระชับ</h1>
             <div class="summarize">
                 <p style="font-size: 20px; color: white;">พบกับการเรียนรู้ที่ครบครัน สั้น ได้ใจความ</p>
-                <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; background-color: #7c86e1; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='#.html'">ไป     →</button>
+                <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='#.html'">ไป     →</button>
+            </div>
+    </div>
+    <div class="popup" style="margin-top: 40px !important;">
+        <h1 style="font-size: 20px; color: #333; margin-top: 0px !important;margin-left: 75;text-align: left !important;margin-left: 0px;"> 📢ประกาศข่าวสารจากทางToLearn</h1>
+            <div class="summarize">
+                <p style="font-size: 20px; color: white;">ติดตามข่าวสารและกิจกรรมใหม่ๆ จากทาง ToLearn ได้ที่นี่!</p>
+                <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='#.html'">ไป     →</button>
+            </div>
+    </div>
+    <div class="popup" style="margin-top: 40px !important;">
+        <h1 style="font-size: 20px; color: #333; margin-top: 0px !important;margin-left: 75;text-align: left !important;margin-left: 0px;"> ติดต่อเราได้ที่</h1>
+            <div class="summarize">
+                <p style="font-size: 20px; color: white;">ติดตามข่าวสารและกิจกรรมใหม่ๆ จากทาง ToLearn ได้ที่นี่!</p>
+                <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='#.html'">ไป     →</button>
             </div>
     </div>
     <script>

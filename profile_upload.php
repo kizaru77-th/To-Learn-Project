@@ -18,33 +18,37 @@ $stmt = $conn->prepare("SELECT username, profile_picture FROM users WHERE id = ?
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_img'])) {
-    $target_dir = "uploads/";
-    
-    // สร้างโฟลเดอร์ uploads ถ้ายังไม่มี
-    if (!file_exists($target_dir)) {
-        mkdir($target_dir, 0777, true);
-    }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!empty($_FILES['profile_img']['tmp_name']) && $_FILES['profile_img']['error'] === UPLOAD_ERR_OK) {
+        $target_dir = "uploads/";
+        
+        // สร้างโฟลเดอร์ uploads ถ้ายังไม่มี
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
 
-    $file_extension = strtolower(pathinfo($_FILES["profile_img"]["name"], PATHINFO_EXTENSION));
-    $new_filename = "profile_" . $user_id . "_" . time() . "." . $file_extension;
-    $target_file = $target_dir . $new_filename;
+        $file_extension = strtolower(pathinfo($_FILES["profile_img"]["name"], PATHINFO_EXTENSION));
+        $new_filename = "profile_" . $user_id . "_" . time() . "." . $file_extension;
+        $target_file = $target_dir . $new_filename;
 
-    // ตรวจสอบว่าเป็นรูปภาพจริงหรือไม่
-    $check = getimagesize($_FILES["profile_img"]["tmp_name"]);
-    if($check !== false) {
-        if (move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file)) {
-            // อัปเดตข้อมูลในฐานข้อมูล
-            $update = $conn->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
-            $update->execute([$target_file, $user_id]);
-            
-            $new_image_path = $target_file;
-            $success = true;
+        // ตรวจสอบว่าเป็นรูปภาพจริงหรือไม่
+        $check = getimagesize($_FILES["profile_img"]["tmp_name"]);
+        if ($check !== false) {
+            if (move_uploaded_file($_FILES["profile_img"]["tmp_name"], $target_file)) {
+                // อัปเดตข้อมูลในฐานข้อมูล
+                $update = $conn->prepare("UPDATE users SET profile_picture = ? WHERE id = ?");
+                $update->execute([$target_file, $user_id]);
+                
+                $new_image_path = $target_file;
+                $success = true;
+            } else {
+                $error = "เกิดข้อผิดพลาดในการบันทึกไฟล์";
+            }
         } else {
-            $error = "เกิดข้อผิดพลาดในการบันทึกไฟล์";
+            $error = "ไฟล์ที่เลือกไม่ใช่รูปภาพ";
         }
     } else {
-        $error = "ไฟล์ที่เลือกไม่ใช่รูปภาพ";
+        $error = "กรุณาเลือกรูปภาพก่อนบันทึก";
     }
 }
 ?>

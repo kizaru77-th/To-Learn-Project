@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
-            // เก็บ path รูปโปรไฟล์ หรือใช้ค่าว่างถ้าไม่มี
-            $profilePicture = !empty($user['profile_picture']) ? $user['profile_picture'] : '';
+            // เก็บ path รูปโปรไฟล์ หรือใช้รูปเริ่มต้นถ้าไม่มี (Sample_User_Icon)
+            $profilePicture = !empty($user['profile_picture']) ? $user['profile_picture'] : 'img/Sample_User_Icon.png';
             
             // ส่งค่าไปยัง localStorage เพื่อให้ JavaScript ในหน้า HTML ทำงานต่อได้
             echo "<script>

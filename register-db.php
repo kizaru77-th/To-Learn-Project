@@ -14,10 +14,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     try {
-        $stmt = $conn->prepare("INSERT INTO users (email, username, password) VALUES (:email, :username, :password)");
+        // ตรวจสอบก่อนว่าอีเมลนี้ถูกใช้แล้วหรือยัง (ป้องกันข้อผิดพลาด duplicate)
+        $checkStmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = :email");
+        $checkStmt->bindParam(':email', $email);
+        $checkStmt->execute();
+        $exists = $checkStmt->fetchColumn();
+        if ($exists) {
+            echo "<script>alert('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้บัญชีอีเมลอื่นหรือเข้าสู่ระบบ'); window.history.back();</script>";
+            exit();
+        }
+
+        // กำหนดรูปโปรไฟล์เริ่มต้นสำหรับผู้ใช้ใหม่
+        $defaultProfile = 'img/Sample_User_Icon.png';
+
+        $stmt = $conn->prepare("INSERT INTO users (email, username, password, profile_picture) VALUES (:email, :username, :password, :profile)");
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $passwordHash);
+        $stmt->bindParam(':profile', $defaultProfile);
         $stmt->execute();
         
         // ใช้คำสั่งนี้แทน JavaScript ครับ มันจะย้ายหน้าไป login.html ทันทีแบบชัวร์ 100%
