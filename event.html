@@ -403,8 +403,12 @@
         @media (max-width: 768px) {
             .main-tab-nav {
                 flex-wrap: wrap; /* ให้ปุ่มเมนูหลักพับลงมาได้ถ้าหน้าจอแคบ */
+                flex-wrap: nowrap; /* ทำให้ปุ่มเมนูหลักอยู่ในแถวเดียวกัน */
                 gap: 10px;
                 padding: 0 15px;
+                overflow-x: auto; /* เพิ่มการเลื่อนแนวนอนหากเนื้อหาเกิน */
+                justify-content: flex-start; /* จัดปุ่มไปทางซ้าย */
+                -webkit-overflow-scrolling: touch; /* เพื่อการเลื่อนที่ลื่นไหลบน iOS */
             }
 
             .tabs-container {
