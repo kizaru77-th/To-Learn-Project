@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | WebsiteLearning for anyone</title>
+    <title>ToLearn | Thai Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,7 +14,7 @@
             font-family: 'Prompt', sans-serif;
             margin: 0;            
             padding: 0;
-            background-image: linear-gradient(135deg, #bef1ff 0%, #b4d5ff 100%);
+            background-image: linear-gradient(135deg, #cbffdc 0%, #1b11a5 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
@@ -75,6 +75,17 @@
             margin-top: 0px;      
         }
 
+        /* สไตล์สำหรับรูปโปรไฟล์ */
+        .user-profile-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #000000;
+            margin: 20px auto 10px;
+            object-fit: cover;
+            display: block;
+        }
+
         .menu-item {
             background-color: #78bbe8;
             border-radius: 100px;
@@ -99,13 +110,12 @@
         .menu-item:hover {
             background-size: 100% 100%;
             color: black;
-            transform: scale(1.05);
             filter: brightness(1.1);
         }
 
         hr {
             border: none;
-            border-top: 1px solid peachpuff;
+            border-top: 1px solid #e0e0e0;
             width: 100%;
             margin: 10px 0; 
         }
@@ -228,24 +238,27 @@
             max-height: 250px;        
             padding: 10px 25px;       
             margin-top: 8px;
+            
            
         }
         
         .dropdown-content p {
-            margin: 8px 0; 
-            transform: scale(1.05);          
+            margin: 8px 0;    
+            transform: scale(1.05);        
         }
         /* เพิ่มการตั้งค่าสำหรับลิงก์ใน Dropdown */
         .dropdown-content a {
-            all: unset; 
+            all: unset; /* ล้างสไตล์เดิมที่เป็นปุ่มออก */
             color: #66a6d1;
             text-decoration: underline;
             cursor: pointer;
             font-size: 14px;
+            transition: color 0.3s ease;
         }
         .dropdown-content a:hover {
             color: #4a8db7;
-            background: none;
+            background: none; /* ป้องกันพื้นหลังสีเหลือง/เขียวโผล่มา */
+            filter: brightness(1.1);
         }
         .in-btn {
             max-width:500px ;
@@ -255,7 +268,7 @@
              margin-left: -200px;
              margin-top: 16px;
         }
-        a {
+        a{
             background-image: linear-gradient(to bottom right, #9BF8F4, #6F7BF7);
             background-size: 0% 100%;
             background-repeat: no-repeat;
@@ -275,8 +288,7 @@
             transform: scale(1.05);
             filter: brightness(1.1);
         }
-
-        /* เพิ่ม Class ใหม่สำหรับปุ่ม Login เพื่อให้เปลี่ยนสีตอน Hover ได้ */
+        /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
         .login-btn-custom {
             background-color: #7c86e1;
             color: white;
@@ -294,47 +306,18 @@
             filter: brightness(1.1);
         }
 
-        .popup {
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
-                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: opacity, transform;
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 1.4; /* ปรับระยะห่างระหว่างบรรทัดให้กระชับขึ้น */
-        }
-
-        /* เมื่อเลื่อนมาเจอ JavaScript จะเติมคลาสนี้เพื่อให้ลอยขึ้นมา */
-        .popup.show {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        }
-
-        /* สไตล์สำหรับรูปโปรไฟล์ใน Sidebar */
-        .user-profile-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid black;
-            margin: 20px auto 10px;
-            object-fit: cover;
-            display: block;
-        }
     </style>
 </head>
 <body>
-
     <button class="menu-trigger-btn" id="openMenuBtn">
         <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;">
     </button>
 
     <div class="overlay" id="menuOverlay">
-        <button class="close-btn" id="closeMenuBtn">
-            <img src="img/menu_icon.png" alt="Close Icon" style="width: 50px;background-size: 100px;background-color: white; height: 50px;margin-left: 235px;border-radius: 100px;">
-        </button>
+            </button>
+                <button class="close-btn" id="closeMenuBtn">
+                 <img src="img/menu_icon.png" alt="Close Icon" style="width: 50px;background-size: 100px;background-color: white; height: 50px;margin-left: 235px;border-radius: 100px;">
+            </button>
         <div class="in-btn"style="display: width: 500px; height: 50px;">
     </div>        
     </div>
@@ -392,48 +375,6 @@
             <p>💬 DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
-    <div class="popup">
-    <img src="img/ToLearn_icon.png" alt="ToLearn logo" class="main-icon" style="display: block; margin: 50px auto 0; max-width: 600px;">
-    <h1 style="text-align: center; margin-top: 10px; font-size: 36px; color: #333;">เปิดประสบการณ์การเรียนรู้ของคุณ ด้วย ToLearn</h1>
-    <h4 style="text-align: center; margin-top: 10px; font-size: 16px; color: #777; max-width: 800px; margin-left: auto; margin-right: auto;">ไม่ว่าคุณจะเป็นนักเรียนที่ต้องการสรุปเนื้อหาอย่างรวดเร็ว หรือผู้ปกครองที่ต้องการช่วยเหลือบุตรหลานในการเรียน ToLearn คือคำตอบสำหรับคุณ</h4>
-    
-    <div style="text-align: center; margin-top: 15px;">
-        <a href="login.html" class="login-btn-custom" style="display: inline-block; padding: 15px 20px; border-radius: 10px; font-size: 18px; border: 2px solid black; margin-right: 10px;">ลงชื่อเข้าใช้</a>
-        <a id="try-btn" href="mainweb.html" style="display: inline-block; padding: 15px 20px; background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186)); color: black; text-decoration: none; border-radius: 10px; font-size: 18px; border: 2px solid black;">ทดลองใช้ToLearn</a> 
-    </div>
-    </div>
-
-    <div class="popup">
-        <h1 style="text-align: center; margin-top: 40px; font-size: 28px; color: #333;">ทำไมต้องเลือก ToLearn?</h1>
-        <p style="text-align: center; margin-top: 10px; font-size: 16px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
-            ToLearn ไม่ใช่แค่เว็บไซต์สรุปเนื้อหา แต่เป็นเพื่อนคู่คิดในการเรียนรู้ของคุณ เรามีสรุปเนื้อหาที่ครอบคลุมทุกวิชา พร้อมกิจกรรมและเครื่องมือช่วยจำที่ทำให้การเรียนสนุกและมีประสิทธิภาพมากขึ้น ไม่ว่าคุณจะต้องการเตรียมสอบ หรือแค่ต้องการทบทวนเนื้อหา ToLearn คือที่ที่คุณควรอยู่
-        </p>
-        <img src="img/ToLearn_icon.png" alt="ToLearn Features" style="display: block; margin: 30px auto; max-width: 600px;">
-    </div>
-
-    <div class="popup">
-        <h1 style="text-align: center; margin-top: 40px; font-size: 28px; color: #333;">สรุปเนื้อหาอย่างครบถ้วน</h1>
-        <p style="text-align: center; margin-top: 10px; font-size: 16px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
-         เพียงแค่คุณลงทะเบียนและเข้าสู่ระบบ คุณก็สามารถเข้าถึงสรุปเนื้อหาวิชาต่างๆ ได้ทันที ไม่ต้องเสียเวลาในการค้นหาข้อมูลที่กระจัดกระจาย ToLearn รวบรวมทุกอย่างไว้ในที่เดียว เพื่อให้คุณเรียนรู้ได้อย่างมีประสิทธิภาพและสะดวกสบายที่สุด
-        </p>
-        <img src="img/ToLearn_icon.png" alt="ToLearn Features" style="display: block; margin: 30px auto; max-width: 600px;">
-    </div>
-
-    <div class="popup">
-        <h1 style="text-align: center; margin-top: 40px; font-size: 28px; color: #333;">ฟรี! ไม่มีค่าใช้จ่าย!</h1>
-        <p style="text-align: center; margin-top: 10px; font-size: 16px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
-            ToLearn เปิดให้บริการฟรีสำหรับทุกคน ไม่ว่าคุณจะเป็นนักเรียน ผู้ปกครอง หรือครู คุณสามารถเข้าถึงเนื้อหาทั้งหมดของเราได้โดยไม่มีค่าใช้จ่ายใดๆ เราเชื่อว่าการเรียนรู้ควรเป็นสิทธิ์ของทุกคน และเราพร้อมที่จะสนับสนุนคุณในทุกขั้นตอนของการเรียนรู้
-        </p>
-        <img src="img/ToLearn_icon.png" alt="ToLearn Features" style="display: block; margin: 30px auto; max-width: 600px;max-height: 600px;">
-    </div>
-    <div class="popup">
-        <h1 style="text-align: center; margin-top: 40px; font-size: 28px; color: #333;">คุณได้เลื่อนมาสุดแล้ว</h1>
-        <p style="text-align: center; margin-top: 10px; font-size: 16px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
-            เห็นประโยชน์ของ ToLearn แล้วใช่ไหม? อย่ารอช้า ลงทะเบียนและเข้าสู่ระบบเพื่อเริ่มต้นการเรียนรู้ที่สนุกและมีประสิทธิภาพกับเราได้เลย!
-        </p>
-        <a href="login.html" class="login-btn-custom" style="display: inline-block; padding: 15px 20px; border-radius: 10px; font-size: 18px; border: 2px solid black; margin-right: 10px;">ลงชื่อเข้าใช้</a>
-    </div>
- 
     <script>
         const openMenuBtn = document.getElementById('openMenuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -477,8 +418,8 @@
             contactContent.classList.toggle('open');
             contactBtn.classList.toggle('active');
         });
-        
-        const observer = new IntersectionObserver((entries) => {
+
+         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
@@ -487,71 +428,62 @@
                 }
             });
         }, {
-        threshold: 0.15 // เมื่อเนื้อหาโผล่เข้ามาในจอ 15% แอนิเมชันจะเริ่มทำงานทันที
+        threshold: 0.15 
         });
 
-        // สั่งจับตาดูทุกกล่องที่มีคลาส popup
         const popupElements = document.querySelectorAll('.popup');
         popupElements.forEach((element) => observer.observe(element));
 
-        // Function to check login status before accessing certain pages
-        function checkAccess(targetPage) {
-            if (localStorage.getItem('isLoggedIn') === 'true') {
-                window.location.href = targetPage;
-            } else {
-                window.location.href = 'access_denied_popup.html';
-            }
-        }
-
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {
+            console.log("ชื่อที่ดึงมาได้คือ:", localStorage.getItem('username'));
+            console.log("ลิงก์รูปที่ดึงมาได้คือ:", localStorage.getItem('profilePicture'));
             const authSection = document.getElementById('auth-section');
             const isLoggedIn = localStorage.getItem('isLoggedIn');
-            const username = localStorage.getItem('username') || 'ผู้ใช้งาน'; // ใช้ 'ผู้ใช้งาน' เป็นค่าเริ่มต้น
-            const profilePicture = localStorage.getItem('profilePicture'); // ดึง path รูปโปรไฟล์
-
+            const username = localStorage.getItem('username') || 'ผู้ใช้งาน';
+            const profilePicture = localStorage.getItem('profilePicture');
+            
             // ตรวจสอบว่ามีรูปโปรไฟล์ใน localStorage หรือไม่ ถ้าไม่มีให้ใช้รูปเริ่มต้น
             const displayImage = profilePicture ? profilePicture : 'img/Sample_User_Icon.png';
 
-            if (isLoggedIn === 'true') {
-                authSection.innerHTML = `
-                    <a href="profile_upload.php" style="display: block; text-decoration: none; border: none !important; background: none !important; box-shadow: none !important; cursor: pointer;">
-                        <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
-                    </a>
-                    <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
-                    <button onclick="logout()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
-                `;
+    if (isLoggedIn === 'true') {
+        authSection.innerHTML = `
+            <a href="profile_upload.php" style="display: block; text-decoration: none; border: none !important; background: none !important; box-shadow: none !important; cursor: pointer;">
+                <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
+            </a>
+            <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
+            <button onclick="logout()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
+        `;
 
-                // ซ่อนปุ่มทดลองใช้ ToLearn และจัดปุ่มที่เหลือให้อยู่ตรงกลาง
-                const tryBtn = document.getElementById('try-btn');
-                if (tryBtn) {
-                    tryBtn.style.display = 'none';
-                    // ลบ margin-right ของปุ่มก่อนหน้า (ปุ่มลงชื่อเข้าใช้เดิม) เพื่อให้แสดงผลตรงกลาง
-                    if (tryBtn.previousElementSibling) {
-                        tryBtn.previousElementSibling.style.marginRight = '0';
-                    }
-                }
-
-                // ค้นหาทุกลิงก์ที่เคยไปหน้า login.html และเปลี่ยนให้ไปหน้า mainweb.html แทน
-                const loginLinks = document.querySelectorAll('a[href="login.html"]');
-                loginLinks.forEach(link => {
-                    link.href = 'mainweb.html';
-                    if (link.innerText.trim() === 'ลงชื่อเข้าใช้') {
-                        link.innerText = 'เข้าสู่หน้าหลัก';
-                    }
-                });
+        // ค้นหาทุกลิงก์ที่เคยไปหน้า login.html และเปลี่ยนให้ไปหน้า mainweb.html แทน
+        const loginLinks = document.querySelectorAll('a[href="login.html"]');
+        loginLinks.forEach(link => {
+            link.href = 'mainweb.html';
+            if (link.innerText.trim() === 'ลงชื่อเข้าใช้') {
+                link.innerText = 'เข้าสู่หน้าหลัก';
             }
-        }
+        });
+    }
+    }
 
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('username');
-            localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
-            window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
-        }
+    // Function to check login status before accessing certain pages
+    function checkAccess(targetPage) {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = targetPage;
+        } else {
+        window.location.href = 'access_denied_popup.html';
+    }
+    }
 
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
+        window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
+    }
+
+        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
         window.onload = checkLoginStatus;
     </script>
-    
-</body>    
+</body>
 </html>

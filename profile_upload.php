@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <style>
         body { font-family: 'Prompt', sans-serif; background: linear-gradient(135deg, #ecf7ce 0%, #1e2a8f 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; }
         .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; width: 90%; max-width: 400px; }
-        .profile-preview { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid #78bbe8; margin-bottom: 20px; }
+        .profile-preview { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 5px solid black; margin-bottom: 20px; }
         .upload-btn { background: #7c86e1; color: white; padding: 10px 20px; border-radius: 100px; border: none; cursor: pointer; font-size: 16px; transition: 0.3s; margin-top: 10px; }
         .upload-btn:hover { background: #5a65c1; }
         .back-link { display: block; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
