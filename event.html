@@ -3,23 +3,664 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToLearn | EVENT & Announcements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Prompt', sans-serif;
-            background-image: linear-gradient(135deg, #9BF8F4 0%, #6F7BF7 100%);
+            margin: 0;            
+            padding: 0;
+            background-image: linear-gradient(135deg, #cbffdc 0%, #1b11a5 100%);
             background-attachment: fixed;
             min-height: 100vh;
-            margin: 0;
-            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ☰ ปุ่มเปิดเมนู */
+        .menu-trigger-btn {
+            background: none; 
+            border: none; 
+            padding: 0; 
+            cursor: pointer; 
+            position: fixed; 
+            top: 15px; 
+            left: 15px;
+            z-index: 999; 
+        }
+
+        /* 📱 ตัวแถบเมนูข้าง */
+        .sidebar {
+            background-color: rgb(255, 255, 255);
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+            padding:30px;
             text-align: center;
+            width: 250px;       
+            height: 100vh;      
+            position: fixed;    
+            top: 0;
+            left: 0;
+            transform: translateX(-100%); 
+            transition: transform 0.4s ease; 
+            z-index: 1000;      
+            box-sizing: border-box; 
+            overflow-y: auto; 
+        }
+
+        .sidebar.active {
+            transform: translateX(0); 
+        }
+
+        /* ❌ ปุ่มปิดเมนู */
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            /* margin-left: 200px; */
+        }
+
+        .center-block-img {
+            display: block;        
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;           
+            max-width: 180px;      
+            height: auto;          
+            margin-top: 0px;      
+        }
+
+        /* สไตล์สำหรับรูปโปรไฟล์ */
+        .user-profile-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #000000;
+            margin: 20px auto 10px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-item {
+            background-color: #78bbe8;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 0px; 
+            margin: 0;       
+            width: 100%;     
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif; 
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            transition: background-size 0.5s ease-in-out, color 0.3s;
+        }
+        .menu-item:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            width: 100%;
+            margin: 10px 0; 
+        }
+
+        .login-divider {
+            border: none;
+            border-top: 1px solid #e0e0e0; 
+            width: 100%;
+            margin-top: 20px;    
+            margin-bottom: 10px;  
+        }
+
+        .menu {
+            background-color: #66a6d1;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 20px; 
+            margin: 0;       
+            width: 100%;     
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            transition: background-size 0.5s ease-in-out, color 0.3s;
+        }
+        .menu:hover {
+            background-size: 100% 100%;
+            color: black;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* แผ่นสีดำโปร่งแสงเบลอๆ */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
             height: 100vh;
-            font-size: 100px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px); 
+            opacity: 0;
+            pointer-events: none; 
+            transition: opacity 0.4s ease;
+            z-index: 998;
+        }
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto; 
+        }
+
+        /* 🔽 ใช้ Class ร่วมกันเพื่อให้ทั้งปุ่มคอร์สเรียนและติดต่อเราสวยเท่ากัน 🔽 */
+        .dropdown-btn-container {
+            background-color: #78bbe8;
+            border-radius: 100px;
+            color: white;
+            padding: 8px 20px; 
+            width: 100%;     
+            display: flex;     
+            justify-content: space-between; 
+            align-items: center;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            transition: background-size 0.5s ease-in-out;
+        }
+        .dropdown-btn-container:hover {
+            background-size: 100% 100%;
+            color: black ;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* สไตล์ของตัวลูกศร */
+        .arrow-icon {
+            font-size: 12px;
+            transition: transform 0.3s ease; 
+            display: inline-block;
+        }
+
+        /* เมื่อปุ่มถูกเปิด ให้ลูกศรหมุนชี้ขึ้น */
+        .dropdown-btn-container.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* กล่องข้อมูลสไลด์ (ใช้คลาสร่วมกัน) */
+        .dropdown-content {
+            max-height: 0;            
+            overflow: hidden;         
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; 
+            background-color: #f2f7fa; 
+            border-radius: 15px;
+            text-align: left;         
+            padding: 0 25px;          
+            font-size: 14px;
+            color: #444;
+            box-sizing: border-box;
+            word-break: break-word; /* ช่วยจัดบรรทัดตัวอักษรไม่ให้ล้น */
+        }
+
+        /* เมื่อกางกล่องออก */
+        .dropdown-content.open {
+            max-height: 250px;        
+            padding: 10px 25px;       
+            margin-top: 8px;
+            
+           
+        }
+        
+        .dropdown-content p {
+            margin: 8px 0;    
+            transform: scale(1.05);        
+        }
+        /* เพิ่มการตั้งค่าสำหรับลิงก์ใน Dropdown */
+        .dropdown-content a {
+            all: unset; /* ล้างสไตล์เดิมที่เป็นปุ่มออก */
+            color: #66a6d1;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            color: #4a8db7;
+            background: none; /* ป้องกันพื้นหลังสีเหลือง/เขียวโผล่มา */
+            filter: brightness(1.1);
+        }
+        .in-btn {
+            max-width:500px ;
+             max-height: 50px;
+             background-color: rgb(255, 255, 255);
+             border-radius: 100px;
+             margin-left: -200px;
+             margin-top: 16px;
+        }
+        a{
+            background-image: linear-gradient(to bottom right, #9BF8F4, #6F7BF7);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+            color: black;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            transition: background-size 0.5s ease-in-out;
+        }
+        a:hover {
+            background-size: 100% 100%;
+            color: black ;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        .login-btn-custom {
+            background-color: #7c86e1;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, background-size 0.5s ease-in-out;
+            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+
+        .login-btn-custom:hover {
+            background-size: 100% 100%;
+            color: black;
+            filter: brightness(1.1);
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+            border-radius: 10px;
+            border: 2px solid black;
+            margin-left: 10px;
+        }
+        .tab-btn:hover {
+            transform: translateY(-3px);    
+        }
+
+        .tab-btn.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .main-tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .tabs-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 50px;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .tab-left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 220px; /* ปรับขนาดเมนูย่อยให้กะทัดรัดขึ้น */
+            flex-shrink: 0;
+        }
+
+        .tab-content-wrapper {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border: 2px solid black;
+            box-shadow: 5px 5px 0px black;
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            margin: 0;
+        }
+        .sub-btn {
+            width: 100%;
+            text-align: left;
+            font-size: 15px;
+            background-color: white;
+        }
+
+        .sub-btn.active {
+            background-color: #ffde59;
+            color: black;
+            border-color: black;
+        }
+        .main-section {
+            display: none;
+        }
+        .main-section.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <h1>(Work in Progress)</h1>
-    <p>Pls no bully me did best</p>
+    <button class="menu-trigger-btn" id="openMenuBtn">
+        <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;">
+    </button>
+
+    <div class="overlay" id="menuOverlay">
+            </button>
+                <button class="close-btn" id="closeMenuBtn">
+                 <img src="img/menu_icon.png" alt="Close Icon" style="width: 50px;background-size: 100px;background-color: white; height: 50px;margin-left: 235px;border-radius: 100px;">
+            </button>
+        <div class="in-btn"style="display: width: 500px; height: 50px;">
+    </div>        
+    </div>
+
+    <div class="sidebar" id="sidebarMenu">
+        <img src="img/ToLearn_icon.png" alt="ToLearn logo" class="center-block-img">
+        
+        <div id="auth-section">
+            <a href="login.html" class="login-btn-custom" style="display: inline-block; margin-top: 25px; padding: 10px 0; border-radius: 100px; font-size: 18px; width: 100%;">ลงชื่อเข้าใช้</a>
+            <a href="register.html" style="color: gray; font-size: 12px; display: inline-block; margin-top: 5px; text-decoration: underline; border: none !important; background: none !important; box-shadow: none !important;">ลงทะเบียน</a>
+        </div>
+
+        <hr class="login-divider">
+        
+        <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
+            <img src="img/Home-button.png" alt="Home" style="width: 25%;margin-left: 0%;"> หน้าหลัก
+        </a>
+        <hr>
+        <a href="timer.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
+            <img src="img/clock.png" alt="Home" style="width: 20%;margin-left: 0%;"> จับเวลาอ่านหนังสือ
+        </a>
+        </a>
+        <hr>     
+        <button class="dropdown-btn-container" id="courseBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 14px;">
+            <img src="img/book.png" alt="Book" style="width: 30%;margin-left: -2%;">
+            <span>สรุปเนื้อหาวิชา</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="dropdown-content" id="courseContent">
+            <p>📚 <a href="#" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
+            <p>📖 <a href="#" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
+            <p>📘 <a href="#" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="#" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>
+            <p>🌎 <a href="#" onclick="checkAccess('subject_social.html')">สังคม</a></p>
+            <p>💻 <a href="#" onclick="checkAccess('subject_programming.html')">การเขียนโปรแกรม</a></p>
+        </div>
+        
+        <hr>
+        <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
+            <img src="img/event.png" alt="Home" style="width: 25%;margin-left: 0;"> กิจกรรม
+        </a>
+        <hr>
+        
+        <button class="dropdown-btn-container" id="contactBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
+            <img src="img/contact.png" alt="Book" style="width: 25%;margin-left: 0%;">
+            <span>ติดต่อเรา</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="dropdown-content" id="contactContent">
+            <p>📧 Email: tolearnworkingonly@gmail.com</p>
+            <p>📘 FB: ToLearn Official</p>
+            <p>💬 DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 50px; font-size: 28px; color: #333;">กิจกรรมและประกาศ</h2>
+
+    <div class="main-tab-nav">
+        <button class="tab-btn main-nav-btn active" onclick="switchMainTab('main-update', this)">ToLearn อัปเดตล่าสุด</button>
+        <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-event', this)">อีเว้น</button>
+        <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-announce', this)">ประกาศ</button>
+    </div>
+
+    <div id="main-update" class="main-section active">
+        <div class="tabs-container">
+            <div class="tab-left">
+                <button class="tab-btn sub-btn active" onclick="switchPage('sub1', this)">📢 ข่าวสารล่าสุด</button>
+                <button class="tab-btn sub-btn" onclick="switchPage('sub2', this)">🛠️ อัปเดตระบบ</button>
+            </div>
+            <div class="tab-content-wrapper">
+                <div id="sub1" class="tab-content active">
+                    <h3>📢 ข่าวสารล่าสุด</h3>
+                    <p>ยินดีต้อนรับสู่ ToLearn! วันนี้เรามีอัปเดตใหม่เกี่ยวกับเนื้อหาวิชาภาษาไทย...</p>
+                </div>
+                <div id="sub2" class="tab-content">
+                    <h3>🛠️ อัปเดตระบบ (v1.2.0)</h3>
+                    <p>เราได้ปรับปรุงระบบจับเวลาให้แม่นยำยิ่งขึ้น</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-event" class="main-section">
+        <div class="tabs-container">
+            <div class="tab-left">
+                <button class="tab-btn sub-btn active" onclick="switchPage('event1', this)">🎁 กิจกรรมปัจจุบัน</button>
+                <button class="tab-btn sub-btn" onclick="switchPage('event2', this)">⏳ กิจกรรมที่จบไปแล้ว</button>
+            </div>
+            <div class="tab-content-wrapper">
+                <div id="event1" class="tab-content active">
+                    <h3>🎁 กิจกรรมปัจจุบัน</h3>
+                    <p>Challenge อ่านหนังสือ 7 วันรับเหรียญตราพิเศษ!</p>
+                </div>
+                <div id="event2" class="tab-content">
+                    <h3>⏳ กิจกรรมที่จบไปแล้ว</h3>
+                    <p>กิจกรรมต้อนรับเปิดเทอม (สิ้นสุดเมื่อ 1 มิ.ย.)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-announce" class="main-section">
+        <div class="tabs-container">
+            <div class="tab-left">
+                <button class="tab-btn sub-btn active" onclick="switchPage('ann1', this)">📝 ประกาศทั่วไป</button>
+                <button class="tab-btn sub-btn" onclick="switchPage('ann2', this)">⚠️ กฎระเบียบ</button>
+            </div>
+            <div class="tab-content-wrapper">
+                <div id="ann1" class="tab-content active">
+                    <h3>📝 ประกาศทั่วไป</h3>
+                    <p>ToLearn จะทำการปิดปรับปรุงเซิร์ฟเวอร์ในคืนวันอาทิตย์นี้</p>
+                </div>
+                <div id="ann2" class="tab-content">
+                    <h3>⚠️ กฎระเบียบการใช้งาน</h3>
+                    <p>กรุณาใช้ถ้อยคำที่สุภาพใน Discord Community ของเรา</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        // ประกาศตัวแปรสำหรับ คอร์สเรียน
+        const courseBtn = document.getElementById('courseBtn');
+        const courseContent = document.getElementById('courseContent');
+
+        // ประกาศตัวแปรสำหรับ ติดต่อเรา
+        const contactBtn = document.getElementById('contactBtn');
+        const contactContent = document.getElementById('contactContent');
+
+        // ฟังก์ชันสั่งเปิดเมนูข้าง
+        openMenuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+
+        // ฟังก์ชันสั่งปิดเมนูข้าง
+        closeMenuBtn.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // ฟังก์ชันสั่งปิดเมนูข้างเมื่อกดพื้นที่ว่าง
+        menuOverlay.addEventListener('click', () => {
+            sidebarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // ── 🛠️ ฟังก์ชันคลิกปุ่มคอร์สเรียน ──
+        courseBtn.addEventListener('click', () => {
+            courseContent.classList.toggle('open');
+            courseBtn.classList.toggle('active');
+        });
+
+        // ── ฟังก์ชันคลิกปุ่มติดต่อเรา ──
+        contactBtn.addEventListener('click', () => { 
+            contactContent.classList.toggle('open');
+            contactBtn.classList.toggle('active');
+        });
+
+         const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, {
+        threshold: 0.15 
+        });
+
+        const popupElements = document.querySelectorAll('.popup');
+        popupElements.forEach((element) => observer.observe(element));
+
+        // --- ระบบตรวจสอบการล็อกอิน ---
+        function checkLoginStatus() {
+            console.log("ชื่อที่ดึงมาได้คือ:", localStorage.getItem('username'));
+            console.log("ลิงก์รูปที่ดึงมาได้คือ:", localStorage.getItem('profilePicture'));
+            const authSection = document.getElementById('auth-section');
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username') || 'ผู้ใช้งาน';
+            const profilePicture = localStorage.getItem('profilePicture');
+            
+            // ตรวจสอบว่ามีรูปโปรไฟล์ใน localStorage หรือไม่ ถ้าไม่มีให้ใช้รูปเริ่มต้น
+            const displayImage = profilePicture ? profilePicture : 'img/Sample_User_Icon.png';
+
+    if (isLoggedIn === 'true') {
+        authSection.innerHTML = `
+            <a href="profile_upload.php" style="display: block; text-decoration: none; border: none !important; background: none !important; box-shadow: none !important; cursor: pointer;">
+                <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
+            </a>
+            <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
+            <button onclick="logout()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
+        `;
+
+        // ค้นหาทุกลิงก์ที่เคยไปหน้า login.html และเปลี่ยนให้ไปหน้า mainweb.html แทน
+        const loginLinks = document.querySelectorAll('a[href="login.html"]');
+        loginLinks.forEach(link => {
+            link.href = 'mainweb.html';
+            if (link.innerText.trim() === 'ลงชื่อเข้าใช้') {
+                link.innerText = 'เข้าสู่หน้าหลัก';
+            }
+        });
+    }
+    }
+
+    // Function to check login status before accessing certain pages
+    function checkAccess(targetPage) {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = targetPage;
+        } else {
+        window.location.href = 'access_denied_popup.html';
+    }
+    }
+
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
+        window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
+    }
+
+        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
+        window.onload = checkLoginStatus;
+
+        // ฟังก์ชันสลับหมวดหมู่หลัก (บน)
+        function switchMainTab(sectionId, buttonElement) {
+            // ซ่อนทุก Main Section
+            document.querySelectorAll('.main-section').forEach(sec => sec.classList.remove('active'));
+            // แสดง Section ที่เลือก
+            document.getElementById(sectionId).classList.add('active');
+
+            // จัดการสีปุ่มเมนูหลัก
+            document.querySelectorAll('.main-nav-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+        }
+
+        // ฟังก์ชันสลับหน้าย่อย (ซ้าย)
+        function switchPage(pageId, buttonElement) {
+            // หา Main Section ที่ปุ่มนี้สังกัดอยู่ เพื่อไม่ให้ไปกระทบส่วนอื่น
+            const parentSection = buttonElement.closest('.main-section');
+
+            // ซ่อนเนื้อหาและลบ active เฉพาะใน Section นี้
+            parentSection.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            parentSection.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
+
+            // แสดงผล
+            document.getElementById(pageId).classList.add('active');
+            buttonElement.classList.add('active');
+        }
+    </script>
 </body>
 </html>
