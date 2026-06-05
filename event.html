@@ -709,6 +709,40 @@
             document.getElementById(pageId).classList.add('active');
             buttonElement.classList.add('active');
         }
+        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
+        window.onload = checkLoginStatus;
+        window.onload = checkLoginStatus;
+        const INACTIVITY_TIME = 10 * 60 * 1000; 
+        let timeoutId;
+
+        // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
+        function redirectToHome() {
+            window.location.href = 'Tolearn.html'; 
+        }
+
+        // ฟังก์ชันรีเซ็ตเวลานับถอยหลังใหม่
+        function resetTimer() {
+        // ลบเวลาเก่าทิ้งไปก่อน
+        clearTimeout(timeoutId);
+    
+        // เริ่มนับเวลา 10 นาทีใหม่อีกครั้ง
+        timeoutId = setTimeout(redirectToHome, INACTIVITY_TIME);
+        }
+
+        // ฟังก์ชันสำหรับเริ่มจับตาดูพฤติกรรมของผู้ใช้
+        function setupInactivityTimer() {
+            // ดักฟังเหตุการณ์ต่างๆ (ขยับเมาส์, คลิก, กดปุ่มคีย์บอร์ด, หรือทัชหน้าจอ)
+            window.addEventListener('mousemove', resetTimer);
+            window.addEventListener('click', resetTimer);
+            window.addEventListener('keydown', resetTimer);
+            window.addEventListener('touchstart', resetTimer); // รองรับมือถือ/แท็บเล็ต
+
+            // เริ่มต้นนับเวลาครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ
+            resetTimer();
+        }
+
+        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        document.addEventListener('DOMContentLoaded', setupInactivityTimer);
     </script>
 </body>
 </html>

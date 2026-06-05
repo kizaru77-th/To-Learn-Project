@@ -526,27 +526,59 @@
                 link.innerText = 'เข้าสู่หน้าหลัก';
             }
         });
+        }
     }
-}
 
-// Function to check login status before accessing certain pages
-function checkAccess(targetPage) {
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-        window.location.href = targetPage;
-    } else {
-        window.location.href = 'access_denied_popup.html';
+        // Function to check login status before accessing certain pages
+        function checkAccess(targetPage) {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = targetPage;
+        } else {
+            window.location.href = 'access_denied_popup.html';
+        }
     }
-}
 
-function logout() {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
-    localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
-    window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
-}
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
+            window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
+        }
 
-// เรียกใช้งานเมื่อโหลดหน้าเว็บ
-window.onload = checkLoginStatus;
+        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
+        window.onload = checkLoginStatus;
+        window.onload = checkLoginStatus;
+        const INACTIVITY_TIME = 10 * 60 * 1000; 
+        let timeoutId;
+
+        // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
+        function redirectToHome() {
+            window.location.href = 'Tolearn.html'; 
+        }
+
+        // ฟังก์ชันรีเซ็ตเวลานับถอยหลังใหม่
+        function resetTimer() {
+        // ลบเวลาเก่าทิ้งไปก่อน
+        clearTimeout(timeoutId);
+    
+        // เริ่มนับเวลา 10 นาทีใหม่อีกครั้ง
+        timeoutId = setTimeout(redirectToHome, INACTIVITY_TIME);
+        }
+
+        // ฟังก์ชันสำหรับเริ่มจับตาดูพฤติกรรมของผู้ใช้
+        function setupInactivityTimer() {
+            // ดักฟังเหตุการณ์ต่างๆ (ขยับเมาส์, คลิก, กดปุ่มคีย์บอร์ด, หรือทัชหน้าจอ)
+            window.addEventListener('mousemove', resetTimer);
+            window.addEventListener('click', resetTimer);
+            window.addEventListener('keydown', resetTimer);
+            window.addEventListener('touchstart', resetTimer); // รองรับมือถือ/แท็บเล็ต
+
+            // เริ่มต้นนับเวลาครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ
+            resetTimer();
+        }
+
+        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        document.addEventListener('DOMContentLoaded', setupInactivityTimer);
     </script>
     
 </body>    
