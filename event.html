@@ -442,6 +442,14 @@
                 min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
             }
         }
+        .box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
@@ -516,12 +524,14 @@
         <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-event', this)">อีเว้น</button>
         <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-announce', this)">ประกาศ</button>
     </div>
-
+    <!-- <hr style="width: 100%; border-color: black;border-width: 2px;"> -->
     <div id="main-update" class="main-section active">
         <div class="tabs-container">
             <div class="tab-left">
-                <button class="tab-btn sub-btn active" onclick="switchPage('sub1', this)">📢 ข่าวสารล่าสุด</button>
-                <button class="tab-btn sub-btn" onclick="switchPage('sub2', this)">🛠️ อัปเดตระบบ</button>
+                <div class="box">
+                    <button class="tab-btn sub-btn active" onclick="switchPage('sub1', this)">📢 ข่าวสารล่าสุด</button>
+                    <button class="tab-btn sub-btn" onclick="switchPage('sub2', this)">🛠️ อัปเดตระบบ</button>
+                </div>
             </div>
             <div class="tab-content-wrapper">
                 <div id="sub1" class="tab-content active">
