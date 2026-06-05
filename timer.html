@@ -458,34 +458,44 @@
         
         <hr class="login-divider">
         
-        <a href="mainweb.html" class="menu">หน้าหลัก</a>
+        <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
+            <img src="img/Home-button.png" alt="Home" style="width: 25%;margin-left: 0%;"> หน้าหลัก
+        </a>
         <hr>
-        <a href="timer.html" class="menu-item">จับเวลาอ่านหนังสือ</a>
-        <hr>
-        <button class="dropdown-btn-container" id="courseBtn">
-            <span>คอร์สเรียน</span>
+        <a href="timer.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
+            <img src="img/clock.png" alt="Home" style="width: 20%;margin-left: 0%;"> จับเวลาอ่านหนังสือ
+        </a>
+        </a>
+        <hr>     
+        <button class="dropdown-btn-container" id="courseBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 14px;">
+            <img src="img/book.png" alt="Book" style="width: 30%;margin-left: -2%;">
+            <span>สรุปเนื้อหาวิชา</span>
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="#">คอร์สทั้งหมด</a></p>
-            <p>📖 <a href="#">คณิตศาสตร์</a></p>
-            <p>📘 <a href="#">วิทยาศาสตร์</a></p>
-            <p>📙 <a href="#">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="#">สังคม</a></p>
-            <p>💻 <a href="#">การเขียนโปรแกรม</a></p>
+            <p>📚 <a href="#" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
+            <p>📖 <a href="#" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
+            <p>📘 <a href="#" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="#" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>
+            <p>🌎 <a href="#" onclick="checkAccess('subject_social.html')">สังคม</a></p>
+            <p>💻 <a href="#" onclick="checkAccess('subject_programming.html')">การเขียนโปรแกรม</a></p>
         </div>
+        
         <hr>
-        <a href="#" class="menu-item">กิจกรรม</a>
+        <a href="event.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
+            <img src="img/event.png" alt="Home" style="width: 25%;margin-left: 0;"> กิจกรรม
+        </a>
         <hr>
         
-        <button class="dropdown-btn-container" id="contactBtn">
+        <button class="dropdown-btn-container" id="contactBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
+            <img src="img/contact.png" alt="Book" style="width: 25%;margin-left: 0%;">
             <span>ติดต่อเรา</span>
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="contactContent">
             <p>📧 Email: tolearnworkingonly@gmail.com</p>
             <p>📘 FB: ToLearn Official</p>
-            <p>💬 DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้า Discord</a></p>
+            <p>💬 DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
 
