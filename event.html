@@ -403,12 +403,13 @@
         /* 📱 รองรับการแสดงผลบนโทรศัพท์มือถือ (Responsive) */
         @media (max-width: 768px) {
             .main-tab-nav {
-                flex-wrap: wrap; /* ให้ปุ่มเมนูหลักพับลงมาได้ถ้าหน้าจอแคบ */
-                flex-wrap: nowrap; /* ทำให้ปุ่มเมนูหลักอยู่ในแถวเดียวกัน */
+                flex-wrap: nowrap;
                 gap: 10px;
-                padding: 0 15px;
+                padding: 0;
+                margin-left: 15px; /* ปรับให้เกือบชิดขอบซ้าย */
                 overflow-x: auto; /* เพิ่มการเลื่อนแนวนอนหากเนื้อหาเกิน */
                 justify-content: flex-start; /* จัดปุ่มไปทางซ้าย */
+                scrollbar-width: none; /* ซ่อน scrollbar สำหรับ Firefox */
                 -webkit-overflow-scrolling: touch; /* เพื่อการเลื่อนที่ลื่นไหลบน iOS */
                 font-size: 14px;
             }
