@@ -434,21 +434,30 @@
             .sub-btn {
                 width: auto;
                 white-space: nowrap; /* ป้องกันข้อความในปุ่มตัดบรรทัด */
-                padding: 10px 15px;
+                padding: 10px 10px;
                 font-size: 14px;
+                margin-top:10px;
+                
             }
 
             .tab-content-wrapper {
                 min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
             }
+            .box {
+                display: inline-block;
+                width: 100%;
+            }
         }
         .box {
-            background-color: white;
+            background-color: rgb(255, 255, 255);
             border-radius: 15px;
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
             border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
     </style>
 </head>
