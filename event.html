@@ -433,19 +433,18 @@
 
             .sub-btn {
                 width: auto;
-                white-space: nowrap;
+                white-space: nowrap; /* ป้องกันข้อความในปุ่มตัดบรรทัด */
+                padding: 10px 10px;
+                font-size: 14px;
+                margin-top:10px;
             }
 
             .tab-content-wrapper {
                 min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
             }
             .box {
-                display: flex;
-                flex-direction: row;
-                gap:10px;
-                flex-wrap: wrap;
-                gap: 10px;
-                align-items: center;
+                display: inline;
+                width: 50%;
             }
         }
         .box {
