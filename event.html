@@ -360,6 +360,7 @@
             border: 2px solid black;
             box-shadow: 5px 5px 0px black;
             min-height: 400px;
+            width: 100%;
         }
 
         .tab-content {
@@ -386,7 +387,6 @@
             text-align: left;
             font-size: 15px;
             background-color: white;
-            margin-top: 10px;
         }
 
         .sub-btn.active {
@@ -437,6 +437,7 @@
                 white-space: nowrap; /* ป้องกันข้อความในปุ่มตัดบรรทัด */
                 padding: 10px 15px;
                 font-size: 14px;
+                margin-top:10px;
             }
 
             .tab-content-wrapper {
@@ -550,17 +551,21 @@
     <div id="main-event" class="main-section">
         <div class="tabs-container">
             <div class="tab-left">
-                <button class="tab-btn sub-btn active" onclick="switchPage('event1', this)">🎁 กิจกรรมปัจจุบัน</button>
-                <button class="tab-btn sub-btn" onclick="switchPage('event2', this)">⏳ กิจกรรมที่จบไปแล้ว</button>
-            </div>
-            <div class="tab-content-wrapper">
-                <div id="event1" class="tab-content active">
-                    <h3 style="text-align: center;font-size: 20px;">🎁 กิจกรรมปัจจุบัน</h3>
-                    <p>Challenge อ่านหนังสือ 7 วันรับเหรียญตราพิเศษ!</p>
+                <div class="box">
+                    <button class="tab-btn sub-btn active" onclick="switchPage('event1', this)">🎁 กิจกรรมปัจจุบัน</button>
+                    <button class="tab-btn sub-btn" onclick="switchPage('event2', this)">⏳ กิจกรรมที่จบไปแล้ว</button>
                 </div>
-                <div id="event2" class="tab-content">
-                    <h3 style="text-align: center;font-size: 20px;">⏳ กิจกรรมที่จบไปแล้ว</h3>
-                    <p>กิจกรรมต้อนรับเปิดเทอม (สิ้นสุดเมื่อ 1 มิ.ย.)</p>
+            </div>
+            
+                <div class="tab-content-wrapper">
+                    <div id="event1" class="tab-content active">
+                        <h3 style="text-align: center;font-size: 20px;">🎁 กิจกรรมปัจจุบัน</h3>
+                        <p>Challenge อ่านหนังสือ 7 วันรับเหรียญตราพิเศษ!</p>
+                    </div>
+                    <div id="event2" class="tab-content">
+                        <h3 style="text-align: center;font-size: 20px;">⏳ กิจกรรมที่จบไปแล้ว</h3>
+                        <p>กิจกรรมต้อนรับเปิดเทอม (สิ้นสุดเมื่อ 1 มิ.ย.)</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -569,8 +574,10 @@
     <div id="main-announce" class="main-section">
         <div class="tabs-container">
             <div class="tab-left">
-                <button class="tab-btn sub-btn active" onclick="switchPage('ann1', this)">📝 ประกาศทั่วไป</button>
-                <button class="tab-btn sub-btn" onclick="switchPage('ann2', this)">⚠️ กฎระเบียบ</button>
+                <div class="box">
+                    <button class="tab-btn sub-btn active" onclick="switchPage('ann1', this)">📝 ประกาศทั่วไป</button>
+                    <button class="tab-btn sub-btn" onclick="switchPage('ann2', this)">⚠️ กฎระเบียบ</button>
+                </div>
             </div>
             <div class="tab-content-wrapper">
                 <div id="ann1" class="tab-content active">
