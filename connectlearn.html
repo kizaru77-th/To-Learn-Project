@@ -8,12 +8,10 @@
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Prompt' , sans-serif;
         }
 
         body {
-            font-family: 'Prompt', sans-serif;
-            margin: 0;            
-            padding: 0;
             background-image: linear-gradient(135deg, #cbffdc 0%, #1b11a5 100%);
             background-attachment: fixed;
             min-height: 100vh;
@@ -144,8 +142,7 @@
             background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
-            transition: background-size 0.5s ease-in-out, color 0.3s;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
         .menu:hover {
             background-size: 100% 100%;
@@ -175,29 +172,22 @@
 
         /* 🔽 ใช้ Class ร่วมกันเพื่อให้ทั้งปุ่มคอร์สเรียนและติดต่อเราสวยเท่ากัน 🔽 */
         .dropdown-btn-container {
-            background-color: #78bbe8;
+            background-color: #66a6d1;
             border-radius: 100px;
             color: white;
             padding: 8px 20px; 
+            margin: 0;       
             width: 100%;     
-            display: flex;     
-            justify-content: space-between; 
-            align-items: center;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Prompt', sans-serif;
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
             box-sizing: border-box;
             background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
-            text-decoration: none;
-            font-size: 18px;
-            text-align: center;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            transition: background-size 0.5s ease-in-out;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
         .dropdown-btn-container:hover {
             background-size: 100% 100%;
@@ -347,7 +337,7 @@
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="#" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
+            <p>📚 <a href="thailearn.html" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
             <p>📖 <a href="#" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
             <p>📘 <a href="#" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
             <p>📙 <a href="#" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>

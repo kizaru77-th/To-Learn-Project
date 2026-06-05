@@ -8,6 +8,7 @@
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
         }
 
         body {
@@ -133,8 +134,7 @@
             background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
-            transition: background-size 0.5s ease-in-out, color 0.3s;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
         .menu:hover {
             background-size: 100% 100%;
@@ -164,29 +164,22 @@
 
         /* 🔽 ใช้ Class ร่วมกันเพื่อให้ทั้งปุ่มคอร์สเรียนและติดต่อเราสวยเท่ากัน 🔽 */
         .dropdown-btn-container {
-            background-color: #78bbe8;
+            background-color: #66a6d1;
             border-radius: 100px;
             color: white;
             padding: 8px 20px; 
+            margin: 0;       
             width: 100%;     
-            display: flex;     
-            justify-content: space-between; 
-            align-items: center;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Prompt', sans-serif;
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
             box-sizing: border-box;
             background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
-            text-decoration: none;
-            font-size: 18px;
-            text-align: center;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            transition: background-size 0.5s ease-in-out;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
         .dropdown-btn-container:hover {
             background-size: 100% 100%;
@@ -279,20 +272,29 @@
         }
         /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
         .login-btn-custom {
-            background-color: #7c86e1;
+            background-color: #66a6d1;
+            border-radius: 100px;
             color: white;
-            text-decoration: none;
-            transition: color 0.3s ease, background-size 0.5s ease-in-out;
+            padding: 8px 20px; 
+            margin: 0;       
+            width: 100%;     
+            display: block;  
+            text-decoration: none; 
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            box-sizing: border-box;
             background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
 
         .login-btn-custom:hover {
             background-size: 100% 100%;
             color: black;
             filter: brightness(1.1);
+            transform: scale(1.05);
         }
         .popup {
             opacity: 0;
