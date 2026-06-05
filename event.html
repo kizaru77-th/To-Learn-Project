@@ -698,35 +698,6 @@
         localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
         window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
     }
-
-        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
-        window.onload = checkLoginStatus;
-
-        // ฟังก์ชันสลับหมวดหมู่หลัก (บน)
-        function switchMainTab(sectionId, buttonElement) {
-            // ซ่อนทุก Main Section
-            document.querySelectorAll('.main-section').forEach(sec => sec.classList.remove('active'));
-            // แสดง Section ที่เลือก
-            document.getElementById(sectionId).classList.add('active');
-
-            // จัดการสีปุ่มเมนูหลัก
-            document.querySelectorAll('.main-nav-btn').forEach(btn => btn.classList.remove('active'));
-            buttonElement.classList.add('active');
-        }
-
-        // ฟังก์ชันสลับหน้าย่อย (ซ้าย)
-        function switchPage(pageId, buttonElement) {
-            // หา Main Section ที่ปุ่มนี้สังกัดอยู่ เพื่อไม่ให้ไปกระทบส่วนอื่น
-            const parentSection = buttonElement.closest('.main-section');
-
-            // ซ่อนเนื้อหาและลบ active เฉพาะใน Section นี้
-            parentSection.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            parentSection.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
-
-            // แสดงผล
-            document.getElementById(pageId).classList.add('active');
-            buttonElement.classList.add('active');
-        }
     </script>
 </body>
 </html>
