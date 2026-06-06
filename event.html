@@ -452,30 +452,30 @@
                 min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
             }
 
-            /* บังคับให้ปุ่มในส่วนประกาศเป็นแถวเดียวกันบนมือถือ */
+            #main-update .tab-left .box,
+            #main-event .tab-left .box,
             #main-announce .tab-left .box {
-                flex-direction: row;
-                width: 90%;
+                display: flex !important;
+                flex-direction: row !important;
+                width: 100% !important;
                 justify-content: center;
                 gap: 10px;
+                box-sizing: border-box;
             }
 
+            /* ปรับให้ปุ่มแชร์พื้นที่เท่าๆ กัน (คนละครึ่ง 50%) และตัวอักษรไม่ตกบรรทัด */
+            #main-update .tab-left .box .tab-btn,
+            #main-event .tab-left .box .tab-btn,
             #main-announce .tab-left .box .tab-btn {
-                flex: none;
-                width: auto;
+                flex: 1 !important;
+                width: 100% !important;
                 margin-left: 0;
-            }
-            #main-announce .tab-left .box {
-                flex-direction: row;
-                width: 90%;
+                white-space: nowrap;
+                font-size: 14px;
+                padding: 10px 5px;
+                display: inline-flex;
+                align-items: center;
                 justify-content: center;
-                gap: 10px;
-            }
-
-            #main-announce .tab-left .box .tab-btn {
-                flex: none;
-                width: auto;
-                margin-left: 0;
             }
         }
         .box {
