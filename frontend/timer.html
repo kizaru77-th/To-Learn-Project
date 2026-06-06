@@ -454,7 +454,7 @@
             <img src="img/Home-button.png" alt="Home" style="width: 25%;margin-left: 0%;"> หน้าหลัก
         </a>
         <hr>
-        <a href="#" onclick="checkAccess('timer.html'); return false;" class="menu" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
+        <a href="timer.html" onclick="checkAccess('timer.html'); return false;" class="menu" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
             <img src="img/clock.png" alt="Home" style="width: 20%;margin-left: 0%;"> จับเวลาอ่านหนังสือ
         </a>
         </a>
@@ -465,7 +465,7 @@
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="#" onclick="checkAccess('thailearn.html'); return false;">ภาษาไทย</a></p>
+            <p>📚 <a href="thailearn.html" onclick="checkAccess('thailearn.html'); return false;">ภาษาไทย</a></p>
             <p>📖 <a href="#" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
             <p>📘 <a href="#" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
             <p>📙 <a href="#" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>
@@ -678,7 +678,7 @@
                         <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
                     </a>
                     <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
-                    <button onclick="logout()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
+                    <button onclick="showLogoutConfirm()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
                 `;
 
                 // ค้นหาทุกลิงก์ที่เคยไปหน้า login.html และเปลี่ยนให้ไปหน้า mainweb.html แทน
@@ -697,6 +697,19 @@
             localStorage.removeItem('username');
             localStorage.removeItem('profilePicture'); // ลบรูปโปรไฟล์ออกจาก localStorage ด้วย
             window.location.href = 'Tolearn.html'; // เปลี่ยนเส้นทางไปหน้า Tolearn.html
+        }
+
+        // --- ฟังก์ชัน popup ยืนยันการออกจากระบบ ---
+        function showLogoutConfirm() {
+            const modal = document.getElementById('logout-modal');
+            if (modal) modal.style.display = 'flex';
+        }
+        function cancelLogout() {
+            const modal = document.getElementById('logout-modal');
+            if (modal) modal.style.display = 'none';
+        }
+        function performLogout() {
+            logout();
         }
 
         window.onload = checkLoginStatus;
@@ -735,5 +748,29 @@
         // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
         document.addEventListener('DOMContentLoaded', setupInactivityTimer);
     </script>
+
+    <!-- Logout confirmation popup modal -->
+    <div id="logout-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:white;padding:30px;border-radius:15px;max-width:350px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;">
+            <p style="font-size:18px;margin:0 0 20px 0;font-weight:600;color:#333;">คุณแน่ใจว่าจะออกจากระบบหรือไม่?</p>
+            <div style="display:flex;gap:12px;justify-content:center;">
+                <button onclick="cancelLogout()" style="padding:10px 24px;border-radius:8px;border:1px solid #ddd;background:#f5f5f5;color:#333;font-weight:500;cursor:pointer;font-family:'Prompt',sans-serif;transition:all 0.3s ease;" onmouseover="this.style.background='#e8e8e8'" onmouseout="this.style.background='#f5f5f5'">กลับไปหน้าเดิม</button>
+                <button onclick="performLogout()" style="padding:10px 24px;border-radius:8px;border:none;background:#ff4d4d;color:white;font-weight:500;cursor:pointer;font-family:'Prompt',sans-serif;transition:all 0.3s ease;" onmouseover="this.style.background='#ff3333'" onmouseout="this.style.background='#ff4d4d'">ออกจากระบบ</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes slideIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
 </html>
