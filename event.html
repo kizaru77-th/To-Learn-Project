@@ -451,6 +451,20 @@
             .tab-content-wrapper {
                 min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
             }
+
+            /* บังคับให้ปุ่มในส่วนประกาศเป็นแถวเดียวกันบนมือถือ */
+            #main-announce .tab-left .box {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            #main-announce .tab-left .box .tab-btn {
+                flex: none;
+                width: auto;
+                margin-left: 0;
+            }
         }
         .box {
             background-color: white;
