@@ -486,6 +486,21 @@
             max-width: 800px;
             border: 2px solid black;
         }
+        .summarize {            
+            display: flex;
+            justify-content: center;
+        }
+        .summarize button {
+            font-family: 'Prompt', sans-serif;
+            background-color: #7c86e1;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .summarize button:hover{
+            background-size: 100% 100%;
+            color: black !important;
+            background-color: #ecf7ce;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -630,6 +645,10 @@
                         <h3 style="font-size: 20px; margin: 0;"> เข้าร่วมDiscord Community</h3>
                     </div>
                     <p style="text-align: center;">เข้าร่วม Discord Community ของเราเพื่อเชื่อมต่อกับผู้เรียนคนอื่นๆ และรับข้อมูลอัปเดตล่าสุด!</p>
+                        <div class="summarize">
+                            <button type="button" style="margin-top: 150px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;background-color: #5865F2;" onclick="window.location.href='https://discord.com/invite/6nkbnP25Yx'">เข้าร่วมDiscord</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
