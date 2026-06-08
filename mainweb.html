@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToLearn Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="skeleton.css">
     <style>
         * {
             box-sizing: border-box;
@@ -353,7 +354,7 @@
     </style>
 </head>
 <body>
-
+    <div id="global-loader"></div>
     <button class="menu-trigger-btn" id="openMenuBtn">
         <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;">
     </button>
@@ -441,6 +442,9 @@
             </div>
     </div>
     <script>
+        window.addEventListener('load', () => {
+        document.getElementById('global-loader')?.remove();
+        });
         const openMenuBtn = document.getElementById('openMenuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
         const sidebarMenu = document.getElementById('sidebarMenu');
@@ -593,6 +597,8 @@
 
         // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
         document.addEventListener('DOMContentLoaded', setupInactivityTimer);
+
+</script>
     </script>
 
     <!-- Logout confirmation popup modal -->
