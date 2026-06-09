@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | Learning</title>
+    <title>ToLearn | Thai Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
-            font-family: 'Prompt' , sans-serif;
+            font-family: 'Prompt', sans-serif;
         }
 
         body {
@@ -145,7 +145,7 @@
             border: 2px solid black;
             box-shadow: 1px 1px 0px black;
             box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-image: linear-gradient(to bottom right, white);
             background-size: 0% 100%;
             background-repeat: no-repeat;
             transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
@@ -190,7 +190,7 @@
             border: 2px solid black;
             box-shadow: 1px 1px 0px black;
             box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            background-image: linear-gradient(to bottom right, white);
             background-size: 0% 100%;
             background-repeat: no-repeat;
             transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
@@ -336,19 +336,19 @@
             <img src="img/clock.png" alt="Home" style="width: 20%;margin-left: 0%;"> จับเวลาอ่านหนังสือ
         </a>
         </a>
-        <hr>       
+        <hr>     
         <button class="dropdown-btn-container" id="courseBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 14px;">
             <img src="img/book.png" alt="Book" style="width: 30%;margin-left: -2%;">
             <span>สรุปเนื้อหาวิชา</span>
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="thailearn.html" onclick="checkAccess('subject_thai.html')">ภาษาไทย</a></p>
-            <p>📖 <a href="mathlearn.html" onclick="checkAccess('subject_math.html')">คณิตศาสตร์</a></p>
-            <p>📘 <a href="sciencelearn.html" onclick="checkAccess('subject_science.html')">วิทยาศาสตร์</a></p>
-            <p>📙 <a href="englishlearn.html" onclick="checkAccess('subject_english.html')">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('subject_social.html')">สังคม</a></p>
-            <p>💻 <a href="programminglearn.html" onclick="checkAccess('subject_programming.html')">การเขียนโปรแกรม</a></p>
+            <p>📚 <a href="thailearn.html" onclick="checkAccess('thailearn.html'); return false;">ภาษาไทย</a></p>
+            <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
+            <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
+            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคม</a></p>
+            <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
         <hr>
