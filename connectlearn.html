@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | Thai Learning</title>
+    <title>ToLearn | Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -301,7 +301,65 @@
             color: black;
             filter: brightness(1.1);
         }
-
+        .popup {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .studybox {
+            background-color: #000000;
+            border-radius: 15px;
+            color: white;
+            border: 4px solid white;
+            box-sizing: border-box;
+            width: calc(50% - 10px);   /* แบ่งครึ่งหน้าจอคนละ 50% แล้วหักออกเล็กน้อยตามค่า Gap */
+            min-width: 300px;          /* ป้องกันไม่ให้กล่องบีบจนเล็กเกินไปในหน้าจอมือถือ */
+            min-height: 280px;         /* ปรับเป็น min-height เพื่อให้กล่องยืดตามเนื้อหาอัตโนมัติ */
+    
+            /* จัดระเบียบข้อความด้านในกล่อง */
+            display: flex;
+            flex-direction: column;    /* เรียงหัวข้อกับเนื้อหาเป็นแนวตั้ง */
+            align-items: center;       /* จัดตัวอักษรให้อยู่ตรงกลางกล่อง */
+            justify-content: flex-start; /* เริ่มเขียนจากด้านบนลงมา */
+            padding: 25px;
+        }
+        
+        .studybox p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;          /* เพิ่มระยะห่างระหว่างบรรทัดให้อ่านง่าย */
+            text-align: center;
+        }
+        .study-container {
+            display: flex;
+            flex-wrap: wrap;           /* ถ้าจอแคบเกินไป (เช่นในมือถือ) ให้มันตัดลงมาเป็นแถวใหม่ได้ */
+            justify-content: center;   /* จัดกลุ่มกล่องทั้งหมดให้อยู่กลางหน้าจอ */
+            gap: 20px;                 /* เว้นระยะห่างระหว่างกล่องซ้ายและขวา */
+            padding: 20px;
+            max-width: 1100px;         /* คุมความกว้างรวมไม่ให้กระจายห่างกันเกินไป */
+            margin: 0 auto;
+        }
+        .studybox button {
+            background-color: #7c86e1;
+            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+        }
+        .studybox button:hover {
+            background-size: 100% 100%;
+            color: black !important;
+            background-color: #ecf7ce;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -319,7 +377,7 @@
     </div>
 
     <div class="sidebar" id="sidebarMenu">
-        <img src="img/ToLearn_icon.png" alt="ToLearn logo" class="center-block-img">
+        <img src="img/newToLearn.png" alt="ToLearn logo" class="center-block-img">
         
         <div id="auth-section">
             <a href="login.html" class="login-btn-custom" style="display: inline-block; margin-top: 25px; padding: 10px 0; border-radius: 100px; font-size: 18px; width: 100%;">ลงชื่อเข้าใช้</a>
@@ -367,6 +425,69 @@
             <p> DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
+    <div class="popup">
+        <div class="study-container">
+            <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">เลือกเนื้อหาที่คุณชื่นชอบ</h1>
+            <p style="margin-top: -25px;text-align: center;">
+                รวมสรุปเนื้อหาสำคัญจากทุกวิชา พร้อมแนวข้อสอบและแบบฝึกหัดให้คุณดาวน์โหลดหรือฝึกทำได้ทันที เก่งขึ้นได้ในที่เดียว!
+            </p>
+            <div class="studybox">
+                <b style="font-size: 32px;">ภาษาไทย</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาภาษาไทยแบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็นภาพพจน์ การอ่านจับใจความ การเขียนเรียงความ ฯลฯ พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะภาษาไทยของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+
+            <div class="studybox">
+                <b style="font-size: 32px;">คณิตศาสตร์</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาคณิตศาสตร์แบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็นเซท ฟังก์ชัน เลขอนุกรม ฯลฯ พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะคณิตศาสตร์ของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 43px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+        </div>
+    </div>
+    <div class="popup" style="margin-top: -50px;">
+        <div class="study-container">
+            <div class="studybox">
+                <b style="font-size: 32px;">วิทยาศาสตร์</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาวิทยาศาสตร์แบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็น เคมี ฟิสิกส์ ชีววิทยา พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะวิทยาศาสตร์ของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 45px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+
+            <div class="studybox">
+                <b style="font-size: 32px;">ภาษาอังกฤษ</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาภาษาอังกฤษแบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็น คำศัพท์ ไวยากรณ์ การฟังและการพูด พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะภาษาอังกฤษของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" style="margin-top: -50px;">
+        <div class="study-container">
+            <div class="studybox">
+                <b style="font-size: 32px;">สังคมศึกษา</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาสังคมศึกษาแบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็น ภูมิศาสตร์ หน้าที่พลเมือง และเศรษฐศาสตร์ พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะสังคมศึกษาของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+
+            <div class="studybox">
+                <b style="font-size: 32px;">ทักษะการเขียนโปรแกรม</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้วิชาทักษะการเขียนโปรแกรมแบบเข้าใจง่าย ไม่ว่าจะเป็น ภาษา Python HTML CSS JavaScript ฯลฯ พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อพัฒนาทักษะการเขียนโปรแกรมของคุณให้เก่งขึ้นอย่างมั่นใจ
+                </p>
+                <button type="button" style="margin-top: 43px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         const openMenuBtn = document.getElementById('openMenuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
