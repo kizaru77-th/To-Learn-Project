@@ -15,10 +15,13 @@
             font-family: 'Prompt', sans-serif;
             margin: 0;            
             padding: 0;
-            background-image: linear-gradient(to top, #cbffdc , skyblue);
+            background-image: url("img/ToLearnBG.jpg");
+            background-size: 100% 100%;
+            /* background-image: linear-gradient(to top, #cbffdc , skyblue); */
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
+            color:white;
         }
 
         /* ☰ ปุ่มเปิดเมนู */
@@ -189,7 +192,7 @@
         }
         .dropdown-btn-container:hover {
             background-size: 100% 100%;
-            color: black ;
+            color: black !important;
             transform: scale(1.05);
             filter: brightness(1.1);
         }
@@ -350,6 +353,20 @@
             background-color: #ecf7ce;
             transform: translateY(-3px);
         }
+        .over {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 40px;
+            padding-left: 60px;
+            padding-right: 60px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            width: 100%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -368,7 +385,7 @@
     </div>
 
     <div class="sidebar" id="sidebarMenu">
-        <img src="img/newToLearn.png" alt="ToLearn logo" class="center-block-img">
+        <img src="img/ToLearn.png" alt="ToLearn logo" class="center-block-img">
         
         <div id="auth-section">
             <a href="login.html" class="login-btn-custom" style="display: inline-block; margin-top: 25px; padding: 10px 0; border-radius: 100px; font-size: 18px; width: 100%;">ลงชื่อเข้าใช้</a>
@@ -379,11 +396,6 @@
         
         <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
             <img src="img/Home-button.png" alt="Home" style="width: 25%;margin-left: 0%;"> หน้าหลัก
-        </a>
-        <hr>
-        <a href="timer.html" onclick="checkAccess('timer.html'); return false;" class="menu" style="display: inline-flex; align-items: center; gap: 10px;font-size: 16px;">
-            <img src="img/clock.png" alt="Home" style="width: 20%;margin-left: 0%;"> จับเวลาอ่านหนังสือ
-        </a>
         </a>
         <hr>
         <button class="dropdown-btn-container" id="courseBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 14px;">
@@ -417,24 +429,28 @@
         </div>
     </div>
     <div class="popup" style="margin-top: 0px;">
-        <img src="img/newToLearn.png" alt="ToLearn logo" style="width: 420px; height: auto; margin-bottom: 20px; background-color: transparent !important;">
-        <h1>ยินดีต้อนรับสู่ ToLearn!</h1>
-        <p>แพลตฟอร์มการเรียนรู้ที่ออกแบบมาเพื่อช่วยให้คุณประสบความสำเร็จในการศึกษา ด้วยเครื่องมือและทรัพยากรที่ครบครัน เราพร้อมสนับสนุนคุณในทุกขั้นตอนของการเรียนรู้</p>
+        <img src="img/ToLearn.png" alt="ToLearn logo" style="width: 420px; height: auto; margin-bottom: 0px; background-color: transparent !important;margin-top: -60px;">
+        <div class="over">    
+            <h1>ยินดีต้อนรับสู่ ToLearn!</h1>
+            <p>แพลตฟอร์มการเรียนรู้ที่ออกแบบมาเพื่อช่วยให้คุณประสบความสำเร็จในการศึกษา ด้วยเครื่องมือและทรัพยากรที่ครบครัน เราพร้อมสนับสนุนคุณในทุกขั้นตอนของการเรียนรู้</p>       
+        </div> 
     </div>
-    <div class="popup" style="margin-top: 0px !important;">
-        <b style="font-size: 32px; color:black;">Never Stop Learning!</b>
-        <p style="font-size: 16px; color: black; opacity: 0.75;margin-top: 6px;">เพราะการเรียนรู้ไม่มีที่สิ้นสุด</p>
+    <div class="popup" style="margin-top: 0px !important;"> 
+        <div class="over">       
+        <b style="font-size: 32px; color:white;">Never Stop Learning!</b>
+        <p style="font-size: 16px; color: white; opacity: 0.75;margin-top: 6px;">เพราะการเรียนรู้ไม่มีที่สิ้นสุด</p>
+        </div>
     </div>
     <div class="popup" style="margin-top: 10px;">
         <h1>▼   มีอะไรบ้าง?   ▼</h1>
-        <h1 style="font-size: 20px; color: #333; margin-top: 0px !important; text-align: left !important;">📚 สรุปเนื้อหาวิชาต่างๆ ที่เข้าใจง่ายและสั้นกระชับ</h1>
+        <h1 style="font-size: 20px; color: white; margin-top: 0px !important; text-align: left !important;">📚 สรุปเนื้อหาวิชาต่างๆ ที่เข้าใจง่ายและสั้นกระชับ</h1>
             <div class="summarize">
                 <p style="font-size: 20px; color: white;">พบกับการเรียนรู้ที่ครบครัน สั้น ได้ใจความ</p>
                 <button style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="checkAccess('connectlearn.html')">ไป     →</button>
             </div>
     </div>
     <div class="popup" style="margin-top: 40px !important;">
-        <h1 style="font-size: 20px; color: #333; margin-top: 0px !important; text-align: left !important;"> 📢ประกาศข่าวสารจากทางToLearn</h1>
+        <h1 style="font-size: 20px; color: white; margin-top: 0px !important; text-align: left !important;"> 📢ประกาศข่าวสารจากทางToLearn</h1>
             <div class="summarize">
                 <p style="font-size: 20px; color: white;">ติดตามข่าวสารและกิจกรรมใหม่ๆ จากทาง ToLearn ได้ที่นี่!</p>
                 <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='event.html'">ไป     →</button>

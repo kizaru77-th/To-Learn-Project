@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <style>
         body { 
             font-family: 'Prompt', sans-serif; 
-            background: linear-gradient(135deg, #ecf7ce 0%, #1e2a8f 100%);
+            background-image: url("img/ToLearnBG.jpg");
+            background-size: 100% 100%;
+            color:white;
             min-height: 100vh; 
             display: flex; 
             justify-content: center; 
