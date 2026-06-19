@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
         function redirectToHome() {
-            window.location.href = 'Tolearn.html'; 
+            window.location.href = 'index.html'; 
         }
 
         // ฟังก์ชันรีเซ็ตเวลานับถอยหลังใหม่

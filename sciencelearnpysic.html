@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | EVENT & Announcements</title>
+    <title>ToLearn | Physic Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
-        }
-
-        *, button, input, select, textarea {
             font-family: 'Prompt', sans-serif;
         }
 
         body {
-            font-family: 'Prompt', sans-serif;
-            margin: 0;            
-            padding: 0;
-            background-image: url("img/ToLearnBG.jpg");
-            background-size: 100% 100%;
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
+            background-image: url("img/ToLearnBG.jpg");
+            background-size: 100% 100%;
+            color:white;
         }
 
         /* ☰ ปุ่มเปิดเมนู */
@@ -291,6 +286,7 @@
             transform: scale(1.05);
             filter: brightness(1.1);
         }
+        /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
         .login-btn-custom {
             background-color: #7c86e1;
             color: white;
@@ -307,207 +303,122 @@
             color: black;
             filter: brightness(1.1);
         }
-        .tab-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
-            border-radius: 10px;
-            border: 2px solid black;
-            margin-left: 10px;
-        }
-        .tab-btn:hover {
-            transform: translateY(-3px);    
-        }
-
-        .tab-btn.active {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-        .main-tab-nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            margin-left: 75px;
-        }
-        .tabs-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0px 10px;
-            padding: 0 50px;
-            gap: 30px;
-            align-items: flex-start;
-        }
-
-        .tab-left {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 220px; /* ปรับขนาดเมนูย่อยให้กะทัดรัดขึ้น */
-            flex-shrink: 0;
-        }
-
-        #main-announce .tab-left .box {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        #main-announce .tab-left .box .tab-btn {
-            width: 100%;
-            min-width: 0;
-            margin-left: 0;
-        }
-
-        .tab-content-wrapper {
-            flex-grow: 1;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            border: 2px solid black;
-            box-shadow: 5px 5px 0px black;
-            min-height: 400px;
-            width: 100%;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 30px;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tab-btn {
-            padding: 12px 20px;
-            margin: 0;
-        }
-        .sub-btn {
-            width: 100%;
-            text-align: left;
-            font-size: 15px;
-            background-color: white;
-        }
-
-        .sub-btn.active {
-            background-color: #ffde59;
-            color: black;
-            border-color: black;
-        }
-        .main-section {
-            display: none;
-        }
-        .main-section.active {
-            display: block;
-        }
-
-        /* 📱 รองรับการแสดงผลบนโทรศัพท์มือถือ (Responsive) */
-        @media (max-width: 768px) {
-            .main-tab-nav {
-                flex-wrap: nowrap;
-                gap: 10px;
-                padding: 0;
-                margin-left: 15px; /* ปรับให้เกือบชิดขอบซ้าย */
-                overflow-x: auto; /* เพิ่มการเลื่อนแนวนอนหากเนื้อหาเกิน */
-                justify-content: flex-start; /* จัดปุ่มไปทางซ้าย */
-                scrollbar-width: none; /* ซ่อน scrollbar สำหรับ Firefox */
-                -webkit-overflow-scrolling: touch; /* เพื่อการเลื่อนที่ลื่นไหลบน iOS */
-                font-size: 14px;
-            }
-
-            .tabs-container {
-                flex-direction: column; /* เปลี่ยนจากแนวนอนเป็นแนวตั้ง */
-                padding: 0 10px;
-                gap: 20px;
-                margin: 20px auto;
-            }
-
-            .tab-left {
-                width: 100%;
-                flex-direction: row; /* เมนูย่อยเปลี่ยนเป็นแนวนอนบนมือถือ */
-                overflow-x: auto; /* สามารถเลื่อนซ้าย-ขวาเพื่อดูปุ่มที่เหลือได้ */
-                padding-bottom: 10px;
-                gap: 10px;
-                justify-content: flex-start;
-                -webkit-overflow-scrolling: touch; /* ให้การเลื่อนบนมือถือลื่นไหล */
-            }
-
-            .sub-btn {
-                width: auto;
-                white-space: nowrap; /* ป้องกันข้อความในปุ่มตัดบรรทัด */
-                padding: 10px 15px;
-                font-size: 14px;
-                margin-top:10px;
-            }
-
-            .tab-content-wrapper {
-                min-height: auto; /* ให้ความสูงยืดตามเนื้อหาจริง */
-            }
-
-            #main-update .tab-left .box,
-            #main-event .tab-left .box,
-            #main-announce .tab-left .box {
-                display: flex !important;
-                flex-direction: row !important;
-                width: 100% !important;
-                justify-content: center;
-                gap: 10px;
-                box-sizing: border-box;
-            }
-
-            /* ปรับให้ปุ่มแชร์พื้นที่เท่าๆ กัน (คนละครึ่ง 50%) และตัวอักษรไม่ตกบรรทัด */
-            #main-update .tab-left .box .tab-btn,
-            #main-event .tab-left .box .tab-btn,
-            #main-announce .tab-left .box .tab-btn {
-                flex: 1 !important;
-                width: 100% !important;
-                margin-left: 0;
-                white-space: nowrap;
-                font-size: 14px;
-                padding: 10px 5px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-        .box {
-            background-color: white;
+        
+        .studybox {
+            background-color: #000000;
             border-radius: 15px;
-            padding: 10px;
-            margin: 20px auto;
-            max-width: 800px;
-            border: 2px solid black;
-        }
-        .summarize {            
+            color: white;
+            border: 4px solid white;
+            box-sizing: border-box;
+            width: calc(33.33% - 15px);   
+            /* min-width: 300px;          */
+            min-height: 280px;         
             display: flex;
-            justify-content: center;
+            flex-direction: column;    
+            align-items: center;       
+            justify-content: flex-start; 
+            padding: 25px;
         }
-        .summarize button {
-            font-family: 'Prompt', sans-serif;
+        
+        .studybox p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;          
+            text-align: center;
+        }
+        .study-container {
+            display: flex;
+            flex-wrap: wrap;           
+            justify-content: center;   
+            gap: 20px;                 
+            padding: 20px;
+            max-width: 1200px;         
+            margin: 0 auto;
+        }
+        .studybox button {
             background-color: #7c86e1;
             transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
         }
-        .summarize button:hover{
+        .studybox button:hover {
             background-size: 100% 100%;
             color: black !important;
             background-color: #ecf7ce;
             transform: translateY(-3px);
         }
+        .popup {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .popup.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .progess-container {
+            width: 200px;
+            margin: 50 auto;
+            text-align: center;
+            margin-top: 10%;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .progress-bg {
+            width: 100%;
+            height: 25px; 
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            width: 70%; 
+            height: 100%;
+            background-color: yellow;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        progress::-webkit-progress-value {
+            background-color: #FFD873;
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+        progress::-webkit-progress-bar {
+            background-color: black;
+            border-radius: 10px;
+            border: solid 2px white;
+        }
+        @media (max-width: 768px) {
+        .study-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            padding: 10px !important;
+        }
+
+        .studybox {
+            width: 100% !important;      
+            max-width: 400px;            
+            min-height: auto !important; 
+            margin-bottom: 15px;         
+        }
+    }
     </style>
 </head>
 <body>
@@ -537,19 +448,19 @@
         <a href="mainweb.html" class="menu" style="display: inline-flex; align-items: center; gap: 10px;">
             <img src="img/Home-button.png" alt="Home" style="width: 25%;margin-left: 0%;"> หน้าหลัก
         </a>
-        <hr>  
+        <hr>     
         <button class="dropdown-btn-container" id="courseBtn" style="display: inline-flex; align-items: center; gap: 10px;font-size: 14px;">
             <img src="img/book.png" alt="Book" style="width: 30%;margin-left: -2%;">
             <span>สรุปเนื้อหาวิชา</span>
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="courseContent">
-            <p>📚 <a href="thailearn.html">ภาษาไทย</a></p>
-            <p>📖 <a href="mathlearn.html">คณิตศาสตร์</a></p>
-            <p>📘 <a href="sciencelearn.html">วิทยาศาสตร์</a></p>
-            <p>📙 <a href="englishlearn.html">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="sociallearn.html">สังคม</a></p>
-            <p>💻 <a href="programminglearn.html">การเขียนโปรแกรม</a></p>
+            <p>📚 <a href="thailearn.html" onclick="checkAccess('thailearn.html'); return false;">ภาษาไทย</a></p>
+            <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
+            <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
+            <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
+            
+            <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
         <hr>
@@ -564,99 +475,54 @@
             <span class="arrow-icon">▼</span>
         </button>
         <div class="dropdown-content" id="contactContent">
-            <p> Email: tolearnworkingonly@gmail.com</p>
+            <p>Email: tolearnworkingonly@gmail.com</p>
             <p> DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
 
-    <h2 style="text-align: center; margin-top: 50px; font-size: 28px; color: white; margin-left:10%px;">กิจกรรมและประกาศ</h2>
-
-    <div class="main-tab-nav">
-        <button class="tab-btn main-nav-btn active" onclick="switchMainTab('main-update', this)">ToLearn อัปเดตล่าสุด</button>
-        <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-event', this)">อีเว้น</button>
-        <button class="tab-btn main-nav-btn" onclick="switchMainTab('main-announce', this)">ประกาศ</button>
-    </div>
-    <!-- <hr style="width: 100%; border-color: black;border-width: 2px;"> -->
-    <div id="main-update" class="main-section active">
-        <div class="tabs-container">
-            <div class="tab-left">
-                <div class="box" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
-                    <button class="tab-btn sub-btn active" onclick="switchPage('sub1', this)">📢 ข่าวสารล่าสุด</button>
-                    <button class="tab-btn sub-btn" onclick="switchPage('sub2', this)">🛠️ อัปเดตระบบ</button>
+    <div class="popup">
+        <h1 style="font-size: 40px !important;margin-top: 20px !important;text-align: center !important;">ฟิสิกส์</h1>
+        <p style="text-align: center; margin-top: 10px;">
+            เลือกเรียนตามระดับชั้นของคุณได้เลย!
+        </p>
+        <div class="study-container">            
+            <div class="studybox">
+                <b style="font-size: 32px;">ม.4</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้เรื่อง ธรรมชาติและพัฒนาการทางฟิสิกส์ การเคลื่อนที่แนวตรง แรงและกฏการเคลื่อนที่ สมดุลกล งานและพลังงาน โมเมนตัมและการชน การเคลื่อนที่แนวโค้ง
+                </p>
+                <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
+                <div class="progess-container">
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
                 </div>
             </div>
-            <div class="tab-content-wrapper">
-                <div id="sub1" class="tab-content active">
-                    <h3 style="text-align: center;font-size: 20px;">📢 ข่าวสารล่าสุด</h3>
-                    <p>ยินดีต้อนรับสู่ ToLearn! วันนี้เรามีอัปเดตใหม่เกี่ยวกับเนื้อหาวิชาภาษาไทย...</p>
+
+            <div class="studybox">
+                <b style="font-size: 32px;">ม.5</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้เรื่อง การเคลื่อนที่แบบฮาร์มอนิกอย่างง่าย คลื่น แสงเชิงคลื่นและแสงเชิงรังสี เสียง ไฟฟ้าสถิต ไฟฟ้ากระแส
+                </p>
+                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
+                <div class="progess-container">
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
                 </div>
-                <div id="sub2" class="tab-content">
-                    <h3 style="text-align: center;font-size: 20px;">🛠️ อัปเดตระบบ (v1.2.0)</h3>
-                    <p>เราได้ปรับปรุงระบบจับเวลาให้แม่นยำยิ่งขึ้น</p>
+            </div>
+
+            <div class="studybox">
+                <b style="font-size: 32px;">ม.6</b>
+                <p style="margin-top: 12px;text-align: left;">
+                    เรียนรู้เรื่อง แม่เหล็กและไฟฟ้า ความร้อนและแก๊ส ของแข็งและของไหล ฟิสิกส์อะตอม ฟิสิกส์นิวเคลียร์และฟิสิกส์อนุภาค
+                </p>
+                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
+                <div class="progess-container">
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="main-event" class="main-section">
-        <div class="tabs-container">
-            <div class="tab-left">
-                <div class="box">
-                    <button class="tab-btn sub-btn active" onclick="switchPage('event1', this)">🎁 กิจกรรมปัจจุบัน</button>
-                    <!-- <button class="tab-btn sub-btn" onclick="switchPage('event2', this)">⏳ กิจกรรมที่จบไปแล้ว</button> -->
-                </div>
-            </div>
-            
-                <div class="tab-content-wrapper">
-                    <div id="event1" class="tab-content active">
-                        <h3 style="text-align: center;font-size: 20px;">🎁 กิจกรรมปัจจุบัน</h3>
-                        <p>Challenge อ่านหนังสือ 7 วันรับเหรียญตราพิเศษ!</p>
-                    <!-- </div> -->
-                    <!-- <div id="event2" class="tab-content"> -->
-                        <!-- <h3 style="text-align: center;font-size: 20px;">⏳ กิจกรรมที่จบไปแล้ว</h3> -->
-                        <!-- <p>กิจกรรมต้อนรับเปิดเทอม (สิ้นสุดเมื่อ 1 มิ.ย.)</p> -->
-                    <!-- </div> -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="main-announce" class="main-section">
-        <div class="tabs-container">
-            <div class="tab-left">
-                <div class="box">
-                    <button class="tab-btn sub-btn active" onclick="switchPage('ann1', this)">📝 ประกาศทั่วไป</button>
-                    <button class="tab-btn sub-btn" onclick="switchPage('ann2', this)">
-                        <svg viewBox="0 0 256 199" width="24" height="24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
-                            <path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.804 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.804 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="#5865F2"/>
-                        </svg>
-                        <span>เข้าร่วม Discord</span>
-                    </button>
-                </div>
-            </div>
-            <div class="tab-content-wrapper">
-                <div id="ann1" class="tab-content active">
-                    <h3 style="text-align: center;font-size: 20px;">📝 ประกาศทั่วไป</h3>
-                    <p>ToLearn จะทำการปิดปรับปรุงเซิร์ฟเวอร์ในคืนวันอาทิตย์นี้</p>
-                </div>
-                <div id="ann2" class="tab-content">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
-                        <svg viewBox="0 0 256 199" width="40" height="66" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
-                            <path d="M216.856 16.597A208.502 208.502 0 0 0 164.042 0c-2.275 4.113-4.933 9.645-6.766 14.046-19.692-2.961-39.203-2.961-58.533 0-1.832-4.4-4.55-9.933-6.846-14.046a207.809 207.809 0 0 0-52.855 16.638C5.618 67.147-3.443 116.4 1.087 164.956c22.169 16.555 43.653 26.612 64.775 33.193A161.094 161.094 0 0 0 79.735 175.3a136.413 136.413 0 0 1-21.846-10.632 108.636 108.636 0 0 0 5.356-4.237c42.122 19.702 87.89 19.702 129.51 0a131.66 131.66 0 0 0 5.355 4.237 136.07 136.07 0 0 1-21.886 10.653c4.006 8.02 8.638 15.67 13.873 22.848 21.142-6.58 42.646-16.637 64.815-33.213 5.316-56.288-9.08-105.09-38.056-148.36ZM85.474 135.095c-12.645 0-23.015-11.805-23.015-26.18s10.149-26.2 23.015-26.2c12.867 0 23.236 11.804 23.015 26.2.02 14.375-10.148 26.18-23.015 26.18Zm85.051 0c-12.645 0-23.014-11.805-23.014-26.18s10.148-26.2 23.014-26.2c12.867 0 23.236 11.804 23.015 26.2 0 14.375-10.148 26.18-23.015 26.18Z" fill="#5865F2"/>
-                        </svg>
-                    
-                        <h3 style="font-size: 20px; margin: 0;"> เข้าร่วมDiscord Community</h3>
-                    </div>
-                    <p style="text-align: center;">เข้าร่วม Discord Community ของเราเพื่อเชื่อมต่อกับผู้เรียนคนอื่นๆ และรับข้อมูลอัปเดตล่าสุด!</p>
-                        <div class="summarize">
-                            <button type="button" style="margin-top: 150px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;background-color: #5865F2;" onclick="window.location.href='https://discord.com/invite/6nkbnP25Yx'">เข้าร่วมDiscord</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         const openMenuBtn = document.getElementById('openMenuBtn');
         const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -748,6 +614,15 @@
     }
     }
 
+    // Function to check login status before accessing certain pages
+    function checkAccess(targetPage) {
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = targetPage;
+        } else {
+        window.location.href = 'access_denied_popup.html';
+    }
+    }
+
     function logout() {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('username');
@@ -770,32 +645,6 @@
 
         // เรียกใช้งานเมื่อโหลดหน้าเว็บ
         window.onload = checkLoginStatus;
-
-        // ฟังก์ชันสลับหมวดหมู่หลัก (บน)
-        function switchMainTab(sectionId, buttonElement) {
-            // ซ่อนทุก Main Section
-            document.querySelectorAll('.main-section').forEach(sec => sec.classList.remove('active'));
-            // แสดง Section ที่เลือก
-            document.getElementById(sectionId).classList.add('active');
-
-            // จัดการสีปุ่มเมนูหลัก
-            document.querySelectorAll('.main-nav-btn').forEach(btn => btn.classList.remove('active'));
-            buttonElement.classList.add('active');
-        }
-
-        // ฟังก์ชันสลับหน้าย่อย (ซ้าย)
-        function switchPage(pageId, buttonElement) {
-            // หา Main Section ที่ปุ่มนี้สังกัดอยู่ เพื่อไม่ให้ไปกระทบส่วนอื่น
-            const parentSection = buttonElement.closest('.main-section');
-
-            // ซ่อนเนื้อหาและลบ active เฉพาะใน Section นี้
-            parentSection.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            parentSection.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
-
-            // แสดงผล
-            document.getElementById(pageId).classList.add('active');
-            buttonElement.classList.add('active');
-        }
         // เรียกใช้งานเมื่อโหลดหน้าเว็บ
         window.onload = checkLoginStatus;
         window.onload = checkLoginStatus;
