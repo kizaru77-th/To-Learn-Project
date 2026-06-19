@@ -405,11 +405,25 @@
             border-radius: 10px;
             border: solid 2px white;
         }
+        @media (max-width: 768px) {
+        .study-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            padding: 10px !important;
+        }
+
+        .studybox {
+            width: 100% !important;      
+            max-width: 400px;            
+            min-height: auto !important; 
+            margin-bottom: 15px;         
+        }
+    }
     </style>
 </head>
 <body>
     <button class="menu-trigger-btn" id="openMenuBtn">
-        <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;">
+        <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;background-color: white;border-radius: 100px;">
     </button>
 
     <div class="overlay" id="menuOverlay">
@@ -477,10 +491,10 @@
                 <p style="margin-top: 12px;text-align: left;">
                     เรียนรู้เรื่อง เซต ตรรกศาสตร์ จำนวนจริง ความสัมพันธ์และฟังก์ชัน ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม และ เรขาคณิตวิเคราะห์และภาพตัดกรวย
                 </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='sociallearn.html'">ไป     →</button>
+                <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
-                        <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
-                        <span class="percentage">90%</span>
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
                 </div>
             </div>
 
@@ -489,7 +503,11 @@
                 <p style="margin-top: 12px;text-align: left;">
                     เรียนรู้เรื่อง เลขยกกำลัง ฟังก์ชัน ลำดับและอนุกรม ฟังก์ชันตรีโกณมิติ เมทริกซ์ เวกเตอร์ จำนวนเชิงซ้อน หลักการนับเบื้องต้น และ ความน่าจะเป็น 
                 </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='sociallearn.html'">ไป     →</button>
+                <button type="button" style="margin-top: 43px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
+                <div class="progess-container">
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
+                </div>
             </div>
 
             <div class="studybox">
@@ -497,7 +515,11 @@
                 <p style="margin-top: 12px;text-align: left;">
                     เรียนรู้เรื่อง สถิติและข้อมูล การนำเสนอข้อมูลเชิงคุณภาพและปริมาณ แคลคูลัสเบื้องต้น
                 </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='sociallearn.html'">ไป     →</button>
+                <button type="button" style="margin-top: 91px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
+                <div class="progess-container">
+                    <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
+                    <span class="percentage">90%</span>
+                </div>
             </div>
         </div>
     </div>
