@@ -359,7 +359,20 @@
             color: black !important;
             background-color: #ecf7ce;
             transform: translateY(-3px);
+        }@media (max-width: 768px) {
+        .study-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            padding: 10px !important;
         }
+
+        .studybox {
+            width: 100% !important;      
+            max-width: 400px;            
+            min-height: auto !important; 
+            margin-bottom: 15px;         
+        }
+    }
     </style>
 </head>
 <body>
@@ -400,7 +413,7 @@
             <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคม</a></p>
+            
             <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
@@ -465,14 +478,6 @@
 
     <div class="popup" style="margin-top: -50px;">
         <div class="study-container">
-            <div class="studybox">
-                <b style="font-size: 32px;">สังคมศึกษา</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้วิชาสังคมศึกษาแบบเข้าใจง่ายโดยไม่ต้องอ่านหนังสือให้เสียเวลา ทางเราได้สรุปสาระสำคัญไว้แล้ว ไม่ว่าจะเป็น ภูมิศาสตร์ หน้าที่พลเมือง และเศรษฐศาสตร์ พร้อมตัวอย่างและแบบฝึกหัดให้คุณได้ลองทำ เพื่อเตรียมตัวสอบและพัฒนาทักษะสังคมศึกษาของคุณให้เก่งขึ้นอย่างมั่นใจ
-                </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 60px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='sociallearn.html'">ไป     →</button>
-            </div>
-
             <div class="studybox">
                 <b style="font-size: 32px;">ทักษะการเขียนโปรแกรม</b>
                 <p style="margin-top: 12px;text-align: left;">

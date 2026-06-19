@@ -370,7 +370,6 @@
             <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
-            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคม</a></p>
             <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
@@ -397,7 +396,7 @@
     
     <div style="text-align: center; margin-top: 15px;">
         <a href="login.html" class="login-btn-custom" style="display: inline-block; padding: 15px 20px; border-radius: 10px; font-size: 18px; border: 2px solid black; margin-right: 10px;">ลงชื่อเข้าใช้</a>
-        <a id="try-btn" href="mainweb.html" style="display: inline-block; padding: 15px 20px; background-image: linear-gradient(to bottom right, white); color: black; text-decoration: none; border-radius: 10px; font-size: 18px; border: 2px solid black;transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;">ทดลองใช้ToLearn</a> 
+        <a id="try-btn" href="mainweb.html" style="background-color: #34495e;display: inline-block; padding: 15px 20px; background-image: linear-gradient(to bottom right, white); color: white; text-decoration: none; border-radius: 10px; font-size: 18px; border: 2px solid black;transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;">ทดลองใช้ToLearn</a> 
     </div>
     </div>
 
@@ -561,6 +560,18 @@
         
         window.onload = checkLoginStatus;
         
+        const tryBtnElement = document.getElementById('try-btn');
+
+        if (tryBtnElement) {
+            tryBtnElement.onmouseover = function() {
+                this.style.color = 'black';          
+                this.style.backgroundColor = '#415b73'; 
+        };
+        tryBtnElement.onmouseout = function() {
+            this.style.color = '#ffffff';          
+            this.style.backgroundColor = '#34495e'; 
+        };
+}
     </script>
 
     <!-- Logout confirmation modal -->
