@@ -315,9 +315,9 @@
             min-height: 280px;         
             display: flex;
             flex-direction: column;    
-            align-items: center;       
+            align-items: left;       
             justify-content: flex-start; 
-            padding: 25px;
+            padding: 15px;
         }
         
         .studybox p {
@@ -418,7 +418,12 @@
             min-height: auto !important; 
             margin-bottom: 15px;         
         }
-    }
+        .progess-container {
+            width: 100% !important;
+            max-width: 200px;
+            margin: 15px auto 0 auto !important;
+        }
+        }
     </style>
 </head>
 <body>
@@ -459,7 +464,7 @@
             <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
-            
+            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคมศึกษา</a></p>
             <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
@@ -481,16 +486,24 @@
     </div>
 
     <div class="popup">
-        <h1 style="font-size: 40px !important;margin-top: 20px !important;text-align: center !important;">ฟิสิกส์</h1>
-        <p style="text-align: center; margin-top: 10px;">
+        <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">ฟิสิกส์</h1>
+          <p style="text-align: center; margin-top: -20px;">
             เลือกเรียนตามระดับชั้นของคุณได้เลย!
         </p>
         <div class="study-container">            
             <div class="studybox">
                 <b style="font-size: 32px;">ม.4</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง ธรรมชาติและพัฒนาการทางฟิสิกส์ การเคลื่อนที่แนวตรง แรงและกฏการเคลื่อนที่ สมดุลกล งานและพลังงาน โมเมนตัมและการชน การเคลื่อนที่แนวโค้ง
-                </p>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>ธรรมชาติและพัฒนาการทางฟิสิกส์</li>
+                    <li>การเคลื่อนที่แนวตรง</li>
+                    <li>แรงและกฎการเคลื่อนที่</li>
+                    <li>สมดุลกล</li>
+                    <li>งานและพลังงาน</li>
+                    <li>โมเมนตัมและการชน</li>
+                    <li>การเคลื่อนที่แนวโค้ง</li>
+                </ul>
                 <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
@@ -500,10 +513,17 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.5</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง การเคลื่อนที่แบบฮาร์มอนิกอย่างง่าย คลื่น แสงเชิงคลื่นและแสงเชิงรังสี เสียง ไฟฟ้าสถิต ไฟฟ้ากระแส
-                </p>
-                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>การเคลื่อนที่แบบฮาร์มอนิกอย่างง่าย</li>
+                    <li>คลื่น</li>
+                    <li>แสงเชิงคลื่นและแสงเชิงรังสี</li>
+                    <li>เสียง</li>
+                    <li>ไฟฟ้าสถิต</li>
+                    <li>ไฟฟ้ากระแส</li>
+                </ul>
+                <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -512,9 +532,16 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.6</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง แม่เหล็กและไฟฟ้า ความร้อนและแก๊ส ของแข็งและของไหล ฟิสิกส์อะตอม ฟิสิกส์นิวเคลียร์และฟิสิกส์อนุภาค
-                </p>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>แม่เหล็กและไฟฟ้า</li>
+                    <li>ความร้อนและแก๊ส</li>
+                    <li>ของแข็งและของไหล</li>
+                    <li>ฟิสิกส์และอะตอม</li>
+                    <li>ฟิสิกส์นิวเคลียร์</li>
+                    <li>ฟิสิกส์อนุภาค</li>
+                </ul>
                 <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>

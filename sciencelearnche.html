@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | Math Learning</title>
+    <title>ToLearn | chemical Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -315,9 +315,9 @@
             min-height: 280px;         
             display: flex;
             flex-direction: column;    
-            align-items: center;       
+            align-items: left;       
             justify-content: flex-start; 
-            padding: 25px;
+            padding: 15px;
         }
         
         .studybox p {
@@ -418,6 +418,11 @@
             min-height: auto !important; 
             margin-bottom: 15px;         
         }
+        .progess-container {
+            width: 100% !important;
+            max-width: 200px;
+            margin: 15px auto 0 auto !important;
+        }
     }
     </style>
 </head>
@@ -459,7 +464,7 @@
             <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
-            
+            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคมศึกษา</a></p>
             <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
@@ -481,17 +486,24 @@
     </div>
 
     <div class="popup">
-        <h1 style="font-size: 40px !important;margin-top: 20px !important;text-align: center !important;">เคมี</h1>
-        <p style="text-align: center; margin-top: 10px;">
+        <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">เคมี</h1>
+          <p style="text-align: center; margin-top: -20px;">
             เลือกเรียนตามระดับชั้นของคุณได้เลย!
         </p>
         <div class="study-container">            
             <div class="studybox">
                 <b style="font-size: 32px;">ม.4</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง ความปลอดภัยและทักษะในปฏิบัติการเคมี โครงสร้างอะตอมและตารางธาตุ พันธะเคมี โมลและสูตรเคมี สารละลาย ปริมาณสัมพันธ์
-                </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>ความปลอดภัยและทักษะในปฏิบัติการเคมี</li>
+                    <li>โครงสร้างอะตอมและตารางธาตุ</li>
+                    <li>พันธะเคมี</li>
+                    <li>โมลและสูตรเคมี</li>
+                    <li>สารละลาย</li>
+                    <li>ปริมาณสัมพันธ์</li>
+                </ul>
+                <button type="button" style="margin-top: 0px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -500,9 +512,15 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.5</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง  แก๊สและสมบัติของแก๊ส  อัตราการเกิดปฏิกิริยาเคมี  สมดุลเคมี  กรด-เบส  เคมีไฟฟ้า
-                </p>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>แก๊สและสมบัติของแก๊ส</li>
+                    <li>อัตราการเกิดปฏิกิริยาเคมี</li>
+                    <li>สมดุลเคมี</li>
+                    <li>กรด-เบส</li>
+                    <li>เคมีไฟฟ้า</li>
+                </ul>
                 <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
@@ -512,10 +530,14 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.6</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง  เคมีอินทรีย์  พอลิเมอร์  เคมีกับการแก้ปัญหา
-                </p>
-                <button type="button" style="margin-top: 91px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>เคมีอินทรีย์</li>
+                    <li>พอลิเมอร์</li>
+                    <li>เคมีกับการแก้ปัญหา</li>
+                </ul>
+                <button type="button" style="margin-top: 108px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>

@@ -315,9 +315,9 @@
             min-height: 280px;         
             display: flex;
             flex-direction: column;    
-            align-items: center;       
+            align-items: left;       
             justify-content: flex-start; 
-            padding: 25px;
+            padding: 15px;
         }
         
         .studybox p {
@@ -418,6 +418,11 @@
             min-height: auto !important; 
             margin-bottom: 15px;         
         }
+        .progess-container {
+            width: 100% !important;
+            max-width: 200px;
+            margin: 15px auto 0 auto !important;
+        }
     }
     </style>
 </head>
@@ -459,7 +464,7 @@
             <p>📖 <a href="mathlearn.html" onclick="checkAccess('mathlearn.html'); return false;">คณิตศาสตร์</a></p>
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
-            
+            <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคมศึกษา</a></p>
             <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
         </div>
         
@@ -481,17 +486,24 @@
     </div>
 
     <div class="popup">
-        <h1 style="font-size: 40px !important;margin-top: 20px !important;text-align: center !important;">คณิตศาสตร์</h1>
-        <p style="text-align: center; margin-top: 10px;">
+        <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">คณิตศาสตร์</h1>
+          <p style="text-align: center; margin-top: -20px;">
             เลือกเรียนตามระดับชั้นของคุณได้เลย!
         </p>
         <div class="study-container">            
             <div class="studybox">
                 <b style="font-size: 32px;">ม.4</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง เซต ตรรกศาสตร์ จำนวนจริง ความสัมพันธ์และฟังก์ชัน ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม และ เรขาคณิตวิเคราะห์และภาพตัดกรวย
-                </p>
-                <button type="button" style="margin-top: 20px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>เซต</li>
+                    <li>ตรรกศาสตร์</li>
+                    <li>จำนวนจริง</li>
+                    <li>ความสมพันธ์และฟังก์ชัน</li>
+                    <li>ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม</li>
+                    <li>เรขาคณิตวิเคราะห์และภาคตัดกรวย</li>
+                </ul>
+                <button type="button" style="margin-top: 25px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -500,10 +512,20 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.5</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง เลขยกกำลัง ฟังก์ชัน ลำดับและอนุกรม ฟังก์ชันตรีโกณมิติ เมทริกซ์ เวกเตอร์ จำนวนเชิงซ้อน หลักการนับเบื้องต้น และ ความน่าจะเป็น 
-                </p>
-                <button type="button" style="margin-top: 43px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>เลขยกกำลัง</li>
+                    <li>ฟังก์ชัน</li>
+                    <li>ลำดับและอนุกรม</li>
+                    <li>ฟังก์ชันตรีโกณมิติ</li>
+                    <li>เมทริกซ์</li>
+                    <li>เวกเตอร์</li>
+                    <li>จำนวนเชิงซ้อน</li>
+                    <li>หลักการนับเบื้องต้น</li>
+                    <li>ความน่าจะเป็น</li>
+                </ul>
+                <button type="button" style="margin-top: 0px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -512,10 +534,14 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.6</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง สถิติและข้อมูล การนำเสนอข้อมูลเชิงคุณภาพและปริมาณ แคลคูลัสเบื้องต้น
-                </p>
-                <button type="button" style="margin-top: 91px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>สถิติและข้อมูล</li>
+                    <li>การนำเสนอข้อมูลเชิงคุณภาพและปริมาณ</li>
+                    <li>แคลคูลัสเบื้องต้น</li>
+                </ul>
+                <button type="button" style="margin-top: 111px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
