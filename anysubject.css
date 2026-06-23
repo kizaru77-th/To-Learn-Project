@@ -550,3 +550,12 @@ a:hover {
     display: block;
     margin: 0 auto;
 }
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+.katex-display > .katex {
+    white-space: nowrap;
+}

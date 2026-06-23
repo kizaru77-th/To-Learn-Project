@@ -343,7 +343,7 @@
                 <img src="img/intersec-set.png" alt="van-diagram" class="responsive-img">
             </section>
 
-            section id="minus-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+            <section id="minus-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                     <span style="background-color: #FDF2B5; padding: 2px 4px;">ผลต่างระหว่างเซต</span>
                 </h2>
@@ -361,7 +361,7 @@
                 <img src="img/minus-set.png" alt="van-diagram" class="responsive-img">
             </section>
 
-            <img id="complement" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+            <section id="complement" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                     <span style="background-color: #FDF2B5; padding: 2px 4px;">คอมพลีเมนต์</span>
                 </h2>
@@ -528,127 +528,88 @@
         popupElements.forEach((element) => observer.observe(element));
 
         const subMenuBtns = document.querySelectorAll('.sub-menu-btn[data-target]');
-        const contentSections = document.querySelectorAll('.content-section');
-        const boardBody = document.querySelector('.board-body');
+const contentSections = document.querySelectorAll('.content-section');
+const boardBody = document.querySelector('.board-body');
+const menuScrollBox = document.querySelector('#mathContent');
 
-        const sectionToBtnMap = new Map();
+const sectionToBtnMap = new Map();
 
-        subMenuBtns.forEach((btn) => {
-            const targetId = btn.dataset.target?.replace('#', '');
-            if (targetId) {
-                sectionToBtnMap.set(targetId, btn);
-            }
-        });
+subMenuBtns.forEach((btn) => {
+    const targetId = btn.dataset.target?.replace('#', '');
+    if (targetId) sectionToBtnMap.set(targetId, btn);
+});
 
-        function setActiveSubMenuBtn(activeBtn) {
+function setActiveSubMenuBtn(activeBtn) {
+    subMenuBtns.forEach((btn) => {
+        btn.classList.remove('sub-item-active');
+    });
 
-        subMenuBtns.forEach((btn) => {
-            btn.classList.remove('sub-item-active');
-        });
+    activeBtn.classList.add('sub-item-active');
 
-        activeBtn.classList.add('sub-item-active');
-    }
-
-        function scrollBoardToSection(targetSection) {
-            if (!boardBody || !targetSection) return;
-
-            const targetTop =
-                targetSection.getBoundingClientRect().top -
-                boardBody.getBoundingClientRect().top +
-                boardBody.scrollTop;
-
-            boardBody.scrollTo({
-                top: targetTop,
-                behavior: 'smooth'
-            });
-        }
-
-        subMenuBtns.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.target;
-                if (!targetId) return;
-
-                const targetSection = document.querySelector(targetId);
-                if (!targetSection) return;
-
-                setActiveSubMenuBtn(btn);
-                scrollBoardToSection(targetSection);
-            });
-        });
-
-        if (boardBody && contentSections.length > 0) {
-            const scrollSpyObserver = new IntersectionObserver((entries) => {
-                let currentSection = null;
-
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        if (
-                            !currentSection ||
-                            entry.boundingClientRect.top < currentSection.boundingClientRect.top
-                        ) {
-                            currentSection = entry;
-                        }
-                    }
-                });
-
-        if (currentSection) {
-            const btn = sectionToBtnMap.get(currentSection.target.id);
-            if (btn) {
-                setActiveSubMenuBtn(btn);
-            }
-        }
-        }, {
-            root: boardBody,
-            threshold: 0.45,
-            rootMargin: '-10% 0px -55% 0px'
-        });
-
-        contentSections.forEach((section) => {
-            scrollSpyObserver.observe(section);
+    // เลื่อน sidebar เฉพาะคอม
+    if (window.innerWidth > 768) {
+        activeBtn.scrollIntoView({
+            block: 'nearest'
         });
     }
-    // Scroll Spy
-    const scrollSpyObserver = new IntersectionObserver((entries) => {
+}
 
+function scrollBoardToSection(targetSection) {
+    if (!boardBody || !targetSection) return;
+
+    const targetTop =
+        targetSection.getBoundingClientRect().top -
+        boardBody.getBoundingClientRect().top +
+        boardBody.scrollTop;
+
+    boardBody.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+    });
+}
+
+subMenuBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        if (!targetId) return;
+
+        const targetSection = document.querySelector(targetId);
+        if (!targetSection) return;
+
+        setActiveSubMenuBtn(btn, true);
+        scrollBoardToSection(targetSection);
+    });
+});
+
+const scrollSpyObserver = new IntersectionObserver((entries) => {
     let currentSection = null;
 
     entries.forEach((entry) => {
-
         if (entry.isIntersecting) {
-
             if (
                 !currentSection ||
-                entry.boundingClientRect.top <
-                currentSection.boundingClientRect.top
+                entry.boundingClientRect.top < currentSection.boundingClientRect.top
             ) {
                 currentSection = entry;
             }
-
         }
-
     });
 
     if (currentSection) {
-
-        const btn = sectionToBtnMap.get(
-            currentSection.target.id
-        );
-
+        const btn = sectionToBtnMap.get(currentSection.target.id);
         if (btn) {
-            setActiveSubMenuBtn(btn);
+            setActiveSubMenuBtn(btn, false);
         }
-
     }
+}, {
+    root: boardBody,
+    threshold: 0.05,
+    rootMargin: '-15% 0px -60% 0px'
+});
 
-    }, {
-        root: document.querySelector('.board-body'),
-        threshold: 0.05,
-        rootMargin: '-15% 0px -60% 0px'
-    });
-
-    contentSections.forEach((section) => {
-        scrollSpyObserver.observe(section);
-        });
+contentSections.forEach((section) => {
+    scrollSpyObserver.observe(section);
+});
 
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {
