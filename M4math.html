@@ -300,7 +300,7 @@
                 <p>แผนภาพเวนน์เป็นการแสดงเซตเป็นภาพ ซึ่งช่วยให้เห็นภาพความสัมพันธ์ระหว่างเซต และใช้การแก้ปัญหาเรื่องเซตได้ง่ายขึ้น</p>
                 <b>ตัวอย่าง เช่น</b>
                 <p>กำหนดให้ $\mathcal{U}$={1,2,3,4,5} A={1,2,3,4} B={2,3,6} </p>
-                <img src="img/set.png" alt="van-diagram" width="700" height="400">
+                <img src="img/set.png" alt="van-diagram" class="responsive-img">
                 <p>ตัวอักษรภาษาอังกฤษในเซตแทนเป็นชื่อเซต</p>
             </section>
 
@@ -324,7 +324,7 @@
                     <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4} </span><p>เนื่องจากเซตAและBมีสามาชิก2และ3เหมือนกันจึงเอามาเขียนแค่ตัวเดียว</p></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของยูเนียน(union)</b>
-                <img src="img/unionset.png" alt="van-diagram" width="700" height="400">
+                <img src="img/unionset.png" alt="van-diagram" class="responsive-img" >
             </section>
 
             <section id="intersect" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
@@ -340,10 +340,10 @@
                     <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B=$\varnothing$ เพราะไม่มีสมาชิกที่ซ้ำกันทั้งในเซตAและB</span></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของอินเตอร์เซค(Intersetion)</b>
-                <img src="img/intersec-set.png" alt="van-diagram" width="700" height="400">
+                <img src="img/intersec-set.png" alt="van-diagram" class="responsive-img">
             </section>
 
-            <section id="minus-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+            section id="minus-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                     <span style="background-color: #FDF2B5; padding: 2px 4px;">ผลต่างระหว่างเซต</span>
                 </h2>
@@ -358,7 +358,7 @@
                     <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$B - A$={4,5} เพราะ ในเซต$B$มีเลข3ที่ไปซ้ำกับเซต$A$เราจึงตัดเลข3ทิ้งไปและเหลือเพียงตัวเลข<br>{4, 5}ซึ่งเป็นของเซต$B$ฝั่งเดียว</span></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของผลต่างระหว่างเซต</b>
-                <img src="img/minus-set.png" alt="van-diagram" width="700" height="400">
+                <img src="img/minus-set.png" alt="van-diagram" class="responsive-img">
             </section>
 
             <img id="complement" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
@@ -374,7 +374,7 @@
                     <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$(A \cup B)'$={f} <br>วิธีคิด<br>1. หาในวงเล็บก่อน: $A \cup B$ คือการมัดรวมสมาชิกรวมกัน ได้เป็น $\{a, b, c, d, e\}$<br>2. หาคอมพลีเมนต์ต่อ: เอาจักรวาล $U$ ตั้ง แล้วหักกลุ่ม $\{a, b, c, d, e\}$ ทิ้งไป ตัวที่เหลืออยู่รอบนอกสุด ๆ จึงมีแค่ตัว f ตัวเดียว</span></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของคอมพลีเมนต์</b>
-                <img src="img/complement-set.png" alt="van-diagram" width="700" height="400">
+                <img src="img/complement-set.png" alt="van-diagram" class="responsive-img">
             </section>
 
             <section id="solution-formula" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
@@ -546,12 +546,6 @@
         });
 
         activeBtn.classList.add('sub-item-active');
-
-        // เลื่อนเมนูด้านซ้ายตามหัวข้อที่กำลังอ่าน
-        activeBtn.scrollIntoView({
-            block: 'nearest'
-        });
-
     }
 
         function scrollBoardToSection(targetSection) {

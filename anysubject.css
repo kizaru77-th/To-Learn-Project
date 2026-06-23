@@ -543,3 +543,10 @@ a:hover {
     text-decoration: none; /* เอาเส้นใต้户ออกตอนกำลังอ่าน */
     transform: translateX(5px); /* ขยับเยื้องขวามานิดนึงให้ดูมีมิติ */
 }
+.responsive-img{
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
