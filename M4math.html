@@ -5,515 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToLearn | Math M4 Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Prompt', sans-serif;
-        }
-
-        body {
-            background-image: url("img/ToLearnBG.jpg");
-            background-size: 100% 100%;
-            color:white;
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ☰ ปุ่มเปิดเมนู */
-        .menu-trigger-btn {
-            background: none; 
-            border: none; 
-            padding: 0; 
-            cursor: pointer; 
-            position: fixed; 
-            top: 15px; 
-            left: 15px;
-            z-index: 999; 
-        }
-
-        /* 📱 ตัวแถบเมนูข้าง */
-        .sidebar {
-            background-color: rgb(255, 255, 255);
-            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
-            padding:30px;
-            text-align: center;
-            width: 250px;       
-            height: 100vh;      
-            position: fixed;    
-            top: 0;
-            left: 0;
-            transform: translateX(-100%); 
-            transition: transform 0.4s ease; 
-            z-index: 1000;      
-            box-sizing: border-box; 
-            overflow-y: auto; 
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .sidebar::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
-
-        .sidebar.active {
-            transform: translateX(0); 
-        }
-
-        /* ❌ ปุ่มปิดเมนู */
-        .close-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            /* margin-left: 200px; */
-        }
-
-        .center-block-img {
-            display: block;        
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;           
-            max-width: 180px;      
-            height: auto;          
-            margin-top: 0px;      
-        }
-
-        /* สไตล์สำหรับรูปโปรไฟล์ */
-        .user-profile-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #000000;
-            margin: 20px auto 10px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .menu-item {
-            background-color: #78bbe8;
-            border-radius: 100px;
-            color: white;
-            padding: 8px 0px; 
-            margin: 0;       
-            width: 100%;     
-            display: block;  
-            text-decoration: none; 
-            font-size: 18px;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            cursor: pointer;
-            font-family: 'Prompt', sans-serif; 
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            background-position: left;
-            transition: background-size 0.5s ease-in-out, color 0.3s;
-        }
-        .menu-item:hover {
-            background-size: 100% 100%;
-            color: black;
-            filter: brightness(1.1);
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #e0e0e0;
-            width: 100%;
-            margin: 10px 0; 
-        }
-
-        .login-divider {
-            border: none;
-            border-top: 1px solid #e0e0e0; 
-            width: 100%;
-            margin-top: 20px;    
-            margin-bottom: 10px;  
-        }
-
-        .menu {
-            background-color: #66a6d1;
-            border-radius: 100px;
-            color: white;
-            padding: 8px 20px; 
-            margin: 0;       
-            width: 100%;     
-            display: block;  
-            text-decoration: none; 
-            font-size: 18px;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, white);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
-        }
-        .menu:hover {
-            background-size: 100% 100%;
-            color: black;
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        /* แผ่นสีดำโปร่งแสงเบลอๆ */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(2px); 
-            opacity: 0;
-            pointer-events: none; 
-            transition: opacity 0.4s ease;
-            z-index: 998;
-        }
-        .overlay.active {
-            opacity: 1;
-            pointer-events: auto; 
-        }
-
-        /* 🔽 ใช้ Class ร่วมกันเพื่อให้ทั้งปุ่มคอร์สเรียนและติดต่อเราสวยเท่ากัน 🔽 */
-        .dropdown-btn-container {
-            background-color: #66a6d1;
-            border-radius: 100px;
-            color: white;
-            padding: 8px 20px; 
-            margin: 0;       
-            width: 100%;     
-            display: block;  
-            text-decoration: none; 
-            font-size: 18px;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            box-sizing: border-box;
-            background-image: linear-gradient(to bottom right, white);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
-        }
-        .dropdown-btn-container:hover {
-            background-size: 100% 100%;
-            color: black ;
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        /* สไตล์ของตัวลูกศร */
-        .arrow-icon {
-            font-size: 12px;
-            transition: transform 0.3s ease; 
-            display: inline-block;
-        }
-
-        /* เมื่อปุ่มถูกเปิด ให้ลูกศรหมุนชี้ขึ้น */
-        .dropdown-btn-container.active .arrow-icon {
-            transform: rotate(180deg);
-        }
-
-        /* กล่องข้อมูลสไลด์ (ใช้คลาสร่วมกัน) */
-        .dropdown-content {
-            max-height: 0;            
-            overflow: hidden;         
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out; 
-            background-color: #f2f7fa; 
-            border-radius: 15px;
-            text-align: left;         
-            padding: 0 25px;          
-            font-size: 14px;
-            color: #444;
-            box-sizing: border-box;
-            word-break: break-word; /* ช่วยจัดบรรทัดตัวอักษรไม่ให้ล้น */
-        }
-
-        /* เมื่อกางกล่องออก */
-        .dropdown-content.open {
-            max-height: 180px;        
-            padding: 10px 25px;       
-            margin-top: 8px;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        .dropdown-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .dropdown-content p {
-            margin: 8px 0;    
-            transform: scale(1.05);        
-        }
-        /* เพิ่มการตั้งค่าสำหรับลิงก์ใน Dropdown */
-        .dropdown-content a {
-            all: unset; /* ล้างสไตล์เดิมที่เป็นปุ่มออก */
-            color: #66a6d1;
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            color: #4a8db7;
-            background: none; /* ป้องกันพื้นหลังสีเหลือง/เขียวโผล่มา */
-            filter: brightness(1.1);
-        }
-        .in-btn {
-            max-width:500px ;
-             max-height: 50px;
-             background-color: rgb(255, 255, 255);
-             border-radius: 100px;
-             margin-left: -200px;
-             margin-top: 16px;
-        }
-        a{
-            background-image: linear-gradient(to bottom right, #9BF8F4, #6F7BF7);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            background-position: left;
-            color: black;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            text-align: center;
-            border: 2px solid black;
-            box-shadow: 1px 1px 0px black;
-            transition: background-size 0.5s ease-in-out;
-        }
-        a:hover {
-            background-size: 100% 100%;
-            color: black ;
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-        /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
-        .login-btn-custom {
-            background-color: #7c86e1;
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease, background-size 0.5s ease-in-out;
-            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            background-position: left;
-        }
-
-        .login-btn-custom:hover {
-            background-size: 100% 100%;
-            color: black;
-            filter: brightness(1.1);
-        }
-
-        .mathstudy-box {
-            max-height:600px;
-            max-width: 350px;
-            padding: 20px ; 
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-            align-items: left;
-            justify-items: top left;
-            margin: 20px auto 20px 75px;
-            display: block;
-            white-space: nowrap;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(white);
-            overflow-y: auto;
-            overflow-x: hidden;
-            scrollbar-color: transparent;
-            scrollbar-width: none
-        }
-        .mathstudyinside{
-            background: transparent;
-            border-radius: 15px;
-            align-items: left;
-            justify-items: top left;
-            display: block;
-            white-space: nowrap;
-        }
-        .dropdown-btn.active .arrow-icon {
-            transform: rotate(180deg);
-        }
-        .tree-menu, .tree-menu ul {
-            list-style: none;
-            padding-left: 20px; /* ระยะเว้นขยับเข้าไปด้านขวา */
-            position: relative;
-            margin: 0;
-        }
-
-        /* สร้างเส้นแนวตั้งหลัก */
-        .tree-menu::before {
-            content: "";
-            position: absolute;
-            top: 0px;         
-            bottom: 13px;
-            left: 10px;
-            width: 2px;
-            background-color: rgba(255, 255, 255, 0.3);
-            z-index: 5; 
-            max-height: 700px;
-        }
-
-        .tree-menu li {
-            position: relative;
-            padding-left: 15px;
-            margin-bottom: 5px;
-        }
-
-        /* สร้างเส้นแนวนอนแยกเข้าหาแต่ละหัวข้อ */
-        .tree-menu li::before {
-            content: "";
-            position: absolute;
-            padding-left: 0px;
-            margin-bottom: 15px;
-            width: 100%;
-            top: 18px;
-            left: -8px;       /* ลากออกจากเส้นแนวตั้งหลัก */
-            width: 15px;     /* ความยาวของก้านที่งอกออกมา */
-            height: 2px;     /* ความหนาของก้าน */
-            background-color: rgba(255, 255, 255, 0.4);
-            z-index: 5;
-        }
-
-        /* สไตล์ของลิงก์และไอคอน */
-        .tree-menu a {
-            color: #4ba3e3;
-            text-decoration: underline;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .tree-menu a:hover {
-            color: #79c2f8;
-        }
-
-        /* 📱 โค้ดชุดนี้จะทำงานอัตโนมัติเฉพาะบนมือถือ (หน้าจอเล็กกว่า 768px) โดยไม่ยุ่งกับสไตล์เดิมในคอม */
-        @media screen and (max-width: 768px) {
-            .summarizecontent {
-                position: relative !important;
-                top: unset !important;
-                left: unset !important;
-                width: 90% !important;
-                max-width: 100% !important;
-                margin: 30px auto !important; /* จัดกึ่งกลางต่อท้ายกล่องดำ */
-                min-height: 400px;
-            }
-            /* 1. บังคับกล่องหลักให้ยืดหดตามจอมือถือ และอยู่กึ่งกลาง */
-            .mathstudy-box {
-                width: 90% !important;        /* บังคับกว้าง 90% ของจอมือถือ */
-                max-width: 450px !important;  /* ไม่ให้กล่องใหญ่เกินไป */
-                margin: 30px auto !important; /* จัดให้อยู่ตรงกลางจอ (ซ้าย-ขวาเท่ากัน) */
-                box-sizing: border-box !important;
-            }
-
-            /* 2. จัดระเบียบปุ่มด้านในให้เป็นระบบ Flexbox ลูกศรจะได้ไม่หลุดขอบ */
-            .dropdown-btn {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                padding: 10px 5px !important;
-                font-size: 22px !important; /* ปรับขนาดอักษรให้พอดีกับจอมือถือ */
-            }
-
-            /* 3. ล้างค่า margin เก่าของลูกศรที่เคยดันไว้ในคอมพิวเตอร์ออกให้หมด */
-            .arrow-icon {
-                margin-left: 0 !important;
-                margin-top: 0 !important;
-            }
-            
-            /* 4. ปรับภาพพื้นหลังไม่ให้บีบเบี้ยวในมือถือแนวตั้ง */
-            body {
-                background-size: cover !important;
-                background-position: center !important;
-            }
-        }
-
-        .popup {
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), 
-                        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-            will-change: opacity, transform;
-            /* padding: 40px 20px; */
-            max-width: 900px;
-            /* margin: 0 auto; */
-            text-align: center;
-            line-height: 1.4;
-        }
-        .popup.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        
-        .summarizecontent {
-            background-color: #ffffff !important; /* บังคับสีขาวทึบสนิท */
-            color: #222222 !important;
-            border-radius: 20px;
-            border: 3px solid #000000;
-            box-shadow: 6px 6px 0px #000000;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-sizing: border-box;
-            position: absolute;
-            top: 100px;              
-            left: 560px;             
-            width: calc(100% - 620px); 
-            max-width: 800px;        
-            min-height: 600px;
-            max-height: 750px;
-            margin-top: -80px;
-            margin-left: -60px;
-        }
-
-        .board-header {
-            background-color: #78bbe8; /* สีฟ้าธีมของคุณ */
-            padding: 15px 20px;
-            border-bottom: 3px solid #000000;
-            color: white;
-        }
-
-        .board-body {
-            padding: 25px;
-            overflow-y: auto;       
-            color: #222222 !important;
-        }
-
-        .tree-menu button{
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            background: transparent;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 6px 12px 6px 20px;
-            text-align: left;
-            cursor: pointer;
-            white-space: normal;
-            overflow-wrap: break-word;
-            transition: background-color 0.25s ease, transform 0.25s ease;
-            position: relative;
-            z-index: 2;
-            text-decoration: underline;
-        }
-
-        .tree-menu button:hover {
-            background-color: #4ba3e3 !important; 
-            color: white !important;       
-            width: calc(100% - 10px);   
-            text-decoration: none;    
-        }
-        .tree-menu button::after{
-            background-color: white;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <link rel="stylesheet" href="anysubject.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ],
+            throwOnError : false
+        });">
+    </script>
 <body>
     <button class="menu-trigger-btn" id="openMenuBtn">
         <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;background-color: white;border-radius: 100px;">
@@ -553,7 +56,7 @@
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
             <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคมศึกษา</a></p>
-            <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
+            
         </div>
         
         <hr>
@@ -581,20 +84,20 @@
                 </button>
                 <div class="dropdown-content" id="mathContent" style="background-color: transparent;">
                     <ul class="tree-menu">
-                        <li><button>เซตคืออะไร?</button></li>
-                        <li><button>รูปแบบการเขียนเซต</button></li>
-                        <li><button>ชนิดของเซต</button></li>
-                        <li><button>เอกภพสัมพัทธ์(U)</button></li>
-                        <li><button>เซตที่เท่ากัน</button></li>
-                        <li><button>สับเซต(⊂)</button></li>
-                        <li><button>เพาเวอร์เซต(P)</button></li>
-                        <li><button>แผนภาพเวนน์-ออยเลอร์</button></li>
-                        <li><button>การดำเนินการระหว่างเซต</button></li>
-                        <li><button>ยูเนี่ยน(Union)</button></li>
-                        <li><button>อินเตอร์เซค(Intersect)</button></li>
-                        <li><button>ผลต่างระหว่างเซต</button></li>
-                        <li><button>คอมพลีเมนต์(complement)</button></li>
-                        <li><button>สูตรสำหรับการแก้โจทย์ปัญหา</button></li>               
+                        <li><button class="sub-menu-btn" data-target="#set-intro">เซตคืออะไร?</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-howto">รูปแบบการเขียนเซต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-type">ชนิดของเซต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-uni">เอกภพสัมพัทธ์(U)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#equal-set">เซตที่เท่ากัน</button></li>
+                        <li><button class="sub-menu-btn" data-target="#sub-set">สับเซต(⊂)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#power-set">เพาเวอร์เซต(P)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#van-diagram">แผนภาพเวนน์-ออยเลอร์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#operation-set">การดำเนินการระหว่างเซต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#union">ยูเนี่ยน(Union)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#intersect">อินเตอร์เซค(Intersection)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#minus-set">ผลต่างระหว่างเซต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#complement">คอมพลีเมนต์(complement)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#solution-formula">สูตรสำหรับการแก้โจทย์ปัญหา</button></li>               
                     </ul>
                 </div> <hr>
             </div>
@@ -713,8 +216,205 @@
                 <h3>📌 คณิตศาสตร์ ม.4</h3>
             </div>
             <div class="board-body">
-                <p style="color: #333;">ยินดีต้อนรับเข้าสู่บทเรียน! กรุณาเลือกหัวข้อวิชาเรียนทางด้านซ้ายเพื่อแสดงเนื้อหาแผ่นสรุปตรงนี้...</p>
-                </div>
+            <section id="set-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เซตคืออะไร?</span>
+                </h2>
+                <p>ให้มองว่า เซต = กล่อง หรือ กลุ่ม ที่เอาไว้ใส่ของ ของที่อยู่ในกล่องเราจะเรียกว่า สมาชิก (Elements) เรามักตั้งชื่อกล่องด้วยภาษาอังกฤษตัวพิมพ์ใหญ่ เช่น A, B, C โดยใช้สัญลักษณ์{}แทนตัวกล่อง เช่น A = {1,2,3} อ่านว่า เซตAเท่ากับเซตที่มีสมาชิกประกอบด้วย1,2และ3</p>
+                <p><strong>สมาชิกคือ:</strong><br>$\in$ แปลว่า "เป็นสมาชิกของ" (อยู่ในกล่อง) เช่น $1 \in A$ (เลข 1 อยู่ในเซต $A$) <br>$\notin$ แปลว่า "ไม่เป็นสมาชิกของ" (ไม่อยู่ในกล่อง) เช่น $4 \notin A$ (เลข 4 ไม่อยู่ในเซต $A$)</li></p>
+            </section>
+
+            <section id="set-howto" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">รูปแบบการเขียนเซต</span>
+                </h2>
+                <p>การเขียนเซตแบ่งออกเป็น 2 รูปแบบหลัก ๆ คือ:</p>
+                <ul>
+                    <li><strong>แบบแจกแจงสมาชิก:</strong> เขียนสมาชิกทุกตัวลงในปีกกา เช่น $A = \{1, 2, 3\}$</li>
+                    <li><strong>แบบบอกเงื่อนไข:</strong> ใช้ตัวแปรแทนสมาชิก เช่น $B = \{x \mid x \text{ เป็นจำนวนเต็มบวก}\}$</li>
+                </ul>
+            </section>
+
+            <section id="set-type" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ชนิดของเซต</span>
+                </h2>
+                <p><strong>เซตจำกัด (Finite Set):</strong> เซตที่นับจำนวนสมาชิกได้ว่ามีกี่ตัว (ถึงจะเยอะเป็นล้านแต่นับจบ ก็ถือว่าจำกัด) เช่น {1,2,3} , {-5,-4,-3,...,4} , เซตของสระในภาษาอังกฤษ เป็นต้น</p>
+                <p><strong>เซตอนันต์ (Infinite Set):</strong> เซตที่มีสมาชิกเยอะจนนับไม่ถ้วน เช่น เซตของดวงดาวในจักรวาล , เซตของจำนวนเต็มบวก $\{1, 2, 3, ...\}$ , $\{...-3,-2,-1\}$ , $\{...,-1,0,1,...\}$ เป็นต้น</p>
+                <p><strong>เซตว่าง (Empty Set):</strong> กล่องเปล่าที่ไม่มีอะไรอยู่เลย สัญลักษณ์คือ $\emptyset$ หรือ {} เช่น  $\{x \mid x < 0\}$ , เซตของเดือนในประเทศไทยที่ลงท้ายด้วยคน เป็นต้น</p>
+                <p><strong>จำนวนสมาชิกของเซต:</strong> ใช้สัญลักษณ์ n(A) แทนจำนวนสมาชิกของเซตจำกัด A ถ้า A = {1, b, ขนมปัง} จะได้ว่า n(A) = 3 หากในเซตมีสมาชิกซ้ำกัน จะนับสมาชิกที่ซ้ำรวมเป็นตัวเดียว</p>
+                <p><strong style="color: red;">ข้อควรระวัง!!:</strong> {$\emptyset$} ไม่ใช่เซตว่าง เนื่องจากมี$\emptyset$เป็นสมาชิกในเซต จึงถือว่าเป็นเซตจำกัด</p>
+            </section>
+
+            <section id="set-uni" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เอกภพสัมพัทธ์ ($U$)</span> 
+                </h2>
+                <p>ในการเขียนเซตจะต้องกำหนดเขตที่บ่งบอกถึงขอบเขตของสิ่งที่จะพิจารณา เรียกเซตกำหนดเขตนี้ว่า เอกภพสัมพัทธ์ (Relative Universe) ซึ่งมักเขียนแทนด้วย U </p>
+                <br><b>สำหรับเอกภพสัมพัทธ์ที่พบบ่อย เช่น</b>
+                <ul>
+                    <li><p><strong>ℕ</strong> คือ เซต ของจำนวนนับ หรือ จำนวนเต็มบวก</p></li>
+                    <li><p><strong>ℤ</strong> คือ เซตของจำนวนเต็ม</p></li>
+                    <li><p><strong>ℝ</strong> คือ เซตของจำนวนจริง</p></li>
+                </ul>
+            </section>
+
+            <section id="equal-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เซตที่เท่ากัน</span>
+                </h2>
+                <p>เซตสองเซตจะเท่ากันก็ต่อเมื่อ เซตทั้งสองมีสมาชิกเหมือนกันทุกตัว โดยไม่สนว่าสมาชิกจะอยู่ในตำแหน่งเดียวกันหรือไม่หากมีสมาชิกเหมือนกันก็จะนับว่าเป็นเซตเท่ากันเช่นกัน ช่น ถ้า $A = \{1, 2\}$ และ $B = \{2, 1\}$ จะได้ว่า $A = B$</p>
+            </section>
+            
+            <section id="sub-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สับเซต</span>
+                </h2>
+                <p>เซต A เป็นสับเซตของ B ก็ต่อเมื่อ สมาชิกทุกตัวของเซต A เป็นสมาชิกของ B เขียนแทนด้วยสัญลักษณ์ A⊂B หากมีสมาชิกของAที่ไม่เหมือนกับBจะถือว่าไม่เป็นสับเซตซึ่งเขียนแทนด้วยสัญลักษณ์ A⊂ที่มีเครื่องหมายขีดฆ่าB เช่น </p>
+                <ul>
+                    <li>A={1,2} B={1,2,3} จะเห็นได้ว่าสมาชิกของเซตAและBมีสมาชิกที่เหมือนกันคือ1และ2จึงสรุปได้ว่า A ⊂ B</li>
+                    <li>A={1,2,4} B={1,2,3} จะเห็นได้ว่าสมาชิกของเซตAมี4เกินมา1ตัวซึ่งไม่เป็นสมาชิกของBจึงสรุปได้ว่า A⊂ที่มีขีดฆ่าB</li>
+                </ul>
+                <b>การแยกตัวประกอบสับเซต</b>
+                <p>A = {1,2} สามารถแยกตัวประกอบสับเซตได้เป็น {$\emptyset$},{1},{2},{1,2}</p>
+                <b>โดยมีสมบัติของสับเซตที่น่าสนใจคือ</b>
+                <ul>
+                    <li>∅ เป็นสับเซตของทุกเซต</li>
+                    <li>ถ้าเซต A มีสมาชิก n ตัว จะได้ว่า A มีสับเซตทั้งหมด $x^{n}$ ตัว </li>
+                </ul>
+            </section>
+
+            <section id="power-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เพาเวอร์เซต</span>
+                </h2>
+                <p>เรียกเซตของสับเซตทั้งหมดของสับเซต A ว่า เพาเวอร์เซต (Power Set) ของเซต A เขียนแทนด้วย P(A)</p>
+                <b>ตัวอย่างเช่น</b>
+                <p>A = {1,2} P(A) = {{$\emptyset$},{1},{2},{1,2}} จำง่ายๆ P(A)={สมาชิกของสับเซตทั้งหมด}</p>
+            </section>
+
+            <section id="van-diagram" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">แผนภาพเวนน์-ออยเลอร์</span>
+                </h2>
+                <p>แผนภาพเวนน์เป็นการแสดงเซตเป็นภาพ ซึ่งช่วยให้เห็นภาพความสัมพันธ์ระหว่างเซต และใช้การแก้ปัญหาเรื่องเซตได้ง่ายขึ้น</p>
+                <b>ตัวอย่าง เช่น</b>
+                <p>กำหนดให้ $\mathcal{U}$={1,2,3,4,5} A={1,2,3,4} B={2,3,6} </p>
+                <img src="img/set.png" alt="van-diagram" width="700" height="400">
+                <p>ตัวอักษรภาษาอังกฤษในเซตแทนเป็นชื่อเซต</p>
+            </section>
+
+            <section id="operation-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การดำเนินการระหว่างเซต</span>
+                </h2>
+                <p>คือ การนำเซตตั้งแต่ 2 เซตขึ้นไปมาทำปฏิสัมพันธ์กันภายใต้เงื่อนไขหรือกฎเกณฑ์ทางคณิตศาสตร์ เพื่อสร้างให้เกิดเป็นเซตใหม่ขึ้นมา  เปรียบเสมือนกับการที่เรานำตัวเลขมาบวก ลบ คูณ หรือหารกันในระบบจำนวนทั่วไป เพื่อช่วยในการจัดกลุ่ม วิเคราะห์ และหาความสัมพันธ์ของสมาชิกที่อยู่ภายในเซตเหล่านั้นได้อย่างเป็นระบบ <br><b>โดยมีตัวดำเนินการอยู่ทั้งหมด4ตัว ตามแต่ละหัวข้อด้านล่าง</b></p>
+            </section>
+
+            <section id="union" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ยูเนียน(Union)</span>
+                </h2>
+                <p>การดำเนินการระหว่างเซตตั้งแต่ 2 เซตขึ้นไป โดยการนำสมาชิกทั้งหมดของทุกเซตมารวมเข้าด้วยกันเป็นเซตใหม่เพียงเซตเดียว  ซึ่งถ้าหากมีสมาชิกตัวใดที่ซ้ำกันอยู่ เราจะเขียนแทนด้วยสมาชิกตัวนั้นเพียงครั้งเดียวเท่านั้นตามกฎเกณฑ์ของเซต นิยมเขียนแทนด้วยสัญลักษณ์คล้ายตัวยู $\cup$ </p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cup$B 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4,5,6}</span></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={2,3,4} จงหาA$\cup$B 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4} </span><p>เนื่องจากเซตAและBมีสามาชิก2และ3เหมือนกันจึงเอามาเขียนแค่ตัวเดียว</p></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของยูเนียน(union)</b>
+                <img src="img/unionset.png" alt="van-diagram" width="700" height="400">
+            </section>
+
+            <section id="intersect" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อินเตอร์เซค(Intersection)</span>
+                </h2>
+                <p>การดำเนินการระหว่างเซตตั้งแต่ 2 เซตขึ้นไป โดยเป็นการเลือกเอาเฉพาะสมาชิกตัวที่ซ้ำกันหรือมีอยู่ร่วมกันในทุกเซตมารวมกันเพื่อสร้างเป็นเซตใหม่ ซึ่งหากไม่มีสมาชิกตัวใดที่มีค่าเหมือนกันหรือซ้ำกันเลย ผลลัพธ์ที่ได้จากการอินเตอร์เซกชันนั้นจะเป็นเซตว่าง นิยมเขียนแทนด้วยสัญลักษณ์คล้ายตัวยูคว่ำ $\cap$</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหาA$\cap$B 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cap$B={3} เพราะในเซตAและBมีสมาชิกที่ซ้ำกันคือ3</span></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cap$B 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B=$\varnothing$ เพราะไม่มีสมาชิกที่ซ้ำกันทั้งในเซตAและB</span></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของอินเตอร์เซค(Intersetion)</b>
+                <img src="img/intersec-set.png" alt="van-diagram" width="700" height="400">
+            </section>
+
+            <section id="minus-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ผลต่างระหว่างเซต</span>
+                </h2>
+                <p>การดำเนินการระหว่างเซตสองเซต โดยผลต่างของเซต $A$ และเซต $B$ (เขียนแทนด้วย $A - B$) คือเซตใหม่ที่สร้างขึ้นจากการเลือกเอาเฉพาะสมาชิกที่อยู่ในเซต $A$ แต่ต้องไม่อยู่ในเซต $B$  ซึ่งในทางกลับกัน หากเป็น $B - A$ ก็จะหมายถึงการเลือกเฉพาะสมาชิกที่อยู่ในเซต $B$ แต่ไม่อยู่ในเซต $A$ นั่นเอง เปรียบเสมือนการนำเซตตั้งต้นมาตั้งแล้วหักลบสมาชิกที่มีส่วนซ้ำกับอีกเซตหนึ่งทิ้งไป</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหา$A - B$
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2} เพราะ ในเซต$A$มีเลข3ที่ไปซ้ำกับเซต$B$เราจึงตัดเลข3ทิ้งไป และเหลือเพียงตัวเลข<br>{1, 2}ซึ่งเป็นของเซต$A$ฝั่งเดียว</span></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหา$A - B$ 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2,3} เพราะ สมาชิกในเซต$A$ทั้งหมดไม่มีตัวไหนที่ซ้ำหรืออยู่ในเซต$B$เลย เราจึงดึงสมาชิกของเซต$A$มาตอบได้ทั้งหมด</span></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหา$B - A$ 
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$B - A$={4,5} เพราะ ในเซต$B$มีเลข3ที่ไปซ้ำกับเซต$A$เราจึงตัดเลข3ทิ้งไปและเหลือเพียงตัวเลข<br>{4, 5}ซึ่งเป็นของเซต$B$ฝั่งเดียว</span></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของผลต่างระหว่างเซต</b>
+                <img src="img/minus-set.png" alt="van-diagram" width="700" height="400">
+            </section>
+
+            <img id="complement" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">คอมพลีเมนต์</span>
+                </h2>
+                <p>การดำเนินการหาภายนอกของเซตที่สนใจ โดยคอมพลีเมนต์ของเซต $A$ (เขียนแทนด้วย $A'$ หรือ $A^c$) คือเซตใหม่ที่รวมสมาชิกทั้งหมดในเอกภพสัมพัทธ์ ($U$) แต่ไม่เอาสมาชิกที่อยู่ในเซต $A$ เปรียบเสมือนการสลับเงื่อนไขเพื่อเลือกเฉพาะ "สิ่งอื่น ๆ ทั้งหมดที่เหลืออยู่" ที่อยู่รอบนอกวงของเซตนั้น แต่ยังต้องอยู่ภายในขอบเขตของเอกภพสัมพัทธ์ที่กำหนดไว้</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้$U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$ $A = \{1, 3, 5, 7, 9\}$ จงหา $A'$
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A'$={2,4,6,8,10} มองหาตัวเลขที่อยู่ใน $U$ แต่ห้ามเอาตัวเลขที่อยู่ในเซต $A$ (ซึ่งก็คือการตัดเลขคี่ทิ้งไปให้หมด) จึงเหลือเพียงเลขคู่รอบนอกนั่นเอง</span></li>
+                    <li>กำหนดให้$U = \{a, b, c, d, e, f\}$ $A = \{a, b, c\}$ $B = \{c, d, e\}$ จงหา $(A \cup B)'$
+                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$(A \cup B)'$={f} <br>วิธีคิด<br>1. หาในวงเล็บก่อน: $A \cup B$ คือการมัดรวมสมาชิกรวมกัน ได้เป็น $\{a, b, c, d, e\}$<br>2. หาคอมพลีเมนต์ต่อ: เอาจักรวาล $U$ ตั้ง แล้วหักกลุ่ม $\{a, b, c, d, e\}$ ทิ้งไป ตัวที่เหลืออยู่รอบนอกสุด ๆ จึงมีแค่ตัว f ตัวเดียว</span></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของคอมพลีเมนต์</b>
+                <img src="img/complement-set.png" alt="van-diagram" width="700" height="400">
+            </section>
+
+            <section id="solution-formula" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สูตรสำหรับการแก้โจทย์ปัญหา(เนื้อหานี้ค่อนข้างยาก)</span>
+                </h2>
+                <p>1. สูตรสำหรับ 2 เซต (กลุ่มข้อมูล 2 กลุ่ม)ใช้เมื่อโจทย์พูดถึงสิ่งของหรือกิจกรรม 2 อย่าง เช่น ชอบคณิตศาสตร์ ชอบภาษาอังกฤษ$$n(A \cup B) = n(A) + n(B) - n(A \cap B)$$</p>
+                <ul>
+                    <li>$n(A \cup B)$ คือ จำนวนสมาชิกทั้งหมดที่อยู่ในกลุ่ม $A$ หรือ $B$ (หรือทั้งสองกลุ่ม)</li>
+                    <li>$n(A)$ คือ จำนวนสมาชิกทั้งหมดในกลุ่ม $A$</li>
+                    <li>$n(B)$ คือ จำนวนสมาชิกทั้งหมดในกลุ่ม $B$</li>
+                    <li>$n(A \cap B)$ คือ จำนวนสมาชิกที่ซ้ำกัน (อยู่ทั้งกลุ่ม $A$ และ $B$)</li>
+                </ul>
+                <p>2. สูตรสำหรับ 3 เซต (กลุ่มข้อมูล 3 กลุ่ม) ใช้เมื่อโจทย์มีความซับซ้อนขึ้น มีกิจกรรมหรือสิ่งของ 3 อย่าง เช่น ฟุตบอล บาสเกตบอล วอลเลย์บอล $$n(A \cup B \cup C) = n(A) + n(B) + n(C) - n(A \cap B) - n(A \cap C) - n(B \cap C) + n(A \cap B \cap C)$$</p>
+                    <ul>
+                    <li>$n(A \cup B \cup C)$ คือ จำนวนคนที่อยู่ในกลุ่มใดกลุ่มหนึ่งอย่างน้อยหนึ่งกลุ่ม</li>
+                    <li>$n(A)$ คือ จำนวนคนทั้งหมดในวง $A$ (นับรวมทุกคนที่อยู่ภายในวง $A$ ทั้งวง)</li>
+                    <li>$n(B)$ คือ จำนวนคนทั้งหมดในวง $B$ (นับรวมทุกคนที่อยู่ภายในวง $B$ ทั้งวง)</li>
+                    <li>$n(C)$ คือ จำนวนคนทั้งหมดในวง $C$ (นับรวมทุกคนที่อยู่ภายในวง $C$ ทั้งวง)</li>
+                    <li>$n(A \cap B)$ คือ จำนวนคนที่ซ้ำกันระหว่างวง $A$ กับ $B$ (คนที่ทำทั้งกิจกรรม $A$ และ $B$)</li>
+                    <li>$n(A \cap C)$ คือ จำนวนคนที่ซ้ำกันระหว่างวง $A$ กับ $C$ (คนที่ทำทั้งกิจกรรม $A$ และ $C$)</li>
+                    <li>$n(B \cap C)$ คือ จำนวนคนที่ซ้ำกันระหว่างวง $B$ กับ $C$ (คนที่ทำทั้งกิจกรรม $B$ และ $C$)</li> 
+                    <li>$n(A \cap B \cap C)$ คือ จำนวนสมาชิกที่ซ้ำกันทั้งหมดทั้ง 3 กลุ่ม</li>                  
+                </ul>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>จากการสำรวจนักเรียนชั้น ม.4 จำนวน 50 คน พบว่ามีนักเรียนที่ชอบเล่นเกม Free Fire จำนวน 30 คน ชอบเล่นเกม Roblox จำนวน 25 คน และชอบเล่นทั้งสองเกมจำนวน 10 คน จงหาว่ามีนักเรียนกี่คนที่ไม่ชอบเล่นเกมทั้งสองนี้เลย? <br>วิธีคิดโดยใช้สูตร:<br>ให้ $U$ แทนนักเรียนทั้งหมด $\rightarrow n(U) = 50$<br>ให้ $A$ แทนกลุ่มที่ชอบ Free Fire $\rightarrow n(A) = 30$<br>ให้ $B$ แทนกลุ่มที่ชอบ Roblox $\rightarrow n(B) = 25$ <br>ชอบทั้งสองเกมคือส่วนที่ซ้ำกัน $\rightarrow n(A \cap B) = 10$ <br>แทนค่าในสูตร 2 เซต เพื่อหาคนที่ชอบเล่นเกมอย่างน้อย 1 เกมก่อน:
+                        <p>$$n(A \cup B) = n(A) + n(B) - n(A \cap B)$$ $$n(A \cup B) = 30 + 25 - 10$$ $$n(A \cup B) = 45 \text{ คน}$$</p>
+                        <p>ดังนั้น มีคนที่ชอบเล่นเกมรวมทั้งหมด 45 คน โจทย์ถามหา คนที่ไม่ชอบเล่นเลย (อยู่รอบนอกวงกลม) เราจึงเอาจำนวนนักเรียนทั้งหมดตั้งแล้วลบด้วยคนที่ชอบเล่นเกม:</p>
+                        <p>$$\text{ไม่ชอบเล่นทั้งสองเกม} = n(U) - n(A \cup B)$$ $$\text{ไม่ชอบเล่นทั้งสองเกม} = 50 - 45 = 5 \text{ คน}$$</p>
+                        <b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">มีนักเรียน 5 คนที่ไม่ชอบเล่นเกมทั้งสองนี้เลย</span>
+                    </li>
+                    <li>ในห้องเรียนหนึ่งมีนักเรียนที่ชอบวิชาคณิตศาสตร์  20 คน ชอบวิชาเคมี 15 คน ชอบวิชาฟิสิกส์ 18 คน โดยมีข้อมูลเพิ่มเติมดังนี้:<br>-ชอบคณิตและเคมี 7 คน <br>-ชอบคณิตและฟิสิกส์ 9 คน <br>-ชอบเคมีและฟิสิกส์ 6 คน <br>-ชอบทั้ง 3 วิชาเลย 3 คน</li>
+                        <p>จงหาว่ามีนักเรียนที่ชอบเรียนอย่างน้อยหนึ่งวิชา (นับรวมทุกคนที่อยู่ในวง) ทั้งหมดกี่คน?</p>
+                        <p>วิธีคิดเมื่่อใช้สูตร: <br>จากโจทย์เราได้ตัวแปรดังนี้: <br>$n(M) = 20, \quad n(C) = 15, \quad n(P) = 18$ <br>$n(M \cap C) = 7, \quad n(M \cap P) = 9, \quad n(C \cap P) = 6$ <br>$n(M \cap C \cap P) = 3$</p>
+                        <p>แทนค่าลงในสูตร 3 เซตตรงๆ ได้เลย $$n(M \cup C \cup P) = 20 + 15 + 18 - 7 - 9 - 6 + 3$$ $$n(M \cup C \cup P) = 53 - 22 + 3$$ $$n(M \cup C \cup P) = 34 \text{ คน}$$</p>
+                        <b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">มีนักเรียนที่ชอบเรียนอย่างน้อยหนึ่งวิชาทั้งหมด 34 คน</span>
+                </ul>
+                </section>   
+            </div>
         </div>
     </div>
     
@@ -826,6 +526,135 @@
         const popupElements = document.querySelectorAll('.popup');
         popupElements.forEach((element) => observer.observe(element));
 
+        const subMenuBtns = document.querySelectorAll('.sub-menu-btn[data-target]');
+        const contentSections = document.querySelectorAll('.content-section');
+        const boardBody = document.querySelector('.board-body');
+
+        const sectionToBtnMap = new Map();
+
+        subMenuBtns.forEach((btn) => {
+            const targetId = btn.dataset.target?.replace('#', '');
+            if (targetId) {
+                sectionToBtnMap.set(targetId, btn);
+            }
+        });
+
+        function setActiveSubMenuBtn(activeBtn) {
+
+        subMenuBtns.forEach((btn) => {
+            btn.classList.remove('sub-item-active');
+        });
+
+        activeBtn.classList.add('sub-item-active');
+
+        // เลื่อนเมนูด้านซ้ายตามหัวข้อที่กำลังอ่าน
+        activeBtn.scrollIntoView({
+            block: 'nearest'
+        });
+
+    }
+
+        function scrollBoardToSection(targetSection) {
+            if (!boardBody || !targetSection) return;
+
+            const targetTop =
+                targetSection.getBoundingClientRect().top -
+                boardBody.getBoundingClientRect().top +
+                boardBody.scrollTop;
+
+            boardBody.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        subMenuBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                if (!targetId) return;
+
+                const targetSection = document.querySelector(targetId);
+                if (!targetSection) return;
+
+                setActiveSubMenuBtn(btn);
+                scrollBoardToSection(targetSection);
+            });
+        });
+
+        if (boardBody && contentSections.length > 0) {
+            const scrollSpyObserver = new IntersectionObserver((entries) => {
+                let currentSection = null;
+
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (
+                            !currentSection ||
+                            entry.boundingClientRect.top < currentSection.boundingClientRect.top
+                        ) {
+                            currentSection = entry;
+                        }
+                    }
+                });
+
+        if (currentSection) {
+            const btn = sectionToBtnMap.get(currentSection.target.id);
+            if (btn) {
+                setActiveSubMenuBtn(btn);
+            }
+        }
+        }, {
+            root: boardBody,
+            threshold: 0.45,
+            rootMargin: '-10% 0px -55% 0px'
+        });
+
+        contentSections.forEach((section) => {
+            scrollSpyObserver.observe(section);
+        });
+    }
+    // Scroll Spy
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+
+    let currentSection = null;
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            if (
+                !currentSection ||
+                entry.boundingClientRect.top <
+                currentSection.boundingClientRect.top
+            ) {
+                currentSection = entry;
+            }
+
+        }
+
+    });
+
+    if (currentSection) {
+
+        const btn = sectionToBtnMap.get(
+            currentSection.target.id
+        );
+
+        if (btn) {
+            setActiveSubMenuBtn(btn);
+        }
+
+    }
+
+    }, {
+        root: document.querySelector('.board-body'),
+        threshold: 0.05,
+        rootMargin: '-15% 0px -60% 0px'
+    });
+
+    contentSections.forEach((section) => {
+        scrollSpyObserver.observe(section);
+        });
+
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {
             console.log("ชื่อที่ดึงมาได้คือ:", localStorage.getItem('username'));
@@ -920,9 +749,6 @@
             // เริ่มต้นนับเวลาครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ
             resetTimer();
         }
-
-        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
-        document.addEventListener('DOMContentLoaded', setupInactivityTimer);
     </script>
 
     <!-- Logout confirmation popup modal -->

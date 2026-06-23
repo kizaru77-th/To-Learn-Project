@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | Biology Learning</title>
+    <title>ToLearn | Social Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -315,7 +315,7 @@
             min-height: 280px;         
             display: flex;
             flex-direction: column;    
-            align-items: center;       
+            align-items: left;       
             justify-content: flex-start; 
             padding: 25px;
         }
@@ -418,6 +418,11 @@
             min-height: auto !important; 
             margin-bottom: 15px;         
         }
+        .progess-container {
+            width: 100% !important;
+            max-width: 200px;
+            margin: 15px auto 0 auto !important;
+        }
     }
     </style>
 </head>
@@ -460,7 +465,7 @@
             <p>📘 <a href="sciencelearn.html" onclick="checkAccess('sciencelearn.html'); return false;">วิทยาศาสตร์</a></p>
             <p>📙 <a href="englishlearn.html" onclick="checkAccess('englishlearn.html'); return false;">ภาษาอังกฤษ</a></p>
             <p>🌎 <a href="sociallearn.html" onclick="checkAccess('sociallearn.html'); return false;">สังคมศึกษา</a></p>
-            <p>💻 <a href="programminglearn.html" onclick="checkAccess('programminglearn.html'); return false;">การเขียนโปรแกรม</a></p>
+            
         </div>
         
         <hr>
@@ -481,17 +486,20 @@
     </div>
 
     <div class="popup">
-        <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">ชีววิทยา</h1>
+        <h1 style="font-size: 40px !important;margin-top: -10px !important;text-align: center !important;">สังคมศึกษา</h1>
           <p style="text-align: center; margin-top: -20px;">
             เลือกเรียนตามระดับชั้นของคุณได้เลย!
         </p>
         <div class="study-container">            
             <div class="studybox">
                 <b style="font-size: 32px;">ม.4</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง  ปริมาณสัมพันธ์ธรรมชาติของสิ่งมีชีวิต การศึกษาชีววิทยา เคมีที่เป็นพื้นฐานของสิ่งมีชีวิต เซลล์ของสิ่งมีชีวิต การหายใจระดับเซลล์และการสังเคราะห์ด้วยแสง โครโมโซมและสารพันธุกรรม การถ่ายทอดลักษณะทางพันธุกรรม เทคโนโลยีทางดีเอ็นเอ วิวัฒนาการ
-                </p>
-                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>พระพุทธศาสนา</li>
+                    <li>หน้าที่พลเมือง</li>
+                </ul>
+                <button type="button" style="margin-top: 50px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;display: flex;align-items: center;justify-content: center ;gap:8px;" onclick="window.location.href='M4math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -500,10 +508,13 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.5</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง  การสืบพันธุ์ของพืชดอก โครงสร้างและการเจริญเติบโตของพืชดอก การลำเลียงของพืช การสังเคราะห์ด้วยแสง การควบคุมการเจริญเติบโตและการตอบสนองของพืช ระบบย่อยอาหาร ระบบหายใจ ระบบหมุนเวียนเลือดและระบบน้ำเหลือง ระบบภูมิคุ้มกัน ระบบขับถ่าย
-                </p>
-                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>ภูมิศาสตร์</li>
+                    <li>เศรษศาสตร์</li>
+                </ul>
+                <button type="button" style="margin-top: 50px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M5math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
@@ -512,10 +523,13 @@
 
             <div class="studybox">
                 <b style="font-size: 32px;">ม.6</b>
-                <p style="margin-top: 12px;text-align: left;">
-                    เรียนรู้เรื่อง  ระบบประสาทและอวัยวะรับความรู้สึก การเคลื่อนที่ของสิ่งมีชีวิต ระบบต่อมไร้ท่อ ระบบสืบพันธุ์และการเจริญเติบโต พฤติกรรมของสัตว์ ความหลากหลายทางชีวภาพ ระบบนิเวศและประชากร มนุษย์กับความยั่งยืนของทรัพยากรธรรมชาติและสิ่งแวดล้อม
-                </p>
-                <button type="button" style="margin-top: 65px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
+                <ul style="margin-top: 12px;text-align: left;">
+                    <b style="margin-left: -20px;font-size: 18px;">เรียนรู้เรื่อง</b>
+                    <br>                    
+                    <li>ประวัติศาสตร์ไทย</li>
+                    <li>ประวัติศาสตร์สากล</li>
+                </ul>
+                <button type="button" style="margin-top: 50px; padding: 10px 50px; border-radius: 100px; color: white; border: none; font-size: 20px; cursor: pointer;" onclick="window.location.href='M6math.html'">เริ่มเรียน →</button>
                 <div class="progess-container">
                     <progress id="file" max="100" value="90" style="background-color: gray;border-radius: 15px;"> 90% </progress>
                     <span class="percentage">90%</span>
