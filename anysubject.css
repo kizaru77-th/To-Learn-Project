@@ -431,20 +431,17 @@ a:hover {
   }
 
   /* 2. จัดระเบียบปุ่มด้านในให้เป็นระบบ Flexbox ลูกศรจะได้ไม่หลุดขอบ */
-  .dropdown-btn {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    padding: 10px 5px !important;
-    font-size: 22px !important; /* ปรับขนาดอักษรให้พอดีกับจอมือถือ */
-  }
+  .dropdown-btn{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
 
-  /* 3. ล้างค่า margin เก่าของลูกศรที่เคยดันไว้ในคอมพิวเตอร์ออกให้หมด */
-  .arrow-icon {
-    margin-left: 0 !important;
-    margin-top: 0 !important;
-  }
+  .arrow-icon{
+    margin-left:auto;
+    flex-shrink:0;
+}
 
   /* 4. ปรับภาพพื้นหลังไม่ให้บีบเบี้ยวในมือถือแนวตั้ง */
   body {
@@ -635,4 +632,10 @@ body {
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
   }
+}
+.dropdown-btn{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
 }
