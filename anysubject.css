@@ -8,8 +8,10 @@ body {
   background-size: 100% 100%;
   color: white;
   background-attachment: fixed;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   overflow-x: hidden;
+  position: fixed;
+    inset: 0;
 }
 
 /* ☰ ปุ่มเปิดเมนู */
@@ -305,8 +307,7 @@ a:hover {
     background-size 0.5s ease-in-out;
   background-image: linear-gradient(
     to bottom right,
-    rgb(217, 255, 0),
-    rgb(188, 255, 186)
+    white
   );
   background-size: 0% 100%;
   background-repeat: no-repeat;
@@ -460,7 +461,7 @@ a:hover {
     transform 1s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
   /* padding: 40px 20px; */
-  max-width: 900px;
+  max-width: 600px;
   /* margin: 0 auto; */
   text-align: center;
   line-height: 1.4;

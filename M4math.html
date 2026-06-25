@@ -75,7 +75,6 @@
             <p> DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
-    <div class="popup">
         <div class="mathstudy-box">       
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="mathbtn" style="font-size: 25px;margin-top:-10px;background-color: transparent;color:white;border: none;">
@@ -108,14 +107,14 @@
                 </button>
                 <div class="dropdown-content" id="logicContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>ตรรกศาสตร์คืออะไร?</button></li>
-                        <li><button>ประพจน์</button></li>
-                        <li><button>ตัวเชื่อมประพจน์</button></li>
-                        <li><button>ตารางค่าความจริงของประพจน์</button></li>
-                        <li><button>การสมมูล</button></li>
-                        <li><button>สัจนิรันดร์</button></li>
-                        <li><button>การอ้างเหตุผล</button></li>
-                        <li><button>ประโยคเปิดและตัวบ่งปริมาณ</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#proposition">ประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#proposition-connectors">ตัวเชื่อมประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#table-of-propositions">ตารางค่าความจริงของประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#equivalence">การสมมูล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#eternal-truth">สัจนิรันดร์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#justification">การอ้างเหตุผล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#opening-sentences">ประโยคเปิด</button></li>     
+                        <li><button class="sub-menu-btn" data-target="#quantifiers">ตัวบ่งปริมาณ</button></li>     
                     </ul>
                 </div> <hr>
             </div>
@@ -209,7 +208,6 @@
                 </div>     
             </div>
         </div>
-    </div>
     <div class="content-wrapper">
         <div class="summarizecontent">
             <div class="board-header">
@@ -417,6 +415,63 @@
                         <p></p>
                 </ul>
                 </section>   
+
+                <section id="proposition" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                    <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                        <span style="background-color: #FDF2B5; padding: 2px 4px;">ประพจน์</span>
+                    </h2>
+                    <p>ประพจน์ (Proposition) คือ ประโยคบอกเล่าหรือปฏิเสธที่เราสามารถบอกได้ชัดเจนว่ามัน<br>"เป็นจริง (True - $T$)"หรือ"เป็นเท็จ(False - $F$)"อย่างใดอย่างหนึ่งเท่านั้น</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li><b>เป็นประพจน์:</b> "พระอาทิตย์ขึ้นทางทิศตะวันตก" (เป็นประพจน์ที่มีค่าความจริงเป็น $F$)</li>
+                        <li><b>ไม่เป็นประพจน์:</b> พวกประโยคคำถาม, คำสั่ง, ขอร้อง, อ้อนวอน, อุทาน หรือประโยคที่ตัดสินใจไม่ได้ เช่น "หิวข้าวไหม?", "ห้ามเดินลัดสนาม", "วิชาคณิตศาสตร์ง่ายนิดเดียว" (ไม่มีค่าความจริงที่แน่นอน)</li>
+                    </ul>
+                </section>
+
+                <section id="proposition-connectors" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                    <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                        <span style="background-color: #FDF2B5; padding: 2px 4px;">ตัวเชื่อมประพจน์</span>
+                    </h2>
+                    <p>เวลาเราเอาประพจน์หลายๆ อันมาต่อกัน เราจะใช้ตัวเชื่อม ให้จำ "จุดเด่น" ของแต่ละตัวไว้ | ชื่อตัวเชื่อม | สัญลักษณ์ | กฎเหล็ก (ท่องแค่นี้พอ!)</p>
+                    <ul> 
+                        <li><b>และ (AND) | $\land$ |</b> จะเป็น จริง ($T$) กรณีเดียวคือ $T \land T \equiv T$ (นอกนั้นเท็จหมด)</li> 
+                        <li><b>หรือ (OR) | $\lor$ |</b> จะเป็น เท็จ ($F$) กรณีเดียวคือ $F \lor F \equiv F$ (นอกนั้นจริงหมด)</li> 
+                        <li><b>ถ้า...แล้ว | $\rightarrow$ |</b> จะเป็น เท็จ ($F$) กรณีเดียวคือ $T \rightarrow F \equiv F$ (นอกนั้นจริงหมด)</li> 
+                        <li><b>ก็ต่อเมื่อ | $\leftrightarrow$ |</b> หน้าหลัง เหมือนกันเป็นจริง ($T \leftrightarrow T \equiv T$ และ $F \leftrightarrow F \equiv T$)</li> 
+                        <li><b>นิเสธ (NOT) | $\sim$ |</b> ทำหน้าที่ กลับหน้ามือเป็นหลังมือ (จาก $T$ เป็น $F$, จาก $F$ เป็น $T$)</li>
+                    </ul> 
+                </section>
+                
+                <section id="table-of-propositions" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ตารางค่าความจริงของประพจน์</span>
+                </h2>
+                <p>หากจำตารางนี้ได้โจทย์ทั้งหมดจะง่ายขึ้นแบบ300%</p>
+                <b>ตารางค่าความจริงของประพจน์</b>
+                <img src="img/table-of-propositions.png" alt="van-diagram" class="responsive-img">
+                </section>
+
+                <section id="equivalence" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การสมมูล</span>
+                </h2>
+                <p>สมมูล คือ ประพจน์สองอันที่หน้าตาต่างกัน แต่ "มีค่าความจริงเหมือนกันทุกกรณี" มีทั้งหมด22ค่าสมมูล</p>
+                <b>รูปภาพแสดงค่าสมมูลทั้ง22ค่าสมมูล</b>
+                <img src="img/equivalent.png" alt="van-diagram" class="responsive-img">
+                <p><b>โดยกำหนดให้:</b> <br> p คือ ค่าความจริงตัวแรก , q คือ ค่าความจริงตัวที่2 , T คือ ค่าความจริงที่เป็นจริง และ F คือ ค่าความจริงที่เป็นเท็จ</p>
+                </section>
+
+                <section id="eternal-truth" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สัจนิรันดร์</span>
+                </h2>
+                <p>คือรูปแบบของประพจน์ที่ "เป็นจริง ($T$) เสมอ ไม่ว่าสถานการณ์ใดๆ ก็ตาม" วิธีเช็กเมื่่อโจทย์มีตัวเชื่อมเป็น<br> หรือ ($\lor$) , ถ้า...แล้ว ($\rightarrow$) คือ การหาข้อขัดแย้ง หรือหาได้จากการเทียบตารางค่าความจริงของพจน์แต่ละตัว</p>
+                <b>ตัวอย่างเช่น</b>
+                <p>$[(p \to q) \land p] \to q$ เป็นสัจนิรันดร์หรือไม่</p>
+                <b>คิดแบบวิธีหาข้อขัดแย้ง</b>กืก
+                <img src="img/eternal-truth1.png" alt="van-diagram" class="responsive-img">
+                
+                </section>
             </div>
         </div>
     </div>
@@ -535,6 +590,10 @@ const boardBody = document.querySelector('.board-body');
 const menuScrollBox = document.querySelector('#mathContent');
 
 const sectionToBtnMap = new Map();
+    const mainSectionMap = {
+    "set-intro": mathbtn,
+    "logic-intro": logicbtn
+};
 
 subMenuBtns.forEach((btn) => {
     const targetId = btn.dataset.target?.replace('#', '');
@@ -583,34 +642,77 @@ subMenuBtns.forEach((btn) => {
     });
 });
 
-const scrollSpyObserver = new IntersectionObserver((entries) => {
+function getMainBtnBySectionId(id) {
+    if (
+        id.startsWith('set-') ||
+        id === 'union' ||
+        id === 'intersect' ||
+        id === 'minus-set' ||
+        id === 'complement' ||
+        id === 'van-diagram' ||
+        id === 'operation-set' ||
+        id === 'solution-formula'
+    ) {
+        return mathbtn;
+    }
+
+    if (
+        id.startsWith('logic-') ||
+        id === 'proposition' ||
+        id === 'proposition-connectors' ||
+        id === 'table-of-propositions' ||
+        id === 'equivalence' ||
+        id === 'eternal-truth' ||
+        id === 'justification' ||
+        id === 'opening-sentences' ||
+        id === 'quantifiers'
+    ) {
+        return logicbtn;
+    }
+
+    return null;
+}
+
+function scrollSidebarToElement(element) {
+    const sidebarBox = document.querySelector('.mathstudy-box');
+    if (!sidebarBox || !element || window.innerWidth <= 768) return;
+
+    const targetTop =
+        element.getBoundingClientRect().top -
+        sidebarBox.getBoundingClientRect().top +
+        sidebarBox.scrollTop -
+        80;
+
+    sidebarBox.scrollTo({
+        top: targetTop,
+        behavior: 'smooth'
+    });
+}
+
+boardBody.addEventListener('scroll', () => {
     let currentSection = null;
 
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            if (
-                !currentSection ||
-                entry.boundingClientRect.top < currentSection.boundingClientRect.top
-            ) {
-                currentSection = entry;
-            }
+    contentSections.forEach((section) => {
+        const sectionTop =
+            section.getBoundingClientRect().top -
+            boardBody.getBoundingClientRect().top;
+
+        if (sectionTop <= boardBody.clientHeight * 0.55) {
+            currentSection = section;
         }
     });
 
-    if (currentSection) {
-        const btn = sectionToBtnMap.get(currentSection.target.id);
-        if (btn) {
-            setActiveSubMenuBtn(btn, false);
-        }
-    }
-}, {
-    root: boardBody,
-    threshold: 0.05,
-    rootMargin: '-15% 0px -60% 0px'
-});
+    if (!currentSection) return;
 
-contentSections.forEach((section) => {
-    scrollSpyObserver.observe(section);
+    const btn = sectionToBtnMap.get(currentSection.id);
+    if (btn) {
+        setActiveSubMenuBtn(btn);
+    }
+
+    const mainBtn = getMainBtnBySectionId(currentSection.id);
+    if (mainBtn) {
+        scrollSidebarToElement(mainBtn);
+    }
 });
 
         // --- ระบบตรวจสอบการล็อกอิน ---
