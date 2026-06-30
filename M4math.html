@@ -125,19 +125,18 @@
                 </button>
                 <div class="dropdown-content" id="truenumContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>จำนวนจริงคืออะไร?</button></li>
-                        <li><button>จุดกึ่งกลางของส่วนของเส้นตรง</button></li>
-                        <li><button>ระบบจำนวนจริง</button></li>
-                        <li><button>พหุนามตัวแปรเดียว</button></li>
-                        <li><button>การแยกตัวประกอบของพหุนาม</button></li>
-                        <li><button>สมการพหุนาม</button></li>
-                        <li><button>เศษส่วนของพหุนาม</button></li>
-                        <li><button>การดำเนินการของเศษส่วนพหุนาม</button></li>      
-                        <li><button>การไม่เท่ากันของจำนวนจริง</button></li>      
-                        <li><button>อสมการพหุนามตัวแปรเดียว</button></li>      
-                        <li><button>ค่าสัมบูรณ์</button></li>      
-                        <li><button>สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
-                        <li><button>อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
+                        <li><button class="sub-menu-btn" data-target="#realnumber-into">จำนวนจริงคืออะไร?</button></li>
+                        <li><button class="sub-menu-btn" data-target="#real-number-system">สัจพจน์การเท่ากันและสมบัติของระบบจำนวนจริง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-in-one-variable">พหุนามตัวแปรเดียว</button></li>
+                        <li><button class="sub-menu-btn" data-target="#factorization-of-polynomials">การแยกตัวประกอบของพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-equations">สมการพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-fractions">เศษส่วนของพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#operations-with-rational-expressions">การดำเนินการของเศษส่วนพหุนาม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#inequality-of-real-numbers">การไม่เท่ากันของจำนวนจริง</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#polynomial-inequalities-with-one-variable">อสมการพหุนามตัวแปรเดียว</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#absolute">ค่าสัมบูรณ์</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#absolute-value-equation-of-a-single-variable-polynomial">สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
+                        <li><button class="sub-menu-btn" data-target="#absolute-value-inequality-of-a-single-variable-polynomial">อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
                     </ul>
                 </div>     
             </div> <hr>
@@ -214,6 +213,9 @@
                 <h3>📌 คณิตศาสตร์ ม.4</h3>
             </div>
             <div class="board-body">
+            <div class="chapter-divider">
+                    <span> บทที่ 1 : {} เซต</span>
+            </div>
             <section id="set-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                     <span style="background-color: #FDF2B5; padding: 2px 4px;">เซตคืออะไร?</span>
@@ -317,9 +319,9 @@
                 <b>ตัวอย่าง เช่น</b>
                 <ul>
                     <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cup$B 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4,5,6}</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4,5,6}</span></p></li>
                     <li>กำหนดให้เซต A={1,2,3} B={2,3,4} จงหาA$\cup$B 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4} </span><p>เนื่องจากเซตAและBมีสามาชิก2และ3เหมือนกันจึงเอามาเขียนแค่ตัวเดียว</p></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4} </span></p><p>เนื่องจากเซตAและBมีสามาชิก2และ3เหมือนกันจึงเอามาเขียนแค่ตัวเดียว</p></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของยูเนียน(union)</b>
                 <img src="img/unionset.png" alt="van-diagram" class="responsive-img" >
@@ -333,9 +335,9 @@
                 <b>ตัวอย่าง เช่น</b>
                 <ul>
                     <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหาA$\cap$B 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cap$B={3} เพราะในเซตAและBมีสมาชิกที่ซ้ำกันคือ3</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cap$B={3} เพราะในเซตAและBมีสมาชิกที่ซ้ำกันคือ3</span></p></li>
                     <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cap$B 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B=$\varnothing$ เพราะไม่มีสมาชิกที่ซ้ำกันทั้งในเซตAและB</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B=$\varnothing$ เพราะไม่มีสมาชิกที่ซ้ำกันทั้งในเซตAและB</span></p></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของอินเตอร์เซค(Intersetion)</b>
                 <img src="img/intersec-set.png" alt="van-diagram" class="responsive-img">
@@ -349,11 +351,11 @@
                 <b>ตัวอย่าง เช่น</b>
                 <ul>
                     <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหา$A - B$
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2} เพราะ ในเซต$A$มีเลข3ที่ไปซ้ำกับเซต$B$เราจึงตัดเลข3ทิ้งไป และเหลือเพียงตัวเลข<br>{1, 2}ซึ่งเป็นของเซต$A$ฝั่งเดียว</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2} เพราะ ในเซต$A$มีเลข3ที่ไปซ้ำกับเซต$B$เราจึงตัดเลข3ทิ้งไป และเหลือเพียงตัวเลข<br>{1, 2}ซึ่งเป็นของเซต$A$ฝั่งเดียว</span></p></li>
                     <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหา$A - B$ 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2,3} เพราะ สมาชิกในเซต$A$ทั้งหมดไม่มีตัวไหนที่ซ้ำหรืออยู่ในเซต$B$เลย เราจึงดึงสมาชิกของเซต$A$มาตอบได้ทั้งหมด</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A - B$={1,2,3} เพราะ สมาชิกในเซต$A$ทั้งหมดไม่มีตัวไหนที่ซ้ำหรืออยู่ในเซต$B$เลย เราจึงดึงสมาชิกของเซต$A$มาตอบได้ทั้งหมด</span></p></li>
                     <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหา$B - A$ 
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$B - A$={4,5} เพราะ ในเซต$B$มีเลข3ที่ไปซ้ำกับเซต$A$เราจึงตัดเลข3ทิ้งไปและเหลือเพียงตัวเลข<br>{4, 5}ซึ่งเป็นของเซต$B$ฝั่งเดียว</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$B - A$={4,5} เพราะ ในเซต$B$มีเลข3ที่ไปซ้ำกับเซต$A$เราจึงตัดเลข3ทิ้งไปและเหลือเพียงตัวเลข<br>{4, 5}ซึ่งเป็นของเซต$B$ฝั่งเดียว</span></p></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของผลต่างระหว่างเซต</b>
                 <img src="img/minus-set.png" alt="van-diagram" class="responsive-img">
@@ -367,9 +369,9 @@
                 <b>ตัวอย่าง เช่น</b>
                 <ul>
                     <li>กำหนดให้$U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$ $A = \{1, 3, 5, 7, 9\}$ จงหา $A'$
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A'$={2,4,6,8,10} มองหาตัวเลขที่อยู่ใน $U$ แต่ห้ามเอาตัวเลขที่อยู่ในเซต $A$ (ซึ่งก็คือการตัดเลขคี่ทิ้งไปให้หมด) จึงเหลือเพียงเลขคู่รอบนอกนั่นเอง</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$A'$={2,4,6,8,10} มองหาตัวเลขที่อยู่ใน $U$ แต่ห้ามเอาตัวเลขที่อยู่ในเซต $A$ (ซึ่งก็คือการตัดเลขคี่ทิ้งไปให้หมด) จึงเหลือเพียงเลขคู่รอบนอกนั่นเอง</span></p></li>
                     <li>กำหนดให้$U = \{a, b, c, d, e, f\}$ $A = \{a, b, c\}$ $B = \{c, d, e\}$ จงหา $(A \cup B)'$
-                    <br><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$(A \cup B)'$={f} <br>วิธีคิด<br>1. หาในวงเล็บก่อน: $A \cup B$ คือการมัดรวมสมาชิกรวมกัน ได้เป็น $\{a, b, c, d, e\}$<br>2. หาคอมพลีเมนต์ต่อ: เอาจักรวาล $U$ ตั้ง แล้วหักกลุ่ม $\{a, b, c, d, e\}$ ทิ้งไป ตัวที่เหลืออยู่รอบนอกสุด ๆ จึงมีแค่ตัว f ตัวเดียว</span></li>
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">$(A \cup B)'$={f} <br>วิธีคิด<br>1. หาในวงเล็บก่อน: $A \cup B$ คือการมัดรวมสมาชิกรวมกัน ได้เป็น $\{a, b, c, d, e\}$<br>2. หาคอมพลีเมนต์ต่อ: เอาจักรวาล $U$ ตั้ง แล้วหักกลุ่ม $\{a, b, c, d, e\}$ ทิ้งไป ตัวที่เหลืออยู่รอบนอกสุด ๆ จึงมีแค่ตัว f ตัวเดียว</span></p></li>
                 </ul>
                 <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของคอมพลีเมนต์</b>
                 <img src="img/complement-set.png" alt="van-diagram" class="responsive-img">
@@ -416,6 +418,10 @@
                 </ul>
                 </section>   
 
+                <div class="chapter-divider">
+                    <span> บทที่ 2 : ⋀⋁ ตรรกศาสตร์</span>
+                </div>
+                
                 <section id="proposition" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                     <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                         <span style="background-color: #FDF2B5; padding: 2px 4px;">ประพจน์</span>
@@ -476,7 +482,7 @@
                     <img src="img/eternal-truth3.png" alt="van-diagram" class="responsive-img">
                     <li><p>$(p \lor q) \to (q \lor p)$ เป็นสัจนิรันดร์หรือไม่</p></li>
                     <b>คิดแบบใช้ตารางค่าความจริง</b>
-                    <img src="img/eternal-truth4.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/eternal-truth6.png" alt="van-diagram" class="responsive-img">
                     <li><p>$(p \lor q) \rightarrow (p \land q) \land p $ เป็นสัจนิรันดร์หรือไม่</p></li>
                     <b>คิดแบบใช้ตารางค่าความจริง</b>
                     <img src="img/eternal-truth5.png" alt="van-diagram" class="responsive-img">
@@ -499,21 +505,275 @@
                 </ul>
                 </section>
 
-                <section id="justification" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <section id="opening-sentences" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
-                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การอ้างเหตุผล</span>
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ประโยคเปิด</span>
                 </h2>
-                <p>การอ้างเหตุผลในตรรกศาสตร์ คือ การพิสูจน์ว่า "ข้อสรุป" (Conclusion) สมเหตุสมผลหรือไม่ โดยอาศัยกลุ่มของ "ข้ออ้าง" (Premises) ที่เรายอมรับว่าเป็นจริง หากเราพบว่าในกรณีที่ข้ออ้างทุกข้อเป็นจริง แล้วส่งผลให้ข้อสรุป ต้องเป็นจริงตามไปด้วยเสมอ จะเรียกว่า สมเหตุสมผล (Valid) แต่ถ้ามีแม้เพียงกรณีเดียวที่ข้ออ้างเป็นจริงหมด แต่ข้อสรุปกลับเป็นเท็จ จะเรียกว่า ไม่สมเหตุสมผล (Invalid) สามารถหาได้2วิธี คือ การทำตารางค่าความจริง(ไม่มีในตัวอย่าง) และ การหาข้อขัดแย้ง ซึ่งวิธีที่ไวที่สุดคือวิธีหาข้อขัดแย้งเหมือนสัจนิรันดร์แค่รอบนี้หากทำเป็น F ไม่สำเร็จจะถือว่าสมเหตุสมผล ถ้าทำเป็น F สำเร็จจะถือว่าไม่สมเหตุสมผล<br>โดยตรงส่วนเหตุผลจะใช้ตัวเชื่อมประพจน์เป็น $(\land)$ แล้วตรงผลจะเชื่อมด้วย $(\rightarrow)$</p>
+                <p>ประโยคเปิด (Open Sentence) คือ ประโยคบอกเล่าหรือปฏิเสธที่มี "ตัวแปร" รวมอยู่ด้วย ทำให้เรายังตอบไม่ได้ทันทีว่าเป็นจริงหรือเป็นเท็จ แต่ถ้าเราลองเอาคำหรือตัวเลขไปแทนที่ตัวแปรนั้น ประโยคจะกลายเป็น "ประพจน์" ที่บอกได้ทันทีว่าเป็นจริงหรือเท็จ</p>
                 <b>ตัวอย่างเช่น</b>
                 <ul>
-                    <li><p>กำหนดให้<br><b>เหตุการณ์ที่1 :</b>ถ้าวันนี้ฝนไม่ตกแล้วถนนจะเปียก <br><b>เหตุการณ์ที่2 :</b>วันนี้ถนนไม่เปียก <br><b>ผล :</b>วันนี้ฝนไม่ตก <br>จงหาว่าเหตุการนี้สมเหตุสมผลหรือไม่</p></li>
-                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
-                    <img src="img/justification1.png" alt="van-diagram" class="responsive-img">
-                    <li><p>กำหนดให้<br><b>เหตุการณ์ที่1 :</b>$p \rightarrow (q \lor r)$<br><b>เหตุการณ์ที่2 :</b>$(~q \land ~r)$ <br><b>ผล :</b>~p <br>จงหาว่าเหตุการนี้สมเหตุสมผลหรือไม่</p></li>
-                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
-                    <img src="img/justification2.png" alt="van-diagram" class="responsive-img">
+                    <li><p>$x + 3 = 5$ (เป็นประโยคเปิด เนื่องจากเราไม่รู้ค่าของxจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
+                    <li><p>"เขา" เป็นนักร้องนำวงบอดี้สแลม (เป็นประโยคเปิด เนื่องจากเราไม่รู้ว่า"เขา"เป็นใครจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
+                    <li><p>$y$ เป็นจำนวนคู่ที่น้อยกว่า $10$ (เป็นประโยคเปิด เนื่องจากเราไม่รู้ว่าค่าyเป็นจำนวนคู่หรือคี่และมีค่าน้อยกว่า10จริงหรือไม่เราจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
                 </ul>
                 </section>
+
+                <section id="quantifiers" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ตัวบ่งปริมาณ</span>
+                </h2>
+                <p>ตัวบ่งปริมาณ (Quantifiers) คือ ข้อความที่ใช้บอก "จำนวนหรือขอบเขต" ของตัวแปรในประโยคเปิด เพื่อระบุว่าสิ่งที่เรากำลังพูดถึงนั้นหมายถึง ทั้งหมด หรือแค่ บางส่วน โดยเมื่อใส่ตัวบ่งปริมาณเข้าไปหน้าประโยคเปิดแล้ว จะทำให้ประโยคนั้นกลายเป็นประพจน์ที่บอกได้ทันทีว่าเป็นจริงหรือเท็จ โดยที่เราจะใช้สัญลักษณ์ $\forall$ แทนประพจน์ที่ต้องเป็นจริงทั้งหมด อ่านว่าFor All และสัญลักษณ์ $\exists$ แทนประพจน์ที่ต้องเป็นจริงบางส่วน อ่านว่าFor Some</p>
+                <b>ตัวอย่างประโยคFor All ($\forall$)</b>
+                <ul>
+                    <li>"มนุษย์ทุกคนต้องหายใจ"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากมนุษย์ทุกคนต้องหายใจเพื่อดำรงชีวิต</span></p>
+                    </li>
+                    <li>"วัยรุ่นทุกคนชอบเล่นเกม"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากวัยรุ่นบางคนก็ไม่ได้ชอบเล่นเกม</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า\forall x [x + 0 = x]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากเมื่อนำxมาแทนไม่ว่าจะเป็นตัวอะไรก็ตามเมื่อนำมา+0จะได้ตัวมันเองเสมอ</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า $\forall x [x > 0]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากเมื่อนำxมาแทนยังมีเลข0และจำนวนติดลบที่มีค่าไม่มากกว่า0</span></p>
+                    </li>
+                </ul>
+                <b>ตัวอย่างประโยคFor Some ($\exists$)</b>
+                <ul>
+                    <li>"มีนักเรียนบางคนในห้องนี้ที่ขับรถยนต์ได้"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากมีนักเรียนบางส่วนสามารถขับรถยนต์ได้</span></p>
+                    </li>
+                    <li>"มีสุนัขบางตัวที่บินได้" 
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากไม่มีสุนัขตัวไหนสามารถบินได้ในโลกนี้</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า$\exists x [x^2 = 4]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากเมื่อนำxมาแทนมีเลข2และ-2ที่เมื่อนำมายกกำลังสองแล้วมีค่าเท่ากับ4</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า$\exists x [x + 1 = x]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากมีเมื่อนำxมาแทนไม่มีตัวเลขตัวไหนที่เมื่อนำตัวเองมาบวกกับ1แล้วจะได้ตัวมันเอง</span></p>
+                    </li>
+                </ul>
+                </section>
+
+                <div class="chapter-divider">
+                    <span> บทที่ 3 : ① จำนวนจริง</span>
+                </div>
+
+                <section id="realnumber-into" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">จำนวนจริงคืออะไร?</span>
+                </h2>
+                <p>ให้มองว่า จำนวนจริง หรือสัญลักษณ์ $\mathbb{R}$ (Real) คือ "จักรวาลของตัวเลข" ที่เราใช้ในชีวิตประจำวันทั้งหมด ไม่ว่าจะเป็นเลขบวก เลขลบ เศษส่วน ทศนิยม หรือค่าราก (รูท) ทุกอย่างรวมอยู่ในกลุ่มนี้หมดเลย</p>
+                <b>จักรวาลของจำนวนจริงนี้ ถูกแบ่งออกเป็น 2 กลุ่ม คือ ตรรกยะ กับ อตรรกยะ </b>
+                <ul>
+                    <li><b>จำนวนตรรกยะ</b> <br> <p>คือ จำนวนที่เขียนในรูป เศษส่วนได้ โดยที่ตัวเศษและส่วนเป็นจำนวนเต็ม โดยที่ตัวส่วนต้องมีค่าไม่เท่ากับ0 นั่นคือจำนวนที่เขียนได้ในรูปเศษส่วนของจำนวนเต็ม หรือเขียนเป็นทศนิยมซ้ำได้</p>
+                        <b>ตัวอย่างของจำนวนตรรกยะ เช่น</b>
+                        <p>$7$, $-2$, $0.988998899889$ $1.5$, $\frac{4}{5}$, $0.3\dot{3}$, $0$</p>
+                    </li>
+                    <li><b>จำนวนอตรรกยะ</b> <br> <p>คือ จำนวนที่เป็นทศนิยมแบบไม่ซ้ำ (และเป็นทศนิยมไม่รู้จบ ก็คือตัวเลขหลังทศนิยมไม่มีที่สิ้นสุดด้วย) ซึ่งจำนวนชนิดนี้ไม่สามารถเขียนเป็นเศษส่วนของจำนวนเต็มได้
+                        <b>ตัวอย่างของจำนวนตรรกยะ เช่น</b>
+                        <p>$\sqrt{2}$, $0.988998899889...$, $π$, $\sqrt[3]{4}$, $1-\sqrt{2}$, $0$</p>
+                    </li>
+                </ul>
+                <b>แผนผังแสดงความสัมพันธ์ของจำนวนชนิดต่างๆ</b>
+                <img src="img/realnum.png" alt="van-diagram" class="responsive-img">
+                <p>สัญลักษณ์ของเซตของจำนวนจริงชนิดต่าง ๆ ที่ควรรู้จัก ได้แก่</p>
+                <ul>
+                    <li>$\mathbb{N}$ แทนเซตของจำนวนเต็มบวก (จำนวนนับ)</li>
+                    <li>$\mathbb{Z}$ แทนเซตของจำนวนเต็ม</li>
+                    <li>$\mathbb{Q}$ แทนเซตของจำนวนตรรกยะ</li>
+                    <li>$\mathbb{Q}'$ แทนเซตของจำนวนอตรรกยะ</li>
+                    <li>$\mathbb{R}$ แทนเซตของจำนวนจริง</li>
+                </ul>
+                <b style="color:red">ข้อควรระวัง!</b><span style="margin-left: 20px;">$\frac{22}{7}$ ไม่ใช่จำนวนอตรรกยะ เนื่องจาก$\frac{22}{7}$ เป็นค่าประมาณของค่า$π$ ซึ่งสามารถเขียนเป็นเศษส่วนได้เช่นเดียวกับ3.14</span>
+                </section>
+
+                <section id="real-number-system" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สัจพจน์การเท่ากันและสมบัติของระบบจำนวนจริง</span>
+                </h2>
+                <b>สัจพจน์การเท่ากัน (Axioms of Equality)</b>
+                <p>คำว่า "สัจพจน์" คือความจริงพื้นฐานที่ทุกคนยอมรับตรงกันโดยไม่ต้องพิสูจน์ สำหรับเรื่องการเท่ากัน ($=$) มีสัญชาตญาณ 4 ข้อที่เราใช้กันอยู่ตลอดเวลา ได้แก่</p>
+                <ul>    
+                    <li>
+                        <b>กฎการสะท้อน (reflexive law) :</b><span>ตัวมันเองย่อมเท่ากับตัวมันเองเสมอ</span>
+                        <p> $a$ = $a$ </p>
+                    </li>    
+                    <li>
+                        <b>กฎการสมมาตร (symmetric law) :</b><span>ถ้าฝั่งซ้ายเท่ากับฝั่งขวา เราสามารถสลับให้ฝั่งขวามาอยู่ฝั่งซ้ายได้ ค่าก็ยังเท่าเดิม</span>
+                        <p>ถ้า $a$ = $b$ แล้ว $b$ = $a$</p>
+                    </li>
+                    <li>
+                        <b>กฎการสมมาตร (symmetric law) :</b><span>การส่งต่อความเท่ากันเป็นทอด ๆ</span>
+                        <p>ถ้า $a = b$ และ $b = c$ แล้ว $a = c$</p>
+                    </li>
+                    <li>
+                        <b>สมบัติการบวกและการคูณด้วยจำนวนที่เท่ากัน :</b><span>ถ้าเรามีตราชั่งที่เท่ากันอยู่สองข้าง แล้วเราบวกเข้าหรือคูณเพิ่มด้วยตัวเลขที่เท่ากันทั้งสองข้าง ตราชั่งก็ยังคงสมดุลเท่าเดิม</span>
+                        <p>ถ้า $a = b$ แล้ว $a + c = b + c$</p>
+                        <p>ถ้า $a = b$ แล้ว $ac = bc$</p>
+                    </li>
+                </ul>
+                <b>ตารางของสมบัติจำนวนจริง</b>
+                <img src="img/realnum2.png" alt="van-diagram" class="responsive-img">
+                <p>สมบัติข้างต้น โดยเฉพาะสมบัติการสลับที่ สมบัติการเปลี่ยนหมู่ และสมบัติการแจกแจง สามารถช่วยให้หาผลลัพธ์จากการบวกและการคูณของจำนวนจริงทำได้สะดวกขึ้นด้วย อย่างเช่นในตัวอย่างต่อไปนี้</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>
+                        <p>จงหาผลบวกของ  $2 + 8 + 3 + 5 + 2 + 5$</p>
+                        <p><b style="text-decoration: underline;">วิธีคิด</b></p>
+                        <p>ถ้าเราไม่ใช้สมบัติข้างต้น เราจะต้องดำเนินการบวกจากจำนวนทางซ้ายสุดมาขวาสุด ซึ่งจะไม่สะดวกเลย แต่ถ้าเราใช้สมบัติมาช่วยจะสามารถสลับที่และเพิ่มวงเล็บ(จัดหมู่) จะช่วยให้เราหาผลบวกได้ง่ายขึ้น ดังนี้</p>
+                        <p>$2 + 8 + 3+ 5 + 2 + 5 = (5+5) + (2+8) + (2+3) = 10 +10 + 5 = 25$</p>
+                    </li>
+                    <li>
+                        <p>จงหาผลคูณของ $2 × 8 × 3 × 5 × 2 × 5$</p>
+                        <p><b style="text-decoration: underline;">วิธีคิด</b></p>
+                        <p>เราสามารถใช้สมบัติการคูณของจำนวนจริงช่วยในการหาคำตอบได้เช่นเดียวกับตัวอย่างก่อนหน้า ดังนี้</p>
+                        <p>$2 × 8 × 3 × 5 × 2 × 5 = (2 × 5) + (2 × 5) + (3 × 8) = 10 × 10 × 24 = 2400$</p>
+                    </li>
+                    
+                </ul>
+                </section>
+
+                <section id="polynomial-in-one-variable" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">พหุนามตัวแปรตัวเดียว</span>
+                </h2>                
+                <ul>
+                    <li>
+                        <b>ความหมายของพหุนาม</b>
+                        <p>$p(x) = a_nx^n + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots + a_1x + a_0$</p>
+                        <p>เมื่อ$n$เป็นจำนวนเต็มที่ไม่เป็นจำนวนลบ</p>
+                        <p>และ$a_n, a_{n-1}, a_{n-2}, \ldots, a_1, a_0$ เป็นจำนวนจริง</p>
+                        <p>เรียก $p(x)$ ว่า พหุนามดีกรี $n$ </p>
+                        <p>เรียก $n$ ว่า ดีกรี ของ $p(x)$ </p>
+                        <p>เรียก$a_n, a_{n-1}, a_{n-2}, \ldots, a_1, a_0$ว่า สัมประสิทธิ์ ของ $p(x)$</p>
+                        <p>เรียก$a_n$ว่า สัมประสิทธิ์นำ</p>
+                        <b>เช่น</b>
+                        <ul>
+                            <li>
+                                <p>$q(x)=3x^2+4x+5$</p>
+                                <p> เป็นพหุนามที่มีดีกรี 2 มีสัมประสิทธิ์เป็น 3, 4 และ 5 และมีสัมประสิทธิ์นำเป็น 3</p>
+                            </li>
+                        </ul>
+                    </li>    
+                    <li>
+                        <b>การดำเนินการของพหุนาม</b>
+                        <p>ในส่วนของการดำเนินการของพหุนาม ซึ่งประกอบด้วย การบวก ลบ คูณ หารพหุนาม ทางเราขอทบทวนความรู้ ม.ต้น ได้แก่ การบวก ลบ และคูณพหุนาม ซึ่งเรามาทบทวนผ่านตัวอย่างต่อไปนี้กันเลย</p>                       
+                        <p>ให้ $p(x) = x - 2$ และ $q(x) = 2x - 1$ จงหา $p(x)+q(x),\; p(x)-q(x)\; \text{และ}\; p(x)q(x)$</p>
+                        <b>จะได้</b>
+                        <p>$p(x)+q(x)=(x-2)+(2x-1)=x+2x-2-1=3x-3$ </p>
+                        <p>$p(x)-q(x)=(x-2)-(2x-1)=x-2-2x+1=-x-1$ </p>
+                        <p>$p(x)q(x)=(x-2)(2x-1)$ </p>
+                        <p style="margin-left: 72px;">$=x(2x)+(x)(-1)+(-2)(2x)+(-2)(-1)$ </p>
+                        <p style="margin-left: 72px;">$=2x^2-5x+2$ </p>
+                    </li>  
+                    <li>
+                        <b>ขั้นตอนวิธีการหารสำหรับพหุนาม</b>
+                        <img src="img/realnum4.png" alt="van-diagram" class="responsive-img">
+                        <p>จากทฤษฎีข้างต้นสรุปง่าย ๆ ว่า</p>
+                        <b>$$ตัวตั้ง = (ตัวหาร)(ผลหาร) + เศษเหลือ$$</b>
+                    </li>           
+                    <li>
+                        <b>การหารยาว</b>
+                        <p>การหารพหุนามนั้นมีได้หลายวิธี เช่น วิธีการหารยาว วิธีเทียบสัมประสิทธิ์ วิธีการหารสังเคราะห์ ฯลฯ แต่ขอพูดแค่หารยาวก็แล้วกัน ซึ่งการหารยาวของพหุนามสามารถทำได้โดยวิธีการตั้งหารคล้ายรูปแบบการหารยาวของจำนวนเต็มดังตัวอย่างต่อไปนี้</p>
+                        <b>ตัวอย่างเช่น</b>
+                        <li>
+                            <b>จงหาผลหารและเศษเหลือจากการหารพหุนาม $x^2-3x+2$ ด้วย $x-4$ </b>
+                            <br><b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                        <img src="img/r.png" alt="van-diagram" class="responsive-img">
+                        <p>ดังนั้นผลหารคือ $x + 1$ เศษ 6</p>
+                        <li>
+                            <b>จงหาผลหารและเศษเหลือจากการหารพหุนาม $3x^2+8$ ด้วย $x-2$ </b>
+                            <p>เทคนิค : ในกรณีที่กำลังเรียงพจน์ของพหุนามตามเลขชี้กำลังจากมากไปน้อย แล้วมีพจน์บางพจน์หายไปให้เติม 0 คูณกับ x ยกกำลังเลขที่หายไป</p>
+                            <br><b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                        <img src="img/realnum5.png" alt="van-diagram" class="responsive-img">
+                        <p>ดังนั้น ผลหารคือ 3x + 6 เศษ 20</p>
+                    </li>                         
+                </ul>
+                </section>
+                
+                <section id="factorization-of-polynomials" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การแยกตัวประกอบของพหุนาม</span>
+                </h2>                
+                    <p>การแยกตัวประกอบของพหุนาม ซึ่งเป็นส่วนสำคัญทั้งการจัดรูปพหุนามให้อยู่ในรูปอย่างง่าย รวมถึงเป็นวิธีการหลักในการแก้สมการและอสมการพหุนาม การแยกตัวประกอบของพหุนามดีกรีสูงกว่าสองแต่ไม่ได้มีรูปแบบเฉพาะ โดยใช้ทฤษฎีที่สำคัญ อยู่ 2 ทฤษฎี ได้แก่ ทฤษฎีบทเศษเหลือและทฤษฎีบทตัวประกอบตรรกยะ </p>
+                    <img src="img/realnum6.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง</b>
+                    <p>จงหาเศษเหลือของ $3x^2+1$ หารด้วย $x-1$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x) = 3x^2+1$ </p>
+                    <p>จากทฤษฎีบทเศษเหลือ เมื่อหาร $p(x)$ ด้วย $x-1$ จะเหลือเศษคือ $p(1)$</p>
+                    <p>จะได้ $p(1) = 3(1)^2+1 = 4$</p>                 
+                    <p>ดังนั้น เศษเหลือของ $3x^2+1$ หารด้วย $x-1$ คือ $4$</p> 
+                    <p>จาก ทฤษฎีบทเศษเหลือ ถ้าเราหาค่า $c$ ที่ทำให้ $p(c) เป็น 0$ นั่นคือการหารนั้นจะมีเศษเหลือจากการหารเป็น $0$ ซึ่งการที่เศษเป็น $0$ ก็คือการหารลงตัวนั่นเอง ซึ่งถ้าหารลงตัวแล้วแสดงว่า $x - c$ จะเป็นหนึ่งในตัวประกอบของ $p(x)$ เราสามารถกล่าวเป็นทฤษฎีบทได้ดังนี้</p>                
+                    <img src="img/realnum7.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง</b>
+                    <p>จงตรวจสอบว่า $ x-1 $ เป็นตัวประกอบของ $x^2 + 2x - 8$ หรือไม่</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x) = x^2 + 2x - 8$ </p>
+                    <p>ดังนั้น $p(1) = (1)^2 + 2(1) - 8 = -5$ซึ่งไม่เท่ากับ$0$</p>
+                    <p>จึงสรุปได้ว่า $ x - 1 $ ไม่เป็นตัวประกอบของ $x^2 + 2x - 8$</p>    
+                    <img src="img/realnum8.png" alt="van-diagram" class="responsive-img">
+                    <p>จงแยกตัวประกอบของ $p(x)=2x^2+5x-3$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x)=2x^2+5x-3$</p>               
+                    <p>เนื่องจากจำนวนเต็มที่หาร $-3$ ลงตัว คือ $\pm1,\ \pm3$</p>               
+                    <p>และจำนวนเต็มที่หาร 2 ลงตัว คือ $\pm1,\ \pm2$</p>               
+                    <p>ดังนั้น จำนวนตรรกยะ $\frac{k}{m}$ ที่ทำให้ $p(\frac{k}{m}) = 0$ จะอยู่ในกลุ่มของจำนวนต่อไปนี้ คือ $\pm1,\ \pm3,\ \pm\frac{1}{2},\ \pm\frac{3}{2}$</p>               
+                    <p>พิจารณา $p(\frac{1}{2})$</p>               
+                    <p>จะได้ว่า $p\left(\frac{1}{2}\right)=2\left(\frac{1}{2}\right)^2+5\left(\frac{1}{2}\right)-3=\frac{1}{2}+\frac{5}{2}-3=0$</p>               
+                    <p>นั่นคือ $x-\frac{1}{2}$ เป็นตัวประกอบของ $p(x)$</p>               
+                    <p>นำ $x-\frac{1}{2}$ ไปหาร $p(x)$ ได้ผลหารเป็น $2x + 6$</p>               
+                    <p>ดังนั้น <br>$2x^3+5x-3=\left(x-\frac{1}{2}\right)(2x+6)$</p>               
+                    <p style="margin-left: 100px;">$=\left(x-\frac{1}{2}\right)(2)(x+3)$</p>               
+                    <p style="margin-left: 100px;">$=(2x-1)(x+3)$</p>               
+                    <p>จากตัวอย่างข้างต้น บางคนที่ยังสงสัยอยู่ว่า จำนวน$\pm1,\ \pm3,\ \pm\frac{1}{2},\ \pm\frac{3}{2}$ เหล่านี้มาจากไหนขอสรุปไว้ข้างท้ายนี้อีกครั้งว่า ตัวเศษได้มาจากตัวประกอบของ -3 และตัวส่วนได้มาจากตัวประกอบของ 2 โดย ห.ร.ม. ของตัวเศษและตัวส่วน คือ 1 นั่นเอง</p>               
+                </section> 
+
+                <section id="polynomial-equations" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการพหุนาม</span>
+                </h2>                
+                    <p>เราจะแก้สมการที่ตัวแปรมีเลขชี้กำลังที่มากขึ้น แต่เราจะใช้หลักการแก้สมการกำลังสองร่วมกับทฤษฎีบทตัวประกอบในหัวข้อก่อน สำหรับหลักการแก้สมการพหุนาม (ทั้งกำลังสองและกำลังที่สูงกว่าสอง) วิธีหลัก ๆ ที่นิยมใช้กันคือวิธีการแยกตัวประกอบ และอีกวิธีคือการใช้สูตร</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $x^2+3x-54=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>ทำการแยกตัวประกอบพหุนาม </p>
+                            <p>$x^2+3x-54=0$</p>
+                            <p>$(x-6=0)(x+9)=0$</p> 
+                            <p>จะได้ $x-6=0$ หรือ $x+9=0$</p> 
+                            <p>ดังนั้น $x = 6 หรือ -9$</p> 
+                        </li>   
+                    </ul>  
+                    <p>ตัวอย่างข้างต้นคือวิธีการแยกตัวประกอบ ส่วนการใช้สูตรจะมีสูตรและตัวอย่างการใช้ดังนี้</p>          
+                    <img src="img/realnum9.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $x^2-6x+9=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>เทียบสัมประสิทธิ์ $ax^2+bx+c=0$ กับ $x^2-6x+9=0$</p>
+                            <p>จะได้ $a=1,b=-6$ และ $c=9$</p>
+                            <p>ซึ่ง$(-6)^2-4(1)(9)=0$ดังนั้นสมการพหุนามนี้มีเพียงคำตอบเดียวนั่นคือ</p> 
+                            <p>$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$</p> 
+                            <p style="margin-left: 15px;">$=\dfrac{-(-6)\pm\sqrt{0}}{2(1)}=3$</p> 
+                            <p>จะได้เซตคำตอบของสมการนี้คือ {$3$}</p>
+                        </li> 
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $2x^2+3x+4=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>เทียบสัมประสิทธิ์ $ax^2+bx+c=0$ กับ $2x^2+3x+4=0$</p>
+                            <p>จะได้ $a=2,b=3$ และ $c=4$</p>
+                            <p>ซึ่ง$(3)^2 - 4(2)(4) < 0$ดังนั้นสมการพหุนามนี้ไม่มีจำนวนจริงที่เป็นคำตอบ</p> 
+                            <p>ดังนั้น เซตคำตอบของสมการนี้คือ เซตว่าง นั่นเอง</p> 
+                        </li>   
+                    </ul>                                   
+                    <p>บางคนอาจสงสัยว่าเคื่องหมาย> , = และ < ควรจะใช้ยังไง ง่ายๆคือถ้าคิดเลข$b^2-4ac$ออกมาแล้วมีค่า$> 0$ จำนวนคำตอบที่สามารถตอบได้จะมีแค่2คำตอบ, ถ้ามีค่า$= 0$ จำนวนคำตอบที่สามารถตอบได้จะมีแค่1คำตอบ, ถ้ามีค่า$< 0$ จะไม่มีจำนวนจริงที่เป็นคำตอบ ตามทฤษฏีบทข้างบนที่เคยกล่าวมา</p>
+                </section> 
             </div>
         </div>
     </div>
@@ -627,135 +887,153 @@
         popupElements.forEach((element) => observer.observe(element));
 
         const subMenuBtns = document.querySelectorAll('.sub-menu-btn[data-target]');
-const contentSections = document.querySelectorAll('.content-section');
-const boardBody = document.querySelector('.board-body');
-const menuScrollBox = document.querySelector('#mathContent');
+        const contentSections = document.querySelectorAll('.content-section');
+        const boardBody = document.querySelector('.board-body');
+        const menuScrollBox = document.querySelector('#mathContent');
 
-const sectionToBtnMap = new Map();
-    const mainSectionMap = {
-    "set-intro": mathbtn,
-    "logic-intro": logicbtn
-};
+        const sectionToBtnMap = new Map();
+            const mainSectionMap = {
+            "set-intro": mathbtn,
+            "logic-intro": logicbtn,
+            "realnumber-into": truenumbtn
+        };
 
-subMenuBtns.forEach((btn) => {
-    const targetId = btn.dataset.target?.replace('#', '');
-    if (targetId) sectionToBtnMap.set(targetId, btn);
-});
-
-function setActiveSubMenuBtn(activeBtn) {
-    subMenuBtns.forEach((btn) => {
-        btn.classList.remove('sub-item-active');
-    });
-
-    activeBtn.classList.add('sub-item-active');
-
-    // เลื่อน sidebar เฉพาะคอม
-    if (window.innerWidth > 768) {
-        activeBtn.scrollIntoView({
-            block: 'nearest'
+        subMenuBtns.forEach((btn) => {
+            const targetId = btn.dataset.target?.replace('#', '');
+            if (targetId) sectionToBtnMap.set(targetId, btn);
         });
-    }
-}
 
-function scrollBoardToSection(targetSection) {
-    if (!boardBody || !targetSection) return;
-
-    const targetTop =
-        targetSection.getBoundingClientRect().top -
-        boardBody.getBoundingClientRect().top +
-        boardBody.scrollTop;
-
-    boardBody.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-    });
-}
-
-subMenuBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        const targetId = btn.dataset.target;
-        if (!targetId) return;
-
-        const targetSection = document.querySelector(targetId);
-        if (!targetSection) return;
-
-        setActiveSubMenuBtn(btn, true);
-        scrollBoardToSection(targetSection);
-    });
-});
-
-function getMainBtnBySectionId(id) {
-    if (
-        id.startsWith('set-') ||
-        id === 'union' ||
-        id === 'intersect' ||
-        id === 'minus-set' ||
-        id === 'complement' ||
-        id === 'van-diagram' ||
-        id === 'operation-set' ||
-        id === 'solution-formula'
-    ) {
-        return mathbtn;
-    }
-
-    if (
-        id.startsWith('logic-') ||
-        id === 'proposition' ||
-        id === 'proposition-connectors' ||
-        id === 'table-of-propositions' ||
-        id === 'equivalence' ||
-        id === 'eternal-truth' ||
-        id === 'justification' ||
-        id === 'opening-sentences' ||
-        id === 'quantifiers'
-    ) {
-        return logicbtn;
-    }
-
-    return null;
-}
-
-function scrollSidebarToElement(element) {
-    const sidebarBox = document.querySelector('.mathstudy-box');
-    if (!sidebarBox || !element || window.innerWidth <= 768) return;
-
-    const targetTop =
-        element.getBoundingClientRect().top -
-        sidebarBox.getBoundingClientRect().top +
-        sidebarBox.scrollTop -
-        80;
-
-    sidebarBox.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-    });
-}
-
-boardBody.addEventListener('scroll', () => {
-    let currentSection = null;
-
-    contentSections.forEach((section) => {
-        const sectionTop =
-            section.getBoundingClientRect().top -
-            boardBody.getBoundingClientRect().top;
-
-        if (sectionTop <= boardBody.clientHeight * 0.55) {
-            currentSection = section;
+        function setActiveSubMenuBtn(activeBtn) {
+            subMenuBtns.forEach((btn) => {
+                btn.classList.remove('sub-item-active');
+            });
+        
+            activeBtn.classList.add('sub-item-active');
+        
+            // เลื่อน sidebar เฉพาะคอม
+            if (window.innerWidth > 768) {
+                activeBtn.scrollIntoView({
+                    block: 'nearest'
+                });
+            }
         }
-    });
 
-    if (!currentSection) return;
+        function scrollBoardToSection(targetSection) {
+            if (!boardBody || !targetSection) return;
 
-    const btn = sectionToBtnMap.get(currentSection.id);
-    if (btn) {
-        setActiveSubMenuBtn(btn);
-    }
+            const targetTop =
+                targetSection.getBoundingClientRect().top -
+                boardBody.getBoundingClientRect().top +
+                boardBody.scrollTop;
 
-    const mainBtn = getMainBtnBySectionId(currentSection.id);
-    if (mainBtn) {
-        scrollSidebarToElement(mainBtn);
-    }
-});
+               boardBody.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });     
+        }
+
+        subMenuBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                if (!targetId) return;
+            
+                const targetSection = document.querySelector(targetId);
+                if (!targetSection) return;
+            
+                setActiveSubMenuBtn(btn, true);
+                scrollBoardToSection(targetSection);
+            });
+        });
+
+        function getMainBtnBySectionId(id) {
+            if (
+                id.startsWith('set-') ||
+                id === 'union' ||
+                id === 'intersect' ||
+               id === 'minus-set' ||
+                id === 'complement' ||
+                id === 'van-diagram' ||
+                id === 'operation-set' ||
+                id === 'solution-formula'
+            ) {
+                return mathbtn;
+            }
+
+            if (
+                id.startsWith('logic-') ||
+                id === 'proposition' ||
+                id === 'proposition-connectors' ||
+                id === 'table-of-propositions' ||
+                id === 'equivalence' ||
+                id === 'eternal-truth' ||
+                id === 'justification' ||
+                id === 'opening-sentences' ||
+                id === 'quantifiers'
+            ) {
+                return logicbtn;
+            }
+
+            return null;
+
+            if (
+                id.startsWith('real-') ||
+                id === 'real-number-system'||
+                id === 'polynomial-in-one-variable'||
+                id === 'factorization-of-polynomials'||
+                id === 'polynomial-equations'||
+                id === 'polynomial-fractions'||
+                id === 'operations-with-rational-expressions'||
+                id === 'inequality-of-real-numbers'||
+                id === 'polynomial-inequalities-with-one-variable'||
+                id === 'absolute'||
+                id === 'absolute-value-equation-of-a-single-variable-polynomial'||
+                id === 'absolute-value-inequality-of-a-single-variable-polynomial'
+            ) {
+                return truenumbtn;
+            }
+        }
+
+        function scrollSidebarToElement(element) {
+            const sidebarBox = document.querySelector('.mathstudy-box');
+            if (!sidebarBox || !element || window.innerWidth <= 768) return;
+        
+            const targetTop =
+                element.getBoundingClientRect().top -
+                sidebarBox.getBoundingClientRect().top +
+                sidebarBox.scrollTop -
+                80;
+        
+            sidebarBox.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        boardBody.addEventListener('scroll', () => {
+            let currentSection = null;
+        
+            contentSections.forEach((section) => {
+                const sectionTop =
+                    section.getBoundingClientRect().top -
+                    boardBody.getBoundingClientRect().top;
+            
+                if (sectionTop <= boardBody.clientHeight * 0.55) {
+                    currentSection = section;
+                }
+           });
+       
+            if (!currentSection) return;
+       
+            const btn = sectionToBtnMap.get(currentSection.id);
+            if (btn) {
+                setActiveSubMenuBtn(btn);
+            }
+        
+            const mainBtn = getMainBtnBySectionId(currentSection.id);
+            if (mainBtn) {
+                scrollSidebarToElement(mainBtn);
+            }
+        });
 
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {
