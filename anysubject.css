@@ -818,3 +818,7 @@ body {
     margin-left:18px;
     margin-bottom:10px;
 }
+.katex,
+.katex * {
+    font-family: KaTeX_Main, KaTeX_Math, KaTeX_AMS, serif !important;
+}
