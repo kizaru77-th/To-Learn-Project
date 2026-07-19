@@ -158,17 +158,17 @@
                 </button>
                 <div class="dropdown-content" id="expoContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>เลขยกกำลัง</button></li>
-                        <li><button>สมบัติเลขยกกำลัง</button></li>
-                        <li><button>รากที่ n ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</button></li>
-                        <li><button>ฟังก์ชันเอกซ์โพเนนเชียล</button></li>
-                        <li><button>ฟังก์ชันเพิ่มและลบ</button></li>
-                        <li><button>สมการเอกซ์โพเนนเชียล</button></li>
-                        <li><button>อสมการเอกซ์โพเนนเชียล</button></li>
-                        <li><button>ฟังก์ชันลอการิทึม</button></li>
-                        <li><button>สมบัติของฟังก์ชันลอการิทึม</button></li>
-                        <li><button>สมการลอการิทึม</button></li>      
-                        <li><button>อสมการลอการิทึม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#functions">เลขยกกำลัง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">สมบัติเลขยกกำลัง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">รากที่ n ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">ฟังก์ชันเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">ฟังก์ชันเพิ่มและลบ</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">สมการเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">อสมการเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">ฟังก์ชันลอการิทึม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">สมบัติของฟังก์ชันลอการิทึม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">สมการลอการิทึม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#functions">อสมการลอการิทึม</button></li>      
                     </ul>
                 </div> <hr>
             </div>
@@ -1187,6 +1187,500 @@
                 <div class="chapter-divider">
                     <span> บทที่ 5 : log ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม</span>
                 </div>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เลขยกกำลัง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เรียก$a^n$ว่า เลขยกกำลัง เรียก $a$ ว่า ฐานของเลขยกกำลัง และ $n$ ว่า เลขชี้กำลัง</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมบัติเลขยกกำลัง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เราจะนำสมบัติเลขยกกำลังมาใช้เพื่อหาค่าหรือจัดรูป ลองมาดูการใช้สมบัติผ่าน<b>ตัวอย่างนี้</b></p>
+                    <ul>
+                        <li>
+                            <p>จงเขียน$\frac{(27^2 \times 9^{-2})^3}{3^{15}}$ให้อยู่ในรูปอย่างง่าย และเลขยกกำลังทุกตัวมีเลขชี้กำลังเป็นจำนวนเต็มบวก</p>
+                            <b>วิธีทำ</b>
+                            <p>$\frac{(27^2 \times 9^{-2})^3}{3^{15}}$</p>
+                            <p>$= \frac{((3^3)^2 \times (3^2)^{-2})^3}{3^{15}}$</p>
+                            <p>$= \frac{3^{18} \times 3^{-12}}{3^{15}}$</p>
+                            <p>$= \frac{3^{18}}{3^{27}}$</p>
+                            <p>$= \frac{1}{3^9}$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">รากที่ $n$ ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</span>
+                </h2>                    
+                    <b>บทนิยาม</b>
+                    <p>กำหนดให้ $x$ และ $y$ เป็นจำนวนจริง และ $n$ เป็นจำนวนเต็มที่มากกว่า $1$</p>
+                    <ul>
+                        <li>
+                            <b>รากที่ $n$ ของจำนวนจริง</b>
+                            <p>$y$ เป็นรากที่ $n$ ของ $x$ ก็ต่อเมื่อ ${y^{n}}=x$</p>
+                        </li>
+                        <li>
+                            <b>ค่าหลักของรากที่ $n$</b>
+                            <p>$y$ เป็นค่าหลักของรากที่ $n$ ของ $x$ ก็ต่อเมื่อ $y$ เป็นรากที่ $n$ ของ $x$ และ $xy \geq 0$</p>
+                        </li>
+                        <b>ตัวอย่างเพิ่มเติมจากบทนิยาม จะได้ว่า</b>
+                        <li>
+                            <p>รากที่ $2$ ของ $9$ คือ $3$ และ $-3$</p>
+                        </li>
+                        <li>
+                            <p>รากที่ $3$ ของ $-27$ คือ $-3$</p>
+                        </li>
+                        <li>
+                            <p>ค่าหลักของรากที่ $2$ ของ $36$ คือ $6$</p>
+                        </li>
+                        <li>
+                            <p>$\sqrt{36} = 6$</p>
+                        </li>
+                    </ul>
+                    <p>จะเห็นได้ว่า ค่าหลักของรากที่ $n$ ของ $x$ มีค่าเท่ากับ กรณฑ์ที่ $n$ ของ $x$ นั่นคือค่าหลักของรากที่ $n$ ของ $x=\sqrt[n]{x}$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>$\frac{\sqrt{4} \cdot \sqrt[3]{5}^3}{\sqrt[3]{-8}} + \sqrt{(-7)^2}$ เท่ากับเท่าใด</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\frac{\sqrt{4} \cdot \sqrt[3]{5}^3}{\sqrt[3]{-8}} + \sqrt{(-7)^2}$</p>
+                            <p>$= \frac{2 \cdot 5}{-2} + \sqrt{49}$</p>
+                            <p>$= -5 + 7$</p>
+                            <p>$= 2$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ฟังก์ชันเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>พิจารณาลักษณะกราฟของฟังก์ชันเอกซ์โพเนนเชียล</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>จากกราฟจะเห็นว่าฟังก์ชันเอกซ์โพเนนเชียลจะเป็นฟังก์ชันเพิ่มหรือฟังก์ชันลดนั้นขึ้นอยู่กับค่า $a$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงเขียนกราฟของฟังก์ชัน $f(x) = 3^x \text{ และ } g(x) = \left(\frac{1}{3}\right)^x$ ลงในระบบพิกัดฉากเดียวกัน</p>
+                            <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                            <p>จากกราฟที่เราได้จะเห็นว่า $f(x) = 3^x$ เป็นฟังก์ชันเพิ่มเพราะ $a > 1$ และ $g(x) = \left(\frac{1}{3}\right)^x$ เป็นฟังก์ชันลดเพราะ $0 < a < 1$</p>
+                        </li>   
+                        <li>
+                            <p>กำหนดให้ $f(x) = 2^x$ จงพิจารณาว่ากราฟของฟังก์ชันต่อไปนี้เกิดจากการเลื่อนจุดทุกจุดของฟังก์ชัน $f(x)$ อย่างไร</p>
+                            <p>$1.\ g(x) = 2^x + 1$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $g(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดขึ้น 1 หน่วย</span>
+                            <p>$2.\ h(x) = 2^{x + 1}$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $h(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดไปทางซ้าย 1 หน่วย</span>
+                        </li>
+                        <p>จากตัวอย่าง อาจคิดว่า การพิจารณาว่ากราฟเลื่อนไปทางไหนซับซ้อน แต่การเลื่อนกราฟไม่ใช่เรื่องยากอย่างที่คิดนะ ทางเราได้สรุปเรื่องการเลื่อนกราฟมาให้แล้ว</p>
+                        <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>สรุปง่าย ๆ ก็คือถ้าฐานมีค่าเท่ากันแล้วเลขชี้กำลังจะมีค่าเท่ากัน และถ้าเลขชี้กำลังมีค่าเท่ากันแต่ฐานมีค่าไม่เท่ากันแล้วเลขชี้กำลังจะเท่ากับ $0$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการต่อไปนี้</p>
+                            <p>$1.\ 2^{2x} = 4^8$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จะได้ว่า $2^{2x} = (2^2)^8$</p>
+                            <p>$2^{2x} = 2^{16}$</p>
+                            <p>$2x = 16$</p>
+                            <p>$x = 8$</p>
+                            <p>ดังนั้น เซตคำตอบของสมการ คือ $\{8\}$</p>
+                            <br>
+                            <p>$2.\ 3^{10x + 2} = 4^{5x + 1}$</p>
+                            <p>จะได้ว่า $3^{10x + 2} = (2^2)^{5x + 1}$</p>
+                            <p>$3^{10x + 2} = 2^{10x + 2}$</p>
+                            <p>เนื่องจากฐานไม่เท่ากัน ดังนั้นเลขชี้กำลังจะต้องเท่ากับ $0$</p>
+                            <p>$10x + 2 = 0$</p>
+                            <p>$10x = -2$</p>
+                            <p>$x = -\frac{1}{5}$</p>
+                            <p>ดังนั้น เซตคำตอบของสมการ คือ $\{-\frac{1}{5}\}$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>สังเกตได้ว่า ถ้าฐานมีค่าอยู่ระหว่าง $0 < a < 1$ จะต้องกลับเครื่องหมายของอสมการด้วย</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาคำตอบของอสมการต่อไปนี้</p>
+                            <p>$1.\ 10^{3x} > 1000$</p>
+                            <b>วิธีทำ</b>
+                            <p>จะได้ว่า $10^{3x} > 10^3$</p>
+                            <p>$3x > 3$</p>
+                            <p>ดังนั้น $x > 1$</p>
+                            <br>
+                            <p>$2.\ \left(\frac{1}{3}\right)^{2x + 1} < \frac{1}{27}$</p>
+                            <b>วิธีทำ</b>
+                            <p>จะได้ว่า $\left(\frac{1}{3}\right)^{2x + 1} < \left(\frac{1}{3}\right)^3$</p>
+                            <p>เนื่องจากฐานอยู่ระหว่าง $0 < a < 1$ จึงต้องกลับเครื่องหมายของอสมการ</p>
+                            <p>$2x + 1 > 3$</p>
+                            <p>$2x > 2$</p>
+                            <p>ดังนั้น $x > 1$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ฟังก์ชันลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ลักษณะกราฟของฟังก์ชันลอการิทึมเป็นดังนี้</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>จากกราฟ จะเห็นว่าฟังก์ชันลอการิทึมจะเป็นฟังก์ชันเพิ่มหรือฟังก์ชันลดนั้นขึ้นอยู่กับค่า $a$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>กำหนด $f(x) = \log_2 x$ จงพิจารณาว่ากราฟของฟังก์ชันต่อไปนี้เกิดจากการเลื่อนจุดทุกจุดของฟังก์ชัน $f(x)$ อย่างไร</p>
+                            <span><b style="text-decoration: underline;">แนวคิด</b> ใช้วิธีการเลื่อนกราฟ</span>
+                            <p>$1.\ g(x) = \log_2(x) - 1$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $g(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดลง 1 หน่วย</span>
+                            <p>$2.\ h(x) = \log_2(x - 1)$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $h(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดไปทางขวา 1 หน่วย</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมบัติของฟังก์ชันลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $\log_4 32 + \log_4 2$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\log_4 32 + \log_4 2$</p>
+                            <p>$= \log_4(32 \times 2)$</p>
+                            <p>$= \log_4 64$</p>
+                            <p>$= \log_4 4^3$</p>
+                            <p>$= 3 \times \log_4 4$</p>
+                            <p>$= 3 \times 1$</p>
+                            <p>$= 3$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$\log(x - 1) + \log(x + 2) = 1$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\log(x - 1) + \log(x + 2) = 1$</p>
+                            <p>$\log[(x - 1)(x + 2)] = 1$</p>
+                            <p>$(x - 1)(x + 2) = 10^1$</p>
+                            <p>$(x - 1)(x + 2) = 10$</p>
+                            <p>$x^2 + x - 2 = 10$</p>
+                            <p>$x^2 + x - 12 = 0$</p>
+                            <p>$(x + 4)(x - 3) = 0$</p>
+                            <p>$x = -4$ หรือ $x = 3$</p>
+                            <b style="text-decoration: underline;">ตรวจสอบค่า $x$ ที่ได้ว่าค่าใดสอดคล้องกับสมการที่กำหนดให้</b>
+                            <li>
+                                <p>กรณี $x = -4$</p>
+                                <p>แทน $x = -4$ ใน $\log(x - 1) + \log(x + 2) = 1$</p>
+                                <p>ได้ $\log(-4 - 1) + \log(-4 + 2) = 1$ เป็นเท็จ</p>
+                                <p>เนื่องจากไม่นิยาม $y = \log_a x$ เมื่อ $x$ ไม่เป็นจำนวนเต็มบวก</p>
+                                <p>แสดงว่า $-4$ ไม่สอดคล้องกับสมการที่กำหนดให้</p>
+                            </li>
+                            <li>
+                                <p>กรณี $x = 3$</p>
+                                <p>แทน $x = 3$ ใน $\log(x - 1) + \log(x + 2) = 1$</p>
+                                <p>ได้ $\log(3 - 1) + \log(3 + 2) = 1$</p>
+                                <p>หรือ $\log(2) + \log(5) = 1$</p>
+                                <p>$\log(2 \times 5) = 1$</p>
+                                <p>$\log(10) = 1$</p>
+                                <p>ซึ่งเป็นจริง</p>
+                                <p>แสดงว่า $3$ สอดคล้องกับสมการที่กำหนดให้</p>
+                            </li>
+                            <br>
+                            <span><b style="text-decoration: underline;">ตอบ</b> เซตคำตอบคือ $\{3\}$</span>
+                            <br>
+                            <span><b style="text-decoration: underline; color: red;">ระวัง!</b> อย่าลืมเช็กเสมอว่าคำตอบที่ได้จากการแก้สมการ ทำให้หลัง $log$ ติดลบหรือไม่ด้วย</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>หลักการแก้อสมการลอการิทึม มีดังนี้</b>
+                    <p>1.อสมการ$\log_a m > \log_a n$</p>
+                    <ul>
+                        <li>
+                            <p>ถ้า $a > 1$ จะได้ว่า $m > n$</p>
+                        </li>
+                        <li>
+                            <p>ถ้า $0 < a < 1$ จะได้ว่า $m < n$</p>
+                        </li>
+                    </ul>
+                    <p>2.อสมการ$\log_a m < \log_a n$</p>
+                    <ul>
+                        <li>
+                            <p>ถ้า $a > 1$ จะได้ว่า $m < n$</p>
+                        </li>
+                        <li>
+                            <p>ถ้า $0 < a < 1$ จะได้ว่า $m > n$</p>
+                        </li>
+                    </ul>
+                    <b>ตัวอย่าง เช่น</b>
+                    <p>จงหาเซตคำตอบของอสมการ$\log_{\frac{1}{2}}(x + 2) - \log_{\frac{1}{2}}(x + 1) < 2$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>$\log_{\frac{1}{2}}(x + 2) - \log_{\frac{1}{2}}(x + 1) < 2$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < 2\log_{\frac{1}{2}}\left(\frac{1}{2}\right)$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < \log_{\frac{1}{2}}\left(\frac{1}{2}\right)^2$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < \log_{\frac{1}{2}}\left(\frac{1}{4}\right)$</p>
+                    <p>เนื่องจาก$f(x) = \log_{\frac{1}{2}} x$ เป็นฟังก์ชันลด</p>
+                    <p>$\frac{x + 2}{x + 1} > \frac{1}{4}$</p>
+                    <p>$\frac{x + 2}{x + 1} - \frac{1}{4} > 0$</p>
+                    <p>$\frac{4(x + 2) - (x + 1)}{4(x + 1)} > 0$</p>
+                    <p>$\frac{3x + 7}{4x + 4} > 0$</p>
+                    <p>จะได้$x < -\frac{7}{3}$ และ $x > -1$</p>
+                    <p>เนื่องจาก อสมการที่กำหนดให้มีพจน์ $\log_{\frac{1}{2}}(x + 2)$ และ $\log_{\frac{1}{2}}(x + 1)$</p>
+                    <p>จะได้ว่า $x > -2$ และ $x > -1$</p>
+                    <p>นั่นคือ $x > -1$</p>
+                    <p>ดังนั้น เซตคำตอบของอสมการ คือ $(-1, \infty)$</p>
+                    <span><b style="text-decoration: underline; color:red;">ระวัง!!</b> อย่าลืมเช็กเสมอว่าคำตอบที่ได้จากการแก้อสมการ ทำให้หลัง $\log$ ติดลบหรือไม่ด้วย  และถ้าฐานน้อยกว่า $1$ แต่มากกว่า $0$ แล้ว ต้องกลับเครื่องหมายอสมการนั้นด้วย</span>
+                </section>
+
+                <div class="chapter-divider">
+                    <span> บทที่ 5 : □ เรขาคณิตวิเคราะห์และภาคตัดกรวย</span>
+                </div>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างจุดสองจุด</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น จุด $P(3, 8)$ กับจุด $Q(6, 4)$ จะได้ว่า</p>
+                    <p>$d = \sqrt{(3 - 6)^2 + (8 - 4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">จุดกึ่งกลางของส่วนของเส้นตรง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น จุด $P(-1, 6)$ กับจุด $Q(5, 4)$ จะได้ว่าจุดกึ่งกลางระหว่าง $(-1,6)$ และ $(5,4)$ คือ</p>
+                    <p>$\left(\frac{-1 + 5}{2}, \frac{6 + 4}{2}\right) = (2, 5)$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างเส้นตรงกับจุด</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น (4, 1)$ กับเส้นตรง $5x - 12y + 18 = 0$ จะได้ว่า</p>
+                    <p>$d = \frac{|4 \cdot 5 + 1(-12) + 18|}{\sqrt{5^2 + (-12)^2}} = \frac{|20 - 12 + 18|}{\sqrt{169}} = \frac{26}{13} = 2$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างเส้นตรง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น เส้นตรง $6x - 8y + 4 = 0$ กับ $6x - 8y - 16 = 0$ จะได้ว่า</p>
+                    <p>$d = \frac{|4 - (-16)|}{\sqrt{6^2 + (-8)^2}} = \frac{|4 + 16|}{\sqrt{100}} = \frac{20}{10} = 2$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เส้นตรง</span>
+                </h2>                    
+                    <p>เส้นตรง เราสามารถเขียนให้อยู่ในรูปสมการเส้นตรง คือ $y = mx + c$ หรือรูปทั่วไปของสมการเส้นตรง คือ $Ax + By + C = 0$ เมื่อ $A, B, C$ เป็นค่าคงตัว โดยที่ $A$ และ $B$ ไม่เป็นศูนย์พร้อมกัน</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ความชันของเส้นตรง (m)</span>
+                </h2>                    
+                    <p>เราสามารถรู้ความชันของเส้นตรง ได้จากสมการ $y = mx + c$ หรือจากสูตรต่อไปนี้</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เส้นตรงขนานและตั้งฉาก</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น สมมติเส้นตรง 2 เส้นที่ต่างกัน เส้นตรงที่มีความชันเป็น 2 จะขนานกับเส้นตรงที่มีความชันเป็น 2 เนื่องจากค่าของความชันเท่ากัน จะได้ว่าเส้นตรงขนานกัน และเส้นตรงที่มีความชันเป็น 2 จะตั้งฉากกับเส้นตรงที่มีความชันเป็น $-\frac{1}{2}$ เพราะ $2 \cdot \left(-\frac{1}{2}\right) = -1$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ภาคตัดกรวย</span>
+                </h2>   
+                    <p>ในหัวข้อนี้ เราจะศึกษาภาคตัดกรวยโดยใช้วิธีทางเรขาคณิตวิเคราะห์มาช่วย โดยนำระนาบมาตัดกรวยกลมตรงในลักษณะที่ต่างกัน ซึ่งจะตัดโดยอิงจากแกนที่อยู่ในแนวตั้งตามรูปด้านล่างและสมการเส้นตรงหรือตัวก่อกำเนิด ดังนั้น ภาคตัดกรวยที่กำลังจะเรียนนั่นก็คือรูปในระนาบที่เกิดจากการตัดกันของระนาบกับกรวย</p>                 
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ถ้าเราตัดโดยใช้ระนาบ (แผ่นสีเหลือง) ตามรูป จะได้ว่า</p>
+                    <ul>
+                        <li>
+                            <p>ระนาบตั้งฉากกับแกนของกรวยข้างเดียว จะได้ภาคตัดกรวยที่เรียกว่า <b>วงกลม</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบไม่ตั้งฉากกับแกนของกรวย แต่ทำมุมกับแกนของกรวยขนาดใหญ่ค่าหนึ่ง ระนาบจะตัดกรวยข้างเดียว ได้ภาคตัดกรวยที่เรียกว่า <b>วงรี</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบขนานตัวก่อกำเนิดของกรวย ระนาบจะตัดกรวยข้างเดียว ได้ภาคตัดกรวยที่เรียกว่า <b>พาราโบลา</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบขนานกับแกนของกรวย ระนาบจะตัดกรวยสองข้าง จะได้ภาคตัดกรวยที่เรียกว่า <b>ไฮเพอร์โบลา</b></p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">วงกลม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่างเช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $x^2 + y^2 + x + 2y + 1 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                        </li>
+                        <b style="text-decoration: underline;">วิธีทำ</b>
+                        <p>$x^2 + y^2 + x + 2y + 1 = 0$</p>
+                        <p>$(x^2 + x) + (y^2 + 2y) + 1 = 0$</p>
+                        <p>$(x^2 + x + (\frac{1}{2})^2) + (y^2 + 2y + 1^2) + 1 - (\frac{1}{2})^2 - 1^2 = 0$</p>
+                        <p>$(x + \frac{1}{2})^2 + (y + 1)^2 = \frac{1}{4}$</p>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">วงรี</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>โดยวงรีที่เราจะศึกษาจะมีสองรูป นั่นก็คือวงรีที่มีแกนเอกอยู่ในแนวนอน (วงรีแนวนอน) และวงรีที่มีแกนเอกในแนวตั้ง (วงรีแนวตั้ง) ซึ่งรูปแบบมาตรฐานของสมการของวงรีก็จะมี 2 แบบเช่นกัน</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $x^2 + 4y^2 - 6x + 16y + 21 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                        </li>
+                        <b style="text-decoration: underline;">วิธีทำ</b>
+                        <p>$x^2 + 4y^2 - 6x + 16y + 21 = 0$</p>
+                        <p>$(x^2 - 6x) + 4(y^2 + 4y) = -21$</p>
+                        <p>$(x^2 - 6x + 9) + 4(y^2 + 4y + 4) = -21 + 9 + 16$</p>
+                        <p>$(x - 3)^2 + 4(y + 2)^2 = 4$</p>
+                        <p>$\frac{(x - 3)^2}{4} + \frac{(y + 2)^2}{1} = 1$</p>
+                        <p>$\frac{(x - 3)^2}{4} + (y + 2)^2 = 1$</p>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">พาราโบลา</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>พาราโบลาสามารถวาดได้ 4 แบบตามรูปแบบมาตรฐานของสมการพาราโบลา ซึ่งก็คือ</p>
+                    <ul>
+                        <li>
+                            <p>พาราโบลาหงายขึ้น</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(x - h)^2 = 4c(y - k)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาคว่ำลง</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(x - h)^2 = -4c(y - k)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาหันไปทางขวา</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(y - k)^2 = 4c(x - h)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาหันไปทางซ้าย</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(y - k)^2 = -4c(x - h)$</p>
+                        </li>
+                    </ul>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $y^2 - 6y + 8x + 17 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จัดสมการพาราโบลาที่กำหนดให้อยู่ในรูปแบบมาตรฐานดังนี้</p>
+                            <p>$y^2 - 6y + 9 + 8x + 8 = 0$</p>
+                            <p>$y^2 - 6y + 9 = -8x - 8$</p>
+                            <p>$(y - 3)^2 = -8(x + 1)$</p>
+                            <p>$(y - 3)^2 = -4(2)(x + 1)$</p>
+                            <p>จากสมการรูปแบบมาตรฐาน เราจะได้ว่า $k = 3, h = -1, c = 2$</p>
+                            <p>พาราโบลานี้เป็นพาราโบลาเปิดซ้ายมีจุดยอดอยู่ที่ $(-1, 3)$, จุดโฟกัสอยู่ที่ $(-3, 3)$, และเส้นไดเรกตริกซ์คือ $x = 1$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ไฮเพอร์โบลา</span>
+                </h2>                    
+                    <p>บทนิยามไฮเพอร์โบลาจะคล้ายกับบทนิยามของวงรี ต่างกันแค่วงรีใช้ผลบวกของระยะทางจากโฟกัสทั้งสองแต่ว่าไฮเพอร์โบลาจะใช้ผลต่าง</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ไฮเพอร์โบลาสามารถวาดได้ 2 แบบตามรูปแบบมาตรฐานของสมการพาราโบลา ซึ่งก็คือ</p>
+                    <ul>
+                        <li>
+                            <p>ไฮเพอร์โบลาแกนตามขวางอยู่ในแนวนอน</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $\frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1$</p>
+                        </li>
+                        <li>
+                            <p>ไฮเพอร์โบลาแกนตามแนวตั้งอยู่ในแนวตั้ง</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $\frac{(y - k)^2}{a^2} - \frac{(x - h)^2}{b^2} = 1$</p>
+                        </li>
+                    </ul>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $16x^2 - 9y^2 + 160x + 72y + 112 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จัดสมการไฮเพอร์โบลาที่กำหนดให้อยู่ในรูปแบบมาตรฐานดังนี้</p>
+                            <p>$16x^2 + 160x - 9y^2 + 72y + 112 = 0$</p>
+                            <p>$16(x^2 + 10x) - 9(y^2 - 8y) + 112 = 0$</p>
+                            <p>$16(x^2 + 10x) + 16(25) - 16(25) - 9(y^2 - 8y) - 9(16) + 9(16) + 112 = 0$</p>
+                            <p>$16(x^2 + 10x + 25) - 16(25) - 9(y^2 - 8y + 16) + 9(16) + 112 = 0$</p>
+                            <p>$16(x + 5)^2 - 9(y - 4)^2 - 400 + 144 + 112 = 0$</p>
+                            <p>$16(x + 5)^2 - 9(y - 4)^2 = 144$</p>
+                            <p>$\frac{16(x + 5)^2}{144} - \frac{9(y - 4)^2}{144} = 1$</p>
+                            <p>$\frac{(x + 5)^2}{9} - \frac{(y - 4)^2}{16} = 1$</p>
+                            <p>$\frac{(x + 5)^2}{3^2} - \frac{(y - 4)^2}{4^2} = 1$</p>
+                            <p>จากสมการรูปแบบมาตรฐาน เราจะได้ว่า $h = -5, k = 4, a = 3, b = 4, c=5$</p>
+                            <p>ไฮเพอร์โบลานี้เป็นไฮเพอร์โบลาแกนตามขวางอยู่ในแนวนอนที่มีจุดศูนย์กลางอยู่ที่ $(-5, 4)$ , จุดยอดอยู่ที่ $(-8, 4)$ และ $(2, 4)$ ส่วนโฟกัสอยู่ที่$(-10, 4)$ และ $(0, 4)$</p>
+                        </li>
+                    </ul>
+                </section>
             </div>
         </div>
     </div>
@@ -1518,16 +2012,12 @@
         logout();
     }
 
-    const INACTIVITY_TIME = 1 * 10 * 1000; // 1 นาที
+    const INACTIVITY_TIME = 60 * 10 * 1000; // 10 นาที
     let timeoutId;
 
     // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
     function redirectToHome() {
-        // ล้างข้อมูลการเข้าสู่ระบบใน localStorage (ถ้าต้องการให้ออกจากระบบด้วย)
-        localStorage.removeItem('isLoggedIn'); 
-        localStorage.removeItem('username');
-        
-        // เปลี่ยนหน้า
+        // เปลี่ยนหน้าโดยไม่ลบข้อมูลล็อกอิน
         window.location.href = 'index.html'; 
     }
 
