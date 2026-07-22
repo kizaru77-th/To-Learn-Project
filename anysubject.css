@@ -786,6 +786,86 @@ body {
   }
 }
 
+.chapter-lock-card {
+    margin: 20px 0 12px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #eef7ff 0%, #fff8d6 100%);
+    border: 2px solid #1d4ed8;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    color: #14213d;
+}
+
+  .chapter-lock-card.cooldown-active {
+    position: relative;
+    min-height: 260px;
+    overflow: hidden;
+    background: #111;
+    border-color: #111;
+    color: #fff;
+  }
+
+  .chapter-lock-card.cooldown-active .quiz-cooldown-card {
+    display: flex;
+  }
+
+  .quiz-cooldown-card {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.94);
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 24px 20px;
+  }
+
+  .quiz-cooldown-card .cooldown-icon { font-size: 38px; }
+  .quiz-cooldown-card h4 { margin: 4px 0 8px; color: #fff; }
+  .quiz-cooldown-card p { margin: 2px 0; }
+  .quiz-cooldown-card .cooldown-time { margin-top: 6px; font-size: 30px; font-weight: 700; }
+
+.chapter-lock-card h4 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: #0f172a;
+}
+
+.chapter-lock-card .quiz-cooldown-card h4 {
+  color: #fff;
+}
+
+.chapter-lock-card p {
+    margin: 0 0 12px;
+    line-height: 1.6;
+}
+
+.quiz-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+}
+
+.quiz-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.chapter-sidebar-locked {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 .chapter-divider{
     display:flex;
     align-items:center;

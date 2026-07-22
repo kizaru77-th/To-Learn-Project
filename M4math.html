@@ -200,7 +200,7 @@
                 <h3>📌 คณิตศาสตร์ ม.4</h3>
             </div>
             <div class="board-body">
-            <div class="chapter-divider">
+            <div class="chapter-divider" id="chapter-1" data-chapter-id="chapter-1" data-required="none">
                     <span> บทที่ 1 : {} เซต</span>
             </div>
             <section id="set-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
@@ -405,7 +405,7 @@
                 </ul>
                 </section>   
 
-                <div class="chapter-divider">
+                <div class="chapter-divider" id="chapter-2" data-chapter-id="chapter-2" data-required="chapter-1">
                     <span> บทที่ 2 : ⋀⋁ ตรรกศาสตร์</span>
                 </div>
                 
@@ -542,7 +542,7 @@
                 </ul>
                 </section>
 
-                <div class="chapter-divider">
+                <div class="chapter-divider" id="chapter-3" data-chapter-id="chapter-3" data-required="chapter-2">
                     <span> บทที่ 3 : ① จำนวนจริง</span>
                 </div>
 
@@ -923,7 +923,7 @@
                     </ul>
                 </section>
 
-                <div class="chapter-divider">
+                <div class="chapter-divider" id="chapter-4" data-chapter-id="chapter-4" data-required="chapter-3">
                     <span> บทที่ 4 : ⨍ ความสำพันธ์และฟังก์ชัน</span>
                 </div>
 
@@ -1183,7 +1183,7 @@
                         </li>
                     </ul>
                 </section>
-                <div class="chapter-divider">
+                <div class="chapter-divider" id="chapter-5" data-chapter-id="chapter-5" data-required="chapter-4">
                     <span> บทที่ 5 : log ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม</span>
                 </div>
 
@@ -1472,8 +1472,8 @@
                     <span><b style="text-decoration: underline; color:red;">ระวัง!!</b> อย่าลืมเช็กเสมอว่าคำตอบที่ได้จากการแก้อสมการ ทำให้หลัง $\log$ ติดลบหรือไม่ด้วย  และถ้าฐานน้อยกว่า $1$ แต่มากกว่า $0$ แล้ว ต้องกลับเครื่องหมายอสมการนั้นด้วย</span>
                 </section>
 
-                <div class="chapter-divider">
-                    <span> บทที่ 5 : □ เรขาคณิตวิเคราะห์และภาคตัดกรวย</span>
+                <div class="chapter-divider" id="chapter-6" data-chapter-id="chapter-6" data-required="chapter-5">
+                    <span> บทที่ 6 : □ เรขาคณิตวิเคราะห์และภาคตัดกรวย</span>
                 </div>
 
                 <section id="distance-between-two-points" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
@@ -1718,6 +1718,146 @@
         const truenumbtn = document.getElementById('truenumbtn');
         const truenumContent = document.getElementById('truenumContent');
 
+        function setupChapterLockSystem() {
+            const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
+            const chapterDividers = Array.from(document.querySelectorAll('.chapter-divider'));
+            const chapterIds = chapterDividers.map((divider, index) => divider.dataset.chapterId || `chapter-${index + 1}`);
+            const chapterLabels = {
+                'chapter-1': 'เซต',
+                'chapter-2': 'ตรรกศาสตร์',
+                'chapter-3': 'จำนวนจริง',
+                'chapter-4': 'ความสัมพันธ์และฟังก์ชัน',
+                'chapter-5': 'ฟังก์ชันเอกซ์โพเนนเชียลและลอการิทึม',
+                'chapter-6': 'เรขาคณิตวิเคราะห์และภาคตัดกรวย'
+            };
+
+            const unlockedChapters = chapterIds.filter((chapterId, index) => {
+                const divider = chapterDividers[index];
+                const requiredChapter = divider?.dataset.required || 'none';
+                return chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || (requiredChapter !== 'none' && savedProgress.includes(requiredChapter));
+            });
+
+            const activeChapterId = unlockedChapters.find((chapterId) => !savedProgress.includes(chapterId))
+                || unlockedChapters[unlockedChapters.length - 1]
+                || 'chapter-1';
+
+            document.querySelectorAll('.chapter-lock-card').forEach((card) => card.remove());
+
+            chapterDividers.forEach((divider, index) => {
+                const chapterId = divider.dataset.chapterId || `chapter-${index + 1}`;
+                const nextDivider = chapterDividers[index + 1];
+                const chapterSections = [];
+                let currentNode = divider.nextElementSibling;
+
+                while (currentNode && currentNode !== nextDivider) {
+                    if (currentNode.classList && currentNode.classList.contains('content-section')) {
+                        chapterSections.push(currentNode);
+                    }
+                    currentNode = currentNode.nextElementSibling;
+                }
+
+                const isUnlocked = chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || (divider.dataset.required && savedProgress.includes(divider.dataset.required));
+                const isActive = chapterId === activeChapterId;
+                const shouldShow = isUnlocked || isActive;
+
+                if (isActive && chapterSections.length > 0) {
+                    const card = document.createElement('div');
+                    card.className = 'chapter-lock-card';
+                    const quizLabel = chapterLabels[chapterId] || 'บทเรียน';
+                    card.innerHTML = `
+                        <h4>แบบทดสอบ${quizLabel}</h4>
+                        <p>ลองทำแบบทดสอบเพื่อทบทวนความรู้ของบทนี้</p>
+                        <a class="quiz-btn" href="quiz.php?chapter=${chapterId}&returnTo=M4math.html#${chapterId}">ไปหน้าข้อสอบ</a>
+                    `;
+                    const lastSection = chapterSections[chapterSections.length - 1];
+                    lastSection.insertAdjacentElement('afterend', card);
+
+                    const cooldownKey = `quizCooldown_${chapterId}`;
+                    const cooldownUntil = Number(localStorage.getItem(cooldownKey) || 0);
+                    if (cooldownUntil > Date.now()) {
+                        card.classList.add('cooldown-active');
+                        card.insertAdjacentHTML('afterbegin', `
+                            <div class="quiz-cooldown-card">
+                                <div class="cooldown-icon">🔒</div>
+                                <h4>ล็อกข้อสอบไว้ชั่วคราว</h4>
+                                <p>คุณสามารถกลับมาทำข้อสอบได้ในอีก</p>
+                                <div class="cooldown-time">05:00</div>
+                            </div>
+                        `);
+
+                        const cooldownTime = card.querySelector('.cooldown-time');
+                        const updateCardCooldown = () => {
+                            const remaining = Number(localStorage.getItem(cooldownKey) || 0) - Date.now();
+                            if (remaining <= 0) {
+                                localStorage.removeItem(cooldownKey);
+                                card.classList.remove('cooldown-active');
+                                return;
+                            }
+
+                            const totalSeconds = Math.ceil(remaining / 1000);
+                            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                            const seconds = String(totalSeconds % 60).padStart(2, '0');
+                            cooldownTime.textContent = `${minutes}:${seconds}`;
+                        };
+
+                        updateCardCooldown();
+                        window.setInterval(updateCardCooldown, 1000);
+                    }
+                }
+
+                chapterSections.forEach((section) => {
+                    section.style.display = shouldShow ? '' : 'none';
+                });
+
+                if (divider.classList) {
+                    divider.style.display = shouldShow ? '' : 'none';
+                }
+            });
+        }
+
+        function setupSidebarChapterLocks() {
+            const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
+            const chapterButtons = [
+                ['mathbtn', 'chapter-1'],
+                ['logicbtn', 'chapter-2'],
+                ['truenumbtn', 'chapter-3'],
+                ['funcbtn', 'chapter-4'],
+                ['expobtn', 'chapter-5'],
+                ['conicbtn', 'chapter-6']
+            ];
+
+            chapterButtons.forEach(([buttonId, chapterId]) => {
+                const button = document.getElementById(buttonId);
+                if (!button) {
+                    return;
+                }
+
+                const requiredChapter = chapterId === 'chapter-1'
+                    ? null
+                    : `chapter-${Number(chapterId.split('-')[1]) - 1}`;
+                const isUnlocked = chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || savedProgress.includes(requiredChapter);
+                const arrow = button.querySelector('.arrow-icon');
+
+                if (!isUnlocked) {
+                    button.classList.add('chapter-sidebar-locked');
+                    button.setAttribute('aria-disabled', 'true');
+                    if (arrow) {
+                        arrow.textContent = '🔒';
+                    }
+                    button.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                    }, true);
+                }
+            });
+        }
+
         // ฟังก์ชันสั่งเปิดเมนูข้าง
         openMenuBtn.addEventListener('click', () => {
             sidebarMenu.classList.add('active');
@@ -1776,6 +1916,8 @@
             truenumContent.classList.toggle('open');
             truenumbtn.classList.toggle('active')
         });
+
+        setupSidebarChapterLocks();
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -2078,6 +2220,8 @@
 
     // เรียกใช้งานทุกอย่างเมื่อหน้าเว็บ (DOM) โหลดพร้อมใช้งาน
     document.addEventListener('DOMContentLoaded', () => {
+        setupChapterLockSystem();
+
         // 1. ตรวจสอบสถานะการล็อกอินก่อน (เรียกฟังก์ชันเดิมของคุณที่มีอยู่)
         if (typeof checkLoginStatus === 'function') {
             checkLoginStatus();
