@@ -159,7 +159,7 @@
                 <div class="dropdown-content" id="expoContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
                         <li><button class="sub-menu-btn" data-target="#exponentiation-intro">เลขยกกำลัง</button></li>
-                        <li><button class="sub-menu-btn" data-target="#properties-of-exponents">สมบัติเลขยกกำลัง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#exponentiation-properties">สมบัติเลขยกกำลัง</button></li>
                         <li><button class="sub-menu-btn" data-target="#the-nth-root-of-a-real-number-and-real-numbers-in-radical-form">รากที่ n ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</button></li>
                         <li><button class="sub-menu-btn" data-target="#functions-exponential">ฟังก์ชันเอกซ์โพเนนเชียล</button></li>
                         <li><button class="sub-menu-btn" data-target="#exponential-equation">สมการเอกซ์โพเนนเชียล</button></li>
@@ -546,7 +546,7 @@
                     <span> บทที่ 3 : ① จำนวนจริง</span>
                 </div>
 
-                <section id="realnumber-into" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <section id="realnumber-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
                 <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
                     <span style="background-color: #FDF2B5; padding: 2px 4px;">จำนวนจริงคืออะไร?</span>
                 </h2>
@@ -2024,10 +2024,8 @@
                 return logicbtn;
             }
 
-            return null;
-
             if (
-                id.startsWith('real-') ||
+                id.startsWith('realnumber-') ||
                 id === 'real-number-system'||
                 id === 'polynomial-in-one-variable'||
                 id === 'factorization-of-polynomials'||
@@ -2053,16 +2051,14 @@
 
             if (
                 id.startsWith('exponentiation-') ||
-                id === 'exponentiation-intro'||
-                id === 'properties-of-exponents'||
+                id.startsWith('functions-exponential') ||
+                id.startsWith('functions-logarithmic') ||
+                id === 'properties-of-logarithmic-functions'||
                 id === 'the-nth-root-of-a-real-number-and-real-numbers-in-radical-form'||
-                id === 'function-exponential'||
-                id === 'exponential-equations'||
-                id === 'exponential-inequalities'||
-                id === 'function-logarithm'||
-                id === 'properties-of-logarithms-functions'||
-                id === 'logarithmic-equations'||
-                id === 'logarithmic-inequalities'
+                id === 'exponential-equation'||
+                id === 'exponential-inequality'||
+                id === 'logarithmic-equation'||
+                id === 'logarithmic-inequality'
             ) {
                 return expobtn;
             }
@@ -2083,6 +2079,8 @@
             ) {
                 return conicbtn;
             }
+
+            return null;
         }
 
         function scrollSidebarToElement(element) {
