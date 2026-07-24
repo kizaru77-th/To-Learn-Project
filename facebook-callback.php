@@ -98,7 +98,16 @@ if (isset($_GET['code'])) {
             exit();
         }
 
-        // แสดงผล Error
+        // กรณี Authorization Code ถูกใช้ไปแล้ว (เกิดจากการ Refresh หน้าเว็บ หรือกด Back/Forward ซ้ำ)
+        if (isset($token_data['error']['code']) && $token_data['error']['code'] == 100) {
+            echo "<script>
+                alert('Authorization Code ถูกใช้งานไปแล้ว หรือมีการกด Refresh หน้าเว็บ กรุณาล็อกอินใหม่อีกครั้ง');
+                window.location.href = 'login.html';
+            </script>";
+            exit();
+        }
+
+        // แสดงผล Error กรณีอื่นๆ
         echo "<h3>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
         echo "<pre>";
         print_r($token_data);
