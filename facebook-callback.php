@@ -1,24 +1,26 @@
 <?php
+// ตั้งค่าความปลอดภัยของ Session สำหรับ Server Deployment
+ini_set('session.cookie_httponly', 1);
 session_start();
+
 require_once 'connect.php';
 
 if (isset($_GET['code'])) {
-    $code = $_GET['code'];
+    $code = trim($_GET['code']);
 
-    // 🔒 ป้องกันการรัน code เดิมซ้ำซ้อน
-    if (isset($_SESSION['last_used_code']) && $_SESSION['last_used_code'] === $code) {
-        // ถ้าเป็น code เดิมที่เคยแลกไปแล้ว ให้ข้ามไปหน้า mainweb ทันที
-        header("Location: mainweb.html");
+    // ถ้าพบว่าเคยแลก code นี้สำเร็จไปแล้ว ให้เด้งไปหน้าหลักทันที
+    if (isset($_SESSION['last_success_code']) && $_SESSION['last_success_code'] === $code) {
+        echo "<script>
+            window.location.href = 'mainweb.html';
+        </script>";
         exit();
     }
-    
-    // บันทึก code ล่าสุดไว้ใน Session
-    $_SESSION['last_used_code'] = $code;
 
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
     $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
 
+    // ยิงแลก Token ด้วย cURL
     $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?"
         . "client_id=" . $app_id
         . "&redirect_uri=" . urlencode($redirect_uri)
@@ -34,20 +36,22 @@ if (isset($_GET['code'])) {
 
     $token_data = json_decode($response, true);
 
+    // กรณีแลก Token สำเร็จ
     if (isset($token_data['access_token'])) {
+        $_SESSION['last_success_code'] = $code; // จำไว้ว่า code นี้แลกผ่านแล้ว
         $access_token = $token_data['access_token'];
 
-        // ดึงข้อมูลผู้ใช้
+        // 1. ดึงข้อมูลโปรไฟล์ Facebook
         $user_url = "https://graph.facebook.com/me?fields=id,name,picture.type(large)&access_token=" . $access_token;
-        $user_response = file_get_contents($user_url);
+        $user_response = @file_get_contents($user_url);
         $user_data = json_decode($user_response, true);
 
-        $fb_id = $user_data['id'];
+        $fb_id = isset($user_data['id']) ? $user_data['id'] : time();
         $username = isset($user_data['name']) ? $user_data['name'] : 'Facebook User';
         $email = $fb_id . '@facebook.com'; 
         $picture = isset($user_data['picture']['data']['url']) ? $user_data['picture']['data']['url'] : '';
 
-        // บันทึกลง Database
+        // 2. ค้นหาหรือบันทึกลง Database
         $stmt = $conn->prepare("SELECT id, profile_picture FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
@@ -71,19 +75,30 @@ if (isset($_GET['code'])) {
             $_SESSION['user_id'] = $conn->lastInsertId();
         }
 
+        // 3. ดึงข้อมูลผู้ใช้เพื่อส่งไปเก็บใน LocalStorage แล้วเปลี่ยนหน้าทันที
         $stmt = $conn->prepare("SELECT username, profile_picture FROM users WHERE id = :id");
         $stmt->execute(['id' => $_SESSION['user_id']]);
         $login_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         echo "<script>
             localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('username', '" . addslashes($login_user['username']) . "');
-            localStorage.setItem('profilePicture', '" . addslashes($login_user['profile_picture']) . "');
+            localStorage.setItem('username', " . json_encode($login_user['username']) . ");
+            localStorage.setItem('profilePicture', " . json_encode($login_user['profile_picture']) . ");
             window.location.href = 'mainweb.html';
         </script>";
         exit();
 
     } else {
+        // หากแลกไม่ผ่าน แต่คนนี้เข้าสู่ระบบไว้แล้วใน Session ให้พาไปหน้าหลักเลย
+        if (isset($_SESSION['user_id'])) {
+            echo "<script>
+                localStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'mainweb.html';
+            </script>";
+            exit();
+        }
+
+        // แสดงผล Error
         echo "<h3>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
         echo "<pre>";
         print_r($token_data);
