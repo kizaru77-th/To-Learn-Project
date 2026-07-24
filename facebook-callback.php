@@ -7,22 +7,28 @@ if (isset($_GET['code'])) {
     
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
-    $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php'; // สังเกต: เป็น URL ปกติ ไม่ต้อง encode ใดๆ
+    $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
 
-    // 1. ต่อ URL แบบ String ตรงๆ เพื่อป้องกัน urlencode ซ้ำซ้อน
     $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?"
         . "client_id=" . $app_id
-        . "&redirect_uri=" . urlencode($redirect_uri) // ให้ encode แค่ตรงนี้จุดเดียว
+        . "&redirect_uri=" . urlencode($redirect_uri)
         . "&client_secret=" . $app_secret
         . "&code=" . $code;
 
-    $response = @file_get_contents($token_url);
+    // ใช้ cURL แทน file_get_contents เพื่อดึง Error Response ฉบับเต็ม
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $token_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
     $token_data = json_decode($response, true);
 
     if (isset($token_data['access_token'])) {
         $access_token = $token_data['access_token'];
 
-        // 2. ดึงข้อมูลผู้ใช้
+        // ดึงข้อมูลผู้ใช้
         $user_url = "https://graph.facebook.com/me?fields=id,name,picture.type(large)&access_token=" . $access_token;
         $user_response = file_get_contents($user_url);
         $user_data = json_decode($user_response, true);
@@ -32,7 +38,7 @@ if (isset($_GET['code'])) {
         $email = $fb_id . '@facebook.com'; 
         $picture = isset($user_data['picture']['data']['url']) ? $user_data['picture']['data']['url'] : '';
 
-        // 3. จัดการ Database
+        // บันทึกลง Database
         $stmt = $conn->prepare("SELECT id, profile_picture FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
@@ -69,7 +75,11 @@ if (isset($_GET['code'])) {
         exit();
 
     } else {
-        echo "เกิดข้อผิดพลาดในการแลกเปลี่ยน Token กับ Facebook";
+        // แสดงข้อผิดพลาดจริงที่ Facebook ส่งกลับมา
+        echo "<h3>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
+        echo "<pre>";
+        print_r($token_data);
+        echo "</pre>";
     }
 } else {
     echo "ไม่พบข้อมูลยืนยันตัวตนส่งกลับมาจาก Facebook";
