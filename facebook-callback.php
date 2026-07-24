@@ -4,7 +4,17 @@ require_once 'connect.php';
 
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
+
+    // 🔒 ป้องกันการรัน code เดิมซ้ำซ้อน
+    if (isset($_SESSION['last_used_code']) && $_SESSION['last_used_code'] === $code) {
+        // ถ้าเป็น code เดิมที่เคยแลกไปแล้ว ให้ข้ามไปหน้า mainweb ทันที
+        header("Location: mainweb.html");
+        exit();
+    }
     
+    // บันทึก code ล่าสุดไว้ใน Session
+    $_SESSION['last_used_code'] = $code;
+
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
     $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
@@ -15,7 +25,6 @@ if (isset($_GET['code'])) {
         . "&client_secret=" . $app_secret
         . "&code=" . $code;
 
-    // ใช้ cURL แทน file_get_contents เพื่อดึง Error Response ฉบับเต็ม
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $token_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -75,7 +84,6 @@ if (isset($_GET['code'])) {
         exit();
 
     } else {
-        // แสดงข้อผิดพลาดจริงที่ Facebook ส่งกลับมา
         echo "<h3>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
         echo "<pre>";
         print_r($token_data);
