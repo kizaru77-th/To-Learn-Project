@@ -35,21 +35,26 @@ if (isset($_GET['code'])) {
 
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
-    $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
 
-    // ยิงแลก Token ด้วย cURL แบบ POST (ตรงตามมาตรฐาน OAuth 2.0)
-    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token";
-    $post_fields = [
-        'client_id'     => $app_id,
-        'redirect_uri'  => $redirect_uri,
-        'client_secret' => $app_secret,
-        'code'          => $code
-    ];
+    // ตรวจสอบโดเมนปัจจุบันแบบ Dynamic (รองรับทั้ง localhost และ render.com)
+    $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'];
+    
+    if (strpos($host, 'onrender.com') !== false) {
+        $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
+    } else {
+        $redirect_uri = $protocol . '://' . $host . '/To-Learn/facebook-callback.php';
+    }
+
+    // ยิงแลก Token ด้วย cURL (Facebook Graph API ใช้ GET)
+    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?"
+        . "client_id=" . $app_id
+        . "&redirect_uri=" . urlencode($redirect_uri)
+        . "&client_secret=" . $app_secret
+        . "&code=" . urlencode($code);
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $token_url);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_fields));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $response = curl_exec($ch);
@@ -119,7 +124,7 @@ if (isset($_GET['code'])) {
             exit();
         }
 
-        // แสดงผล Error ค้างไว้ ไม่สั่ง redirect เพื่อหยุดวงรอบการรีเฟรชเอง
+        // แสดงผล Error ค้างไว้ เพื่อหยุดวงรอบการเด้งกลับอัตโนมัติ
         echo "<!DOCTYPE html><html lang='th'><head><meta charset='UTF-8'><title>Facebook Login Error</title></head><body style='font-family: sans-serif; padding: 30px; text-align: center;'>";
         echo "<div style='max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);'>";
         echo "<h3 style='color: #e53e3e;'>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
