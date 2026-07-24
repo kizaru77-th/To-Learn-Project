@@ -1,48 +1,44 @@
 <?php
 session_start();
-require_once 'connect.php'; // เชื่อมฐานข้อมูลเดิมของคุณ
+require_once 'connect.php';
 
 if (isset($_GET['code'])) {
     $code = $_GET['code'];
     
-    // 🚨 เดี๋ยวเราจะเอาคีย์ 2 ตัวนี้มาจากเว็บ Facebook Developers กันครับ
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
-    $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
+    $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php'; // สังเกต: เป็น URL ปกติ ไม่ต้อง encode ใดๆ
 
-    // 1. แลกเปลี่ยน Code เป็น Access Token
-    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?" . http_build_query([
-        'client_id'     => $app_id,
-        'redirect_uri'  => $redirect_uri,
-        'client_secret' => $app_secret,
-        'code'          => $code
-    ]);
+    // 1. ต่อ URL แบบ String ตรงๆ เพื่อป้องกัน urlencode ซ้ำซ้อน
+    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?"
+        . "client_id=" . $app_id
+        . "&redirect_uri=" . urlencode($redirect_uri) // ให้ encode แค่ตรงนี้จุดเดียว
+        . "&client_secret=" . $app_secret
+        . "&code=" . $code;
 
-    $response = file_get_contents($token_url);
+    $response = @file_get_contents($token_url);
     $token_data = json_decode($response, true);
 
     if (isset($token_data['access_token'])) {
         $access_token = $token_data['access_token'];
 
-        // 2. ดึงข้อมูลเฉพาะ ID, ชื่อ และรูปภาพ (ตัดการเรียก fields email ออก)
+        // 2. ดึงข้อมูลผู้ใช้
         $user_url = "https://graph.facebook.com/me?fields=id,name,picture.type(large)&access_token=" . $access_token;
         $user_response = file_get_contents($user_url);
         $user_data = json_decode($user_response, true);
 
         $fb_id = $user_data['id'];
         $username = isset($user_data['name']) ? $user_data['name'] : 'Facebook User';
-        
-        // เนื่องจากไม่ได้ขอสิทธิ์ email เราจะใช้ Facebook ID ผสมคำเพื่อตั้งเป็นอีเมลจำลองในระบบแทน 🚨
         $email = $fb_id . '@facebook.com'; 
         $picture = isset($user_data['picture']['data']['url']) ? $user_data['picture']['data']['url'] : '';
-        // 3. นำข้อมูลไปตรวจสอบในฐานข้อมูล
+
+        // 3. จัดการ Database
         $stmt = $conn->prepare("SELECT id, profile_picture FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
 
         if ($user) {
             $_SESSION['user_id'] = $user['id'];
-            // ถ้ามีรูปจาก Facebook ให้อัปเดต แต่ข้ามการอัปเดตถ้าผู้ใช้เคยอัพรูปเอง (อยู่ใน uploads/)
             if (!empty($picture)) {
                 $current_pic = isset($user['profile_picture']) ? $user['profile_picture'] : '';
                 if (!(strpos($current_pic, 'uploads/') === 0)) {
@@ -51,7 +47,6 @@ if (isset($_GET['code'])) {
                 }
             }
         } else {
-            // สมัครสมาชิกใหม่อัตโนมัติ
             $stmt = $conn->prepare("INSERT INTO users (email, username, password, profile_picture) VALUES (:email, :username, 'FACEBOOK_LOGIN', :pic)");
             $stmt->execute([
                 'email' => $email,
@@ -61,7 +56,6 @@ if (isset($_GET['code'])) {
             $_SESSION['user_id'] = $conn->lastInsertId();
         }
 
-        // ดึงข้อมูลล่าสุดไปเซ็ตลง localStorage เหมือนเดิม
         $stmt = $conn->prepare("SELECT username, profile_picture FROM users WHERE id = :id");
         $stmt->execute(['id' => $_SESSION['user_id']]);
         $login_user = $stmt->fetch(PDO::FETCH_ASSOC);
