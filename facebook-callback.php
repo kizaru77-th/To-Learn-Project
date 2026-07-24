@@ -1,16 +1,33 @@
 <?php
 // ตั้งค่าความปลอดภัยของ Session สำหรับ Server Deployment
 ini_set('session.cookie_httponly', 1);
+if (PHP_VERSION_ID >= 70300) {
+    session_set_cookie_params([
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ]);
+}
 session_start();
+
+// ป้องกัน Browser Prefetch (Chrome / Edge / Safari แอบยิง URL ล่วงหน้าจน Code ถูกใช้ก่อนที่ยูสเซอร์จะเปิดจริง)
+if (
+    (isset($_SERVER['HTTP_PURPOSE']) && strtolower($_SERVER['HTTP_PURPOSE']) === 'prefetch') ||
+    (isset($_SERVER['HTTP_X_PURPOSE']) && strtolower($_SERVER['HTTP_X_PURPOSE']) === 'preview') ||
+    (isset($_SERVER['HTTP_SEC_PURPOSE']) && strpos(strtolower($_SERVER['HTTP_SEC_PURPOSE']), 'prefetch') !== false)
+) {
+    http_response_code(204);
+    exit();
+}   
 
 require_once 'connect.php';
 
 if (isset($_GET['code'])) {
     $code = trim($_GET['code']);
 
-    // ถ้าพบว่าเคยแลก code นี้สำเร็จไปแล้ว ให้เด้งไปหน้าหลักทันที
-    if (isset($_SESSION['last_success_code']) && $_SESSION['last_success_code'] === $code) {
+    // ถ้าพบว่าเคยแลก code นี้สำเร็จไปแล้ว หรือล็อกอินอยู่แล้ว ให้ไปหน้าหลักทันที
+    if ((isset($_SESSION['last_success_code']) && $_SESSION['last_success_code'] === $code) || isset($_SESSION['user_id'])) {
         echo "<script>
+            localStorage.setItem('isLoggedIn', 'true');
             window.location.href = 'mainweb.html';
         </script>";
         exit();
@@ -20,15 +37,19 @@ if (isset($_GET['code'])) {
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
     $redirect_uri = 'https://to-learn-project.onrender.com/facebook-callback.php';
 
-    // ยิงแลก Token ด้วย cURL
-    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?"
-        . "client_id=" . $app_id
-        . "&redirect_uri=" . urlencode($redirect_uri)
-        . "&client_secret=" . $app_secret
-        . "&code=" . $code;
+    // ยิงแลก Token ด้วย cURL แบบ POST (ตรงตามมาตรฐาน OAuth 2.0)
+    $token_url = "https://graph.facebook.com/v19.0/oauth/access_token";
+    $post_fields = [
+        'client_id'     => $app_id,
+        'redirect_uri'  => $redirect_uri,
+        'client_secret' => $app_secret,
+        'code'          => $code
+    ];
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $token_url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_fields));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $response = curl_exec($ch);
@@ -98,20 +119,16 @@ if (isset($_GET['code'])) {
             exit();
         }
 
-        // กรณี Authorization Code ถูกใช้ไปแล้ว (เกิดจากการ Refresh หน้าเว็บ หรือกด Back/Forward ซ้ำ)
-        if (isset($token_data['error']['code']) && $token_data['error']['code'] == 100) {
-            echo "<script>
-                alert('Authorization Code ถูกใช้งานไปแล้ว หรือมีการกด Refresh หน้าเว็บ กรุณาล็อกอินใหม่อีกครั้ง');
-                window.location.href = 'login.html';
-            </script>";
-            exit();
-        }
-
-        // แสดงผล Error กรณีอื่นๆ
-        echo "<h3>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
-        echo "<pre>";
+        // แสดงผล Error ค้างไว้ ไม่สั่ง redirect เพื่อหยุดวงรอบการรีเฟรชเอง
+        echo "<!DOCTYPE html><html lang='th'><head><meta charset='UTF-8'><title>Facebook Login Error</title></head><body style='font-family: sans-serif; padding: 30px; text-align: center;'>";
+        echo "<div style='max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);'>";
+        echo "<h3 style='color: #e53e3e;'>เกิดข้อผิดพลาดในการแลกเปลี่ยน Token:</h3>";
+        echo "<pre style='text-align: left; background: #f7fafc; padding: 15px; border-radius: 5px; overflow-x: auto;'>";
         print_r($token_data);
         echo "</pre>";
+        echo "<br><a href='login.html' style='display:inline-block; padding: 10px 20px; background: #3182ce; color: white; text-decoration: none; border-radius: 5px;'>กลับไปหน้าล็อกอิน</a>";
+        echo "</div></body></html>";
+        exit();
     }
 } else {
     echo "ไม่พบข้อมูลยืนยันตัวตนส่งกลับมาจาก Facebook";
