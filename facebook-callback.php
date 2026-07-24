@@ -8,7 +8,7 @@ if (isset($_GET['code'])) {
     // 🚨 เดี๋ยวเราจะเอาคีย์ 2 ตัวนี้มาจากเว็บ Facebook Developers กันครับ
     $app_id = '992584539930554'; 
     $app_secret = '18e0bbf0605e6c4d2f8ea0ba695e877c';
-    $redirect_uri = 'http://localhost/To-Learn/facebook-callback.php';
+    $redirect_uri = '/To-Learn/facebook-callback.php';
 
     // 1. แลกเปลี่ยน Code เป็น Access Token
     $token_url = "https://graph.facebook.com/v19.0/oauth/access_token?" . http_build_query([

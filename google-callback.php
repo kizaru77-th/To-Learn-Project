@@ -9,7 +9,7 @@ if (isset($_GET['code'])) {
     // ใส่ข้อมูลคีย์ของคุณตรงนี้ (ดูได้จากหน้า Credentials ในเว็บ Google Cloud)
     $client_id = '217191213791-2bnl25b2l6r5d10bi0k8jkqbdmu70gl7.apps.googleusercontent.com';
     $client_secret = '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'; // (ถ้ามี)
-    $redirect_uri = 'http://localhost/To-Learn/google-callback.php';
+    $redirect_uri = '/To-Learn/google-callback.php';
 
     // 2. ส่งคำขอแลกเปลี่ยน Code ไปเป็น Access Token เพื่อดึงข้อมูลโปรไฟล์
     $token_url = "https://oauth2.googleapis.com/token";
