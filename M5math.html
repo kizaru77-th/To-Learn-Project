@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+    <link rel="icon" type="image/png" href="/logo.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToLearn | Math M5 Learning</title>
-    <link rel="stylesheet" href="anysubject.css">
+    <title>ToLearn | Math M4 Learning</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <link rel="stylesheet" href="anysubject.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
         onload="renderMathInElement(document.body, {
@@ -16,7 +18,6 @@
             throwOnError : false
         });">
     </script>
-</head>
 <body>
     <button class="menu-trigger-btn" id="openMenuBtn">
         <img src="img/menu_icon.png" alt="Menu Icon" style="width: 50px; height: 50px;background-color: white;border-radius: 100px;">
@@ -75,149 +76,1534 @@
             <p> DISCORD: <a href="https://discord.gg/6nkbnP25Yx" target="_blank" style="color: #5865F2; text-decoration: underline; font-weight: bold;">คลิกเพื่อเข้าDiscord Communityของเรา</a></p>
         </div>
     </div>
-    <div class="mathstudy-box">
-        <div class="popup">
+        <div class="mathstudy-box">       
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="mathbtn" style="font-size: 25px;margin-top:-10px;background-color: transparent;color:white;border: none;">
-                    {} เซต
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 187px;margin-top: -30px !important;">▼</span>
+                    ลำดับและอนุกรม
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="mathContent" style="background-color: transparent;">
                     <ul class="tree-menu">
-                        <li><button>เซตคืออะไร?</button></li>
-                        <li><button>รูปแบบการเขียนเซต</button></li>
-                        <li><button>ชนิดของเซต</button></li>
-                        <li><button>เอกภพสัมพัทธ์(U)</button></li>
-                        <li><button>เซตที่เท่ากัน</button></li>
-                        <li><button>สับเซต(⊂)</button></li>
-                        <li><button>เพาเวอร์เซต(P)</button></li>
-                        <li><button>แผนภาพเวนน์-ออยเลอร์</button></li>
-                        <li><button>การดำเนินการระหว่างเซต</button></li>
-                        <li><button>ยูเนี่ยน(Union)</button></li>
-                        <li><button>อินเตอร์เซค(Intersect)</button></li>
-                        <li><button>ผลต่างระหว่างเซต</button></li>
-                        <li><button>คอมพลีเมนต์(complement)</button></li>
-                        <li><button>สูตรสำหรับการแก้โจทย์ปัญหา</button></li>               
+                        <li><button class="sub-menu-btn" data-target="#set-intro">ความหมายของลำดับ</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-howto">การหาพจน์ทั่วไปของลำดับ</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-type">ลำดับเลขคณิต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#set-uni">ลำดับเรขาคณิต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#equal-set">ความหมายของอนุกรม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#sub-set">อนุกรมเลขคณิต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#power-set">อนุกรมเรขาคณิต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#van-diagram">การประยุกต์ของลำดับและอนุกรม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#operation-set">ดอกเบี้ยทบต้น</button></li>
+                        <li><button class="sub-menu-btn" data-target="#union">มูลค่าปัจจุบันและมูลค่าอนาคต</button></li>
+                        <li><button class="sub-menu-btn" data-target="#intersect">ค่างวด</button></li>              
                     </ul>
                 </div> <hr>
             </div>
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="logicbtn" style="font-size: 25px;margin-top:-10px;background-color: transparent;color:white;border: none;">
-                    ⋀⋁ ตรรกศาสตร์
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 80px;margin-top: -30px !important;">▼</span>
+                    ฟังก์ชันตรีโกณมิติ
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="logicContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>ตรรกศาสตร์คืออะไร?</button></li>
-                        <li><button>ประพจน์</button></li>
-                        <li><button>ตัวเชื่อมประพจน์</button></li>
-                        <li><button>ตารางค่าความจริงของประพจน์</button></li>
-                        <li><button>การสมมูล</button></li>
-                        <li><button>สัจนิรันดร์</button></li>
-                        <li><button>การอ้างเหตุผล</button></li>
-                        <li><button>ประโยคเปิดและตัวบ่งปริมาณ</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#proposition">ประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#proposition-connectors">ตัวเชื่อมประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#table-of-propositions">ตารางค่าความจริงของประพจน์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#equivalence">การสมมูล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#eternal-truth">สัจนิรันดร์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#justification">การอ้างเหตุผล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#opening-sentences">ประโยคเปิด</button></li>     
+                        <li><button class="sub-menu-btn" data-target="#quantifiers">ตัวบ่งปริมาณ</button></li>     
                     </ul>
                 </div> <hr>
             </div>
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="truenumbtn" style="font-size: 24px;margin-top:-10px;background-color: transparent;color:white;border: none;text-align: left;">
                     ① จำนวนจริง
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 110px;margin-top: -50px !important;">▼</span>
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="truenumContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>จำนวนจริงคืออะไร?</button></li>
-                        <li><button>จุดกึ่งกลางของส่วนของเส้นตรง</button></li>
-                        <li><button>ระบบจำนวนจริง</button></li>
-                        <li><button>พหุนามตัวแปรเดียว</button></li>
-                        <li><button>การแยกตัวประกอบของพหุนาม</button></li>
-                        <li><button>สมการพหุนาม</button></li>
-                        <li><button>เศษส่วนของพหุนาม</button></li>
-                        <li><button>การดำเนินการของเศษส่วนพหุนาม</button></li>      
-                        <li><button>การไม่เท่ากันของจำนวนจริง</button></li>      
-                        <li><button>อสมการพหุนามตัวแปรเดียว</button></li>      
-                        <li><button>ค่าสัมบูรณ์</button></li>      
-                        <li><button>สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
-                        <li><button>อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
+                        <li><button class="sub-menu-btn" data-target="#realnumber-intro">จำนวนจริงคืออะไร?</button></li>
+                        <li><button class="sub-menu-btn" data-target="#real-number-system">สัจพจน์การเท่ากันและสมบัติของระบบจำนวนจริง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-in-one-variable">พหุนามตัวแปรเดียว</button></li>
+                        <li><button class="sub-menu-btn" data-target="#factorization-of-polynomials">การแยกตัวประกอบของพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-equations">สมการพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#polynomial-fractions">เศษส่วนของพหุนาม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#inequality-of-real-numbers">การไม่เท่ากันของจำนวนจริง</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#polynomial-inequalities-with-one-variable">อสมการพหุนามตัวแปรเดียว</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#absolute">ค่าสัมบูรณ์</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#absolute-value-equation-of-a-single-variable-polynomial">สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
+                        <li><button class="sub-menu-btn" data-target="#absolute-value-inequality-of-a-single-variable-polynomial">อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</button></li>           
                     </ul>
                 </div>     
             </div> <hr>
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="funcbtn" style="font-size: 23px;margin-top:-10px;background-color: transparent;color:white;border: none;">
                     ⨍ ความสำพันธ์และฟังก์ชัน
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 2px;margin-top: -30px !important;">▼</span>
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="funcContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>ความสัมพันธ์</button></li>
-                        <li><button>ผลคูณคาร์ทีเซียน</button></li>
-                        <li><button>โดเมนและเรนจ์ของความสัมพันธ์</button></li>
-                        <li><button>ตัวผกผันของความสัมพันธ์</button></li>
-                        <li><button>ฟังก์ชัน</button></li>
-                        <li><button>ฟังก์ชันเพิ่มและลบ</button></li>
-                        <li><button>กราฟของฟังก์ชัน</button></li>
-                        <li><button>ฟังก์ชันเชิงเส้น</button></li>      
-                        <li><button>ฟังก์ชันกำลังสอง</button></li>      
-                        <li><button>ฟังก์ชันขั้นบันได</button></li>      
-                        <li><button>พีชคณิตของฟังก์ชัน</button></li>      
-                        <li><button>ฟังก์ชันประกอบ</button></li>      
-                        <li><button>ฟังก์ชันผกผัน</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#relations-intro">ความสัมพันธ์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions">ฟังก์ชัน</button></li>     
                     </ul>
                 </div> <hr>
             </div>
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="expobtn" style="font-size: 24px;margin-top:-10px;background-color: transparent;color:white;border: none;text-align: left;">
-                    log ฟังก์ชันเอกซ์โพเนนเชียล<br>และฟังก์ชันลอการิทึม
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 42px;margin-top: -50px !important;">▼</span>
+                    log ฟังก์ชันเอกซ์โพเนน<br>เชียลและฟังก์ชันลอการิทึม
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="expoContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>เลขยกกำลัง</button></li>
-                        <li><button>สมบัติเลขยกกำลัง</button></li>
-                        <li><button>รากที่ n ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</button></li>
-                        <li><button>ฟังก์ชันเอกซ์โพเนนเชียล</button></li>
-                        <li><button>ฟังก์ชันเพิ่มและลบ</button></li>
-                        <li><button>สมการเอกซ์โพเนนเชียล</button></li>
-                        <li><button>อสมการเอกซ์โพเนนเชียล</button></li>
-                        <li><button>ฟังก์ชันลอการิทึม</button></li>
-                        <li><button>สมบัติของฟังก์ชันลอการิทึม</button></li>
-                        <li><button>สมการลอการิทึม</button></li>      
-                        <li><button>อสมการลอการิทึม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#exponentiation-intro">เลขยกกำลัง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#exponentiation-properties">สมบัติเลขยกกำลัง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#the-nth-root-of-a-real-number-and-real-numbers-in-radical-form">รากที่ n ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions-exponential">ฟังก์ชันเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#exponential-equation">สมการเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#exponential-inequality">อสมการเอกซ์โพเนนเชียล</button></li>
+                        <li><button class="sub-menu-btn" data-target="#functions-logarithmic">ฟังก์ชันลอการิทึม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#properties-of-logarithmic-functions">สมบัติของฟังก์ชันลอการิทึม</button></li>
+                        <li><button class="sub-menu-btn" data-target="#logarithmic-equation">สมการลอการิทึม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#logarithmic-inequality">อสมการลอการิทึม</button></li>      
                     </ul>
                 </div> <hr>
             </div>
             <div class="mathstudyinside">
                 <button class="dropdown-btn" id="conicbtn" style="font-size: 24px;margin-top:-10px;background-color: transparent;color:white;border: none;text-align: left;">
                     □ เรขาคณิตวิเคราะห์<br>และภาคตัดกรวย
-                    <span class="arrow-icon" style="font-size: 24px;margin-left: 80px;margin-top: -50px !important;">▼</span>
+                    <span class="arrow-icon" style="font-size: 24px;">▼</span>
                 </button>
                 <div class="dropdown-content" id="conicContent" style="background-color: transparent;">
                     <ul class="tree-menu" >
-                        <li><button>ระยะห่างระหว่างจุดสองจุด</button></li>
-                        <li><button>จุดกึ่งกลางของส่วนของเส้นตรง</button></li>
-                        <li><button>ระยะห่างระหว่างเส้นตรงกับจุด</button></li>
-                        <li><button>ระยะห่างระหว่างเส้นตรง</button></li>
-                        <li><button>เส้นตรง</button></li>
-                        <li><button>ความชันของเส้นตรง (m)</button></li>
-                        <li><button>เส้นตรงขนานและตั้งฉาก</button></li>
-                        <li><button>ภาคตัดกรวย</button></li>      
-                        <li><button>วงกลม</button></li>      
-                        <li><button>วงรี</button></li>      
-                        <li><button>พาราโบลา</button></li>      
-                        <li><button>ไฮเพอร์โบลา</button></li>           
+                        <li><button class="sub-menu-btn" data-target="#distance-between-two-points">ระยะห่างระหว่างจุดสองจุด</button></li>
+                        <li><button class="sub-menu-btn" data-target="#midpoint-of-a-line-segment">จุดกึ่งกลางของส่วนของเส้นตรง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#distance-between-a-line-and-a-point">ระยะห่างระหว่างเส้นตรงกับจุด</button></li>
+                        <li><button class="sub-menu-btn" data-target="#distance-between-two-lines">ระยะห่างระหว่างเส้นตรง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#line">เส้นตรง</button></li>
+                        <li><button class="sub-menu-btn" data-target="#slope-of-a-line">ความชันของเส้นตรง (m)</button></li>
+                        <li><button class="sub-menu-btn" data-target="#parallel-and-perpendicular-lines">เส้นตรงขนานและตั้งฉาก</button></li>
+                        <li><button class="sub-menu-btn" data-target="#conic-sections">ภาคตัดกรวย</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#circle">วงกลม</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#ellipse">วงรี</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#parabola">พาราโบลา</button></li>      
+                        <li><button class="sub-menu-btn" data-target="#hyperbola">ไฮเพอร์โบลา</button></li>           
                     </ul>
                 </div>     
             </div>
         </div>
-    </div>
     <div class="content-wrapper">
         <div class="summarizecontent">
             <div class="board-header">
-                <h3>📌 คณิตศาสตร์ ม.4</h3>
+                <h3>📌 คณิตศาสตร์ ม.5</h3>
             </div>
             <div class="board-body">
-                <p style="color: #333;">ยินดีต้อนรับเข้าสู่บทเรียน! กรุณาเลือกหัวข้อวิชาเรียนทางด้านซ้ายเพื่อแสดงเนื้อหาแผ่นสรุปตรงนี้...</p>
+            <div class="chapter-divider" id="chapter-1" data-chapter-id="chapter-1" data-required="none">
+                    <span> บทที่ 1 : ลำดับและอนุกรม</span>
+            </div>
+            <section id="set-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ความหมายของลำดับ</span>
+                </h2>
+                <p>ให้มองว่า เซต = กล่อง หรือ กลุ่ม ที่เอาไว้ใส่ของ ของที่อยู่ในกล่องเราจะเรียกว่า สมาชิก (Elements) เรามักตั้งชื่อกล่องด้วยภาษาอังกฤษตัวพิมพ์ใหญ่ เช่น A, B, C โดยใช้สัญลักษณ์{}แทนตัวกล่อง เช่น A = {1,2,3} อ่านว่า เซตAเท่ากับเซตที่มีสมาชิกประกอบด้วย1,2และ3</p>
+                <p><strong>สมาชิกคือ:</strong><br>$\in$ แปลว่า "เป็นสมาชิกของ" (อยู่ในกล่อง) เช่น $1 \in A$ (เลข 1 อยู่ในเซต $A$) <br>$\notin$ แปลว่า "ไม่เป็นสมาชิกของ" (ไม่อยู่ในกล่อง) เช่น $4 \notin A$ (เลข 4 ไม่อยู่ในเซต $A$)</li></p>
+            </section>
+
+            <section id="set-howto" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การหาพจน์ทั่วไปของลำดับ</span>
+                </h2>
+                <p>การเขียนเซตแบ่งออกเป็น 2 รูปแบบหลัก ๆ คือ:</p>
+                <ul>
+                    <li><strong>แบบแจกแจงสมาชิก:</strong> เขียนสมาชิกทุกตัวลงในปีกกา เช่น $A = \{1, 2, 3\}$</li>
+                    <li><strong>แบบบอกเงื่อนไข:</strong> ใช้ตัวแปรแทนสมาชิก เช่น $B = \{x \mid x \text{ เป็นจำนวนเต็มบวก}\}$</li>
+                </ul>
+            </section>
+
+            <section id="set-type" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ลำดับเลขคณิต</span>
+                </h2>
+                <p><strong>เซตจำกัด (Finite Set):</strong> เซตที่นับจำนวนสมาชิกได้ว่ามีกี่ตัว (ถึงจะเยอะเป็นล้านแต่นับจบ ก็ถือว่าจำกัด) เช่น {1,2,3} , {-5,-4,-3,...,4} , เซตของสระในภาษาอังกฤษ เป็นต้น</p>
+                <p><strong>เซตอนันต์ (Infinite Set):</strong> เซตที่มีสมาชิกเยอะจนนับไม่ถ้วน เช่น เซตของดวงดาวในจักรวาล , เซตของจำนวนเต็มบวก $\{1, 2, 3, ...\}$ , $\{...-3,-2,-1\}$ , $\{...,-1,0,1,...\}$ เป็นต้น</p>
+                <p><strong>เซตว่าง (Empty Set):</strong> กล่องเปล่าที่ไม่มีอะไรอยู่เลย สัญลักษณ์คือ $\emptyset$ หรือ {} เช่น  $\{x \mid x < 0\}$ , เซตของเดือนในประเทศไทยที่ลงท้ายด้วยคน เป็นต้น</p>
+                <p><strong>จำนวนสมาชิกของเซต:</strong> ใช้สัญลักษณ์ n(A) แทนจำนวนสมาชิกของเซตจำกัด A ถ้า A = {1, b, ขนมปัง} จะได้ว่า n(A) = 3 หากในเซตมีสมาชิกซ้ำกัน จะนับสมาชิกที่ซ้ำรวมเป็นตัวเดียว</p>
+                <p><strong style="color: red;">ข้อควรระวัง!!:</strong> {$\emptyset$} ไม่ใช่เซตว่าง เนื่องจากมี$\emptyset$เป็นสมาชิกในเซต จึงถือว่าเป็นเซตจำกัด</p>
+            </section>
+
+            <section id="set-uni" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ลำดับเรขาคณิต</span> 
+                </h2>
+                <p>ในการเขียนเซตจะต้องกำหนดเขตที่บ่งบอกถึงขอบเขตของสิ่งที่จะพิจารณา เรียกเซตกำหนดเขตนี้ว่า เอกภพสัมพัทธ์ (Relative Universe) ซึ่งมักเขียนแทนด้วย U </p>
+                <br><b>สำหรับเอกภพสัมพัทธ์ที่พบบ่อย เช่น</b>
+                <ul>
+                    <li><p><strong>ℕ</strong> คือ เซต ของจำนวนนับ หรือ จำนวนเต็มบวก</p></li>
+                    <li><p><strong>ℤ</strong> คือ เซตของจำนวนเต็ม</p></li>
+                    <li><p><strong>ℝ</strong> คือ เซตของจำนวนจริง</p></li>
+                </ul>
+            </section>
+
+            <section id="equal-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ความหมายของอนุกรม</span>
+                </h2>
+                <p>เซตสองเซตจะเท่ากันก็ต่อเมื่อ เซตทั้งสองมีสมาชิกเหมือนกันทุกตัว โดยไม่สนว่าสมาชิกจะอยู่ในตำแหน่งเดียวกันหรือไม่หากมีสมาชิกเหมือนกันก็จะนับว่าเป็นเซตเท่ากันเช่นกัน ช่น ถ้า $A = \{1, 2\}$ และ $B = \{2, 1\}$ จะได้ว่า $A = B$</p>
+            </section>
+            
+            <section id="sub-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อนุกรมเลขคณิต</span>
+                </h2>
+                <p>เซต A เป็นสับเซตของ B ก็ต่อเมื่อ สมาชิกทุกตัวของเซต A เป็นสมาชิกของ B เขียนแทนด้วยสัญลักษณ์ A⊂B หากมีสมาชิกของAที่ไม่เหมือนกับBจะถือว่าไม่เป็นสับเซตซึ่งเขียนแทนด้วยสัญลักษณ์ $A\not\subset B$ เช่น </p>
+                <ul>
+                    <li>A={1,2} B={1,2,3} จะเห็นได้ว่าสมาชิกของเซตAและBมีสมาชิกที่เหมือนกันคือ1และ2จึงสรุปได้ว่า A ⊂ B</li>
+                    <li>A={1,2,4} B={1,2,3} จะเห็นได้ว่าสมาชิกของเซตAมี4เกินมา1ตัวซึ่งไม่เป็นสมาชิกของBจึงสรุปได้ว่า $A\not\subset B$</li>
+                </ul>
+                <b>การแยกตัวประกอบสับเซต</b>
+                <p>A = {1,2} สามารถแยกตัวประกอบสับเซตได้เป็น {$\emptyset$},{1},{2},{1,2}</p>
+                <b>โดยมีสมบัติของสับเซตที่น่าสนใจคือ</b>
+                <ul>
+                    <li>∅ เป็นสับเซตของทุกเซต</li>
+                    <li>ถ้าเซต A มีสมาชิก n ตัว จะได้ว่า A มีสับเซตทั้งหมด $x^{n}$ ตัว </li>
+                </ul>
+            </section>
+
+            <section id="power-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อนุกรมเรขาคณิต</span>
+                </h2>
+                <p>เรียกเซตของสับเซตทั้งหมดของสับเซต A ว่า เพาเวอร์เซต (Power Set) ของเซต A เขียนแทนด้วย P(A)</p>
+                <b>ตัวอย่างเช่น</b>
+                <p>A = {1,2} P(A) = {$\emptyset$,{1},{2},{1,2}} จำง่ายๆ P(A)={สมาชิกของสับเซตทั้งหมด}</p>
+            </section>
+
+            <section id="van-diagram" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การประยุกต์ของลำดับและอนุกรม</span>
+                </h2>
+                <p>แผนภาพเวนน์เป็นการแสดงเซตเป็นภาพ ซึ่งช่วยให้เห็นภาพความสัมพันธ์ระหว่างเซต และใช้การแก้ปัญหาเรื่องเซตได้ง่ายขึ้น</p>
+                <b>ตัวอย่าง เช่น</b>
+                <p>กำหนดให้ $\mathcal{U}$={1,2,3,4,5} A={1,2,3,4} B={2,3,6} </p>
+                <img src="img/set.png" alt="van-diagram" class="responsive-img">
+                <p>ตัวอักษรภาษาอังกฤษในเซตแทนเป็นชื่อเซต</p>
+            </section>
+
+            <section id="operation-set" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ดอกเบี้ยทบต้น</span>
+                </h2>
+                <p>คือ การนำเซตตั้งแต่ 2 เซตขึ้นไปมาทำปฏิสัมพันธ์กันภายใต้เงื่อนไขหรือกฎเกณฑ์ทางคณิตศาสตร์ เพื่อสร้างให้เกิดเป็นเซตใหม่ขึ้นมา  เปรียบเสมือนกับการที่เรานำตัวเลขมาบวก ลบ คูณ หรือหารกันในระบบจำนวนทั่วไป เพื่อช่วยในการจัดกลุ่ม วิเคราะห์ และหาความสัมพันธ์ของสมาชิกที่อยู่ภายในเซตเหล่านั้นได้อย่างเป็นระบบ <br><b>โดยมีตัวดำเนินการอยู่ทั้งหมด4ตัว ตามแต่ละหัวข้อด้านล่าง</b></p>
+            </section>
+
+            <section id="union" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">มูลค่าปัจจุบันและมูลค่าอนาคต</span>
+                </h2>
+                <p>การดำเนินการระหว่างเซตตั้งแต่ 2 เซตขึ้นไป โดยการนำสมาชิกทั้งหมดของทุกเซตมารวมเข้าด้วยกันเป็นเซตใหม่เพียงเซตเดียว  ซึ่งถ้าหากมีสมาชิกตัวใดที่ซ้ำกันอยู่ เราจะเขียนแทนด้วยสมาชิกตัวนั้นเพียงครั้งเดียวเท่านั้นตามกฎเกณฑ์ของเซต นิยมเขียนแทนด้วยสัญลักษณ์คล้ายตัวยู $\cup$ </p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cup$B 
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4,5,6}</span></p></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={2,3,4} จงหาA$\cup$B 
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B={1,2,3,4} </span></p><p>เนื่องจากเซตAและBมีสามาชิก2และ3เหมือนกันจึงเอามาเขียนแค่ตัวเดียว</p></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของยูเนียน(union)</b>
+                <img src="img/unionset.png" alt="van-diagram" class="responsive-img" >
+            </section>
+
+            <section id="intersect" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ค่างวด</span>
+                </h2>
+                <p>การดำเนินการระหว่างเซตตั้งแต่ 2 เซตขึ้นไป โดยเป็นการเลือกเอาเฉพาะสมาชิกตัวที่ซ้ำกันหรือมีอยู่ร่วมกันในทุกเซตมารวมกันเพื่อสร้างเป็นเซตใหม่ ซึ่งหากไม่มีสมาชิกตัวใดที่มีค่าเหมือนกันหรือซ้ำกันเลย ผลลัพธ์ที่ได้จากการอินเตอร์เซกชันนั้นจะเป็นเซตว่าง นิยมเขียนแทนด้วยสัญลักษณ์คล้ายตัวยูคว่ำ $\cap$</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>กำหนดให้เซต A={1,2,3} B={3,4,5} จงหาA$\cap$B 
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cap$B={3} เพราะในเซตAและBมีสมาชิกที่ซ้ำกันคือ3</span></p></li>
+                    <li>กำหนดให้เซต A={1,2,3} B={4,5,6} จงหาA$\cap$B 
+                    <p><b style="text-decoration: underline;">ตอบ</b><span style="margin-left: 20px;">A$\cup$B=$\varnothing$ เพราะไม่มีสมาชิกที่ซ้ำกันทั้งในเซตAและB</span></p></li>
+                </ul>
+                <b>ตัวอย่างแผนภาพเวนน์-ออยเลอร์ของอินเตอร์เซค(Intersetion)</b>
+                <img src="img/intersec-set.png" alt="van-diagram" class="responsive-img">
+            </section>
+
+                <div class="chapter-divider" id="chapter-2" data-chapter-id="chapter-2" data-required="chapter-1">
+                    <span> บทที่ 2 : ฟังก์ชันตรีโกณมิติ</span>
                 </div>
+                
+                <section id="proposition" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                    <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                        <span style="background-color: #FDF2B5; padding: 2px 4px;">ประพจน์</span>
+                    </h2>
+                    <p>ประพจน์ (Proposition) คือ ประโยคบอกเล่าหรือปฏิเสธที่เราสามารถบอกได้ชัดเจนว่ามัน<br>"เป็นจริง (True - $T$)"หรือ"เป็นเท็จ(False - $F$)"อย่างใดอย่างหนึ่งเท่านั้น</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li><b>เป็นประพจน์:</b> "พระอาทิตย์ขึ้นทางทิศตะวันตก" (เป็นประพจน์ที่มีค่าความจริงเป็น $F$)</li>
+                        <li><b>ไม่เป็นประพจน์:</b> พวกประโยคคำถาม, คำสั่ง, ขอร้อง, อ้อนวอน, อุทาน หรือประโยคที่ตัดสินใจไม่ได้ เช่น "หิวข้าวไหม?", "ห้ามเดินลัดสนาม", "วิชาคณิตศาสตร์ง่ายนิดเดียว" (ไม่มีค่าความจริงที่แน่นอน)</li>
+                    </ul>
+                </section>
+
+                <section id="proposition-connectors" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                    <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                        <span style="background-color: #FDF2B5; padding: 2px 4px;">ตัวเชื่อมประพจน์</span>
+                    </h2>
+                    <p>เวลาเราเอาประพจน์หลายๆ อันมาต่อกัน เราจะใช้ตัวเชื่อม ให้จำ "จุดเด่น" ของแต่ละตัวไว้ | ชื่อตัวเชื่อม | สัญลักษณ์ | กฎเหล็ก (ท่องแค่นี้พอ!)</p>
+                    <ul> 
+                        <li><b>และ (AND) | $\land$ |</b> จะเป็น จริง ($T$) กรณีเดียวคือ $T \land T \equiv T$ (นอกนั้นเท็จหมด)</li> 
+                        <li><b>หรือ (OR) | $\lor$ |</b> จะเป็น เท็จ ($F$) กรณีเดียวคือ $F \lor F \equiv F$ (นอกนั้นจริงหมด)</li> 
+                        <li><b>ถ้า...แล้ว | $\rightarrow$ |</b> จะเป็น เท็จ ($F$) กรณีเดียวคือ $T \rightarrow F \equiv F$ (นอกนั้นจริงหมด)</li> 
+                        <li><b>ก็ต่อเมื่อ | $\leftrightarrow$ |</b> หน้าหลัง เหมือนกันเป็นจริง ($T \leftrightarrow T \equiv T$ และ $F \leftrightarrow F \equiv T$)</li> 
+                        <li><b>นิเสธ (NOT) | $\sim$ |</b> ทำหน้าที่ กลับหน้ามือเป็นหลังมือ (จาก $T$ เป็น $F$, จาก $F$ เป็น $T$)</li>
+                    </ul> 
+                </section>
+                
+                <section id="table-of-propositions" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ตารางค่าความจริงของประพจน์</span>
+                </h2>
+                <p>หากจำตารางนี้ได้โจทย์ทั้งหมดจะง่ายขึ้นแบบ300%</p>
+                <b>ตารางค่าความจริงของประพจน์</b>
+                <img src="img/table-of-propositions.png" alt="van-diagram" class="responsive-img">
+                </section>
+
+                <section id="equivalence" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การสมมูล</span>
+                </h2>
+                <p>สมมูล คือ ประพจน์สองอันที่หน้าตาต่างกัน แต่ "มีค่าความจริงเหมือนกันทุกกรณี" มีทั้งหมด22ค่าสมมูล</p>
+                <b>รูปภาพแสดงค่าสมมูลทั้ง22ค่าสมมูล</b>
+                <img src="img/equivalent.png" alt="van-diagram" class="responsive-img">
+                <p><b>โดยกำหนดให้:</b> <br> p คือ ค่าความจริงตัวแรก , q คือ ค่าความจริงตัวที่2 , T คือ ค่าความจริงที่เป็นจริง และ F คือ ค่าความจริงที่เป็นเท็จ</p>
+                </section>
+
+                <section id="eternal-truth" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สัจนิรันดร์</span>
+                </h2>
+                <p>คือรูปแบบของประพจน์ที่ "เป็นจริง ($T$) เสมอ ไม่ว่าสถานการณ์ใดๆ ก็ตาม" วิธีเช็กเมื่่อโจทย์มีตัวเชื่อมเป็น<br> หรือ ($\lor$) , ถ้า...แล้ว ($\rightarrow$) คือ การหาข้อขัดแย้ง หรือหาได้จากการเทียบตารางค่าความจริงของพจน์แต่ละตัว</p>
+                <b>ตัวอย่างเช่น</b>
+                <ul>
+                    <li><p>$[(p \to q) \land p] \to q$ เป็นสัจนิรันดร์หรือไม่</p></li>
+                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
+                    <img src="img/eternal-truth2.png" alt="van-diagram" class="responsive-img">
+                    <li><p>$[(p \to q) \lor r] \lor (r \lor q)$ เป็นสัจนิรันดร์หรือไม่</p></li>
+                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
+                    <img src="img/eternal-truth3.png" alt="van-diagram" class="responsive-img">
+                    <li><p>$(p \lor q) \to (q \lor p)$ เป็นสัจนิรันดร์หรือไม่</p></li>
+                    <b>คิดแบบใช้ตารางค่าความจริง</b>
+                    <img src="img/eternal-truth6.png" alt="van-diagram" class="responsive-img">
+                    <li><p>$(p \lor q) \rightarrow (p \land q) \land p $ เป็นสัจนิรันดร์หรือไม่</p></li>
+                    <b>คิดแบบใช้ตารางค่าความจริง</b>
+                    <img src="img/eternal-truth5.png" alt="van-diagram" class="responsive-img">
+                </ul>
+                </section>
+
+                <section id="justification" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การอ้างเหตุผล</span>
+                </h2>
+                <p>การอ้างเหตุผลในตรรกศาสตร์ คือ การพิสูจน์ว่า "ข้อสรุป" (Conclusion) สมเหตุสมผลหรือไม่ โดยอาศัยกลุ่มของ "ข้ออ้าง" (Premises) ที่เรายอมรับว่าเป็นจริง หากเราพบว่าในกรณีที่ข้ออ้างทุกข้อเป็นจริง แล้วส่งผลให้ข้อสรุป ต้องเป็นจริงตามไปด้วยเสมอ จะเรียกว่า สมเหตุสมผล (Valid) แต่ถ้ามีแม้เพียงกรณีเดียวที่ข้ออ้างเป็นจริงหมด แต่ข้อสรุปกลับเป็นเท็จ จะเรียกว่า ไม่สมเหตุสมผล (Invalid) สามารถหาได้2วิธี คือ การทำตารางค่าความจริง(ไม่มีในตัวอย่าง) และ การหาข้อขัดแย้ง ซึ่งวิธีที่ไวที่สุดคือวิธีหาข้อขัดแย้งเหมือนสัจนิรันดร์แค่รอบนี้หากทำเป็น F ไม่สำเร็จจะถือว่าสมเหตุสมผล ถ้าทำเป็น F สำเร็จจะถือว่าไม่สมเหตุสมผล<br>โดยตรงส่วนเหตุผลจะใช้ตัวเชื่อมประพจน์เป็น $(\land)$ แล้วตรงผลจะเชื่อมด้วย $(\rightarrow)$</p>
+                <b>ตัวอย่างเช่น</b>
+                <ul>
+                    <li><p>กำหนดให้<br><b>เหตุการณ์ที่1 :</b>ถ้าวันนี้ฝนไม่ตกแล้วถนนจะเปียก <br><b>เหตุการณ์ที่2 :</b>วันนี้ถนนไม่เปียก <br><b>ผล :</b>วันนี้ฝนไม่ตก <br>จงหาว่าเหตุการนี้สมเหตุสมผลหรือไม่</p></li>
+                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
+                    <img src="img/justification1.png" alt="van-diagram" class="responsive-img">
+                    <li><p>กำหนดให้<br><b>เหตุการณ์ที่1 :</b>$p \rightarrow (q \lor r)$<br><b>เหตุการณ์ที่2 :</b>$(~q \land ~r)$ <br><b>ผล :</b>~p <br>จงหาว่าเหตุการนี้สมเหตุสมผลหรือไม่</p></li>
+                    <b>คิดแบบวิธีหาข้อขัดแย้ง</b>
+                    <img src="img/justification2.png" alt="van-diagram" class="responsive-img">
+                </ul>
+                </section>
+
+                <section id="opening-sentences" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ประโยคเปิด</span>
+                </h2>
+                <p>ประโยคเปิด (Open Sentence) คือ ประโยคบอกเล่าหรือปฏิเสธที่มี "ตัวแปร" รวมอยู่ด้วย ทำให้เรายังตอบไม่ได้ทันทีว่าเป็นจริงหรือเป็นเท็จ แต่ถ้าเราลองเอาคำหรือตัวเลขไปแทนที่ตัวแปรนั้น ประโยคจะกลายเป็น "ประพจน์" ที่บอกได้ทันทีว่าเป็นจริงหรือเท็จ</p>
+                <b>ตัวอย่างเช่น</b>
+                <ul>
+                    <li><p>$x + 3 = 5$ (เป็นประโยคเปิด เนื่องจากเราไม่รู้ค่าของxจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
+                    <li><p>"เขา" เป็นนักร้องนำวงบอดี้สแลม (เป็นประโยคเปิด เนื่องจากเราไม่รู้ว่า"เขา"เป็นใครจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
+                    <li><p>$y$ เป็นจำนวนคู่ที่น้อยกว่า $10$ (เป็นประโยคเปิด เนื่องจากเราไม่รู้ว่าค่าyเป็นจำนวนคู่หรือคี่และมีค่าน้อยกว่า10จริงหรือไม่เราจึงไม่ทราบว่าประพจน์นี้เป็นจริงหรือเท็จ)</p></li>
+                </ul>
+                </section>
+
+                <section id="quantifiers" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ตัวบ่งปริมาณ</span>
+                </h2>
+                <p>ตัวบ่งปริมาณ (Quantifiers) คือ ข้อความที่ใช้บอก "จำนวนหรือขอบเขต" ของตัวแปรในประโยคเปิด เพื่อระบุว่าสิ่งที่เรากำลังพูดถึงนั้นหมายถึง ทั้งหมด หรือแค่ บางส่วน โดยเมื่อใส่ตัวบ่งปริมาณเข้าไปหน้าประโยคเปิดแล้ว จะทำให้ประโยคนั้นกลายเป็นประพจน์ที่บอกได้ทันทีว่าเป็นจริงหรือเท็จ โดยที่เราจะใช้สัญลักษณ์ $\forall$ แทนประพจน์ที่ต้องเป็นจริงทั้งหมด อ่านว่าFor All และสัญลักษณ์ $\exists$ แทนประพจน์ที่ต้องเป็นจริงบางส่วน อ่านว่าFor Some</p>
+                <b>ตัวอย่างประโยคFor All ($\forall$)</b>
+                <ul>
+                    <li>"มนุษย์ทุกคนต้องหายใจ"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากมนุษย์ทุกคนต้องหายใจเพื่อดำรงชีวิต</span></p>
+                    </li>
+                    <li>"วัยรุ่นทุกคนชอบเล่นเกม"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากวัยรุ่นบางคนก็ไม่ได้ชอบเล่นเกม</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า\forall x [x + 0 = x]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากเมื่อนำxมาแทนไม่ว่าจะเป็นตัวอะไรก็ตามเมื่อนำมา+0จะได้ตัวมันเองเสมอ</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า $\forall x [x > 0]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากเมื่อนำxมาแทนยังมีเลข0และจำนวนติดลบที่มีค่าไม่มากกว่า0</span></p>
+                    </li>
+                </ul>
+                <b>ตัวอย่างประโยคFor Some ($\exists$)</b>
+                <ul>
+                    <li>"มีนักเรียนบางคนในห้องนี้ที่ขับรถยนต์ได้"
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากมีนักเรียนบางส่วนสามารถขับรถยนต์ได้</span></p>
+                    </li>
+                    <li>"มีสุนัขบางตัวที่บินได้" 
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากไม่มีสุนัขตัวไหนสามารถบินได้ในโลกนี้</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า$\exists x [x^2 = 4]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>จริง ($T$) เนื่องจากเมื่อนำxมาแทนมีเลข2และ-2ที่เมื่อนำมายกกำลังสองแล้วมีค่าเท่ากับ4</span></p>
+                    </li>
+                    <li>กำหนดให้ $x$ = $\mathbb{R}$ อยากทราบว่า$\exists x [x + 1 = x]$ มีค่าความจริงคืออะไร
+                        <p><b style="text-decoration: underline;">ตอบ</b><span>เท็จ ($F$) เนื่องจากมีเมื่อนำxมาแทนไม่มีตัวเลขตัวไหนที่เมื่อนำตัวเองมาบวกกับ1แล้วจะได้ตัวมันเอง</span></p>
+                    </li>
+                </ul>
+                </section>
+
+                <div class="chapter-divider" id="chapter-3" data-chapter-id="chapter-3" data-required="chapter-2">
+                    <span> บทที่ 3 : ① จำนวนจริง</span>
+                </div>
+
+                <section id="realnumber-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">จำนวนจริงคืออะไร?</span>
+                </h2>
+                <p>ให้มองว่า จำนวนจริง หรือสัญลักษณ์ $\mathbb{R}$ (Real) คือ "จักรวาลของตัวเลข" ที่เราใช้ในชีวิตประจำวันทั้งหมด ไม่ว่าจะเป็นเลขบวก เลขลบ เศษส่วน ทศนิยม หรือค่าราก (รูท) ทุกอย่างรวมอยู่ในกลุ่มนี้หมดเลย</p>
+                <b>จักรวาลของจำนวนจริงนี้ ถูกแบ่งออกเป็น 2 กลุ่ม คือ ตรรกยะ กับ อตรรกยะ </b>
+                <ul>
+                    <li><b>จำนวนตรรกยะ</b> <br> <p>คือ จำนวนที่เขียนในรูป เศษส่วนได้ โดยที่ตัวเศษและส่วนเป็นจำนวนเต็ม โดยที่ตัวส่วนต้องมีค่าไม่เท่ากับ0 นั่นคือจำนวนที่เขียนได้ในรูปเศษส่วนของจำนวนเต็ม หรือเขียนเป็นทศนิยมซ้ำได้</p>
+                        <b>ตัวอย่างของจำนวนตรรกยะ เช่น</b>
+                        <p>$7$, $-2$, $0.988998899889$ $1.5$, $\frac{4}{5}$, $0.3\dot{3}$, $0$</p>
+                    </li>
+                    <li><b>จำนวนอตรรกยะ</b> <br> <p>คือ จำนวนที่เป็นทศนิยมแบบไม่ซ้ำ (และเป็นทศนิยมไม่รู้จบ ก็คือตัวเลขหลังทศนิยมไม่มีที่สิ้นสุดด้วย) ซึ่งจำนวนชนิดนี้ไม่สามารถเขียนเป็นเศษส่วนของจำนวนเต็มได้
+                        <b>ตัวอย่างของจำนวนตรรกยะ เช่น</b>
+                        <p>$\sqrt{2}$, $0.988998899889...$, $π$, $\sqrt[3]{4}$, $1-\sqrt{2}$, $0$</p>
+                    </li>
+                </ul>
+                <b>แผนผังแสดงความสัมพันธ์ของจำนวนชนิดต่างๆ</b>
+                <img src="img/realnum.png" alt="van-diagram" class="responsive-img">
+                <p>สัญลักษณ์ของเซตของจำนวนจริงชนิดต่าง ๆ ที่ควรรู้จัก ได้แก่</p>
+                <ul>
+                    <li>$\mathbb{N}$ แทนเซตของจำนวนเต็มบวก (จำนวนนับ)</li>
+                    <li>$\mathbb{Z}$ แทนเซตของจำนวนเต็ม</li>
+                    <li>$\mathbb{Q}$ แทนเซตของจำนวนตรรกยะ</li>
+                    <li>$\mathbb{Q}'$ แทนเซตของจำนวนอตรรกยะ</li>
+                    <li>$\mathbb{R}$ แทนเซตของจำนวนจริง</li>
+                </ul>
+                <b style="color:red">ข้อควรระวัง!</b><span style="margin-left: 20px;">$\frac{22}{7}$ ไม่ใช่จำนวนอตรรกยะ เนื่องจาก$\frac{22}{7}$ เป็นค่าประมาณของค่า$π$ ซึ่งสามารถเขียนเป็นเศษส่วนได้เช่นเดียวกับ3.14</span>
+                </section>
+
+                <section id="real-number-system" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สัจพจน์การเท่ากันและสมบัติของระบบจำนวนจริง</span>
+                </h2>
+                <b>สัจพจน์การเท่ากัน (Axioms of Equality)</b>
+                <p>คำว่า "สัจพจน์" คือความจริงพื้นฐานที่ทุกคนยอมรับตรงกันโดยไม่ต้องพิสูจน์ สำหรับเรื่องการเท่ากัน ($=$) มีสัญชาตญาณ 4 ข้อที่เราใช้กันอยู่ตลอดเวลา ได้แก่</p>
+                <ul>    
+                    <li>
+                        <b>กฎการสะท้อน (reflexive law) :</b><span>ตัวมันเองย่อมเท่ากับตัวมันเองเสมอ</span>
+                        <p> $a$ = $a$ </p>
+                    </li>    
+                    <li>
+                        <b>กฎการสมมาตร (symmetric law) :</b><span>ถ้าฝั่งซ้ายเท่ากับฝั่งขวา เราสามารถสลับให้ฝั่งขวามาอยู่ฝั่งซ้ายได้ ค่าก็ยังเท่าเดิม</span>
+                        <p>ถ้า $a$ = $b$ แล้ว $b$ = $a$</p>
+                    </li>
+                    <li>
+                        <b>กฎการสมมาตร (symmetric law) :</b><span>การส่งต่อความเท่ากันเป็นทอด ๆ</span>
+                        <p>ถ้า $a = b$ และ $b = c$ แล้ว $a = c$</p>
+                    </li>
+                    <li>
+                        <b>สมบัติการบวกและการคูณด้วยจำนวนที่เท่ากัน :</b><span>ถ้าเรามีตราชั่งที่เท่ากันอยู่สองข้าง แล้วเราบวกเข้าหรือคูณเพิ่มด้วยตัวเลขที่เท่ากันทั้งสองข้าง ตราชั่งก็ยังคงสมดุลเท่าเดิม</span>
+                        <p>ถ้า $a = b$ แล้ว $a + c = b + c$</p>
+                        <p>ถ้า $a = b$ แล้ว $ac = bc$</p>
+                    </li>
+                </ul>
+                <b>ตารางของสมบัติจำนวนจริง</b>
+                <img src="img/realnum2.png" alt="van-diagram" class="responsive-img">
+                <p>สมบัติข้างต้น โดยเฉพาะสมบัติการสลับที่ สมบัติการเปลี่ยนหมู่ และสมบัติการแจกแจง สามารถช่วยให้หาผลลัพธ์จากการบวกและการคูณของจำนวนจริงทำได้สะดวกขึ้นด้วย อย่างเช่นในตัวอย่างต่อไปนี้</p>
+                <b>ตัวอย่าง เช่น</b>
+                <ul>
+                    <li>
+                        <p>จงหาผลบวกของ  $2 + 8 + 3 + 5 + 2 + 5$</p>
+                        <p><b style="text-decoration: underline;">วิธีคิด</b></p>
+                        <p>ถ้าเราไม่ใช้สมบัติข้างต้น เราจะต้องดำเนินการบวกจากจำนวนทางซ้ายสุดมาขวาสุด ซึ่งจะไม่สะดวกเลย แต่ถ้าเราใช้สมบัติมาช่วยจะสามารถสลับที่และเพิ่มวงเล็บ(จัดหมู่) จะช่วยให้เราหาผลบวกได้ง่ายขึ้น ดังนี้</p>
+                        <p>$2 + 8 + 3+ 5 + 2 + 5 = (5+5) + (2+8) + (2+3) = 10 +10 + 5 = 25$</p>
+                    </li>
+                    <li>
+                        <p>จงหาผลคูณของ $2 × 8 × 3 × 5 × 2 × 5$</p>
+                        <p><b style="text-decoration: underline;">วิธีคิด</b></p>
+                        <p>เราสามารถใช้สมบัติการคูณของจำนวนจริงช่วยในการหาคำตอบได้เช่นเดียวกับตัวอย่างก่อนหน้า ดังนี้</p>
+                        <p>$2 × 8 × 3 × 5 × 2 × 5 = (2 × 5) + (2 × 5) + (3 × 8) = 10 × 10 × 24 = 2400$</p>
+                    </li>
+                    
+                </ul>
+                </section>
+
+                <section id="polynomial-in-one-variable" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">พหุนามตัวแปรตัวเดียว</span>
+                </h2>                
+                <ul>
+                    <li>
+                        <b>ความหมายของพหุนาม</b>
+                        <p>$p(x) = a_nx^n + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \cdots + a_1x + a_0$</p>
+                        <p>เมื่อ$n$เป็นจำนวนเต็มที่ไม่เป็นจำนวนลบ</p>
+                        <p>และ$a_n, a_{n-1}, a_{n-2}, \ldots, a_1, a_0$ เป็นจำนวนจริง</p>
+                        <p>เรียก $p(x)$ ว่า พหุนามดีกรี $n$ </p>
+                        <p>เรียก $n$ ว่า ดีกรี ของ $p(x)$ </p>
+                        <p>เรียก$a_n, a_{n-1}, a_{n-2}, \ldots, a_1, a_0$ว่า สัมประสิทธิ์ ของ $p(x)$</p>
+                        <p>เรียก$a_n$ว่า สัมประสิทธิ์นำ</p>
+                        <b>เช่น</b>
+                        <ul>
+                            <li>
+                                <p>$q(x)=3x^2+4x+5$</p>
+                                <p> เป็นพหุนามที่มีดีกรี 2 มีสัมประสิทธิ์เป็น 3, 4 และ 5 และมีสัมประสิทธิ์นำเป็น 3</p>
+                            </li>
+                        </ul>
+                    </li>    
+                    <li>
+                        <b>การดำเนินการของพหุนาม</b>
+                        <p>ในส่วนของการดำเนินการของพหุนาม ซึ่งประกอบด้วย การบวก ลบ คูณ หารพหุนาม ทางเราขอทบทวนความรู้ ม.ต้น ได้แก่ การบวก ลบ และคูณพหุนาม ซึ่งเรามาทบทวนผ่านตัวอย่างต่อไปนี้กันเลย</p>                       
+                        <p>ให้ $p(x) = x - 2$ และ $q(x) = 2x - 1$ จงหา $p(x)+q(x),\; p(x)-q(x)\; \text{และ}\; p(x)q(x)$</p>
+                        <b>จะได้</b>
+                        <p>$p(x)+q(x)=(x-2)+(2x-1)=x+2x-2-1=3x-3$ </p>
+                        <p>$p(x)-q(x)=(x-2)-(2x-1)=x-2-2x+1=-x-1$ </p>
+                        <p>$p(x)q(x)=(x-2)(2x-1)$ </p>
+                        <p style="margin-left: 72px;">$=x(2x)+(x)(-1)+(-2)(2x)+(-2)(-1)$ </p>
+                        <p style="margin-left: 72px;">$=2x^2-5x+2$ </p>
+                    </li>  
+                    <li>
+                        <b>ขั้นตอนวิธีการหารสำหรับพหุนาม</b>
+                        <img src="img/realnum4.png" alt="van-diagram" class="responsive-img">
+                        <p>จากทฤษฎีข้างต้นสรุปง่าย ๆ ว่า</p>
+                        <b>$$ตัวตั้ง = (ตัวหาร)(ผลหาร) + เศษเหลือ$$</b>
+                    </li>           
+                    <li>
+                        <b>การหารยาว</b>
+                        <p>การหารพหุนามนั้นมีได้หลายวิธี เช่น วิธีการหารยาว วิธีเทียบสัมประสิทธิ์ วิธีการหารสังเคราะห์ ฯลฯ แต่ขอพูดแค่หารยาวก็แล้วกัน ซึ่งการหารยาวของพหุนามสามารถทำได้โดยวิธีการตั้งหารคล้ายรูปแบบการหารยาวของจำนวนเต็มดังตัวอย่างต่อไปนี้</p>
+                        <b>ตัวอย่างเช่น</b>
+                        <li>
+                            <b>จงหาผลหารและเศษเหลือจากการหารพหุนาม $x^2-3x+2$ ด้วย $x-4$ </b>
+                            <br><b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                        <img src="img/r.png" alt="van-diagram" class="responsive-img">
+                        <p>ดังนั้นผลหารคือ $x + 1$ เศษ 6</p>
+                        <li>
+                            <b>จงหาผลหารและเศษเหลือจากการหารพหุนาม $3x^2+8$ ด้วย $x-2$ </b>
+                            <p>เทคนิค : ในกรณีที่กำลังเรียงพจน์ของพหุนามตามเลขชี้กำลังจากมากไปน้อย แล้วมีพจน์บางพจน์หายไปให้เติม 0 คูณกับ x ยกกำลังเลขที่หายไป</p>
+                            <br><b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                        <img src="img/realnum5.png" alt="van-diagram" class="responsive-img">
+                        <p>ดังนั้น ผลหารคือ 3x + 6 เศษ 20</p>
+                    </li>                         
+                </ul>
+                </section>
+                
+                <section id="factorization-of-polynomials" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การแยกตัวประกอบของพหุนาม</span>
+                </h2>                
+                    <p>การแยกตัวประกอบของพหุนาม ซึ่งเป็นส่วนสำคัญทั้งการจัดรูปพหุนามให้อยู่ในรูปอย่างง่าย รวมถึงเป็นวิธีการหลักในการแก้สมการและอสมการพหุนาม การแยกตัวประกอบของพหุนามดีกรีสูงกว่าสองแต่ไม่ได้มีรูปแบบเฉพาะ โดยใช้ทฤษฎีที่สำคัญ อยู่ 2 ทฤษฎี ได้แก่ ทฤษฎีบทเศษเหลือและทฤษฎีบทตัวประกอบตรรกยะ </p>
+                    <img src="img/realnum6.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง</b>
+                    <p>จงหาเศษเหลือของ $3x^2+1$ หารด้วย $x-1$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x) = 3x^2+1$ </p>
+                    <p>จากทฤษฎีบทเศษเหลือ เมื่อหาร $p(x)$ ด้วย $x-1$ จะเหลือเศษคือ $p(1)$</p>
+                    <p>จะได้ $p(1) = 3(1)^2+1 = 4$</p>                 
+                    <p>ดังนั้น เศษเหลือของ $3x^2+1$ หารด้วย $x-1$ คือ $4$</p> 
+                    <p>จาก ทฤษฎีบทเศษเหลือ ถ้าเราหาค่า $c$ ที่ทำให้ $p(c) เป็น 0$ นั่นคือการหารนั้นจะมีเศษเหลือจากการหารเป็น $0$ ซึ่งการที่เศษเป็น $0$ ก็คือการหารลงตัวนั่นเอง ซึ่งถ้าหารลงตัวแล้วแสดงว่า $x - c$ จะเป็นหนึ่งในตัวประกอบของ $p(x)$ เราสามารถกล่าวเป็นทฤษฎีบทได้ดังนี้</p>                
+                    <img src="img/realnum7.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง</b>
+                    <p>จงตรวจสอบว่า $ x-1 $ เป็นตัวประกอบของ $x^2 + 2x - 8$ หรือไม่</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x) = x^2 + 2x - 8$ </p>
+                    <p>ดังนั้น $p(1) = (1)^2 + 2(1) - 8 = -5$ซึ่งไม่เท่ากับ$0$</p>
+                    <p>จึงสรุปได้ว่า $ x - 1 $ ไม่เป็นตัวประกอบของ $x^2 + 2x - 8$</p>    
+                    <img src="img/realnum8.png" alt="van-diagram" class="responsive-img">
+                    <p>จงแยกตัวประกอบของ $p(x)=2x^2+5x-3$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>ให้ $p(x)=2x^2+5x-3$</p>               
+                    <p>เนื่องจากจำนวนเต็มที่หาร $-3$ ลงตัว คือ $\pm1,\ \pm3$</p>               
+                    <p>และจำนวนเต็มที่หาร 2 ลงตัว คือ $\pm1,\ \pm2$</p>               
+                    <p>ดังนั้น จำนวนตรรกยะ $\frac{k}{m}$ ที่ทำให้ $p(\frac{k}{m}) = 0$ จะอยู่ในกลุ่มของจำนวนต่อไปนี้ คือ $\pm1,\ \pm3,\ \pm\frac{1}{2},\ \pm\frac{3}{2}$</p>               
+                    <p>พิจารณา $p(\frac{1}{2})$</p>               
+                    <p>จะได้ว่า $p\left(\frac{1}{2}\right)=2\left(\frac{1}{2}\right)^2+5\left(\frac{1}{2}\right)-3=\frac{1}{2}+\frac{5}{2}-3=0$</p>               
+                    <p>นั่นคือ $x-\frac{1}{2}$ เป็นตัวประกอบของ $p(x)$</p>               
+                    <p>นำ $x-\frac{1}{2}$ ไปหาร $p(x)$ ได้ผลหารเป็น $2x + 6$</p>               
+                    <p>ดังนั้น <br>$2x^3+5x-3=\left(x-\frac{1}{2}\right)(2x+6)$</p>               
+                    <p style="margin-left: 100px;">$=\left(x-\frac{1}{2}\right)(2)(x+3)$</p>               
+                    <p style="margin-left: 100px;">$=(2x-1)(x+3)$</p>               
+                    <p>จากตัวอย่างข้างต้น บางคนที่ยังสงสัยอยู่ว่า จำนวน$\pm1,\ \pm3,\ \pm\frac{1}{2},\ \pm\frac{3}{2}$ เหล่านี้มาจากไหนขอสรุปไว้ข้างท้ายนี้อีกครั้งว่า ตัวเศษได้มาจากตัวประกอบของ -3 และตัวส่วนได้มาจากตัวประกอบของ 2 โดย ห.ร.ม. ของตัวเศษและตัวส่วน คือ 1 นั่นเอง</p>               
+                </section> 
+
+                <section id="polynomial-equations" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการพหุนาม</span>
+                </h2>                
+                    <p>เราจะแก้สมการที่ตัวแปรมีเลขชี้กำลังที่มากขึ้น แต่เราจะใช้หลักการแก้สมการกำลังสองร่วมกับทฤษฎีบทตัวประกอบในหัวข้อก่อน สำหรับหลักการแก้สมการพหุนาม (ทั้งกำลังสองและกำลังที่สูงกว่าสอง) วิธีหลัก ๆ ที่นิยมใช้กันคือวิธีการแยกตัวประกอบ และอีกวิธีคือการใช้สูตร</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $x^2+3x-54=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>ทำการแยกตัวประกอบพหุนาม </p>
+                            <p>$x^2+3x-54=0$</p>
+                            <p>$(x-6=0)(x+9)=0$</p> 
+                            <p>จะได้ $x-6=0$ หรือ $x+9=0$</p> 
+                            <p>ดังนั้น $x = 6 หรือ -9$</p> 
+                        </li>   
+                    </ul>  
+                    <p>ตัวอย่างข้างต้นคือวิธีการแยกตัวประกอบ ส่วนการใช้สูตรจะมีสูตรและตัวอย่างการใช้ดังนี้</p>          
+                    <img src="img/realnum9.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $x^2-6x+9=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>เทียบสัมประสิทธิ์ $ax^2+bx+c=0$ กับ $x^2-6x+9=0$</p>
+                            <p>จะได้ $a=1,b=-6$ และ $c=9$</p>
+                            <p>ซึ่ง$(-6)^2-4(1)(9)=0$ดังนั้นสมการพหุนามนี้มีเพียงคำตอบเดียวนั่นคือ</p> 
+                            <p>$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$</p> 
+                            <p style="margin-left: 15px;">$=\dfrac{-(-6)\pm\sqrt{0}}{2(1)}=3$</p> 
+                            <p>จะได้เซตคำตอบของสมการนี้คือ {$3$}</p>
+                        </li> 
+                        <li>
+                            <p>จงหาค่าของ $x$ เมื่อ $2x^2+3x+4=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>เทียบสัมประสิทธิ์ $ax^2+bx+c=0$ กับ $2x^2+3x+4=0$</p>
+                            <p>จะได้ $a=2,b=3$ และ $c=4$</p>
+                            <p>ซึ่ง$(3)^2 - 4(2)(4) < 0$ดังนั้นสมการพหุนามนี้ไม่มีจำนวนจริงที่เป็นคำตอบ</p> 
+                            <p>ดังนั้น เซตคำตอบของสมการนี้คือ เซตว่าง นั่นเอง</p> 
+                        </li>   
+                    </ul>                                   
+                    <p>บางคนอาจสงสัยว่าเครื่องหมาย> , = และ < ควรจะใช้ยังไง ง่ายๆคือถ้าคิดเลข$b^2-4ac$ออกมาแล้วมีค่า$> 0$ จำนวนคำตอบที่สามารถตอบได้จะมีแค่2คำตอบ, ถ้ามีค่า$= 0$ จำนวนคำตอบที่สามารถตอบได้จะมีแค่1คำตอบ, ถ้ามีค่า$< 0$ จะไม่มีจำนวนจริงที่เป็นคำตอบ ตามทฤษฏีบทข้างบนที่เคยกล่าวมา</p>
+                </section> 
+
+                <section id="polynomial-fractions" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เศษส่วนของพหุนาม</span>
+                </h2>                
+                    <img src="img/realnum10.png" alt="van-diagram" class="responsive-img">
+                    <p>จากบทนิยาม เศษส่วนของพหุนามก็คือ เศษส่วนที่มีตัวเศษและตัวส่วนเป็นพหุนาม เหมือนเอาเศษส่วนและพหุนามมารวมตัวกัน ดังนั้น เศษส่วนของพหุนามก็จะสามารถใช้สมบัติต่าง ๆ ของเศษส่วน และสมบัติต่าง ๆ ของพหุนามมาใช้ในการคำนวณ จัดรูป รวมถึงนำไปใช้แก้สมการและอสมการได้</p>          
+                    <br>
+                    <b>การดำเนินการของเศษส่วนพหุนาม</b>
+                    <p>การดำเนินการของเศษส่วนพหุนามนั้นมีวิธีทำคล้ายคลึงกับการดำเนินการของเศษส่วนจำนวนเต็ม คือมีวิธีการบวก ลบ คูณ และหารเหมือนเศษส่วนที่เราเคยรู้จัก แล้วบางข้ออาจใช้การแยกตัวประกอบของพหุนามในการจัดรูปร่วมด้วย</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>กำหนดให้$p(x)=\frac{x+4}{2}$ และ $q(x)=\frac{1}{x+3}$</p>
+                            <p>จงหา $p(x)+q(x),\ p(x)-q(x),\ p(x)q(x)$ และ $\frac{p(x)}{q(x)}$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <img src="img/realnum11.png" alt="van-diagram" class="responsive-img">
+                        </li> 
+                    </ul>   
+                    <b>สมการเศษส่วนพหุนาม</b>
+                    <p>สำหรับการแก้สมการเศษส่วนพหุนามนั้นใช้หลักการแก้สมการพหุนามเหมือนเดิม เพิ่มเติมคือตัวส่วนต้องไม่เป็น 0</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>  
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ $\dfrac{x^2+7x+12}{x^2+3x-4}=0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <img src="img/realnum13.png" alt="van-diagram" class="responsive-img">
+                            <p>บางคนอาจสงสัยว่า $(x+4)(x-1)\ne 0$ มาจากไหน คำตอบคือ เพราะ $(x+4)(x-1)$ เป็นตัวส่วนซึ่งตัวส่วนต้องไม่เป็น 0 </p>
+                        </li>   
+                    </ul>                                   
+                    <p>เราจะเเยกตัวประกอบแล้วหาค่า $x$ แต่ละตัวแล้วดูเงื่อนไขว่า $x$ ไม่สามารถเป็นอะไรได้ และตัดคำตอบที่ทำให้ตัวส่วนเป็น 0 ทิ้ง</p>
+                </section> 
+
+                <section id="inequality-of-real-numbers" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">การไม่เท่ากันของจำนวนจริง</span>
+                </h2>                
+                    <p>มาพูดส่วนของ “การไม่เท่ากัน” บ้าง โดยในส่วนนี้จะมีความสัมพันธ์อื่น ๆ ที่น้อง ๆ ต้องรู้จักเพิ่มนอกจากเท่ากับ ได้แก่ มากกว่า “>” น้อยกว่า “<” มากกว่าหรือเท่ากับ “≥” และน้อยกว่าหรือเท่ากับ “≤”</p>          
+                    <p>ในส่วนของสัจพจน์เชิงคณิตศาสตร์ของระบบจำนวนจริงเกี่ยวกับ “การเท่ากัน” เราได้กล่าวไปแล้ว ในหัวข้อนี้เราจะลองพูดถึงสัจพจน์ของการไม่เท่ากันของระบบจำนวนจริงดูบ้าง ซึ่งจะมีอยู่ 3 ข้อ ตามนี้เลย </p>
+                    <b>สำหรับ$a \in \mathbb{R}$ และ $b \in \mathbb{R}$</b>
+                    <ul>
+                        <li>
+                            <p>ถ้า$a>0$และ$b>0$ แล้ว $a+b>0$</p>
+                            <p>(จำนวนจริงบวก 2 ตัวบวกกันจะได้จำนวนจริงบวก)</p>
+                        </li> 
+                    </ul>   
+                    <ul>  
+                        <li>
+                            <p>ถ้า$a>0$และ$b>0$ แล้ว $ab>0$</p>
+                            <p>(จำนวนจริงบวก 2 ตัวคูณกันจะได้จำนวนจริงบวก)</p>
+                        </li>   
+                    </ul>                                   
+                    <ul>  
+                        <li>
+                            <p>$a=0$ หรือ $a>0$ หรือ $a < 0$ เพียงอย่างใดอย่างหนึ่ง</p>
+                            <p>(จำนวนจริงไม่สามารถมีค่าเป็นบวก ลบ หรือ 0 พร้อมกันได้)</p>
+                        </li>
+                    </ul>
+                    <p>ถ้า$a \in \mathbb{R}^{+}$แสดงว่า $a$ เป็นจำนวนจริงบวก หรือหมายความว่า $a>0$ บทนิยามที่เกี่ยวกับการไม่เท่ากันของจำนวนจริง คือ</p>
+                    <img src="img/realnum14.png" alt="van-diagram" class="responsive-img">
+                    <p>จากบทนิยามที่ได้กล่าวมาอาจจะยังนำไปใช้ประโยชน์โดยตรงได้ไม่เยอะมากนัก นักคณิตศาสตร์เลยนำบทนิยามดังกล่าวไปต่อยอดมาเป็นทฤษฎีบทให้เราสามารถใช้ได้อีกมากมาย</p>
+                    <img src="img/realnum15.png" alt="van-diagram" class="responsive-img">
+                    <p>จากทฤษฎีบทข้างบนนี้ <span style="color:red;">สิ่งที่ต้องระวังเป็นพิเศษเลยก็คือ หลังจากคูณหรือหารด้วยจำนวนจริงลบตลอดทั้งอสมการแล้ว อย่าลืมกลับเครื่องหมายอสมการด้วย !! </span></p>
+                    <img src="img/realnum16.png" alt="van-diagram" class="responsive-img">
+                    <p>แสดงว่า ถ้าเราสามารถนำสองอสมการมาบวกกันได้เลยตามทฤษฎีบท ยกตัวอย่างเช่น ถ้า $x>5$ และ $y>3$ จะได้ $x+y>8$</p>
+                    <img src="img/realnum17.png" alt="van-diagram" class="responsive-img">
+                </section> 
+
+                <section id="polynomial-inequalities-with-one-variable" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการพหุนามตัวแปรเดียว</span>
+                </h2>                
+                    <p>อสมการพหุนามตัวแปรเดียว คือ ประโยคสัญลักษณ์ที่มีตัวแปรเดียวและใช้เครื่องหมายแสดงความไม่เท่ากัน (<, >, ≤, ≥) การหาคำตอบทำได้โดยจัดรูปให้อีกฝั่งของอสมการเป็นศูนย์ แยกตัวประกอบเพื่อหา "ค่าวิกฤต" นำค่าที่ได้ไปเรียงบนเส้นจำนวนจากน้อยไปมาก แล้วเลือกช่วงที่เป็นคำตอบตามเครื่องหมายของอสมการ โดยมีบทนิยามดังนี้</p>          
+                    <img src="img/realnum18.png" alt="van-diagram" class="responsive-img">
+                    <p><b style="text-decoration: underline;">หมายเหตุ :</b>เซตของจำนวนจริง($\mathbb{R}$)สามารถเขียนในรูปช่วง $(-\infty,\infty)$ แทนได้</p>
+                    <b>การเขียนช่วง</b>
+                    <p>จากสัญลักษณ์ของช่วงต่าง ๆ ตามนิยามข้างต้น เราสามารถเขียนแทนจำนวนลงบนเส้นจำนวนได้ตามตัวอย่างตามนี้เลย <br>โดยช่วงปิด$[a,b]$จะใช้เป็น$\bullet$ และช่วงเปิด$(a,b)$ จะใช้เป็น$\circ$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <img src="img/realnum20.png" alt="van-diagram" class="responsive-img">
+                    <b>อสมการพหุนามตัวแปรเดียว</b>
+                    <p>อสมการ คือประโยคในทางคณิตศาสตร์ที่กล่าวถึงการไม่เท่ากัน เช่น $10 > 8$ คืออสมการที่เป็นจริง หรือ $5 \leq 3$ คืออสมการที่เป็นเท็จ เป็นต้น แต่ในกรณีที่อสมการมีตัวแปรอยู่ด้วย เช่น $3x + 2 > 8$ หรือ $2x - 5 \leq 3$ เราจะมาหาว่า จำนวนจริงตัวไหนบ้างนะที่แทนลงในอสมการนี้แล้ว ทำให้อสมการเป็นจริง โดยจำนวนจริงเหล่านี้เราจะเขียนในรูปของ “เซตคำตอบของอสมการ”</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>จงหาเซตคำตอบของอสมการ $x^2+2x-48 < 0$</li>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <img src="img/realnum19.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                        <li>
+                            <p>จงหาเซตคำตอบของอสมการ $\dfrac{(x+4)(2x-5)(7-x)}{x}\ge0$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <img src="img/realnum21.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ค่าสัมบูรณ์</span>
+                </h2>                
+                    <p>ค่าสัมบูรณ์ (Absolute Value) คือ ระยะห่างระหว่างจำนวนนั้นกับเลขศูนย์บนเส้นจำนวน เนื่องจากเป็นเรื่องของระยะทาง ค่าสัมบูรณ์ที่ได้ออกมาจึงมีค่าเป็นบวกหรือศูนย์เสมอ โดยจะไม่มีทางติดลบเด็ดขาด ในทางคณิตศาสตร์ ค่าสัมบูรณ์จะถูกแทนด้วยสัญลักษณ์เส้นตรงแนวตั้งสองเส้นขนาบข้างจำนวนนั้น($|a|$) และสามารถนิยามตามเงื่อนไขได้ว่า ถ้านำจำนวนที่เป็นบวกหรือศูนย์มาหาค่าสัมบูรณ์ ผลลัพธ์จะได้เท่ากับจำนวนเดิมทันที แต่ถ้านำจำนวนที่ติดลบมาหาค่าสัมบูรณ์ ผลลัพธ์จะถูกเปลี่ยนให้เป็นจำนวนบวกที่เป็นคู่ตรงข้ามของมัน เพื่อสะท้อนถึงระยะทางที่แท้จริงบนเส้นจำนวน เราจะมาดูกันว่า ค่าสัมบูรณ์ของจำนวนจริง จะถูกนิยามว่าอย่างไร</p>          
+                    <img src="img/realnum22.png" alt="van-diagram" class="responsive-img">
+                    <b style="text-decoration: underline;">หมายเหตุ :</b>
+                    <ul>
+                        <li>จากบทนิยาม ในกรณีที่ $a < 0$ (aเป็นจำนวนลบ) จะได้ว่า $-a > 0$ (ค่าลบของจำนวนลบจะได้จำนวนบวก) แสดงว่า $|a| = -a$ ซึ่งเป็นจำนวนเต็มบวก ดังนั้น สำหรับจำนวนจริง $a$ จะได้ว่า $|a|$ มากกว่าหรือเท่ากับศูนย์ โดย $|a|$ จะเท่ากับ0 เมื่อ $a = 0$</li>
+                        <li>ค่าสัมบูรณ์ของจำนวนจริง $a$ สามารถพิจารณาเป็นระยะจากจุดที่แทน $0$ ถึงจุดที่แทน $a$ บนเส้นจำนวน</li>
+                    </ul>
+                    <img src="img/realnum23.png" alt="van-diagram" class="responsive-img">
+                </section>
+
+                <section id="absolute-value-equation-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</span>
+                </h2>                
+                    <p>สมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว คือ สมการที่มีพหุนามตัวแปรเดียวอยู่ภายในเครื่องหมายค่าสัมบูรณ์ การหาคำตอบทำได้โดยการ "ปลดเครื่องหมายค่าสัมบูรณ์" ซึ่งนิยมแยกเป็น 2 สมการย่อย คือ จับพหุนามด้านในเท่ากับค่าที่เป็นบวก และเท่ากับค่าที่เป็นลบของอีกฝั่ง จากนั้นแก้สมการตามปกติ และสิ่งสำคัญที่สุดคือ ต้องนำคำตอบที่ได้กลับไปตรวจทานกับโจทย์ตั้งต้นเสมอ เพื่อตัดคำตอบส่วนเกินที่ไม่สอดคล้องกับธรรมชาติของค่าสัมบูรณ์ออก</p>          
+                    <img src="img/realnum24.png" alt="van-diagram" class="responsive-img">
+                    <p>สรุปง่ายๆ คือ $|x| = a$ ก็ต่อเมื่อ $x = -a$ เราลองมาดูตัวอย่างกัน</p>
+                    <b style="text-decoration: underline;">ตัวอย่าง:</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$\left|2x+3\right|=9$</p>
+                            <img src="img/realnum33.png" alt="van-diagram" class="responsive-img">
+                            <p>จากตัวอย่างด้านบน พิจารณาที่ $x=a$ และ $x=-a$ ก็จะได้คำตอบเลย แต่ถ้าในกรณีที่นอกเครื่องหมายค่าสัมบูรณ์ติดตัวแปร เราไม่แน่ใจว่าจะนอกเครื่องหมายค่าสัมบูรณ์จะมีค่าเป็นบวก หรือมีค่าเป็นลบ เราจึงต้องพิจารณาทุกกรณีในการถอดเครื่องหมายค่าสัมบูรณ์ที่จะเป็นไปได้ ลองดูตัวอย่างต่อไปให้เข้าใจมากยิ่งขึ้น</p>
+                        </li>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ $\left|x-1\right|=2x-3$</p>
+                            <img src="img/realnum27.png" alt="van-diagram" class="responsive-img">
+                            <p></p>
+                            <p>จะเห็นว่า หลังจากที่เราได้คำตอบมาแล้ว ก็ยังไม่สามารถตอบได้ทันที เราต้องนำเงื่อนไขที่กำหนดไว้มาพิจารณาร่วมด้วยและในตัวอย่างถัดไปเราจะมาดูสมการค่าสัมบูรณ์ ที่ทั้งสองข้างอยู่ในรูปค่าสัมบูรณ์กันบ้าง</p>
+                        </li>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$\left|x-1\right|=\left|2x+1\right|$</p>
+                            <img src="img/realnum29.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว</span>
+                </h2>                
+                    <p>อสมการค่าสัมบูรณ์ของพหุนามตัวแปรเดียว คือ อสมการที่มีพหุนามตัวแปรเดียวอยู่ภายในเครื่องหมายค่าสัมบูรณ์ การแก้จะใช้หลักการ "ปลดเครื่องหมาย" ตามทิศทางของเครื่องหมายอสมการ ดังนี้</p>          
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>สรุปง่ายๆ คือ $|x| = a$ ก็ต่อเมื่อ $x = -a$ เราลองมาดูตัวอย่างกัน</p>
+                    <b style="text-decoration: underline;">ตัวอย่าง:</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$|2x + 3| < 9$</p>
+                            <img src="img/realnum31.png" alt="van-diagram" class="responsive-img">
+                            <p>จากตัวอย่างด้านบน แค่น้อง ๆ พิจารณาที่ $x=a$ และ $x=-a$ ก็จะได้คำตอบเลย แต่ถ้าในกรณีที่นอกเครื่องหมายค่าสัมบูรณ์ติดตัวแปร เราไม่แน่ใจว่าจะนอกเครื่องหมายค่าสัมบูรณ์จะมีค่าเป็นบวก หรือมีค่าเป็นลบ เราจึงต้องพิจารณาทุกกรณีในการถอดเครื่องหมายค่าสัมบูรณ์ที่จะเป็นไปได้ ลองดูตัวอย่างต่อไปให้เข้าใจมากยิ่งขึ้น</p>
+                        </li>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ $|x + 1| > x - 3$</p>
+                            <img src="img/realnum26.png" alt="van-diagram" class="responsive-img">
+                            <p>จะเห็นว่า หลังจากที่เราได้คำตอบมาแล้ว ก็ยังไม่สามารถตอบได้ทันที เราต้องนำเงื่อนไขที่กำหนดไว้มาพิจารณาร่วมด้วยและในตัวอย่างถัดไปเราจะมาดูสมการค่าสัมบูรณ์ ที่ทั้งสองข้างอยู่ในรูปค่าสัมบูรณ์กันบ้าง</p>
+                        </li>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$|x| > |x - 1|$</p>
+                            <img src="img/realnum32.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="chapter-divider" id="chapter-4" data-chapter-id="chapter-4" data-required="chapter-3">
+                    <span> บทที่ 4 : ⨍ ความสำพันธ์และฟังก์ชัน</span>
+                </div>
+
+                <section id="relations-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ความสัมพันธ์</span>
+                </h2>                
+                    <p>“ความสัมพันธ์” เป็นคำที่เราใช้กันบ่อยมาก เช่น ความสัมพันธ์แบบเพื่อน แฟน Friend Zone หรือ แม้กระทั่งความสัมพันธ์ระหว่างสิ่งของกับสิ่งของก็ตาม อย่างไรก็ตาม นักคณิตศาสตร์อยากลองนิยามคำว่า “ความสัมพันธ์” ให้ชัดเจนว่ามันมีหน้าตาเป็นอย่างไร</p>          
+                    <b>ผลคูณคาร์ทีเซียน</b>
+                    <img src="img/func2.png" alt="van-diagram" class="responsive-img">
+                    <p>สามารถเขียนผลคูณคาร์ทีเซียนของเซต $A$ และ $B$ ได้ว่า $A \times B$</p>
+                    <p>เช่น กำหนดให้ $A = {1, 2 , 3} และ B = {a, b}</p>
+                    <p>ดังนั้น$A \times B = \{(1, a), (2, a), (3, a), (1, b), (2, b), (3, b)\}$</p>
+                    <p>ความสัมพันธ์</p>
+                    <img src="img/func3.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น กำหนดให้ A = {1, 2, 3} และ B = {1, 3}</p>
+                    <p>ถ้า$r_1 = \{(x, y) \in A \times B \mid x < y\}$ จะสามารถเขียนแจกแจงสมาชิกได้ดังนี้$r_1 = \{(1, 3), (2, 3)\}$</p>
+                    <p>หรือเราสามารถเรียกได้ว่า $r_1$ เป็นความสัมพันธ์"น้อยกว่า"จาก $A$ ไป $B$</p>
+                    <b>กราฟของความสัมพันธ์</b>
+                    <p>โดยเราสามารถนำความสัมพันธ์มาแสดงเป็นภาพได้โดยนำคู่อันดับในความสัมพันธ์มาแสดงเป็นพิกัดของจุดแล้ววางลงไปบนระนาบ$XY$ก็จะได้ออกมาเป็นกราฟของความสัมพันธ์ต่าง ๆ</p>
+                    <p>กราฟของความสัมพันธ์ $r$ มีอยู่ 3 ลักษณะ</p>
+                    <ul>
+                        <li>
+                            <p>กราฟมีลักษณะเป็น<b>จุด</b></p>
+                            <p>เช่น $(x,y)$ เป็นสมาชิก $Z \times Z$ ดังรูปด้านล่าง</p>
+                        </li>
+                        <li>
+                            <p>กราฟมีลักษณะเป็น<b>เส้น</b></p>
+                            <p>เช่น $(x,y)$ เป็นสมาชิก $R \times R$ มีเงื่อนไขเป็น<span style="text-decoration: underline;">สมการ</span> ดังรูปด้านล่าง</p>
+                        </li>
+                        <li>
+                            <p>กราฟมีลักษณะเป็น<b>พื้นที่</b></p>
+                            <p>เช่น $(x,y)$ เป็นสมาชิก $R \times R$ มีเงื่อนไขเป็น<span style="text-decoration: underline;">อสมการ</span></p>
+                        </li>
+                    </ul>
+                    <img src="img/func4.png" alt="van-diagram" class="responsive-img">
+                    <b style="text-decoration: underline;">ข้อสังเกต</b>
+                    <p>เรานำสมาชิกตัวหน้ามาเป็นค่าตำแหน่งบนแกน $X$ และนำสมาชิกตัวหลังเป็นค่าตำแหน่งบนแกน $Y$ ล้วใช้ค่าตำแหน่งทั้งสองมาเป็นพิกัดในการลงจุดเพื่อวาดกราฟ</p>
+                    <b>โดเมนและเรนจ์ของความสัมพันธ์</b>
+                    <p>โดเมน (Domain) และ เรนจ์ (Range) คือ ขอบเขตของค่าในความสัมพันธ์หรือฟังก์ชันที่มีการจับคู่กันระหว่างกลุ่มข้อมูลสองกลุ่ม</p>
+                    <ul>
+                        <li>
+                            <p>โดเมน (Domain): คือ เซตของค่าของตัวแปรต้นทั้งหมด (มักแทนด้วยตัวแปร $x$) ที่สามารถนำไปแทนในความสัมพันธ์หรือฟังก์ชันนั้น ๆ แล้วสามารถคำนวณหรือหาค่าของตัวแปรตามออกมาได้จริง โดยไม่ขัดต่อหลักการทางคณิตศาสตร์</p>
+                        </li>
+                        <li>
+                            <p>เรนจ์ (Range): คือ เซตของค่าของตัวแปรตามทั้งหมด (มักแทนด้วยตัวแปร $y$) ที่เกิดขึ้นจริงจากการนำสมาชิกในโดเมนไปแทนค่าในความสัมพันธ์หรือฟังก์ชันนั้น</p>
+                        </li>
+                    </ul>
+                    <p>ดังนั้นมาทำความรู้จักกับบทนิยามของโดเมนและเรนจ์กันก่อนเลย</p>
+                    <img src="img/func5.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาโดเมนและเรนจ์จากกราฟของความสัมพันธ์ที่กำหนดให้ต่อไปนี้</p>
+                            <img src="img/func1.png" alt="van-diagram" class="responsive-img">
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จากข้อ 1)</p>
+                            <p>กำหนดให้เป็นกราฟของความสัมพันธ์ $r_1$</p>
+                            <p>จะได้ว่า $r_1$ = {(-4,2),(-2,0),(0,-2),(2,0),(4,2)}</p>
+                            <p>$D_{r_1}$ = {(-4),(-2),0,2,4} และ $R_{r_1}$ = {(-2),0,2}</p>
+                            <p>จากข้อ 2)</p>
+                            <b style="text-decoration: underline;">แนวคิด</b>
+                            <p> เราสามารถมองเส้นจากกราฟของความสัมพันธ์ $r_2$ ได้ว่าเป็นจุดจำนวนมากเรียงต่อกัน จนกลายเป็นเส้น ดังนั้น วิธีการหาโดเมนและเรนจ์จากกราฟในข้อนี้ สามารถมองได้ด้วยวิธีคล้ายกับกับข้อ 1) สมาชิกตัวหน้าของคู่อันดับจะเป็นจำนวนจริงทั้งหมดเลย (ตั้งแต่$-\infty$จนถึง$\infty$)ถ้าเริ่มมองจากแกน Y ด้านล่างขึ้นมา จะเห็นว่าสมาชิกตัวหลังของคู่อันดับจะเป็นจำนวนตั้งแต่ -2 จนถึง $\infty$</p>
+                            <p>จะได้ว่า$D_{r_2} = R$และ$R_{r_2} = [-2, \infty)$ </p>
+                        </li>
+                    </ul>
+                    <p>จากตัวอย่างก่อนหน้า เราสามารถสรุปการหาโดเมนและเรนจ์จากกราฟของความสัมพันธ์ได้เป็นดังนี้</p>
+                    <img src="img/func6.png" alt="van-diagram" class="responsive-img">
+                    <p>นอกจากการหาโดเมนและเรนจ์จากกราฟของความสัมพันธ์แล้ว ถ้าโจทย์ให้ความสัมพันธ์ที่เขียนในรูปของเซตแบบบอกเงื่อนไข เราจะใช้เทคนิคในการพิจารณาเงื่อนไขแล้วหาโดเมนและเรนจ์ของความสัมพันธ์ ซึ่งจะมีขั้นตอนดังต่อไปนี้</p>
+                    <img src="img/func7.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาโดเมนและเรนจ์ของความสัมพันธ์ต่อไปนี้</p>
+                            <p>$1)\ r_1 = \left\{(x, y) \mid y = \frac{1}{x + 1}\right\}$</p>
+                            <img src="img/func8.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                        <li>
+                            <p>$2)\ r_2 = \left\{(x, y) \mid y = \sqrt{x}\right\}$</p>
+                            <img src="img/func9.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                    </ul>
+                    <b>ตัวผกผันของความสัมพันธ์</b>
+                    <img src="img/func10.png" alt="van-diagram" class="responsive-img">
+                    <p>ตัวผกผันของความสัมพันธ์$r$เขียนแทนด้วย$r^{-1}$</p>
+                    <p>เช่น ถ้า $r$ = {(1,2),(3,4),(5,6)} แล้ว $r^{-1}$ = {(2,1),(4,3),(6,5)}</p>
+                    <p>ก่อนหน้านี้เราเคยเขียนความสัมพันธ์ให้อยู่ในรูปเซตแบบบอกเงื่อนไข ดังนั้นเราก็สามารถเขียนตัวผกผันของความสัมพันธ์ให้อยู่ในรูปของเซตแบบบอกเงื่อนไขได้เช่นกัน</p>
+                    <b>เช่น</b>
+                    <ul>
+                        <li>
+                            <p>แบบที่1:$r^{-1} = \{(y, x) \in B \times A \mid (x, y) \in r\}$ หรือ</p>
+                        </li>
+                        <li>
+                            <p>แบบที่2:$r^{-1} = \{(x, y) \in A \times B \mid (y, x) \in r\}$</p>
+                        </li>
+                    </ul>
+                    <p>ลองสังเกตจะเห็นว่าการเขียนทั้งสองแบบเกิดจากการสลับ $x$ และ $y$แต่แบบที่$1$ จะสลับที่ด้านหน้าเพียงอย่างเดียว ส่วนแบบที่ $2$ จะสลับที่เพียงด้านหลังอย่างเดียวเท่านั้น ถ้าใครเผลอไปเขียนตัวผกผันของความสัมพันธ์แล้วสลับทั้งสองที่จะผิดได้นะ !</p>
+                </section>
+
+                <section id="functions" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ฟังก์ชัน</span>
+                </h2>                
+                    <p>หลังจากที่เรารู้จักความสัมพันธ์กันไปแล้ว มันก็จะมีความสัมพันธ์บางอย่างที่เราได้ให้ชื่อมันเอาไว้ ซึ่งความสัมพันธ์ประเภทนี้จะเป็นพื้นฐานสำคัญที่นำไปต่อยอดในหัวข้ออื่น ๆ ได้อีกมากมาย ความสัมพันธ์นี้มีชื่อว่า “ฟังก์ชัน”</p>
+                    <b>ความหมายของฟังก์ชัน</b>
+                    <img src="img/func10.png" alt="van-diagram" class="responsive-img">
+                    <p>จากบทนิยามข้างต้น ฟังก์ชัน คือ ความสัมพันธ์ที่<span style="text-decoration: underline;">สมาชิกตัวหน้าแต่ละตัวจะจับกับสมาชิกตัวหลังเพียงค่าเดียวเท่านั้น !!</span></p>
+                    <p>ฟังก์ชันโดยส่วนใหญ่มักจะเขียนแสดงได้ 3 รูปแบบคือ แผนภาพ เซต และกราฟของฟังก์ชัน โดยกราฟของฟังก์ชันจะถูกใช้บ่อยและมีความสำคัญมาก</p>
+                    <ul>
+                        <li>
+                            <p style="text-decoration: underline;">เขียนในรูปของแผนภาพ</p>
+                            <img src="img/func10.png" alt="van-diagram" class="responsive-img">
+                        </li>
+                        <li>
+                            <p style="text-decoration: underline;">เขียนในรูปของเซต</p>
+                            <p>สามารถเขียนได้ 2 แบบ คือ แบบแจกแจงสมาชิกตรง ๆ และ แบบบอกเงื่อนไข เช่น</p>
+                            <ul>
+                                <li>
+                                    <p>แบบแจกแจงสมาชิก</p>
+                                    <p>$f = \{(1, a), (2, b), (3, c)\}$</p>
+                                </li>
+                                <li>
+                                    <p>แบบบอกเงื่อนไข</p>
+                                    <p>$g = \{(x, y) \mid y = 2x + 1\}$</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>กำหนดให้ $A = \{-1, 0, 1\}$จงพิจารณาความสัมพันธ์ต่อไปนี้ว่าเป็นฟังก์ชันหรือไม่</p>
+                            <p>$1.\ f = \{(x, y) \in A \times A \mid y = x\}$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จาก$f$เมื่อเขียนความสัมพันธ์แบบแจกแจงสมาชิกจะได้</p>
+                            <p>$f = \{(-1, -1)(0, 0)(1, 1)\}$</p>
+                            <p>สังเกตว่า สมาชิกของแต่ละตัวใน$f$ไม่มีคู่อันดับตัวไหนเลยที่เลขตัวหน้าในคู่อันดับซ้ำกันดังนั้น$f$เป็นฟังก์ชัน</p>
+                        </li>
+                        <li>
+                            <p>$2.\ g = \{(x, y) \in A \times A \mid y^2 = x\}$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จาก$g$เมื่อเขียนความสัมพันธ์แบบแจกแจงสมาชิกจะได้</p>
+                            <p>$g = \{(0, 0)(1, 1)(1, -1)\}$</p>
+                            <p>สังเกตว่า$g$มีคู่อันดับ $(1,1)$ และ $(1,-1)$ มีเลขตัวหน้าในคู่อันดับซ้ำกันคือ เลข$1$</p>
+                            <p>ดังนั้น$g$ไม่เป็นฟังก์ชัน</p>
+                        </li>
+                    </ul>
+                    <b style="text-decoration: underline;">3.กราฟของฟังก์ชัน</b>
+                    <br><b>ตัวอย่าง เช่น</b>
+                    <p>จงพิจารณาว่ากราฟต่อไปนี้เป็นฟังก์ชันหรือไม่</p>
+                    <ul>
+                        <li>
+                            <b>1.</b>
+                            <img src="img/func11.png" alt="van-diagram" class="responsive-img">
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>ลากเส้นตรงในแนวตั้ง (ขนานแกน $y$) ให้ตัดผ่านกราฟ สังเกตว่า ไม่มีกรณีใดเลยที่เส้นตรงลากผ่านกราฟแล้วเกิดจุดตัดกราฟมากกว่า$1$จุด ดังนั้น กราฟดังกล่าวเป็นฟังก์ชัน </p>
+                        </li>
+                        <li>
+                            <b>2.</b>
+                            <img src="img/func12.png" alt="van-diagram" class="responsive-img">
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>ลากเส้นตรงในแนวตั้ง (ขนานแกน $y$) ให้ตัดผ่านกราฟ สังเกตว่า มีกรณีที่เส้นตรงลากผ่านกราฟแล้วเกิดจุดตัดกราฟมากกว่า$1$จุด เช่น</p>
+                            <img src="img/func13.png" alt="van-diagram" class="responsive-img">
+                            <p>ดังนั้น กราฟดังกล่าวไม่เป็นฟังก์ชัน</p>
+                        </li>
+                    </ul>
+                    <b>ประเภทของฟังก์ชัน</b>
+                    <p>ฟังก์ชันที่เราศึกษานั้นสามารถแบ่งออกได้เป็น $3$ ประเภทหลัก ๆ ได้แก่</p>
+                    <ul>
+                        <li>
+                            <p>ฟังก์ชันจาก $A$ ไปยัง $B$</p>
+                            <p>เช่น</p>
+                            <img src="img/func14.png" alt="van-diagram" class="responsive-img">
+                            <img src="img/func15.png" alt="van-diagram" class="responsive-img">
+                            <p>สังเกตได้ว่าฟังก์ชัน จาก $A$ ไป $B$ จะมีสมาชิกตัวหน้าอยู่ใน$A$ และสมาชิกตัวหลังอยู่ใน$B$เสมอ โดยสมาชิกใน$A$ะถูกใช้ในฟังก์ชันหมดทุกตัวแต่สมาชิกใน $B$ จะถูกใช้ในฟังก์ชันหมดทุกตัวหรือไม่ก็ได้</p>
+                        </li>
+                        <li>
+                            <img src="img/func16.png" alt="van-diagram" class="responsive-img">
+                            <p>เช่น</p>
+                            <img src="img/func17.png" alt="van-diagram" class="responsive-img">
+                            <p>สังเกตได้ว่าฟังก์ชัน จาก $A$ ไปทั่วถึง $B$ สมาชิกทุกตัวใน $B$ จะถูกใช้ในฟังก์ชันทั้งหมด</p>
+                        </li>
+                        <li>
+                            <p>ฟังก์ชันหนึ่งต่อหนึ่งจาก $A$ ไป $B$</p>
+                            <img src="img/func18.png" alt="van-diagram" class="responsive-img">
+                            <p>เช่น</p>
+                            <img src="img/func19.png" alt="van-diagram" class="responsive-img">
+                            <p>สังเกตได้ว่าฟังก์ชัน 1-1 จาก $A$ ไป $B$ จะถูกใช้ในฟังก์ชันไม่เกิน $1$ ตัวเสมอ</p>
+                            <p>ซึ่งการตรวจสอบกราฟว่าเป็นฟังก์ชัน 1-1 มั้ย สามารถทำได้โดยลากเส้นในแนวนอน(ขนานกับแกน$X$) ให้ตัดกับกราฟถ้ามีกรณีใดเกิดจุดตัดระหว่างกราฟและเส้นในแนวนอนมากกว่า $1$ จุด กราฟดังกล่าวจะไม่เป็นฟังก์ชัน 1-1</p>
+                        </li>
+                    </ul>
+                    <b>ฟังก์ชันเพิ่มและฟังก์ชันลด</b>
+                    <img src="img/func20.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/func21.png" alt="van-diagram" class="responsive-img">
+                    <b>เช่น</b>
+                    <ul>
+                        <li>
+                            <p>ให้ $f$ เป็นฟังก์ชันที่มีกราฟดังรูป</p>
+                            <img src="img/func22.png" alt="van-diagram" class="responsive-img">
+                            <p>$f$ เป็นฟังก์ชันเพิ่มบนช่วง $[-1,1]$ และ</p>
+                            <p>$f$ เป็นฟังก์ชันลดบนช่วง $[-4,-1]$ และ $[1,4]$</p>
+                        </li>
+                    </ul>
+                    <b>การดำเนินการของฟังก์ชัน</b>
+                    <p>เนื่องจาก ฟังก์ชันที่มีโดเมนและเรนจ์เป็นเซตของจำนวนที่สามารถบวก ลบ คูณ และหารได้ ดังนั้นเราจะใช้การดำเนินการต่าง ๆ มาสร้างฟังก์ชันใหม่ดูบ้าง</p>
+                    <b>พีชคณิตของฟังก์ชัน</b>
+                    <img src="img/func23.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>ให้ $f(x) = 2x + 1$ และ $g(x) = x - 3$ จงหา $f - g$ และ $fg$</p>
+                            <img src="img/func24.png" alt="van-diagram" class="responsive-img">
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>เนื่องจากโดเมนของ $f$ คือ $R$ และโดเมนของ $g$ คือ $R$ ดังนั้น</p>
+                            <p>$ (f - g)(x) = f(x) - g(x) = (2x + 1) - (x - 3) $</p>
+                            <p>$= 2x + 1 - x + 3 = x + 4$</p>
+                            <p>และ</p>
+                            <p>$ (fg)(x) = f(x)g(x) = (2x + 1)(x - 3) $</p>
+                            <p>$= 2x^2 - 6x + x - 3 = 2x^2 - 5x - 3$</p>
+                        </li>
+                    </ul>
+                    <b>ฟังก์ชันประกอบ</b>
+                    <img src="img/func25.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>ให้ $f(x) = x - 1$ และ $g(x) = 3x$ จงหา $g \circ f$(x) และ $f \circ g$(x)</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$g \circ f(x) = g(f(x))$</p>
+                            <p>$= g(x - 1)$</p>
+                            <p>$= 3(x - 1)$</p>
+                            <p>$= 3x - 3$</p>
+                            <p>และ</p>
+                            <p>$f \circ g(x) = f(g(x))$</p>
+                            <p>$= f(3x)$</p>
+                            <p>$= (3x) - 1$</p>
+                            <p>$= 3x - 1$</p>
+                        </li>
+                    </ul>
+                    <b>ฟังก์ชันผกผัน</b>
+                    <p>ในเรื่องตัวผกผันของความสัมพันธ์ เราหาได้จากการสลับสมาชิกตัวหน้าและสมาชิกตัวหลังของแต่ละคู่อันดับที่เป็นสมาชิกในความสัมพันธ์นั้น ลองคิดดูดี ๆ ฟังก์ชันก็เป็นความสัมพันธ์หนึ่งเช่นกัน ดังนั้น เราจึงสามารถใช้วิธีเดียวกันในการหาได้ แต่ตัวผกผันของฟังก์ชันนั้นไม่จำเป็นต้องเป็นฟังก์ชันเสมอไป</p>
+                    <p>เช่น ให้ $f = \{(3,4),(6,4)\}$ เป็นฟังก์ชัน</p>
+                    <p>แต่เราจะได้ $f^{-1} = \{(4, 3), (4, 6)\}$ ไม่เป็นฟังก์ชัน</p>
+                    <img src="img/func26.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>ฟังก์ชัน $f$ เป็นฟังก์ชัน $1-1$ ซึ่งกำหนดโดย $f(x) = 2x - 1$ จงหาฟังก์ชันผกผัน</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>ให้ $f(x) = y$</p>
+                            <p>จะได้ $y = 2x - 1$ ต้องการหาตัวผกผัน</p>
+                            <p>(เปลี่ยน$x$ เป็น $y$ และเปลี่ยน $y$ เป็น $x$)</p>
+                            <p>จะได้ $x = 2y - 1$</p>
+                            <p>จัดรูปโดยเขียน $y$ ให้อยู่ในรูปของ $x$</p>
+                            <p>จะได้$y = \frac{x + 1}{2}$</p>
+                            <p>ดังนั้น$f^{-1}(x) = \frac{x + 1}{2}$</p>
+                        </li>
+                    </ul>
+                </section>
+                <div class="chapter-divider" id="chapter-5" data-chapter-id="chapter-5" data-required="chapter-4">
+                    <span> บทที่ 5 : log ฟังก์ชันเอกซ์โพเนนเชียลและฟังก์ชันลอการิทึม</span>
+                </div>
+
+                <section id="exponentiation-intro" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เลขยกกำลัง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เรียก$a^n$ว่า เลขยกกำลัง เรียก $a$ ว่า ฐานของเลขยกกำลัง และ $n$ ว่า เลขชี้กำลัง</p>
+                </section>
+
+                <section id="exponentiation-properties" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมบัติเลขยกกำลัง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เราจะนำสมบัติเลขยกกำลังมาใช้เพื่อหาค่าหรือจัดรูป ลองมาดูการใช้สมบัติผ่าน<b>ตัวอย่างนี้</b></p>
+                    <ul>
+                        <li>
+                            <p>จงเขียน$\frac{(27^2 \times 9^{-2})^3}{3^{15}}$ให้อยู่ในรูปอย่างง่าย และเลขยกกำลังทุกตัวมีเลขชี้กำลังเป็นจำนวนเต็มบวก</p>
+                            <b>วิธีทำ</b>
+                            <p>$\frac{(27^2 \times 9^{-2})^3}{3^{15}}$</p>
+                            <p>$= \frac{((3^3)^2 \times (3^2)^{-2})^3}{3^{15}}$</p>
+                            <p>$= \frac{3^{18} \times 3^{-12}}{3^{15}}$</p>
+                            <p>$= \frac{3^{18}}{3^{27}}$</p>
+                            <p>$= \frac{1}{3^9}$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="the-nth-root-of-a-real-number-and-real-numbers-in-radical-form" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">รากที่ $n$ ของจำนวนจริง และจำนวนจริงที่อยู่ในรูปกรณฑ์</span>
+                </h2>                    
+                    <b>บทนิยาม</b>
+                    <p>กำหนดให้ $x$ และ $y$ เป็นจำนวนจริง และ $n$ เป็นจำนวนเต็มที่มากกว่า $1$</p>
+                    <ul>
+                        <li>
+                            <b>รากที่ $n$ ของจำนวนจริง</b>
+                            <p>$y$ เป็นรากที่ $n$ ของ $x$ ก็ต่อเมื่อ ${y^{n}}=x$</p>
+                        </li>
+                        <li>
+                            <b>ค่าหลักของรากที่ $n$</b>
+                            <p>$y$ เป็นค่าหลักของรากที่ $n$ ของ $x$ ก็ต่อเมื่อ $y$ เป็นรากที่ $n$ ของ $x$ และ $xy \geq 0$</p>
+                        </li>
+                        <b>ตัวอย่างเพิ่มเติมจากบทนิยาม จะได้ว่า</b>
+                        <li>
+                            <p>รากที่ $2$ ของ $9$ คือ $3$ และ $-3$</p>
+                        </li>
+                        <li>
+                            <p>รากที่ $3$ ของ $-27$ คือ $-3$</p>
+                        </li>
+                        <li>
+                            <p>ค่าหลักของรากที่ $2$ ของ $36$ คือ $6$</p>
+                        </li>
+                        <li>
+                            <p>$\sqrt{36} = 6$</p>
+                        </li>
+                    </ul>
+                    <p>จะเห็นได้ว่า ค่าหลักของรากที่ $n$ ของ $x$ มีค่าเท่ากับ กรณฑ์ที่ $n$ ของ $x$ นั่นคือค่าหลักของรากที่ $n$ ของ $x=\sqrt[n]{x}$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>$\frac{\sqrt{4} \cdot \sqrt[3]{5}^3}{\sqrt[3]{-8}} + \sqrt{(-7)^2}$ เท่ากับเท่าใด</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\frac{\sqrt{4} \cdot \sqrt[3]{5}^3}{\sqrt[3]{-8}} + \sqrt{(-7)^2}$</p>
+                            <p>$= \frac{2 \cdot 5}{-2} + \sqrt{49}$</p>
+                            <p>$= -5 + 7$</p>
+                            <p>$= 2$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="functions-exponential" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ฟังก์ชันเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>พิจารณาลักษณะกราฟของฟังก์ชันเอกซ์โพเนนเชียล</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>จากกราฟจะเห็นว่าฟังก์ชันเอกซ์โพเนนเชียลจะเป็นฟังก์ชันเพิ่มหรือฟังก์ชันลดนั้นขึ้นอยู่กับค่า $a$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงเขียนกราฟของฟังก์ชัน $f(x) = 3^x \text{ และ } g(x) = \left(\frac{1}{3}\right)^x$ ลงในระบบพิกัดฉากเดียวกัน</p>
+                            <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                            <p>จากกราฟที่เราได้จะเห็นว่า $f(x) = 3^x$ เป็นฟังก์ชันเพิ่มเพราะ $a > 1$ และ $g(x) = \left(\frac{1}{3}\right)^x$ เป็นฟังก์ชันลดเพราะ $0 < a < 1$</p>
+                        </li>   
+                        <li>
+                            <p>กำหนดให้ $f(x) = 2^x$ จงพิจารณาว่ากราฟของฟังก์ชันต่อไปนี้เกิดจากการเลื่อนจุดทุกจุดของฟังก์ชัน $f(x)$ อย่างไร</p>
+                            <p>$1.\ g(x) = 2^x + 1$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $g(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดขึ้น 1 หน่วย</span>
+                            <p>$2.\ h(x) = 2^{x + 1}$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $h(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดไปทางซ้าย 1 หน่วย</span>
+                        </li>
+                        <p>จากตัวอย่าง อาจคิดว่า การพิจารณาว่ากราฟเลื่อนไปทางไหนซับซ้อน แต่การเลื่อนกราฟไม่ใช่เรื่องยากอย่างที่คิดนะ ทางเราได้สรุปเรื่องการเลื่อนกราฟมาให้แล้ว</p>
+                        <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    </ul>
+                </section>
+
+                <section id="exponential-equation" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>สรุปง่าย ๆ ก็คือถ้าฐานมีค่าเท่ากันแล้วเลขชี้กำลังจะมีค่าเท่ากัน และถ้าเลขชี้กำลังมีค่าเท่ากันแต่ฐานมีค่าไม่เท่ากันแล้วเลขชี้กำลังจะเท่ากับ $0$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการต่อไปนี้</p>
+                            <p>$1.\ 2^{2x} = 4^8$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จะได้ว่า $2^{2x} = (2^2)^8$</p>
+                            <p>$2^{2x} = 2^{16}$</p>
+                            <p>$2x = 16$</p>
+                            <p>$x = 8$</p>
+                            <p>ดังนั้น เซตคำตอบของสมการ คือ $\{8\}$</p>
+                            <br>
+                            <p>$2.\ 3^{10x + 2} = 4^{5x + 1}$</p>
+                            <p>จะได้ว่า $3^{10x + 2} = (2^2)^{5x + 1}$</p>
+                            <p>$3^{10x + 2} = 2^{10x + 2}$</p>
+                            <p>เนื่องจากฐานไม่เท่ากัน ดังนั้นเลขชี้กำลังจะต้องเท่ากับ $0$</p>
+                            <p>$10x + 2 = 0$</p>
+                            <p>$10x = -2$</p>
+                            <p>$x = -\frac{1}{5}$</p>
+                            <p>ดังนั้น เซตคำตอบของสมการ คือ $\{-\frac{1}{5}\}$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="exponential-inequality" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการเอกซ์โพเนนเชียล</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>สังเกตได้ว่า ถ้าฐานมีค่าอยู่ระหว่าง $0 < a < 1$ จะต้องกลับเครื่องหมายของอสมการด้วย</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาคำตอบของอสมการต่อไปนี้</p>
+                            <p>$1.\ 10^{3x} > 1000$</p>
+                            <b>วิธีทำ</b>
+                            <p>จะได้ว่า $10^{3x} > 10^3$</p>
+                            <p>$3x > 3$</p>
+                            <p>ดังนั้น $x > 1$</p>
+                            <br>
+                            <p>$2.\ \left(\frac{1}{3}\right)^{2x + 1} < \frac{1}{27}$</p>
+                            <b>วิธีทำ</b>
+                            <p>จะได้ว่า $\left(\frac{1}{3}\right)^{2x + 1} < \left(\frac{1}{3}\right)^3$</p>
+                            <p>เนื่องจากฐานอยู่ระหว่าง $0 < a < 1$ จึงต้องกลับเครื่องหมายของอสมการ</p>
+                            <p>$2x + 1 > 3$</p>
+                            <p>$2x > 2$</p>
+                            <p>ดังนั้น $x > 1$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="functions-logarithmic" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ฟังก์ชันลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ลักษณะกราฟของฟังก์ชันลอการิทึมเป็นดังนี้</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>จากกราฟ จะเห็นว่าฟังก์ชันลอการิทึมจะเป็นฟังก์ชันเพิ่มหรือฟังก์ชันลดนั้นขึ้นอยู่กับค่า $a$</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>กำหนด $f(x) = \log_2 x$ จงพิจารณาว่ากราฟของฟังก์ชันต่อไปนี้เกิดจากการเลื่อนจุดทุกจุดของฟังก์ชัน $f(x)$ อย่างไร</p>
+                            <span><b style="text-decoration: underline;">แนวคิด</b> ใช้วิธีการเลื่อนกราฟ</span>
+                            <p>$1.\ g(x) = \log_2(x) - 1$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $g(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดลง 1 หน่วย</span>
+                            <p>$2.\ h(x) = \log_2(x - 1)$</p>
+                            <span><b style="text-decoration: underline;">ตอบ</b> กราฟของ $h(x)$ คือกราฟของ $f(x)$ ที่เลื่อนจุดทุกจุดไปทางขวา 1 หน่วย</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="properties-of-logarithmic-functions" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมบัติของฟังก์ชันลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาค่าของ $\log_4 32 + \log_4 2$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\log_4 32 + \log_4 2$</p>
+                            <p>$= \log_4(32 \times 2)$</p>
+                            <p>$= \log_4 64$</p>
+                            <p>$= \log_4 4^3$</p>
+                            <p>$= 3 \times \log_4 4$</p>
+                            <p>$= 3 \times 1$</p>
+                            <p>$= 3$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="logarithmic-equation" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">สมการลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงหาเซตคำตอบของสมการ$\log(x - 1) + \log(x + 2) = 1$</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>$\log(x - 1) + \log(x + 2) = 1$</p>
+                            <p>$\log[(x - 1)(x + 2)] = 1$</p>
+                            <p>$(x - 1)(x + 2) = 10^1$</p>
+                            <p>$(x - 1)(x + 2) = 10$</p>
+                            <p>$x^2 + x - 2 = 10$</p>
+                            <p>$x^2 + x - 12 = 0$</p>
+                            <p>$(x + 4)(x - 3) = 0$</p>
+                            <p>$x = -4$ หรือ $x = 3$</p>
+                            <b style="text-decoration: underline;">ตรวจสอบค่า $x$ ที่ได้ว่าค่าใดสอดคล้องกับสมการที่กำหนดให้</b>
+                            <li>
+                                <p>กรณี $x = -4$</p>
+                                <p>แทน $x = -4$ ใน $\log(x - 1) + \log(x + 2) = 1$</p>
+                                <p>ได้ $\log(-4 - 1) + \log(-4 + 2) = 1$ เป็นเท็จ</p>
+                                <p>เนื่องจากไม่นิยาม $y = \log_a x$ เมื่อ $x$ ไม่เป็นจำนวนเต็มบวก</p>
+                                <p>แสดงว่า $-4$ ไม่สอดคล้องกับสมการที่กำหนดให้</p>
+                            </li>
+                            <li>
+                                <p>กรณี $x = 3$</p>
+                                <p>แทน $x = 3$ ใน $\log(x - 1) + \log(x + 2) = 1$</p>
+                                <p>ได้ $\log(3 - 1) + \log(3 + 2) = 1$</p>
+                                <p>หรือ $\log(2) + \log(5) = 1$</p>
+                                <p>$\log(2 \times 5) = 1$</p>
+                                <p>$\log(10) = 1$</p>
+                                <p>ซึ่งเป็นจริง</p>
+                                <p>แสดงว่า $3$ สอดคล้องกับสมการที่กำหนดให้</p>
+                            </li>
+                            <br>
+                            <span><b style="text-decoration: underline;">ตอบ</b> เซตคำตอบคือ $\{3\}$</span>
+                            <br>
+                            <span><b style="text-decoration: underline; color: red;">ระวัง!</b> อย่าลืมเช็กเสมอว่าคำตอบที่ได้จากการแก้สมการ ทำให้หลัง $log$ ติดลบหรือไม่ด้วย</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="logarithmic-inequality" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">อสมการลอการิทึม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>หลักการแก้อสมการลอการิทึม มีดังนี้</b>
+                    <p>1.อสมการ$\log_a m > \log_a n$</p>
+                    <ul>
+                        <li>
+                            <p>ถ้า $a > 1$ จะได้ว่า $m > n$</p>
+                        </li>
+                        <li>
+                            <p>ถ้า $0 < a < 1$ จะได้ว่า $m < n$</p>
+                        </li>
+                    </ul>
+                    <p>2.อสมการ$\log_a m < \log_a n$</p>
+                    <ul>
+                        <li>
+                            <p>ถ้า $a > 1$ จะได้ว่า $m < n$</p>
+                        </li>
+                        <li>
+                            <p>ถ้า $0 < a < 1$ จะได้ว่า $m > n$</p>
+                        </li>
+                    </ul>
+                    <b>ตัวอย่าง เช่น</b>
+                    <p>จงหาเซตคำตอบของอสมการ$\log_{\frac{1}{2}}(x + 2) - \log_{\frac{1}{2}}(x + 1) < 2$</p>
+                    <b style="text-decoration: underline;">วิธีทำ</b>
+                    <p>$\log_{\frac{1}{2}}(x + 2) - \log_{\frac{1}{2}}(x + 1) < 2$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < 2\log_{\frac{1}{2}}\left(\frac{1}{2}\right)$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < \log_{\frac{1}{2}}\left(\frac{1}{2}\right)^2$</p>
+                    <p>$\log_{\frac{1}{2}}\left(\frac{x + 2}{x + 1}\right) < \log_{\frac{1}{2}}\left(\frac{1}{4}\right)$</p>
+                    <p>เนื่องจาก$f(x) = \log_{\frac{1}{2}} x$ เป็นฟังก์ชันลด</p>
+                    <p>$\frac{x + 2}{x + 1} > \frac{1}{4}$</p>
+                    <p>$\frac{x + 2}{x + 1} - \frac{1}{4} > 0$</p>
+                    <p>$\frac{4(x + 2) - (x + 1)}{4(x + 1)} > 0$</p>
+                    <p>$\frac{3x + 7}{4x + 4} > 0$</p>
+                    <p>จะได้$x < -\frac{7}{3}$ และ $x > -1$</p>
+                    <p>เนื่องจาก อสมการที่กำหนดให้มีพจน์ $\log_{\frac{1}{2}}(x + 2)$ และ $\log_{\frac{1}{2}}(x + 1)$</p>
+                    <p>จะได้ว่า $x > -2$ และ $x > -1$</p>
+                    <p>นั่นคือ $x > -1$</p>
+                    <p>ดังนั้น เซตคำตอบของอสมการ คือ $(-1, \infty)$</p>
+                    <span><b style="text-decoration: underline; color:red;">ระวัง!!</b> อย่าลืมเช็กเสมอว่าคำตอบที่ได้จากการแก้อสมการ ทำให้หลัง $\log$ ติดลบหรือไม่ด้วย  และถ้าฐานน้อยกว่า $1$ แต่มากกว่า $0$ แล้ว ต้องกลับเครื่องหมายอสมการนั้นด้วย</span>
+                </section>
+
+                <div class="chapter-divider" id="chapter-6" data-chapter-id="chapter-6" data-required="chapter-5">
+                    <span> บทที่ 6 : □ เรขาคณิตวิเคราะห์และภาคตัดกรวย</span>
+                </div>
+
+                <section id="distance-between-two-points" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างจุดสองจุด</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น จุด $P(3, 8)$ กับจุด $Q(6, 4)$ จะได้ว่า</p>
+                    <p>$d = \sqrt{(3 - 6)^2 + (8 - 4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$</p>
+                </section>
+
+                <section id="midpoint-of-a-line-segment" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">จุดกึ่งกลางของส่วนของเส้นตรง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น จุด $P(-1, 6)$ กับจุด $Q(5, 4)$ จะได้ว่าจุดกึ่งกลางระหว่าง $(-1,6)$ และ $(5,4)$ คือ</p>
+                    <p>$\left(\frac{-1 + 5}{2}, \frac{6 + 4}{2}\right) = (2, 5)$</p>
+                </section>
+
+                <section id="distance-between-a-line-and-a-point" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างเส้นตรงกับจุด</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น (4, 1)$ กับเส้นตรง $5x - 12y + 18 = 0$ จะได้ว่า</p>
+                    <p>$d = \frac{|4 \cdot 5 + 1(-12) + 18|}{\sqrt{5^2 + (-12)^2}} = \frac{|20 - 12 + 18|}{\sqrt{169}} = \frac{26}{13} = 2$</p>
+                </section>
+
+                <section id="distance-between-two-lines" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ระยะห่างระหว่างเส้นตรง</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น เส้นตรง $6x - 8y + 4 = 0$ กับ $6x - 8y - 16 = 0$ จะได้ว่า</p>
+                    <p>$d = \frac{|4 - (-16)|}{\sqrt{6^2 + (-8)^2}} = \frac{|4 + 16|}{\sqrt{100}} = \frac{20}{10} = 2$</p>
+                </section>
+
+                <section id="absolute-value-inequality-of-a-single-variable-polynomial" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เส้นตรง</span>
+                </h2>                    
+                    <p>เส้นตรง เราสามารถเขียนให้อยู่ในรูปสมการเส้นตรง คือ $y = mx + c$ หรือรูปทั่วไปของสมการเส้นตรง คือ $Ax + By + C = 0$ เมื่อ $A, B, C$ เป็นค่าคงตัว โดยที่ $A$ และ $B$ ไม่เป็นศูนย์พร้อมกัน</p>
+                </section>
+
+                <section id="slope-of-a-line" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ความชันของเส้นตรง (m)</span>
+                </h2>                    
+                    <p>เราสามารถรู้ความชันของเส้นตรง ได้จากสมการ $y = mx + c$ หรือจากสูตรต่อไปนี้</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                </section>
+
+                <section id="parallel-and-perpendicular-lines" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">เส้นตรงขนานและตั้งฉาก</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>เช่น สมมติเส้นตรง 2 เส้นที่ต่างกัน เส้นตรงที่มีความชันเป็น 2 จะขนานกับเส้นตรงที่มีความชันเป็น 2 เนื่องจากค่าของความชันเท่ากัน จะได้ว่าเส้นตรงขนานกัน และเส้นตรงที่มีความชันเป็น 2 จะตั้งฉากกับเส้นตรงที่มีความชันเป็น $-\frac{1}{2}$ เพราะ $2 \cdot \left(-\frac{1}{2}\right) = -1$</p>
+                </section>
+
+                <section id="conic-sections" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ภาคตัดกรวย</span>
+                </h2>   
+                    <p>ในหัวข้อนี้ เราจะศึกษาภาคตัดกรวยโดยใช้วิธีทางเรขาคณิตวิเคราะห์มาช่วย โดยนำระนาบมาตัดกรวยกลมตรงในลักษณะที่ต่างกัน ซึ่งจะตัดโดยอิงจากแกนที่อยู่ในแนวตั้งตามรูปด้านล่างและสมการเส้นตรงหรือตัวก่อกำเนิด ดังนั้น ภาคตัดกรวยที่กำลังจะเรียนนั่นก็คือรูปในระนาบที่เกิดจากการตัดกันของระนาบกับกรวย</p>                 
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ถ้าเราตัดโดยใช้ระนาบ (แผ่นสีเหลือง) ตามรูป จะได้ว่า</p>
+                    <ul>
+                        <li>
+                            <p>ระนาบตั้งฉากกับแกนของกรวยข้างเดียว จะได้ภาคตัดกรวยที่เรียกว่า <b>วงกลม</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบไม่ตั้งฉากกับแกนของกรวย แต่ทำมุมกับแกนของกรวยขนาดใหญ่ค่าหนึ่ง ระนาบจะตัดกรวยข้างเดียว ได้ภาคตัดกรวยที่เรียกว่า <b>วงรี</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบขนานตัวก่อกำเนิดของกรวย ระนาบจะตัดกรวยข้างเดียว ได้ภาคตัดกรวยที่เรียกว่า <b>พาราโบลา</b></p>
+                        </li>
+                        <li>
+                            <p>ระนาบขนานกับแกนของกรวย ระนาบจะตัดกรวยสองข้าง จะได้ภาคตัดกรวยที่เรียกว่า <b>ไฮเพอร์โบลา</b></p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="circle" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">วงกลม</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่างเช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $x^2 + y^2 + x + 2y + 1 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                        </li>
+                        <b style="text-decoration: underline;">วิธีทำ</b>
+                        <p>$x^2 + y^2 + x + 2y + 1 = 0$</p>
+                        <p>$(x^2 + x) + (y^2 + 2y) + 1 = 0$</p>
+                        <p>$(x^2 + x + (\frac{1}{2})^2) + (y^2 + 2y + 1^2) + 1 - (\frac{1}{2})^2 - 1^2 = 0$</p>
+                        <p>$(x + \frac{1}{2})^2 + (y + 1)^2 = \frac{1}{4}$</p>
+                    </ul>
+                </section>
+
+                <section id="ellipse" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">วงรี</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>โดยวงรีที่เราจะศึกษาจะมีสองรูป นั่นก็คือวงรีที่มีแกนเอกอยู่ในแนวนอน (วงรีแนวนอน) และวงรีที่มีแกนเอกในแนวตั้ง (วงรีแนวตั้ง) ซึ่งรูปแบบมาตรฐานของสมการของวงรีก็จะมี 2 แบบเช่นกัน</p>
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $x^2 + 4y^2 - 6x + 16y + 21 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                        </li>
+                        <b style="text-decoration: underline;">วิธีทำ</b>
+                        <p>$x^2 + 4y^2 - 6x + 16y + 21 = 0$</p>
+                        <p>$(x^2 - 6x) + 4(y^2 + 4y) = -21$</p>
+                        <p>$(x^2 - 6x + 9) + 4(y^2 + 4y + 4) = -21 + 9 + 16$</p>
+                        <p>$(x - 3)^2 + 4(y + 2)^2 = 4$</p>
+                        <p>$\frac{(x - 3)^2}{4} + \frac{(y + 2)^2}{1} = 1$</p>
+                        <p>$\frac{(x - 3)^2}{4} + (y + 2)^2 = 1$</p>
+                    </ul>
+                </section>
+
+                <section id="parabola" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">พาราโบลา</span>
+                </h2>                    
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>พาราโบลาสามารถวาดได้ 4 แบบตามรูปแบบมาตรฐานของสมการพาราโบลา ซึ่งก็คือ</p>
+                    <ul>
+                        <li>
+                            <p>พาราโบลาหงายขึ้น</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(x - h)^2 = 4c(y - k)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาคว่ำลง</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(x - h)^2 = -4c(y - k)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาหันไปทางขวา</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(y - k)^2 = 4c(x - h)$</p>
+                        </li>
+                        <li>
+                            <p>พาราโบลาหันไปทางซ้าย</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $(y - k)^2 = -4c(x - h)$</p>
+                        </li>
+                    </ul>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $y^2 - 6y + 8x + 17 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จัดสมการพาราโบลาที่กำหนดให้อยู่ในรูปแบบมาตรฐานดังนี้</p>
+                            <p>$y^2 - 6y + 9 + 8x + 8 = 0$</p>
+                            <p>$y^2 - 6y + 9 = -8x - 8$</p>
+                            <p>$(y - 3)^2 = -8(x + 1)$</p>
+                            <p>$(y - 3)^2 = -4(2)(x + 1)$</p>
+                            <p>จากสมการรูปแบบมาตรฐาน เราจะได้ว่า $k = 3, h = -1, c = 2$</p>
+                            <p>พาราโบลานี้เป็นพาราโบลาเปิดซ้ายมีจุดยอดอยู่ที่ $(-1, 3)$, จุดโฟกัสอยู่ที่ $(-3, 3)$, และเส้นไดเรกตริกซ์คือ $x = 1$</p>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="hyperbola" class="content-section" style="display: block; margin-bottom: 40px; color: #333;">
+                <h2 style="color: #1e3a8a; border-bottom: 2px solid #78bbe8; padding-bottom: 8px;">
+                    <span style="background-color: #FDF2B5; padding: 2px 4px;">ไฮเพอร์โบลา</span>
+                </h2>                    
+                    <p>บทนิยามไฮเพอร์โบลาจะคล้ายกับบทนิยามของวงรี ต่างกันแค่วงรีใช้ผลบวกของระยะทางจากโฟกัสทั้งสองแต่ว่าไฮเพอร์โบลาจะใช้ผลต่าง</p>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <p>ไฮเพอร์โบลาสามารถวาดได้ 2 แบบตามรูปแบบมาตรฐานของสมการพาราโบลา ซึ่งก็คือ</p>
+                    <ul>
+                        <li>
+                            <p>ไฮเพอร์โบลาแกนตามขวางอยู่ในแนวนอน</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $\frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1$</p>
+                        </li>
+                        <li>
+                            <p>ไฮเพอร์โบลาแกนตามแนวตั้งอยู่ในแนวตั้ง</p>
+                            <p>จะมีสมการรูปแบบมาตรฐานคือ $\frac{(y - k)^2}{a^2} - \frac{(x - h)^2}{b^2} = 1$</p>
+                        </li>
+                    </ul>
+                    <img src="img/realnum30.png" alt="van-diagram" class="responsive-img">
+                    <b>ตัวอย่าง เช่น</b>
+                    <ul>
+                        <li>
+                            <p>จงจัดรูปสมการ $16x^2 - 9y^2 + 160x + 72y + 112 = 0$ ให้อยู่ในรูปแบบมาตรฐาน</p>
+                            <b style="text-decoration: underline;">วิธีทำ</b>
+                            <p>จัดสมการไฮเพอร์โบลาที่กำหนดให้อยู่ในรูปแบบมาตรฐานดังนี้</p>
+                            <p>$16x^2 + 160x - 9y^2 + 72y + 112 = 0$</p>
+                            <p>$16(x^2 + 10x) - 9(y^2 - 8y) + 112 = 0$</p>
+                            <p>$16(x^2 + 10x) + 16(25) - 16(25) - 9(y^2 - 8y) - 9(16) + 9(16) + 112 = 0$</p>
+                            <p>$16(x^2 + 10x + 25) - 16(25) - 9(y^2 - 8y + 16) + 9(16) + 112 = 0$</p>
+                            <p>$16(x + 5)^2 - 9(y - 4)^2 - 400 + 144 + 112 = 0$</p>
+                            <p>$16(x + 5)^2 - 9(y - 4)^2 = 144$</p>
+                            <p>$\frac{16(x + 5)^2}{144} - \frac{9(y - 4)^2}{144} = 1$</p>
+                            <p>$\frac{(x + 5)^2}{9} - \frac{(y - 4)^2}{16} = 1$</p>
+                            <p>$\frac{(x + 5)^2}{3^2} - \frac{(y - 4)^2}{4^2} = 1$</p>
+                            <p>จากสมการรูปแบบมาตรฐาน เราจะได้ว่า $h = -5, k = 4, a = 3, b = 4, c=5$</p>
+                            <p>ไฮเพอร์โบลานี้เป็นไฮเพอร์โบลาแกนตามขวางอยู่ในแนวนอนที่มีจุดศูนย์กลางอยู่ที่ $(-5, 4)$ , จุดยอดอยู่ที่ $(-8, 4)$ และ $(2, 4)$ ส่วนโฟกัสอยู่ที่$(-10, 4)$ และ $(0, 4)$</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </div>
     
@@ -254,6 +1640,146 @@
 
         const truenumbtn = document.getElementById('truenumbtn');
         const truenumContent = document.getElementById('truenumContent');
+
+        function setupChapterLockSystem() {
+            const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
+            const chapterDividers = Array.from(document.querySelectorAll('.chapter-divider'));
+            const chapterIds = chapterDividers.map((divider, index) => divider.dataset.chapterId || `chapter-${index + 1}`);
+            const chapterLabels = {
+                'chapter-1': 'เซต',
+                'chapter-2': 'ตรรกศาสตร์',
+                'chapter-3': 'จำนวนจริง',
+                'chapter-4': 'ความสัมพันธ์และฟังก์ชัน',
+                'chapter-5': 'ฟังก์ชันเอกซ์โพเนนเชียลและลอการิทึม',
+                'chapter-6': 'เรขาคณิตวิเคราะห์และภาคตัดกรวย'
+            };
+
+            const unlockedChapters = chapterIds.filter((chapterId, index) => {
+                const divider = chapterDividers[index];
+                const requiredChapter = divider?.dataset.required || 'none';
+                return chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || (requiredChapter !== 'none' && savedProgress.includes(requiredChapter));
+            });
+
+            const activeChapterId = unlockedChapters.find((chapterId) => !savedProgress.includes(chapterId))
+                || unlockedChapters[unlockedChapters.length - 1]
+                || 'chapter-1';
+
+            document.querySelectorAll('.chapter-lock-card').forEach((card) => card.remove());
+
+            chapterDividers.forEach((divider, index) => {
+                const chapterId = divider.dataset.chapterId || `chapter-${index + 1}`;
+                const nextDivider = chapterDividers[index + 1];
+                const chapterSections = [];
+                let currentNode = divider.nextElementSibling;
+
+                while (currentNode && currentNode !== nextDivider) {
+                    if (currentNode.classList && currentNode.classList.contains('content-section')) {
+                        chapterSections.push(currentNode);
+                    }
+                    currentNode = currentNode.nextElementSibling;
+                }
+
+                const isUnlocked = chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || (divider.dataset.required && savedProgress.includes(divider.dataset.required));
+                const isActive = chapterId === activeChapterId;
+                const shouldShow = isUnlocked || isActive;
+
+                if (isActive && chapterSections.length > 0) {
+                    const card = document.createElement('div');
+                    card.className = 'chapter-lock-card';
+                    const quizLabel = chapterLabels[chapterId] || 'บทเรียน';
+                    card.innerHTML = `
+                        <h4>แบบทดสอบ${quizLabel}</h4>
+                        <p>ลองทำแบบทดสอบเพื่อทบทวนความรู้ของบทนี้</p>
+                        <a class="quiz-btn" href="quiz.php?chapter=${chapterId}&returnTo=M4math.html#${chapterId}">ไปหน้าข้อสอบ</a>
+                    `;
+                    const lastSection = chapterSections[chapterSections.length - 1];
+                    lastSection.insertAdjacentElement('afterend', card);
+
+                    const cooldownKey = `quizCooldown_${chapterId}`;
+                    const cooldownUntil = Number(localStorage.getItem(cooldownKey) || 0);
+                    if (cooldownUntil > Date.now()) {
+                        card.classList.add('cooldown-active');
+                        card.insertAdjacentHTML('afterbegin', `
+                            <div class="quiz-cooldown-card">
+                                <div class="cooldown-icon">🔒</div>
+                                <h4>ล็อกข้อสอบไว้ชั่วคราว</h4>
+                                <p>คุณสามารถกลับมาทำข้อสอบได้ในอีก</p>
+                                <div class="cooldown-time">05:00</div>
+                            </div>
+                        `);
+
+                        const cooldownTime = card.querySelector('.cooldown-time');
+                        const updateCardCooldown = () => {
+                            const remaining = Number(localStorage.getItem(cooldownKey) || 0) - Date.now();
+                            if (remaining <= 0) {
+                                localStorage.removeItem(cooldownKey);
+                                card.classList.remove('cooldown-active');
+                                return;
+                            }
+
+                            const totalSeconds = Math.ceil(remaining / 1000);
+                            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                            const seconds = String(totalSeconds % 60).padStart(2, '0');
+                            cooldownTime.textContent = `${minutes}:${seconds}`;
+                        };
+
+                        updateCardCooldown();
+                        window.setInterval(updateCardCooldown, 1000);
+                    }
+                }
+
+                chapterSections.forEach((section) => {
+                    section.style.display = shouldShow ? '' : 'none';
+                });
+
+                if (divider.classList) {
+                    divider.style.display = shouldShow ? '' : 'none';
+                }
+            });
+        }
+
+        function setupSidebarChapterLocks() {
+            const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
+            const chapterButtons = [
+                ['mathbtn', 'chapter-1'],
+                ['logicbtn', 'chapter-2'],
+                ['truenumbtn', 'chapter-3'],
+                ['funcbtn', 'chapter-4'],
+                ['expobtn', 'chapter-5'],
+                ['conicbtn', 'chapter-6']
+            ];
+
+            chapterButtons.forEach(([buttonId, chapterId]) => {
+                const button = document.getElementById(buttonId);
+                if (!button) {
+                    return;
+                }
+
+                const requiredChapter = chapterId === 'chapter-1'
+                    ? null
+                    : `chapter-${Number(chapterId.split('-')[1]) - 1}`;
+                const isUnlocked = chapterId === 'chapter-1'
+                    || savedProgress.includes(chapterId)
+                    || savedProgress.includes(requiredChapter);
+                const arrow = button.querySelector('.arrow-icon');
+
+                if (!isUnlocked) {
+                    button.classList.add('chapter-sidebar-locked');
+                    button.setAttribute('aria-disabled', 'true');
+                    if (arrow) {
+                        arrow.textContent = '🔒';
+                    }
+                    button.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                    }, true);
+                }
+            });
+        }
 
         // ฟังก์ชันสั่งเปิดเมนูข้าง
         openMenuBtn.addEventListener('click', () => {
@@ -313,6 +1839,8 @@
             truenumContent.classList.toggle('open');
             truenumbtn.classList.toggle('active')
         });
+
+        setupSidebarChapterLocks();
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -328,6 +1856,197 @@
 
         const popupElements = document.querySelectorAll('.popup');
         popupElements.forEach((element) => observer.observe(element));
+
+        const subMenuBtns = document.querySelectorAll('.sub-menu-btn[data-target]');
+        const contentSections = document.querySelectorAll('.content-section');
+        const boardBody = document.querySelector('.board-body');
+        const menuScrollBox = document.querySelector('#mathContent');
+
+        const sectionToBtnMap = new Map();
+            const mainSectionMap = {
+            "set-intro": mathbtn,
+            "logic-intro": logicbtn,
+            "realnumber-intro": truenumbtn,
+            "relations-intro": funcbtn,
+            "exponentiation-intro": expobtn,
+            "distance-between-two-points": conicbtn
+        };
+
+        subMenuBtns.forEach((btn) => {
+            const targetId = btn.dataset.target?.replace('#', '');
+            if (targetId) sectionToBtnMap.set(targetId, btn);
+        });
+
+        function setActiveSubMenuBtn(activeBtn) {
+            subMenuBtns.forEach((btn) => {
+                btn.classList.remove('sub-item-active');
+            });
+        
+            activeBtn.classList.add('sub-item-active');
+        
+            // เลื่อน sidebar เฉพาะคอม
+            if (window.innerWidth > 768) {
+                activeBtn.scrollIntoView({
+                    block: 'nearest'
+                });
+            }
+        }
+
+        function scrollBoardToSection(targetSection) {
+            if (!boardBody || !targetSection) return;
+
+            const targetTop =
+                targetSection.getBoundingClientRect().top -
+                boardBody.getBoundingClientRect().top +
+                boardBody.scrollTop;
+
+               boardBody.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });     
+        }
+
+        subMenuBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                if (!targetId) return;
+            
+                const targetSection = document.querySelector(targetId);
+                if (!targetSection) return;
+            
+                setActiveSubMenuBtn(btn, true);
+                scrollBoardToSection(targetSection);
+            });
+        });
+
+        function getMainBtnBySectionId(id) {
+            if (
+                id.startsWith('set-') ||
+                id === 'union' ||
+                id === 'intersect' ||
+                id === 'minus-set' ||
+                id === 'complement' ||
+                id === 'van-diagram' ||
+                id === 'operation-set' ||
+                id === 'solution-formula'
+            ) {
+                return mathbtn;
+            }
+
+            if (
+                id.startsWith('logic-') ||
+                id === 'proposition' ||
+                id === 'proposition-connectors' ||
+                id === 'table-of-propositions' ||
+                id === 'equivalence' ||
+                id === 'eternal-truth' ||
+                id === 'justification' ||
+                id === 'opening-sentences' ||
+                id === 'quantifiers'
+            ) {
+                return logicbtn;
+            }
+
+            if (
+                id.startsWith('realnumber-') ||
+                id === 'real-number-system'||
+                id === 'polynomial-in-one-variable'||
+                id === 'factorization-of-polynomials'||
+                id === 'polynomial-equations'||
+                id === 'polynomial-fractions'||
+                id === 'operations-with-rational-expressions'||
+                id === 'inequality-of-real-numbers'||
+                id === 'polynomial-inequalities-with-one-variable'||
+                id === 'absolute'||
+                id === 'absolute-value-equation-of-a-single-variable-polynomial'||
+                id === 'absolute-value-inequality-of-a-single-variable-polynomial'
+            ) {
+                return truenumbtn;
+            }
+
+            if (
+                id.startsWith('relations-') ||
+                id === 'relations-intro'||
+                id === 'functions'
+            ) {
+                return funcbtn;
+            }
+
+            if (
+                id.startsWith('exponentiation-') ||
+                id.startsWith('functions-exponential') ||
+                id.startsWith('functions-logarithmic') ||
+                id === 'properties-of-logarithmic-functions'||
+                id === 'the-nth-root-of-a-real-number-and-real-numbers-in-radical-form'||
+                id === 'exponential-equation'||
+                id === 'exponential-inequality'||
+                id === 'logarithmic-equation'||
+                id === 'logarithmic-inequality'
+            ) {
+                return expobtn;
+            }
+
+            if (
+                id.startsWith('distance-') ||
+                id === 'distance-between-two-points'||
+                id === 'midpoint-of-a-line-segment'||
+                id === 'distance-between-a-line-and-a-point'||
+                id === 'distance-between-two-lines'||
+                id === 'slope-of-a-line'||
+                id === 'parallel-and-perpendicular-lines'||
+                id === 'conic-sections'||
+                id === 'circle'||
+                id === 'ellipse'||
+                id === 'parabola'||
+                id === 'hyperbola'
+            ) {
+                return conicbtn;
+            }
+
+            return null;
+        }
+
+        function scrollSidebarToElement(element) {
+            const sidebarBox = document.querySelector('.mathstudy-box');
+            if (!sidebarBox || !element || window.innerWidth <= 768) return;
+        
+            const targetTop =
+                element.getBoundingClientRect().top -
+                sidebarBox.getBoundingClientRect().top +
+                sidebarBox.scrollTop -
+                80;
+        
+            sidebarBox.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        boardBody.addEventListener('scroll', () => {
+            let currentSection = null;
+        
+            contentSections.forEach((section) => {
+                const sectionTop =
+                    section.getBoundingClientRect().top -
+                    boardBody.getBoundingClientRect().top;
+            
+                if (sectionTop <= boardBody.clientHeight * 0.55) {
+                    currentSection = section;
+                }
+           });
+       
+            if (!currentSection) return;
+       
+            const btn = sectionToBtnMap.get(currentSection.id);
+            if (btn) {
+                setActiveSubMenuBtn(btn);
+            }
+        
+            const mainBtn = getMainBtnBySectionId(currentSection.id);
+            if (mainBtn) {
+                scrollSidebarToElement(mainBtn);
+            }
+        });
 
         // --- ระบบตรวจสอบการล็อกอิน ---
         function checkLoginStatus() {
@@ -390,45 +2109,49 @@
         logout();
     }
 
-        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
-        window.onload = checkLoginStatus;
-        // เรียกใช้งานเมื่อโหลดหน้าเว็บ
-        window.onload = checkLoginStatus;
-        window.onload = checkLoginStatus;
-        const INACTIVITY_TIME = 10 * 60 * 1000; 
-        let timeoutId;
+    const INACTIVITY_TIME = 60 * 10 * 1000; // 10 นาที
+    let timeoutId;
 
-        // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
-        function redirectToHome() {
-            window.location.href = 'index.html'; 
-        }
+    // ฟังก์ชันสำหรับเตะผู้ใช้กลับหน้าหลัก
+    function redirectToHome() {
+        // เปลี่ยนหน้าโดยไม่ลบข้อมูลล็อกอิน
+        window.location.href = 'index.html'; 
+    }
 
-        // ฟังก์ชันรีเซ็ตเวลานับถอยหลังใหม่
-        function resetTimer() {
+    // ฟังก์ชันรีเซ็ตเวลานับถอยหลังใหม่
+    function resetTimer() {
         // ลบเวลาเก่าทิ้งไปก่อน
         clearTimeout(timeoutId);
-    
+
         // เริ่มนับเวลา 10 นาทีใหม่อีกครั้ง
         timeoutId = setTimeout(redirectToHome, INACTIVITY_TIME);
+    }
+
+    // ฟังก์ชันสำหรับเริ่มจับตาดูพฤติกรรมของผู้ใช้
+    function setupInactivityTimer() {
+        // ดักฟังเหตุการณ์ต่างๆ (ขยับเมาส์, คลิก, กดปุ่มคีย์บอร์ด, หรือทัชหน้าจอ)
+        window.addEventListener('mousemove', resetTimer);
+        window.addEventListener('click', resetTimer);
+        window.addEventListener('keydown', resetTimer);
+        window.addEventListener('touchstart', resetTimer); // รองรับมือถือ/แท็บเล็ต
+
+        // เริ่มต้นนับเวลาครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ
+        resetTimer();
+    }
+
+    // เรียกใช้งานทุกอย่างเมื่อหน้าเว็บ (DOM) โหลดพร้อมใช้งาน
+    document.addEventListener('DOMContentLoaded', () => {
+        setupChapterLockSystem();
+
+        // 1. ตรวจสอบสถานะการล็อกอินก่อน (เรียกฟังก์ชันเดิมของคุณที่มีอยู่)
+        if (typeof checkLoginStatus === 'function') {
+            checkLoginStatus();
         }
-
-        // ฟังก์ชันสำหรับเริ่มจับตาดูพฤติกรรมของผู้ใช้
-        function setupInactivityTimer() {
-            // ดักฟังเหตุการณ์ต่างๆ (ขยับเมาส์, คลิก, กดปุ่มคีย์บอร์ด, หรือทัชหน้าจอ)
-            window.addEventListener('mousemove', resetTimer);
-            window.addEventListener('click', resetTimer);
-            window.addEventListener('keydown', resetTimer);
-            window.addEventListener('touchstart', resetTimer); // รองรับมือถือ/แท็บเล็ต
-
-            // เริ่มต้นนับเวลาครั้งแรกทันทีที่โหลดหน้าเว็บเสร็จ
-            resetTimer();
-        }
-
-        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
-        document.addEventListener('DOMContentLoaded', setupInactivityTimer);
+    
+        // 2. เริ่มทำงานตัวจับเวลา 10 นาที
+        setupInactivityTimer();
+    });
     </script>
-
-    <!-- Logout confirmation popup modal -->
     <div id="logout-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;">
         <div style="background:white;padding:30px;border-radius:15px;max-width:350px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;">
             <p style="font-size:18px;margin:0 0 20px 0;font-weight:600;color:#333;">คุณแน่ใจว่าจะออกจากระบบหรือไม่?</p>
