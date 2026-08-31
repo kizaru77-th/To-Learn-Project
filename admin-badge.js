@@ -12,6 +12,23 @@
     window.logout = logoutFromServer;
     window.performLogout = logoutFromServer;
 
+    function centerProfileActions() {
+        document.querySelectorAll('#auth-section').forEach((authSection) => {
+            const adminBadge = authSection.querySelector('[data-developer-admin-badge]');
+            const logoutButton = authSection.querySelector('button[onclick="showLogoutConfirm()"]');
+
+            if (adminBadge) {
+                adminBadge.style.display = 'table';
+                adminBadge.style.margin = '0 auto 6px';
+            }
+
+            if (logoutButton) {
+                logoutButton.style.display = 'block';
+                logoutButton.style.margin = '0 auto';
+            }
+        });
+    }
+
     async function showAdminBadge() {
         try {
             const response = await fetch('admin-access.php', {
@@ -33,20 +50,26 @@
                 const badge = document.createElement('div');
                 badge.dataset.developerAdminBadge = 'true';
                 badge.textContent = 'ผู้ดูแลระบบ';
-                badge.style.cssText = 'display:inline-block; margin:-2px 0 6px; padding:2px 7px; border-radius:999px; background:#fff3cd; color:#8a5a00; font-size:10px; font-weight:600; letter-spacing:.2px;';
+                badge.style.cssText = 'display:table; margin:0 auto 6px; padding:2px 7px; border-radius:999px; background:#fff3cd; color:#8a5a00; font-size:10px; font-weight:600; letter-spacing:.2px;';
                 logoutButton.insertAdjacentElement('beforebegin', badge);
+                centerProfileActions();
             };
 
             addBadge();
-            new MutationObserver(addBadge).observe(document.body, { childList: true, subtree: true });
         } catch (error) {
             console.warn('Unable to verify developer admin access.', error);
         }
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showAdminBadge);
-    } else {
+    function initializeProfileUI() {
+        centerProfileActions();
+        new MutationObserver(centerProfileActions).observe(document.body, { childList: true, subtree: true });
         showAdminBadge();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeProfileUI);
+    } else {
+        initializeProfileUI();
     }
 })();
