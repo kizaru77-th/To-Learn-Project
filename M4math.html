@@ -1721,6 +1721,24 @@
         const truenumbtn = document.getElementById('truenumbtn');
         const truenumContent = document.getElementById('truenumContent');
 
+        // The value is loaded from admin-access.php, which checks the signed-in
+        // server session and the ADMIN_EMAILS allow-list.
+        let isDeveloperAdmin = false;
+
+        async function loadDeveloperAdminAccess() {
+            try {
+                const response = await fetch('admin-access.php', {
+                    credentials: 'same-origin',
+                    cache: 'no-store'
+                });
+                const access = await response.json();
+                return access.isAdmin === true;
+            } catch (error) {
+                console.warn('Unable to verify developer admin access.', error);
+                return false;
+            }
+        }
+
         function setupChapterLockSystem() {
             const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
             const chapterDividers = Array.from(document.querySelectorAll('.chapter-divider'));
@@ -1737,12 +1755,15 @@
             const unlockedChapters = chapterIds.filter((chapterId, index) => {
                 const divider = chapterDividers[index];
                 const requiredChapter = divider?.dataset.required || 'none';
-                return chapterId === 'chapter-1'
+                return isDeveloperAdmin
+                    || chapterId === 'chapter-1'
                     || savedProgress.includes(chapterId)
                     || (requiredChapter !== 'none' && savedProgress.includes(requiredChapter));
             });
 
-            const activeChapterId = unlockedChapters.find((chapterId) => !savedProgress.includes(chapterId))
+            const activeChapterId = isDeveloperAdmin
+                ? null
+                : unlockedChapters.find((chapterId) => !savedProgress.includes(chapterId))
                 || unlockedChapters[unlockedChapters.length - 1]
                 || 'chapter-1';
 
@@ -1761,11 +1782,12 @@
                     currentNode = currentNode.nextElementSibling;
                 }
 
-                const isUnlocked = chapterId === 'chapter-1'
+                const isUnlocked = isDeveloperAdmin
+                    || chapterId === 'chapter-1'
                     || savedProgress.includes(chapterId)
                     || (divider.dataset.required && savedProgress.includes(divider.dataset.required));
                 const isActive = chapterId === activeChapterId;
-                const shouldShow = isUnlocked || isActive;
+                const shouldShow = isDeveloperAdmin || isUnlocked || isActive;
 
                 if (isActive && chapterSections.length > 0) {
                     const card = document.createElement('div');
@@ -1823,6 +1845,9 @@
         }
 
         function setupSidebarChapterLocks() {
+            if (isDeveloperAdmin) {
+                return;
+            }
             const savedProgress = JSON.parse(localStorage.getItem('m4UnlockedChapters') || '[]');
             const chapterButtons = [
                 ['mathbtn', 'chapter-1'],
@@ -1920,8 +1945,6 @@
             truenumbtn.classList.toggle('active')
         });
 
-        setupSidebarChapterLocks();
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -2220,8 +2243,10 @@
     }
 
     // เรียกใช้งานทุกอย่างเมื่อหน้าเว็บ (DOM) โหลดพร้อมใช้งาน
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+        isDeveloperAdmin = await loadDeveloperAdminAccess();
         setupChapterLockSystem();
+        setupSidebarChapterLocks();
 
         // 1. ตรวจสอบสถานะการล็อกอินก่อน (เรียกฟังก์ชันเดิมของคุณที่มีอยู่)
         if (typeof checkLoginStatus === 'function') {
