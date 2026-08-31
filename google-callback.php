@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'auth-session.php';
 require_once 'connect.php'; // เรียกใช้ไฟล์เชื่อมฐานข้อมูลเดิมของคุณ
 
 // 1. ตรวจสอบว่า Google ส่งรหัส Code กลับมาให้หลังจากผู้ใช้กดยอมรับไหม
@@ -84,6 +85,7 @@ if (isset($_GET['code'])) {
 
         $display_username = $login_user['username'];
         $display_picture = !empty($login_user['profile_picture']) ? $login_user['profile_picture'] : '';
+        rememberAuthenticatedUser((int) $_SESSION['user_id']);
 
         // เปลี่ยนจาก header() เป็น JavaScript เพื่อเซ็ตค่าลงในเครื่องผู้ใช้ก่อนไปหน้า mainweb.html
         echo "<script>

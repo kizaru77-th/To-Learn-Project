@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'auth-session.php';
 require 'connect.php'; // ดึงไฟล์เชื่อมต่อฐานข้อมูลมาใช้
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
+            rememberAuthenticatedUser((int) $user['id']);
             // เก็บ path รูปโปรไฟล์ หรือใช้รูปเริ่มต้นถ้าไม่มี (Sample_User_Icon)
             $profilePicture = !empty($user['profile_picture']) ? $user['profile_picture'] : 'img/Sample_User_Icon.png';
             

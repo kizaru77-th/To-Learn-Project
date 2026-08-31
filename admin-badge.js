@@ -1,4 +1,17 @@
 (() => {
+    function logoutFromServer() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        localStorage.removeItem('profilePicture');
+        navigator.sendBeacon('logout.php');
+        window.location.href = 'index.html';
+    }
+
+    // The original pages only clear localStorage. Replace their global logout
+    // handlers so the persistent server cookie is cleared as well.
+    window.logout = logoutFromServer;
+    window.performLogout = logoutFromServer;
+
     async function showAdminBadge() {
         try {
             const response = await fetch('admin-access.php', {

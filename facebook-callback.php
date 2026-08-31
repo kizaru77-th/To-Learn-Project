@@ -8,6 +8,7 @@ if (PHP_VERSION_ID >= 70300) {
     ]);
 }
 session_start();
+require_once 'auth-session.php';
 
 // ป้องกัน Browser Prefetch (Chrome / Edge / Safari แอบยิง URL ล่วงหน้าจน Code ถูกใช้ก่อนที่ยูสเซอร์จะเปิดจริง)
 if (
@@ -30,6 +31,7 @@ if (isset($_GET['code'])) {
         $stmt->execute(['id' => $_SESSION['user_id']]);
         $login_user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($login_user) {
+            rememberAuthenticatedUser((int) $_SESSION['user_id']);
             echo "<script>
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('username', " . json_encode($login_user['username']) . ");
@@ -126,6 +128,7 @@ if (isset($_GET['code'])) {
         $stmt = $conn->prepare("SELECT username, profile_picture FROM users WHERE id = :id");
         $stmt->execute(['id' => $_SESSION['user_id']]);
         $login_user = $stmt->fetch(PDO::FETCH_ASSOC);
+        rememberAuthenticatedUser((int) $_SESSION['user_id']);
 
         echo "<script>
             localStorage.setItem('isLoggedIn', 'true');
@@ -145,6 +148,7 @@ if (isset($_GET['code'])) {
 
             if ($last_fb_user) {
                 $_SESSION['user_id'] = $last_fb_user['id'];
+                rememberAuthenticatedUser((int) $_SESSION['user_id']);
                 echo "<script>
                     localStorage.setItem('isLoggedIn', 'true');
                     localStorage.setItem('username', " . json_encode($last_fb_user['username']) . ");

@@ -6,6 +6,12 @@ declare(strict_types=1);
 // ADMIN_EMAILS=developer@example.com,another-developer@example.com
 ini_set('session.cookie_httponly', '1');
 session_start();
+require_once 'auth-session.php';
+$isAuthenticated = restoreRememberedUser();
+if ($isAuthenticated) {
+    // Migrate an existing PHP session to the persistent signed cookie too.
+    rememberAuthenticatedUser((int) $_SESSION['user_id']);
+}
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, private');
@@ -25,6 +31,6 @@ $adminEmails = array_map(
 );
 
 echo json_encode([
-    'authenticated' => !empty($_SESSION['user_id']),
+    'authenticated' => $isAuthenticated,
     'isAdmin' => $email !== '' && in_array($email, $adminEmails, true),
 ], JSON_UNESCAPED_UNICODE);
