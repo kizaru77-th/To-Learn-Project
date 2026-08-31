@@ -2089,6 +2089,7 @@
                 <img src="${displayImage}" class="user-profile-circle" alt="Profile Cover" title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์">
             </a>
             <div style="font-weight: 600; color: #333; margin-bottom: 5px; word-break: break-word;">${username}</div>
+            ${isDeveloperAdmin ? '<div style="display:inline-block; margin:-2px 0 6px; padding:2px 7px; border-radius:999px; background:#fff3cd; color:#8a5a00; font-size:10px; font-weight:600; letter-spacing:.2px;">ผู้ดูแลระบบ</div>' : ''}
             <button onclick="showLogoutConfirm()" style="color: #ff4d4d; font-size: 12px; cursor: pointer; border: none; background: none; text-decoration: underline;">ออกจากระบบ</button>
         `;
 
