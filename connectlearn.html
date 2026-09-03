@@ -290,14 +290,25 @@
         }
         /* คลาสใหม่สำหรับปุ่มลงชื่อเข้าใช้ */
         .login-btn-custom {
-            background-color: #7c86e1;
+            background-color: #66a6d1;
+            border-radius: 100px;
             color: white;
+            padding: 8px 20px;
+            margin: 0;
+            width: 100%;
+            display: block;
             text-decoration: none;
-            transition: color 0.3s ease, background-size 0.5s ease-in-out;
-            background-image: linear-gradient(to bottom right, rgb(217, 255, 0), rgb(188, 255, 186));
+            font-size: 18px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 0px black;
+            box-sizing: border-box;
+            background-image: linear-gradient(to bottom right, white);
             background-size: 0% 100%;
             background-repeat: no-repeat;
-            background-position: left;
+            transition:
+                background-color 0.5s ease,
+                color 0.5s ease,
+                transform 0.5s ease;
         }
 
         .login-btn-custom:hover {
